@@ -1,16 +1,16 @@
 ---
 lab:
-  title: 'Lab: Konfigurieren von Pipelines-as-Code mit YAML'
+  title: Konfigurieren von Pipelines-as-Code mit YAML
   module: 'Module 05: Implement a secure continuous deployment using Azure Pipelines'
 ---
 
-# Lab: Konfigurieren von Pipelines-as-Code mit YAML
+# Konfigurieren von Pipelines-as-Code mit YAML
 
 ## Lab-Handbuch für Kursteilnehmer
 
 ## Labanforderungen
 
-- Für dieses Lab ist **Microsoft Edge** oder ein [von Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
+- Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
 
 - **Einrichten einer Azure DevOps-Organisation**: Wenn Sie nicht bereits eine Azure DevOps-Organisation haben, die Sie für dieses Lab verwenden können, müssen Sie diese erstellen, indem Sie die unter [Erstellen einer Organisation oder Projektsammlung](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization) beschriebenen Anweisungen befolgen.
 
@@ -32,15 +32,15 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 0: Konfigurieren der Voraussetzungen für das Lab.
+### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
-In dieser Übung richten Sie die Voraussetzungen für das Labor ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
 #### Aufgabe 1: (überspringen, wenn fertig) Erstellen und Konfigurieren des Teamprojekts
 
-In dieser Aufgabe erstellen Sie ein **eShopOnWeb_MultiStageYAML** Azure DevOps-Projekt, das von mehreren Laboren verwendet werden soll.
+In dieser Aufgabe erstellen Sie ein **eShopOnWeb_MultiStageYAML** Azure DevOps-Projekt, das in mehreren Labss verwendet werden soll.
 
-1. Öffnen Sie auf Ihrem Laborcomputer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken auf „Neues Projekt“ Geben Sie Ihrem Projekt den Namen **eShopOnWeb_MultiStageYAML** , und lassen Sie die anderen Felder standardmäßig. Klicken Sie auf **Erstellen**.
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Geben Sie Ihrem Projekt den Namen **eShopOnWeb_MultiStageYAML** und lassen Sie die anderen Felder auf Standardwerten. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines Projekts](images/create-project.png)
 
@@ -48,34 +48,34 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb_MultiStageYAML** Azure DevOps-P
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Laborcomputer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb_MultiStageYAML** Projekt. Klicken Sie auf **Repos>Files** , **Import a Repository**. Wählen Sie **Importieren** aus. Fügen Sie im **Fenster "Git Repository** importieren" die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git  ein, und klicken Sie auf " **Importieren**":
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb_MultiStageYAML**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
 
     ![Importieren eines Repositorys](images/import-repo.png)
 
 2. Das Repository ist wie folgt organisiert:
-    - Der Ordner „.ado“ enthält Azure DevOps-YAML-Pipelines.
-    - Der Ordner „.devcontainer“ enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - **Azure-Ordner** enthält Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Lab-Szenarien verwendet werden.
-    - **GITHUB-Ordnercontainer-YAML-GitHub-Workflowdefinitionen** .
-    - Der Ordner „src“ enthält die .NET 6-Website, die in den Labszenarien verwendet wird.
+    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
+    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+    - Der Ordner **.azure** enthält eine Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Labs verwendet werden.
+    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+    - Der Ordner **src** enthält die .NET 7-Website, die für die Labszenarien verwendet wird.
 
 #### Schritt 2: Erstellen von Azure-Ressourcen
 
-In dieser Lerneinheit verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erstellen.
+In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erstellen.
 
-1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ und in dem Azure AD-Mandanten, der dem Azure-Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
-2. Öffnen Sie im Azure-Portal den Bereich **Cloud Shell**, indem Sie auf das Symbolleistensymbol rechts neben dem Textfeld für die Suche klicken.
+1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, und das in dem in dem Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
+2. Klicken Sie im Azure-Portal in der Symbolleiste auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Suchtextfeld befindet.
 3. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
 
     >**Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
 
-    > **Hinweis:** Führen Sie für eine Liste der Regionen und deren Alias den folgenden Befehl aus der Azure Cloud Shell - Bash aus:
+    > **Hinweis:** Um eine Liste der Regionen und deren Alias zu erhalten, führen Sie den folgenden Befehl in der Azure Cloud Shell - Bash aus:
 
     ```bash
     az account list-locations -o table
     ```
 
-4. Führen Sie in der **Bash-Eingabeaufforderung** im **Cloud Shell-Bereich** den folgenden Befehl aus, um eine Ressourcengruppe zu erstellen (ersetzen Sie den `<region>` Platzhalter durch den Namen der Azure-Region, die Ihnen am nächsten kommt, z. B. "centralus", "westeurope" oder andere Region der Wahl).
+4. Führen Sie in der **Bash-Eingabeaufforderung** im **Cloud Shell**-Bereich den folgenden Befehl aus, um eine Ressourcengruppe zu erstellen (ersetzen Sie den `<region>`-Platzhalter durch den Namen der Azure-Region, die Ihnen am nächsten ist, z. B. „centralus“, „westeurope“ oder eine andere Region Ihrer Wahl).
 
     ```bash
     LOCATION='<region>'
@@ -86,60 +86,60 @@ In dieser Lerneinheit verwenden Sie das Azure-Portal, um eine Azure-Web-App zu e
     az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
 
-5. Führen Sie den folgenden Befehl  aus, um einen App Service-Plan zu erstellen.
+5. Um einen Windows-App-Service-Plan zu erstellen, führen Sie den folgenden Befehl aus:
 
     ```bash
     SERVICEPLANNAME='az400m05l11-sp1'
     az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
     ```
 
-6. Erstellen Sie in  eine Web-App mit einem eindeutigen Namen.
+6. Erstellen Sie eine Web-App mit einem eindeutigen Namen.
 
     ```bash
     WEBAPPNAME=eshoponWebYAML$RANDOM$RANDOM
     az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
     ```
 
-    > **Hinweis**: Notieren Sie den Namen der ACR-Instanz. Sie benötigen ihn später in diesem Lab.
+    > **Anmerkung**: Tragen Sie den Namen der Web-App ein. Sie benötigen diese später in diesem Lab.
 
 7. Schließen Sie die Azure Cloud Shell, lassen Sie aber das Azure-Portal im Browser geöffnet.
 
-### Übung 1: Konfigurieren Sie CI/CD-Pipelines als Code mit YAML in Azure DevOps.
+### Übung 1: Konfigurieren Sie CI/CD-Pipelines-as-Code mit YAML in Azure DevOps.
 
-Übung 1: Konfigurieren Sie CI/CD-Pipelines als Code mit YAML in Azure DevOps.
+In dieser Übung werden Sie CI/CD-Pipelines-as-Code mit YAML in Azure DevOps konfigurieren.
 
-#### Hinzufügen des Tasks zu einer Builddefinition
+#### Aufgabe 1: Hinzufügen einer YAML-Build-Definition
 
-In diesem Vorgang fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition hinzu.
+In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition hinzu.
 
-1. Navigieren Sie zurück zum **Bereich "Pipelines** " im **Pipelinehub** .
-2. Klicken Sie im **Fenster "Erste Pipeline** erstellen" auf **"Pipeline erstellen"**.
+1. Navigieren Sie zurück zum Bereich **Pipelines** im **Pipelinehub**.
+2. Klicken Sie im Fenster **Erste Pipeline erstellen** auf **Pipeline erstellen**.
 
     > **Hinweis**: Wir verwenden den Assistenten, um eine neue YAML-Pipelinedefinition basierend auf unserem Projekt zu erstellen.
 
-3. Klicken Sie im **Bereich "Wo befindet sich Ihr Code?** " auf die **Option "Azure Repos Git (YAML)** ".
-4. Klicken Sie im **Bereich "Repository** auswählen" auf **eShopOnWeb_MultiStageYAML**.
-5. Wählen Sie auf dem Bildschirm **Pipeline konfigurieren** die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
-6. Geben Sie im **Blatt "Auswählen einer vorhandenen YAML-Datei** " die folgenden Parameter an:
+3. Klicken Sie im Bereich **Wo befindet sich Ihr Code?** auf die Option **Azure Repos Git (YAML)**.
+4. Klicken Sie im Bereich **Repository auswählen** auf **eShopOnWeb_MultiStageYAML**.
+5. Scrollen Sie auf dem Bildschirm **Pipeline konfigurieren** nach unten und wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
+6. Geben Sie im Blatt **Auswählen einer vorhandenen YAML-Datei** die folgenden Parameter an:
    - Branch: **main**
    - Pfad: **.ado/eshoponweb-ci.yml**
-7. Klicken Sie auf **Konfigurieren**, um die Einstellungen zu speichern.
-8. Klicken Sie auf dem **Bildschirm "Pipeline überprüfen** " auf **"Ausführen** ", um den Buildpipelineprozess zu starten.
-9. Warten Sie auf den Abschluss der Buildpipeline. Ignorieren Sie alle Warnungen bezüglich des Quellcodes selbst, da sie für diese Übung nicht relevant sind.
+7. Klicken Sie auf **Weiter**, um die Einstellungen zu speichern.
+8. Klicken Sie auf dem Bildschirm **Pipeline-YML überprüfen** auf **Ausführen**, um den Buildpipelineprozess zu starten.
+9. Warten Sie auf die erfolgreiche Fertigstellung der Buildpipeline. Ignorieren Sie alle Warnungen bezüglich des Quellcodes selbst, da sie für diese Übung nicht relevant sind.
 
     > **Hinweis**: Jede Aufgabe aus der YAML-Datei steht zur Überprüfung zur Verfügung, einschließlich aller Warnungen und Fehler.
 
-#### Aufgabe 2: Hinzufügen der kontinuierlichen Übermittlung zur YAML-Definition
+#### Aufgabe 2: Hinzufügen von Continuous Delivery zur YAML-Definition
 
-In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie in der vorherigen Aufgabe erstellt haben, eine kontinuierliche Übermittlung hinzu.
+In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie in der vorherigen Aufgabe erstellt haben, Continuous Delivery hinzu.
 
-> **Hinweis**: Nachdem die Build- und Testprozesse erfolgreich sind, können wir nun die Übermittlung zur YAML-Definition hinzufügen.
+> **Hinweis**: Da die Build- und Testprozesse erfolgreich sind, können wir nun die Bereitstellung zur YAML-Definition hinzufügen.
 
-1. Klicken Sie im Pipelineausführungsbereich auf das Auslassungszeichen in der oberen rechten Ecke, und klicken Sie im Dropdownmenü auf **"Pipeline bearbeiten"**.
-2. Navigieren Sie im Bereich mit dem Inhalt der **Datei eShopOnWeb_MultiStageYAML/.ado/eshoponweb-ci.yml** zum Ende der Datei (Zeile 56), und drücken **Sie die EINGABETASTE/Eingabetaste** , um eine neue leere Zeile hinzuzufügen.
+1. Klicken Sie im Pipelineausführungsbereich auf das Auslassungszeichen in der oberen rechten Ecke, und klicken Sie im Dropdownmenü auf **Pipeline bearbeiten**.
+2. Navigieren Sie im Bereich mit dem Inhalt der Datei ** eShopOnWeb_MultiStageYAML/.ado/eshoponweb-ci.yml** zum Ende der Datei (Zeile 56), und drücken Sie die **Eingabetaste**, um eine neue, leere Zeile hinzuzufügen.
 3. Fügen Sie in Zeile **57** den folgenden Inhalt hinzu, um die **Releasephase** in der YAML-Pipeline zu definieren.
 
-    > **Hinweis**: Sie können definieren, welche Phasen Sie benötigen, um den Pipelinefortschritt besser zu organisieren und nachzuverfolgen.
+    > **Hinweis**: Sie können welche Phasen auch immer Sie benötigen definieren, um den Pipelinefortschritt besser zu organisieren und nachzuverfolgen.
 
     ```yaml
     - stage: Deploy
@@ -151,21 +151,21 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
         steps:
     ```
 
-4. Legen Sie den Cursor an einer neuen Zeile am Ende der YAML-Definition fest.
+4. Setzen Sie den Cursor in eine neue Zeile am Ende der YAML-Definition.
 
     > **Hinweis**: Dies ist der Ort, an dem neue Aufgaben hinzugefügt werden.
 
-5. Suchen Sie in der Liste der Aufgaben auf der rechten Seite des Codebereichs nach der **aufgabe "Azure-App Dienstbereitstellung"**, und wählen Sie sie aus.
-6. Geben Sie im **Bereich Azure-App Dienstbereitstellung** die folgenden Einstellungen an, und klicken Sie auf **"Hinzufügen**":
+5. Suchen Sie in der Liste der Aufgaben auf der rechten Seite des Codebereichs nach der Aufgabe **Azure-App Service-Bereitstellung** und wählen Sie sie aus.
+6. Geben Sie im Bereich **Azure-App Sevice-Bereitstellung** die folgenden Einstellungen an, und klicken Sie auf **Hinzufügen**:
 
-    - wählen Sie in der **Dropdownliste für Azure-Abonnements** das Azure-Abonnement aus, in dem Sie die Azure-Ressourcen weiter oben in der Übung bereitgestellt haben, klicken Sie auf **Autorisieren** und authentifizieren Sie sich bei Aufforderung mit demselben Benutzerkonto, das Sie während der Azure-Ressourcenbereitstellung verwendet haben.
-    - wählen Sie in der **Dropdownliste "App Service-Name** " den Namen der Web-App aus, die Sie zuvor in der Übung bereitgestellt haben.
-    - aktualisieren Sie im **Textfeld **"Paket" oder "Ordner**" den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.**
-7. Bestätigen Sie die Einstellungen im Bereich "Assistent", indem Sie auf die **Schaltfläche "Hinzufügen** " klicken.
+    - Wählen Sie in der Dropdownliste für **Azure-Abonnements** das Azure-Abonnement aus, in dem Sie die Azure-Ressourcen zuvor im Lab bereitgestellt haben, klicken Sie auf **Autorisieren** und authentifizieren Sie sich bei Aufforderung mit demselben Benutzerkonto, das Sie während der Azure-Ressourcenbereitstellung verwendet haben.
+    - Wählen Sie in der Dropdownliste **App Service-Name** den Namen der Web-App aus, die Sie zuvor im Lab bereitgestellt haben.
+    - **Aktualisieren** Sie im Textfeld **Paket oder Ordner** den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
+7. Bestätigen Sie die Einstellungen im Bereich Assistent, indem Sie auf die Schaltfläche **Hinzufügen** klicken.
 
     > **Hinweis**: Dadurch wird der YAML-Pipelinedefinition automatisch die Bereitstellungsaufgabe hinzugefügt.
 
-8. Der Codeausschnitt, der dem Editor hinzugefügt wurde, sollte ähnlich wie unten aussehen und ihren Namen für die Parameter azureSubscription und WebappName widerspiegeln:
+8. Der Codeausschnitt, der dem Editor hinzugefügt wurde, sollte ähnlich wie unten aussehen und für die Parameter azureSubscription und WebappName Ihren Namen aufweisen:
 
     ```yaml
         - task: AzureRmWebAppDeployment@4
@@ -177,21 +177,21 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
     ```
 
-9. Überprüfen Sie, ob die Aufgabe als untergeordnetes Element der **Schritte** aufgeführt ist. Wenn nicht, wählen Sie alle Zeilen aus der hinzugefügten Aufgabe aus, drücken Sie zweimal die **TAB-TASTE** , um sie vier Leerzeichen einzurücken, sodass sie als untergeordnetes Element der **Vorgangsaufgabe** aufgeführt ist.
+9. Überprüfen Sie, ob die Aufgabe als untergeordnetes Element der Aufgabe **Schritte** aufgeführt ist. Wenn nicht, wählen Sie alle Zeilen aus der hinzugefügten Aufgabe aus und drücken Sie zweimal die **Tab**-Taste, um sie vier Leerzeichen einzurücken, sodass sie als untergeordnetes Element der Aufgabe **Schritte** aufgeführt wird.
 
-    > **Hinweis**: Der **parameter packageForLinux** ist im Kontext dieses Labors irreführend, ist aber für Windows oder Linux gültig.
+    > **Hinweis**: Der **parameter packageForLinux** ist im Kontext dieses Labs irreführend, ist aber für Windows oder Linux gültig.
 
-    > **Hinweis**: Diese beiden Phasen werden standardmäßig unabhängig ausgeführt. Daher ist die Buildausgabe aus der ersten Phase möglicherweise nicht ohne zusätzliche Änderungen für die zweite Stufe verfügbar. Um diese Änderungen zu implementieren, fügen wir eine neue Aufgabe hinzu, um das Bereitstellungsartefakt am Anfang der Bereitstellungsphase herunterzuladen.
+    > **Hinweis**: Diese beiden Phasen werden standardmäßig unabhängig ausgeführt. Daher ist die Buildausgabe aus der ersten Phase möglicherweise nicht ohne zusätzliche Änderungen für die zweite Phase verfügbar. Um diese Änderungen zu implementieren, fügen wir eine neue Aufgabe hinzu, um das Bereitstellungsartefakt am Anfang der Bereitstellungsphase herunterzuladen.
 
-10. Platzieren Sie den Cursor in der ersten Zeile unter dem **Schrittknoten** der **Bereitstellungsphase** , und drücken Sie die EINGABETASTE/Eingabetaste, um eine neue leere Zeile hinzuzufügen (Zeile 64).
-11. Suchen Sie im **** Aufgabenbereich nach der **Aufgabe "Buildartefakte herunterladen", und wählen Sie sie aus**.
-12. Geben Sie die folgenden Werte für die Parameter an:
-    - Herunterladen von Artefakten erstellt von: aktuellem Build
-    - Downloadtyp: bestimmtes Artefakt
-    - Artefaktname: **Wählen Sie "Website" aus der Liste** aus (oder **geben Sie "Website" direkt ein** , wenn sie nicht automatisch in der Liste angezeigt wird)
+10. Platzieren Sie den Cursor in der ersten Zeile unter dem **Schrittknoten** der **Bereitstellungsphase** und drücken Sie Enter, um eine neue leere Zeile hinzuzufügen (Zeile 64).
+11. Suchen Sie im Bereich ** Aufgaben** nach der Aufgabe **Buildartefakte herunterladen**, und wählen Sie sie aus.
+12. Geben Sie die folgenden Parameter für diese Aufgabe an:
+    - Herunterladen von Artefakten erstellt von: **aktueller Build**
+    - Download-Typ: **Spezifisches Artefakt**
+    - Artefaktname: **Wählen Sie „Website“ aus der Liste** (oder **tippen Sie „Website“** direkt ein, wenn sie nicht automatisch in der Liste erscheint)
     - Zielverzeichnis: **$(Build.ArtifactStagingDirectory)**
 13. Klicken Sie auf **Hinzufügen**.
-14. Der Codeausschnitt des hinzugefügten Codes sollte wie folgt aussehen:
+14. Der hinzugefügte Codeschnipsel sollte etwa so aussehen wie unten:
 
     ```yaml
         - task: DownloadBuildArtifacts@0
@@ -202,31 +202,31 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
             downloadPath: '$(Build.ArtifactStagingDirectory)'
     ```
 
-15. Wenn der YAML-Einzug deaktiviert ist, drücken Sie zweimal die **TAB-TASTE** , um sie vier Leerzeichen einzurücken.
+15. Wenn die YAML-Einrückung ausgeschaltet ist, drücken Sie zweimal die **Tab**-Taste, während die hinzugefügte Aufgabe noch im Editor ausgewählt ist, um sie um vier Leerzeichen einzurücken.
 
-    > **Hinweis**: Hier können Sie auch eine leere Zeile vor und nach hinzufügen, um das Lesen zu erleichtern.
+    > **Hinweis**: Auch hier können Sie zur besseren Lesbarkeit eine Leerzeile davor und danach einfügen.
 
-16. Klicken Sie **im **Bereich "Speichern****" auf "Speichern", und klicken Sie erneut auf **"Speichern**", um die Änderung direkt in die Standard Verzweigung zu übernehmen.
+16. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderung direkt in die Hauptverzweigung zu übernehmen.
 
-    > **Hinweis**: Da unser ursprüngliches CI-YAML nicht so konfiguriert wurde, dass automatisch ein neuer Build ausgelöst wird, müssen wir diese manuell initiieren.
+    > **Hinweis**: Da unser ursprüngliches CI-YAML nicht so konfiguriert wurde, dass automatisch ein neuer Build ausgelöst wird, müssen wir diesen manuell initiieren.
 
-17. Navigieren Sie in Azure DevOps zur Registerkarte **Pipelines**, und wählen Sie **Pipelines** aus.
-18. Öffnen Sie die **EShopOnWeb_MultiStageYAML** Pipeline, und klicken Sie auf **"Pipeline ausführen"**.
-19. Bestätigen Sie die **Ausführung** aus dem angezeigten Bereich.
-20. Beachten Sie die zwei verschiedenen Phasen, **Build .Net Core Solution** and **Deploy to Azure Web App** wird angezeigt.
-21. Warten Sie, bis die Pipeline gestartet wird, und warten Sie, bis sie die Buildphase erfolgreich abgeschlossen hat.
-22. Sobald die Bereitstellungsphase gestartet werden soll, werden Sie mit **den erforderlichen** Berechtigungen sowie einer orangefarbenen Leiste gefragt:
+17. Navigieren Sie im linken Menü von Azure DevOps zu **Pipelines** und wählen Sie erneut **Pipelines**.
+18. Öffnen Sie die Pipeline **EShopOnWeb_MultiStageYAML** und klicken Sie auf **Pipeline ausführen**.
+19. Bestätigen Sie das **Ausführen** im sich öffnenden Fenster.
+20. Beachten Sie die zwei dargestellten Phasen **Build .Net Core Solution** und **Deploy to Azure Web App**.
+21. Warten Sie auf den Start der Pipeline und dann auf den erfolgreichen Abschluss der Build-Phase.
+22. Sobald die Bereitstellungsphase gestartet werden soll, werden die **erforderlichen Berechtigungen** sowie eine orangefarbene Statusleiste angezeigt:
 
     ```text
     This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
     ```
 
-23. Klicken Sie auf **JSON-Ansicht**.
-24. Klicken Sie im **Bereich "Auf Überprüfung** warten" auf **"Zulassen"**.
-25. Überprüfen Sie die Nachricht im **Popupfenster** "Genehmigung", und bestätigen Sie, indem Sie auf "Zulassen"** klicken**.
-26. Dadurch wird die Bereitstellungsphase deaktiviert. Warten Sie, bis die Bereitstellung erfolgreich abgeschlossen wurden.
+23. Klicken Sie auf **Ansicht**
+24. Klicken Sie im Bereich **Warten auf Überprüfung** auf **Zulassen**.
+25. Überprüfen Sie die Meldung im Fenster **Popup zulassen** und bestätigen Sie mit **Zulassen**.
+26. Damit wird die Bereitstellungsphase eingeleitet. Warten Sie, bis die Bereitstellung erfolgreich abgeschlossen wurden.
 
-     > **Hinweis**: Wenn die Bereitstellung aufgrund eines Problems mit der YAML-Pipelinesyntax fehlschlagen sollte, verwenden Sie dies als Referenz:
+     > **Hinweis**: Sollte die Bereitstellung aufgrund eines Problems mit der YAML-Pipeline-Syntax fehlschlagen, verwenden Sie dies als Referenz:
 
      ```yaml
     #NAME THE PIPELINE SAME AS FILE (WITHOUT ".yml")
@@ -308,44 +308,44 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
     
     ```
 
-#### Aufgabe 4: Überprüfen der bereitgestellten Website
+#### Aufgabe 4: Die bereitgestellte Site überprüfen
 
-1. Wechseln Sie zurück zum Webbrowserfenster, in dem die Azure-Portal angezeigt wird, und navigieren Sie zum Blatt, in dem die Eigenschaften der Azure Web App angezeigt werden.
-2. Klicken Sie auf dem Blatt "Azure Web App" auf **"Übersicht** ", und klicken Sie auf dem Blatt "Übersicht" auf " **Durchsuchen** ", um Ihre Website auf einer neuen Webbrowserregisterkarte zu öffnen.
-3. Stellen Sie sicher, dass die bereitgestellte Website auf der neuen Browserregisterkarte mit der EShopOnWeb E-Commerce-Website wie erwartet geladen wird.
+1. Wechseln Sie zurück zum Webbrowser-Fenster, in dem das Azure-Portal angezeigt wird, und navigieren Sie zu dem Blatt, auf dem die Eigenschaften der Azure-Webanwendung angezeigt werden.
+2. Klicken Sie auf dem Azure-Web-App-Blatt auf **Übersicht** und im Übersichts-Blatt auf **Durchsuchen**, um Ihre Site in einer neuen Webbrowser-Registerkarte zu öffnen.
+3. Überprüfen Sie, ob die bereitgestellte Site wie erwartet in der neuen Browser-Registerkarte geladen wird und die EShopOnWeb E-Commerce-Website anzeigt.
 
-### Übung 2: Konfigurieren von Umgebungseinstellungen für CI/CD-Pipelines als Code mit YAML in Azure DevOps
+### Übung 2: Umgebungseinstellungen für CI/CD-Pipelines-as-Code mit YAML in Azure DevOps konfigurieren
 
-In dieser Übung fügen Sie einer YAML-basierten Pipeline in Azure DevOps Genehmigungen hinzu.
+In dieser Übung fügen Sie Genehmigungen zu einer YAML-basierten Pipeline in Azure DevOps hinzu.
 
-#### Aufgabe 1: Einrichten von Pipelineumgebungen
+#### Aufgabe 1: Pipelineumgebungen einrichten
 
-YAML-Pipelines als Code verfügen nicht über Release/Quality Gates, da wir mit klassischen Azure DevOps-Release-Pipelines verfügen. Einige Ähnlichkeiten können jedoch für YAML-Pipelines-as-Code mithilfe von **Umgebungen** konfiguriert werden. In dieser Aufgabe verwenden Sie diesen Mechanismus, um Genehmigungen für die Buildstufe zu konfigurieren.
+YAML-Pipelines-as-Code haben keine Release/Quality Gates, wie es bei Azure DevOps Classic Release Pipelines der Fall ist. Einige Ähnlichkeiten können jedoch für YAML-Pipelines-as-Code mithilfe von **Umgebungen** konfiguriert werden. In dieser Aufgabe verwenden Sie diesen Mechanismus, um Genehmigungen für die Build-Stufe zu konfigurieren.
 
-1. Navigieren Sie aus dem Azure DevOps-Projekt **EShopOnWeb_MultiStageYAML** zu **Pipelines**.
-2. Wählen Sie **im Menü "Pipelines" links "Umgebungen"** aus.
-3. Klicken Sie auf **Umgebung**.
-4. Fügen Sie im **Bereich "Neue Umgebung**" einen Namen für die Umgebung hinzu, der als Genehmigungen** bezeichnet wird**.
-5. Wählen Sie unter **Ressourcen** die Option **Aufträge** aus.
-6. Bestätigen Sie die Einstellungen, indem Sie die **Schaltfläche "Erstellen** " drücken.
-7. Nachdem die Umgebung erstellt wurde, klicken Sie auf die Auslassungspunkte (...) neben der Schaltfläche "Ressource hinzufügen".
+1. Navigieren Sie im Azure DevOps-Projekt **EShopOnWeb_MultiStageYAML** zu **Pipelines**.
+2. Wählen Sie im Menü "Pipelines" auf der linken Seite **Umgebungen**.
+3. Klicken Sie auf **Umgebung erstellen**.
+4. Fügen Sie im Bereich **Neue Umgebung** einen Namen für die Umgebung hinzu, der **Genehmigungen** lautet.
+5. Wählen Sie unter **Ressourcen** die Option **Keine**.
+6. Bestätigen Sie die Einstellungen durch Drücken der Schaltfläche **Erstellen**.
+7. Sobald die Umgebung erstellt wurde, klicken Sie auf die Auslassungspunkte (...) neben der Schaltfläche "Ressource hinzufügen".
 8. Wählen Sie **Genehmigungen und Überprüfungen** aus.
-9. Wählen Sie im **ersten Kontrollkästchen** "Hinzufügen" **Genehmigungen** aus.
-10. Fügen Sie Den Namen Ihres Azure DevOps-Benutzerkontos zum Feld genehmiger **Personen hinzu** .
+9. Wählen Sie auf der Seite **Erste Prüfung hinzufügen** die Option **Genehmigungen**.
+10. Fügen Sie den Namen Ihres Azure DevOps-Benutzerkontos in das Feld **Genehmigende Person** ein.
 
     > **Hinweis:** In einem realen Szenario würde dies den Namen Ihres DevOps-Teams widerspiegeln, das an diesem Projekt arbeitet.
 
-11. Bestätigen Sie die definierten Genehmigungseinstellungen, indem Sie auf die **Schaltfläche "Erstellen** " klicken.
-12. Zuletzt müssen wir die erforderlichen Einstellungen "Umgebung: Genehmigungen" zum YAML-Pipelinecode für die Bereitstellungsphase hinzufügen. Navigieren Sie dazu zu **"Repos**", navigieren Sie zum **Ordner ".ado** ", und wählen Sie die **Datei "eshoponweb-ci.yml** Pipeline-as-Code" aus.
-13. Klicken Sie in der Inhaltsansicht auf die Schaltfläche "Bearbeiten **", um in den **Bearbeitungsmodus zu wechseln.
+11. Bestätigen Sie die festgelegten Genehmigungseinstellungen, indem Sie die auf Schaltfläche **Erstellen** drücken.
+12. Zuletzt müssen noch die notwendigen "Umgebung: Genehmigungen"-Einstellungen in den YAML-Pipeline-Code für die Bereitstellungsphase eingefügt werden. Navigieren Sie dazu zu **Repos**, suchen Sie den Ordner **.ado** und wählen Sie die Pipeline-as-Code-Datei **eshoponweb-ci.yml**.
+13. Klicken Sie in der Inhaltsansicht auf die Schaltfläche **Bearbeiten**, um in den Bearbeitungsmodus zu wechseln.
 14. Navigieren Sie zum Anfang des **Bereitstellungsauftrags** (-auftrag: Bereitstellen in Zeile 60)
-15. Fügen Sie unten eine neue leere Zeile hinzu, und fügen Sie den folgenden Codeausschnitt hinzu:
+15. Fügen Sie direkt darunter eine neue leere Zeile ein und fügen Sie den folgenden Ausschnitt hinzu:
 
     ```yaml
       environment: approvals
     ```
 
-    Der Codeausschnitt sollte folgendermaßen aussehen:
+    Der resultierende Codeschnipsel sollte wie folgt aussehen:
 
     ```yaml
      jobs:
@@ -356,9 +356,9 @@ YAML-Pipelines als Code verfügen nicht über Release/Quality Gates, da wir mit 
     ```
 
 16. Da die Umgebung eine bestimmte Einstellung einer Bereitstellungsphase ist, kann sie nicht von "Aufträgen" verwendet werden. Daher müssen wir einige zusätzliche Änderungen an der aktuellen Auftragsdefinition vornehmen.
-17. Benennen Sie in Zeile **60** "- Auftrag: Bereitstellen" um **– Bereitstellung: Bereitstellen: Bereitstellen**
+17. Benennen Sie in Zeile **60** „- job: Deploy“ um in **- deployment: Deploy**
 18. Fügen Sie als Nächstes unter Zeile **63** (vmImage: Windows-2019) eine neue leere Zeile hinzu.
-19. Fügen Sie den folgenden YAML-Code ein:
+19. Fügen Sie den folgende Yaml-Codeausschnitt ein:
 
     ```yaml
         strategy:
@@ -366,9 +366,9 @@ YAML-Pipelines als Code verfügen nicht über Release/Quality Gates, da wir mit 
             deploy:
     ```
 
-20. Wählen Sie den erneuten Standard Codeausschnitt (Zeile **67** bis zum Ende) aus, und verwenden Sie die **** TAB-TASTE, um den YAML-Einzug zu beheben.
+20. Wählen Sie den Rest des Codeausschnitts (Zeile **67** bis zum Ende) aus, und verwenden Sie die **Tabulator**-Taste, um den YAML-Einzug zu berichtigen.
 
-    Der resultierende YAML-Codeausschnitt sollte nun wie folgt aussehen und die **Bereitstellungsphase** widerspiegeln:
+    Das resultierende YAML-Schnipsel sollte nun wie folgt aussehen und die **Bereitstellungsphase** widerspiegeln:
 
     ```yaml
     - stage: Deploy
@@ -397,31 +397,31 @@ YAML-Pipelines als Code verfügen nicht über Release/Quality Gates, da wir mit 
                   packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
     ```
 
-21. Bestätigen Sie die Änderungen an der YaML-Codedatei, indem Sie im **angezeigten Commitbereich auf Commit** klicken und erneut auf Commit** klicken**.
-22. Navigieren Sie links zum Azure DevOps-Projektmenü, wählen Sie **"Pipelines" aus, wählen Sie "Pipelines****" aus, und beachten Sie**, dass die **zuvor verwendete EshopOnWeb_MultiStageYAML** Pipeline verwendet wurde.
+21. Bestätigen Sie die Änderungen an der YAML-Codedatei, indem Sie im auf **Commit** klicken und im angezeigten Commitbereich erneut auf **Commit** klicken.
+22. Navigieren Sie links zum Azure DevOps-Projektmenü, wählen Sie **Pipelines** und danach **Pipelines** aus und achten Sie auf die zuvor verwendete **EshopOnWeb_MultiStageYAML**-Pipeline.
 23. Öffnen Sie die Pipeline.
-24. Klicken Sie auf "Pipeline ausführen"**, um eine neue Pipelineausführung auszulösen **. Bestätigen Sie**, indem Sie auf "Ausführen"** klicken.
-25. Genau wie zuvor beginnt die Buildphase wie erwartet. Warten Sie, bis die Bereitstellung erfolgreich abgeschlossen wurden.
-26. Da als Nächstes die *Umgebung:Genehmigungen* für die Bereitstellungsphase konfiguriert sind, wird eine Genehmigungsbestätigung angefordert, bevor sie gestartet wird.
-27. Dies ist in der Pipelineansicht sichtbar, in der " **Warten" (0/1-Prüfungen bestanden)** angezeigt werden. Außerdem wird eine Benachrichtigung angezeigt, die besagt, dass **genehmigungsanforderungen überprüft werden müssen, bevor diese Ausführung weiterhin in einer Azure Web App** bereitstellen kann.
-28. Klicken Sie auf die Schaltfläche **Anzeigen** neben dem Gerät.
-29. Klicken Sie im angezeigten Bereich **"Überprüfungen und manuelle Überprüfungen für die Bereitstellung in Azure Web App**" auf die **Meldung "Genehmigung warten"** .
+24. Klicken Sie auf **Pipeline ausführen**, um eine neue Pipelineausführung auszulösen. Bestätigen Sie, indem Sie auf **Ausführen** klicken.
+25. Genau wie zuvor beginnt die Buildphase wie erwartet. Warten Sie, bis der Vorgang erfolgreich abgeschlossen ist.
+26. Da die *environment:approvals* für die Bereitstellungsphase konfiguriert sind, wird als Nächstes eine Genehmigungsbestätigung angefordert, bevor sie gestartet wird.
+27. Dies ist in der Pipelineansicht sichtbar, in der **Warten (0/1 Prüfungen bestanden)** angezeigt wird. Außerdem wird folgende Benachrichtigung angezeigt: **Genehmigung muss überprüft werden, bevor diese Ausführung weiterhin in einer Azure-Web-App bereitstellen kann**.
+28. Klicken Sie auf die Schaltfläche **Anzeigen** neben der Nachricht.
+29. Klicken Sie im angezeigten Bereich **Überprüfungen und manuelle Validierung für die Bereitstellung in Azure-Web-App** auf die Meldung **Genehmigung ausstehend**.
 30. Klicken Sie auf **Approve**.
-31. Auf diese Weise kann die Bereitstellungsphase gestartet und erfolgreich den Azure Web App-Quellcode bereitgestellt werden.
+31. Auf diese Weise kann die Bereitstellungsphase gestartet und der Azure Web App-Quellcode erfolgreich bereitgestellt werden.
 
-    > **Hinweis:** Obwohl in diesem Beispiel nur die Genehmigungen verwendet wurden, kennen Sie die anderen Prüfungen wie Azure Monitor, REST-API usw. können auf ähnliche Weise verwendet werden.
+    > **Hinweis:** Obwohl in diesem Beispiel nur die Genehmigungen verwendet wurden, werden die anderen Prüfungen wie Azure Monitor, REST-API usw. auf ähnliche Weise verwendet.
 
-### Übung 3: Entfernen der Azure-Lab-Ressourcen.
+### Übung 3: Entfernen der Azure-Laborressourcen
 
-In dieser Übung entfernen Sie die in dieser Übung bereitgestellten Azure-Ressourcen, um unerwartete Gebühren zu beseitigen.
+In dieser Übung entfernen Sie die in diesem Lab bereitgestellten Azure-Ressourcen, um unerwartete Gebühren zu vermeiden.
 
->**Hinweis**: Denken Sie daran, alle neu erstellten Azure-Ressourcen zu entfernen, die Sie nicht mehr verwenden. Durch das Entfernen nicht verwendeter Ressourcen wird sichergestellt, dass keine unerwarteten Kosten anfallen.
+>**Hinweis**: Denken Sie daran, alle neu erstellten Azure-Ressourcen zu entfernen, die Sie nicht mehr verwenden. Durch das Entfernen nicht verwendeter Ressourcen wird sichergestellt, dass keine unerwarteten Gebühren anfallen.
 
-#### Übung 4: Entfernen der Azure Lab-Ressourcen
+#### Aufgabe 1: Entfernen der Azure Lab-Ressourcen
 
-In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in dieser Übung bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
+In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
 
-1. Öffnen Sie im Azure-Portal im **Cloud Shell**-Bereich die **Bash**-Sitzung.
+1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
 2. Listen Sie alle Ressourcengruppen auf, die während der Labs in diesem Modul erstellt wurden, indem Sie den folgenden Befehl ausführen:
 
     ```sh
@@ -438,4 +438,4 @@ In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in dieser Übung berei
 
 ## Überprüfung
 
-Übung 1: Konfigurieren Sie CI/CD-Pipelines als Code mit YAML in Azure DevOps.
+In diesem Lab haben Sie CI/CD-Pipelines als Code mit YAML in Azure DevOps konfiguriert.

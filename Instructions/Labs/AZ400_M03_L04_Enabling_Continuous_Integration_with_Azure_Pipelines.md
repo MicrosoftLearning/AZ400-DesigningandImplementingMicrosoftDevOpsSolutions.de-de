@@ -47,7 +47,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Wählen Sie **Importieren** aus. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
 
 2. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -80,7 +80,7 @@ Beginnen wir mit dem Importieren der Buildpipeline mit dem Namen [eshoponweb-ci-
     - **DotNet Publish**: Veröffentlicht die Anwendung und ihre Abhängigkeiten in einem Ordner für die Bereitstellung auf einem Hostsystem. In diesem Fall ist das **Build.ArtifactStagingDirectory**.
 
 7. Klicken Sie auf die Schaltfläche **Speichern**, um Ihre Pipelinedefinition zu speichern.
-8. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie es **eshoponweb-ci-pr** und klicken Sie auf **Speichern**.
+8. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie es **eshoponweb-ci-pr** und klicken Sie auf **Speichern**.
 
 #### Aufgabe 2: Branchrichtlinien
 
@@ -167,7 +167,7 @@ Die Standardmäßige Buildpipelinedefinition aktiviert keine Continuous Integrat
 4. Wählen Sie **Eine neue Verzweigung für diesen Commit erstellen** aus.
 5. Übernehmen Sie den Standardnamen der Verzweigung und belassen Sie **Pull Request starten** markiert.
 6. Klicken Sie im Menü „Einstellungen“ auf **Speichern**
-7. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
+7. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
 8. Wechseln sie zu **Repositorys > Pull Requests**.
 9. Klicken Sie auf den Pull Request **„eshoponweb-ci.yml für Azure Pipelines aktualisieren“**. 
 10. Nachdem alle Überprüfungen erfolgreich waren, klicken Sie oben mit der rechten Maustaste auf **Genehmigen**. Jetzt können Sie auf **Abschließen** klicken.

@@ -10,7 +10,7 @@ lab:
 
 ## Labanforderungen
 
-- Für dieses Lab ist **Microsoft Edge** oder ein [von Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
+- Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
 
 - **Einrichten einer Azure DevOps-Organisation**: Wenn Sie nicht bereits eine Azure DevOps-Organisation haben, die Sie für dieses Lab verwenden können, müssen Sie diese erstellen, indem Sie die unter [Erstellen einer Organisation oder Projektsammlung](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization) beschriebenen Anweisungen befolgen.
 
@@ -27,23 +27,23 @@ In diesem Lab erstellen Sie eine Azure Bicep-Vorlage und modularisieren sie mith
 In diesem Lab lernen Sie Folgendes:
 
 - Grundlegendes zur Struktur einer Azure Bicep-Vorlage.
-- Erstellen Sie ein wiederverwendbares Bicep-Modul.
-- Ändern der Hauptvorlage, um das Modul zu verwenden
-- Stellen Sie alle Ressourcen mithilfe von Azure YAML-Pipelines in Azure bereit.
+- Erstellen eines wiederverwendbaren Bicep-Moduls.
+- Ändern der Hauptvorlage, um das Modul zu verwenden.
+- Alle Ressourcen mithilfe von Azure YAML-Pipelines in Azure bereitstellen.
 
 ## Geschätzte Dauer: 45 Minuten
 
 ## Anweisungen
 
-### Übung 0: Konfigurieren der Voraussetzungen für das Lab.
+### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
-In dieser Übung richten Sie die Voraussetzungen für das Labor ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
 #### Aufgabe 1: (überspringen, wenn fertig) Erstellen und Konfigurieren des Teamprojekts
 
-In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von mehreren Laboren verwendet werden soll.
+In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von mehreren Labs verwendet werden soll.
 
-1. Öffnen Sie auf Ihrem Laborcomputer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken auf „Neues Projekt“ Weisen Sie Ihrem Projekt den Namen **"eShopOnWeb** " zu, und lassen Sie die anderen Felder standardmäßig. Klicken Sie auf **Erstellen**.
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Weisen Sie Ihrem Projekt den Namen **eShopOnWeb** zu, und lassen Sie die anderen Felder auf den Standardwerten. Klicken Sie auf **Erstellen**.
 
     ![Erstellen eines Projekts](images/create-project.png)
 
@@ -51,30 +51,30 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Laborcomputer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb-Projekt** . Klicken Sie auf **Repos>Files** , **Import a Repository**. Wählen Sie **Importieren** aus. Fügen Sie im **Fenster "Git Repository** importieren" die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git  ein, und klicken Sie auf " **Importieren**":
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
 
     ![Importieren eines Repositorys](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
-    - Der Ordner „.ado“ enthält Azure DevOps-YAML-Pipelines.
-    - Der Ordner „.devcontainer“ enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - **Azure-Ordner** enthält Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Lab-Szenarien verwendet werden.
-    - **GITHUB-Ordnercontainer-YAML-GitHub-Workflowdefinitionen** .
-    - Der Ordner „src“ enthält die .NET 6-Website, die in den Labszenarien verwendet wird.
+    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
+    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+    - Der Ordner **.azure** enthält eine Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Labs verwendet werden.
+    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+    - Der Ordner **src** enthält die .NET 7-Website, die für die Labszenarien verwendet wird.
 
 ### Übung 1: Verstehen einer Azure Bicep-Vorlage und Vereinfachen der Vorlage mithilfe eines wiederverwendbaren Moduls
 
 In dieser Übung überprüfen Sie eine Azure Bicep-Vorlage und vereinfachen sie mithilfe eines wiederverwendbaren Moduls.
 
-#### Erstellen von Azure Bicep-Vorlagen
+#### Aufgabe 1: Erstellen von Azure Bicep-Vorlagen
 
 In dieser Aufgabe verwenden Sie Visual Studio Code, um eine Azure Bicep-Vorlage zu erstellen.
 
-1. Navigieren Sie auf der Registerkarte "Browser" zu Ihrem Azure DevOps-Projekt, und navigieren Sie zu "Repos **" und **"** Dateien"**. Suchen und Öffnen der `.azure\bicep` Datei im `simple-windows-vm.bicep` Ordner.
+1. Navigieren Sie auf der Registerkarte Browser zu Ihrem Azure DevOps-Projekt, und navigieren Sie zu **Repos** und **Dateien**. Öffnen Sie den Ordner `.azure\bicep` und suchen Sie die Datei `simple-windows-vm.bicep`.
 
-   ![Datei "Simple-windows-vm.bicep"](./images/m06/browsebicepfile.png)
+   ![Simple-windows-vm.bicep-Datei](./images/m06/browsebicepfile.png)
 
-1. Überprüfen Sie die Vorlage, um ein besseres Verständnis der Struktur zu erhalten. Es gibt einige Parameter mit Typen, Standardwerten und Überprüfungen, einigen Variablen und einigen Ressourcen mit diesen Typen:
+1. Überprüfen Sie die Vorlage, um ein besseres Verständnis der Struktur zu erhalten. Es gibt Parameter mit Typen, Standardwerten und Validierung, einige Variablen und eine ganze Reihe von Ressourcen mit diesen Typen:
 
    - Microsoft.Storage/storageAccounts
    - Microsoft.Network/publicIPAddresses
@@ -82,13 +82,13 @@ In dieser Aufgabe verwenden Sie Visual Studio Code, um eine Azure Bicep-Vorlage 
    - Microsoft.Network/networkInterfaces
    - Microsoft.Compute/virtualMachines
 
-1. Achten Sie darauf, wie einfach die Ressourcendefinitionen sind und wie einfach symbolische Namen und nicht `dependsOn` explizit in der gesamten Vorlage referenzieren können.
+1. Achten Sie auf die Einfachheit der Ressourcendefinitionen und auf die Möglichkeit, in der gesamten Vorlage implizit auf symbolische Namen anstatt auf explizite `dependsOn` zu verweisen.
 
-#### Erstellen eines wiederverwendbaren Bicep-Moduls für Speicherressourcen
+#### Aufgabe 2: Erstellen eines Bicep-Moduls für Speicherressourcen
 
-In dieser Aufgabe erstellen Sie ein Speichervorlagenmodul **storage.bicep**, das nur ein Speicherkonto erstellt und von der Standard Vorlage importiert wird. Das Speichervorlagenmodul muss einen Wert zurück an die Standard Vorlage übergeben, **Standard.bicep**, und dieser Wert wird im Ausgabeelement des Speichervorlagenmoduls definiert.
+In dieser Aufgabe erstellen Sie ein Speichervorlagenmodul **storage.bicep**, das nur ein Speicherkonto erstellt und von der Hauptvorlage importiert wird. Das Speichervorlagenmodul muss einen Wert zurück an die Hauptvorlage **main.bicep** übergeben, und dieser Wert wird im Ausgabeelement des Speichervorlagenmoduls definiert.
 
-1. Zuerst müssen wir die Speicherressource aus unserer Standard-Vorlage entfernen. Klicken Sie in der oberen rechten Ecke des Browserfensters auf die **Schaltfläche "Bearbeiten** ":
+1. Zunächst muss die Speicherressource aus der Hauptvorlage entfernt werden. Klicken Sie in der oberen rechten Ecke Ihres Browserfensters auf die Schaltfläche **Bearbeiten**:
 
    ![Schaltfläche „Bearbeiten“](./images/m06/edit.png)
 
@@ -105,15 +105,15 @@ In dieser Aufgabe erstellen Sie ein Speichervorlagenmodul **storage.bicep**, das
    }
    ```
 
-1. Übernehmen Sie die Datei jedoch noch nicht.
+1. Committen Sie die Datei, auch wenn Sie damit noch nicht ganz fertig sind.
 
    ![Committen der Datei](./images/m06/commit.png)
 
-1. Zeigen Sie als Nächstes mit der Maus auf den Bicep-Ordner, und klicken Sie auf das Auslassungszeichensymbol, und wählen Sie **dann "Neu" und **"Datei**"** aus. Geben Sie als Namen **EFGetStarted** ein, und klicken Sie dann auf **Erstellen**.
+1. Bewegen Sie als Nächstes den Mauszeiger über den Bicep-Ordner und klicken Sie auf das Auslassungspunktesymbol. Wählen Sie dann **Neu** und **Datei**. Geben Sie **storage.bicep** als Namen ein und klicken Sie auf **Erstellen**.
 
-   ![Menü "Neue Datei"](./images/m06/newfile.png)
+   ![Menü „Neue Datei“](./images/m06/newfile.png)
 
-1. Kopieren Sie nun den folgenden Codeausschnitt in die Datei, und übernehmen Sie Die Änderungen:
+1. Kopieren Sie nun den folgenden Codeausschnitt in die Datei und committen Sie Ihre Änderungen:
 
    ```bicep
    @description('Location for all resources.')
@@ -134,13 +134,13 @@ In dieser Aufgabe erstellen Sie ein Speichervorlagenmodul **storage.bicep**, das
    output storageURI string = storageAccount.properties.primaryEndpoints.blob
    ```
 
-#### Ändern der Hauptvorlage, um das Modul zu verwenden
+#### Aufgabe 3: Ändern der Hauptvorlage, sodass sie das Vorlagenmodul verwendet
 
-In dieser Aufgabe ändern Sie die Standard Vorlage so, dass sie auf das Vorlagenmodul verweist, das Sie in der vorherigen Aufgabe erstellt haben.
+In dieser Aufgabe ändern Sie die Hauptvorlage so, dass sie auf das Vorlagenmodul verweist, das Sie in der vorherigen Aufgabe erstellt haben.
 
-1. Navigieren Sie zurück zur `simple-windows-vm.bicep` Datei, und klicken Sie erneut auf die **Schaltfläche "Bearbeiten** ".
+1. Navigieren Sie zurück zur Datei `simple-windows-vm.bicep` und klicken Sie noch einmal auf die Schaltfläche **Bearbeiten**.
 
-1. Fügen Sie nach dem Erstellen der -Variablen den folgenden Code hinzu:
+1. Fügen Sie anschließend den folgenden Code nach den Variablen ein:
 
    ```bicep
    module storageModule './storage.bicep' = {
@@ -152,7 +152,7 @@ In dieser Aufgabe ändern Sie die Standard Vorlage so, dass sie auf das Vorlagen
    }
    ```
 
-1. Außerdem müssen wir den Verweis auf den Blob-URI des Speicherkontos in unserer Vm-Ressource ändern, um stattdessen die Ausgabe des Moduls zu verwenden. Suchen Sie die Ressource des virtuellen Computers, und ersetzen Sie den Abschnitt Diagnose Profile durch Folgendes:
+1. Außerdem muss der Verweis auf den Blob-URI des Speicherkontos in der Ressource der virtuellen Maschine so geändert werden, dass stattdessen die Ausgabe des Moduls verwendet wird. Suchen Sie die VM-Ressource und ersetzen Sie den Abschnitt „diagnosticsProfile“ durch Folgendes:
 
    ```bicep
    diagnosticsProfile: {
@@ -163,40 +163,40 @@ In dieser Aufgabe ändern Sie die Standard Vorlage so, dass sie auf das Vorlagen
    }
    ```
 
-1. Die folgenden Angaben werden in der Vorlage angefordert.
+1. Überprüfen Sie die folgenden Details in der Hauptvorlage:
 
-   - Eine -Ressource in der Hauptvorlage wird zum Verknüpfen mit einer anderen Vorlage verwendet.
-   - Das Modul hat einen symbolischen Namen namens `storageModule`. Dieser Name wird zum Konfigurieren der Abhängigkeit verwendet.
-   - Beim Aufrufen verknüpfter Vorlagen können Sie nur den Bereitstellungsmodus **Inkrementell** verwenden.
+   - Ein Modul in der Hauptvorlage wird zur Verknüpfung mit einer anderen Vorlage verwendet.
+   - Das Modul hat den symbolischen Namen `storageModule`. Dieser Name wird zum Konfigurieren der Abhängigkeiten verwendet.
+   - Bei der Verwendung von Vorlagenmodulen können Sie nur den **Inkrementellen** Bereitstellungsmodus verwenden.
    - Ein relativer Pfad wird für Ihr Vorlagenmodul verwendet.
-   - Übergeben Sie mit  Werte aus der Hauptvorlage an die verknüpfte Vorlage.
+   - Verwenden Sie Parameter, um Werte von der Hauptvorlage an die Vorlagenmodule zu übergeben.
 
-1. Commit für die Vorlage.
+1. Commiten der Vorlage.
 
 ### Übung 2: Bereitstellen der Vorlagen in Azure mithilfe von YAML-Pipelines
 
-In dieser Übung erstellen Sie eine Dienstverbindung und verwenden sie in einer Azure DevOps YAML-Pipeline, um Ihre Vorlage in Ihrer Azure-Umgebung bereitzustellen.
+In dieser Übung erstellen Sie eine Dienstverbindung und verwenden diese in einer Azure DevOps YAML-Pipeline, um Ihre Vorlage in Ihrer Azure-Umgebung bereitzustellen.
 
-#### Aufgabe 1: (überspringen, falls erledigt) Erstellen eines Dienst-Verbinden ion für die Bereitstellung
+#### Aufgabe 1: (überspringen, wenn erledigt) Erstellen einer Dienstverbindung für die Bereitstellung
 
-In dieser Aufgabe erstellen Sie einen Dienstprinzipal mithilfe der Azure CLI, der Azure DevOps zulässt:
+In dieser Aufgabe erstellen Sie mithilfe der Azure CLI ein Dienstprinzipal, der es Azure DevOps ermöglicht:
 
-- Bereitstellen von Ressourcen in einem Azure-Abonnement
-- Haben Sie Lesezugriff auf die später erstellten Schlüsseltresorschlüssel.
+- Ressourcen in Ihrem Azure-Abonnement bereitstellen.
+- Sie haben Lesezugriff auf die später erstellten Key Vault-Geheimnisse.
 
-> **Hinweis**: Wenn Sie bereits über einen Dienstprinzipal verfügen, können Sie direkt mit der nächsten Aufgabe fortfahren.
+> **Hinweis**: Wenn Sie bereits über ein Dienstprinzipal verfügen, können Sie direkt mit der nächsten Aufgabe fortfahren.
 
-Sie benötigen einen Dienstprinzipal, um Azure-Ressourcen aus Azure-Pipelines bereitzustellen. Da wir geheime Schlüssel in einer Pipeline abrufen werden, müssen wir dem Dienst die Berechtigung erteilen, wenn wir den Azure Key Vault erstellen.
+Sie benötigen ein Dienstprinzipal, um Azure-Ressourcen über Azure Pipelines bereitzustellen. Da Sie Geheimnisse in einer Pipeline abrufen werden, müssen Sie dem Dienst bei der Erstellung des Azure Key Vault eine Berechtigung erteilen.
 
-Ein Dienstprinzipal wird automatisch von Azure Pipelines erstellt, wenn Sie eine Verbindung mit einem Azure-Abonnement innerhalb einer Pipelinedefinition herstellen oder wenn Sie eine neue Dienst-Verbinden ion über die Projekteinstellungsseite (automatische Option) erstellen. Sie können den Dienstprinzipal auch manuell über das Portal erstellen oder Azure CLI verwenden und es für alle Projekte wiederverwenden.
+Ein Dienstprinzipal wird automatisch von Azure Pipelines erstellt, wenn Sie eine Verbindung zu einem Azure-Abonnement innerhalb einer Pipeline-Definition herstellen oder wenn Sie eine neue Dienstverbindung über die Projekteinstellungsseite erstellen (automatische Option). Sie können den Dienstprinzipal auch manuell über das Portal oder mithilfe von Azure CLI erstellen und ihn projektübergreifend wiederverwenden.
 
-1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, über die Rolle „Besitzer“ und in dem Azure AD-Mandanten, der dem Azure-Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
-1. Öffnen Sie im Azure-Portal den Bereich **Cloud Shell**, indem Sie auf das Symbolleistensymbol rechts neben dem Textfeld für die Suche klicken.
+1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, und das in dem in dem Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
+1. Klicken Sie im Azure-Portal auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Textfeld für die Suche im oberen Bereich der Seite befindet.
 1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
 
    >**Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
 
-1. Führen Sie in der **Bash-Eingabeaufforderung** im **Cloud Shell-Bereich** die folgenden Befehle aus, um die Werte der Azure-Abonnement-ID und der Abonnementnamenattribute abzurufen:
+1. Führen Sie an der Eingabeaufforderung **Bash** im Bereich **Cloud Shell** die folgenden Befehle aus, um die Werte der Attribute „Azure-Abonnement-ID“ und „Abonnementname“ abzurufen:
 
     ```bash
     az account show --query id --output tsv
@@ -205,7 +205,7 @@ Ein Dienstprinzipal wird automatisch von Azure Pipelines erstellt, wenn Sie eine
 
     > **Hinweis**: Kopieren Sie beide Werte in eine Textdatei. Sie werden sie später in diesem Lab benötigen.
 
-1. Führen Sie in der Bash-Eingabeaufforderung** im **Cloud Shell-Bereich** den folgenden Befehl aus, um einen Dienstprinzipal zu erstellen (ersetzen Sie den **myServicePrincipalName** durch eine beliebige Zeichenfolge aus Buchstaben und Ziffern) und **mySubscriptionID** durch Ihre Azure subscriptionId**:
+1. Führen Sie an der Eingabeaufforderung **Bash**im Bereich **Cloud Shell** den folgenden Befehl aus, um ein Dienstprinzipal zu erstellen (ersetzen Sie **myServicePrincipalName** durch eine beliebige eindeutige Zeichenfolge aus Buchstaben und Ziffern) und **mySubscriptionID** durch Ihre Azure subscriptionId :
 
     ```bash
     az ad sp create-for-rbac --name myServicePrincipalName \
@@ -213,52 +213,52 @@ Ein Dienstprinzipal wird automatisch von Azure Pipelines erstellt, wenn Sie eine
                          --scopes /subscriptions/mySubscriptionID
     ```
 
-    > **Hinweis**: Der Befehl generiert eine JSON-Ausgabe. Speichern der Ausgabe in einer Textdatei Sie benötigen ihn später in diesem Lab.
+    > **Hinweis**: Der Befehl generiert eine JSON-Ausgabe. Kopieren Sie die Ausgabe in eine Textdatei. Sie benötigen diese später in diesem Lab.
 
-1. Starten Sie als Nächstes auf dem Laborcomputer einen Webbrowser, navigieren Sie zum Azure DevOps **eShopOnWeb-Projekt** . Klicken Sie auf **Project Einstellungen>Service-Verbinden ionen (unter Pipelines)** und **Verbinden ion** neuer Dienst.
+1. Starten Sie als Nächstes auf dem Laborcomputer einen Webbrowser, navigieren Sie zum Azure DevOps **eShopOnWeb**-Projekt. Klicken Sie auf **Project Einstellungen>Dienstverbindungen (unter Pipelines)** und **Neue Dienstverbindung**.
 
     ![Neue Dienstverbindung](images/new-service-connection.png)
 
-1. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus.
+1. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus (Sie müssen möglicherweise scrollen).
 
-1. Wählen Sie **den Dienstprinzipal (manuell)** aus, und klicken Sie auf **"Weiter"**.
+1. Wählen Sie **Dienstprinzipal (manuell)** und klicken Sie auf **Weiter**.
 
-1. Füllen Sie die leeren Felder mit den informationen aus, die während der vorherigen Schritte gesammelt wurden:
-    - Abonnement-ID oder -Name.
+1. Füllen Sie die leeren Felder mit den Informationen aus, die während der vorherigen Schritte gesammelt wurden:
+    - Abonnement-ID und -Name.
     - Dienstprinzipal-ID (appId), Dienstprinzipalschlüssel (Kennwort) und Mandanten-ID (Mandant).
-    - Geben Sie unter **"Dienstverbindungsname****" Azure-Untere ein**. Auf diesen Namen wird in YAML-Pipelines verwiesen, wenn ein Azure DevOps Service Verbinden ion erforderlich ist, um mit Ihrem Azure-Abonnement zu kommunizieren.
+    - Geben Sie in **Name der Dienstverbindung** **azure subs** ein. Auf diesen Namen wird in YAML-Pipelines verwiesen, wenn eine Azure DevOps-Dienstverbindung erforderlich ist, um mit Ihrem Azure-Abonnement zu kommunizieren.
 
     ![Azure-Serviceverbindung](images/azure-service-connection.png)
 
 1. Klicken Sie auf **Überprüfen und speichern**.
 
 #### Aufgabe 2: Bereitstellen von Ressourcen in Azure durch YAML-Pipelines
-1. Navigieren Sie zurück zum **Bereich "Pipelines** " im **Pipelinehub** .
-1. Klicken Sie im **Fenster "Erste Pipeline** erstellen" auf **"Pipeline erstellen"**.
+1. Navigieren Sie zurück zum Bereich **Pipelines** im **Pipelinehub**.
+1. Klicken Sie im Fenster **Erste Pipeline erstellen** auf **Pipeline erstellen**.
 
     > **Hinweis**: Wir verwenden den Assistenten, um eine neue YAML-Pipelinedefinition basierend auf unserem Projekt zu erstellen.
 
-1. Klicken Sie im **Bereich "Wo befindet sich Ihr Code?** " auf die **Option "Azure Repos Git (YAML)** ".
-1. Klicken Sie im **Bereich "Repository** auswählen" auf **"EShopOnWeb"**.
-1. Wählen Sie auf dem Bildschirm **Pipeline konfigurieren** die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
-1. Geben Sie im **Blatt "Auswählen einer vorhandenen YAML-Datei** " die folgenden Parameter an:
+1. Klicken Sie im Bereich **Wo befindet sich Ihr Code?** auf die Option **Azure Repos Git (YAML)**.
+1. Klicken Sie im Bereich **Wählen Sie ein Repository** auf **EShopOnWeb**.
+1. Scrollen Sie auf dem Bildschirm **Pipeline konfigurieren** nach unten und wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
+1. Geben Sie im Blatt **Auswählen einer vorhandenen YAML-Datei** die folgenden Parameter an:
    - Branch: **main**
    - Pfad: **.ado/eshoponweb-cd-windows-cm.yml**
-1. Klicken Sie auf **Konfigurieren**, um die Einstellungen zu speichern.
-1. Wählen Sie im Abschnitt "Variablen" einen Namen für Ihre Ressourcengruppe aus, legen Sie den gewünschten Speicherort fest, und ersetzen Sie den Wert der Dienstverbindung durch eine Ihrer vorhandenen Dienstverbindungen, die Sie zuvor erstellt haben.
-1. Klicken Sie im oberen rechten Corder auf die **Schaltfläche "Speichern und ausführen** ", und klicken Sie dann erneut auf "Speichern", und führen Sie **den Vorgang erneut aus** .
+1. Klicken Sie auf **Weiter**, um die Einstellungen zu speichern.
+1. Wählen Sie im Abschnitt Variablen einen Namen für Ihre Ressourcengruppe aus, legen Sie den gewünschten Speicherort fest, und ersetzen Sie den Wert der Dienstverbindung durch eine Ihrer vorhandenen Dienstverbindungen, die Sie zuvor erstellt haben.
+1. Klicken Sie in der oberen rechten Ecke auf die Schaltfläche **Speichern und ausführen**. Wenn der Commit-Dialog angezeigt wird, klicken Sie erneut auf **Speichern**.
 
-   ![Speichern und Ausführen der YAML-Pipeline nach Dem Vornehmen von Änderungen](./images/m06/saveandrun.png)
+   ![Speichern und Ausführen der YAML-Pipeline nach dem Vornehmen von Änderungen](./images/m06/saveandrun.png)
 
 1. Warten Sie, bis die Bereitstellung abgeschlossen ist, und überprüfen Sie die Ergebnisse.
    ![Erfolgreiche Ressourcenbereitstellung in Azure mithilfe von YAML-Pipelines](./images/m06/deploy.png)
 
-#### Übung 3: Entfernen der Azure-Lab-Ressourcen.
+#### Aufgabe 3: Entfernen der Azure-Lab-Ressourcen.
 
-In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in dieser Übung bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
+In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
 
-1. Öffnen Sie im Azure-Portal im **Cloud Shell**-Bereich die **Bash**-Sitzung.
-1. Löschen Sie alle Ressourcengruppen, die Sie während der praktischen Übungen in diesem Modul erstellt haben, indem Sie den folgenden Befehl ausführen:
+1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
+1. Löschen Sie alle Ressourcengruppen, die Sie in den Übungen dieses Moduls erstellt haben, indem Sie den folgenden Befehl ausführen (ersetzen Sie den Namen der Ressourcengruppe durch den von Ihnen gewählten Namen):
 
    ```bash
    az group list --query "[?starts_with(name,'AZ400-EWebShop-NAME')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
@@ -268,4 +268,4 @@ In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in dieser Übung berei
 
 ## Überprüfung
 
-In dieser Übung haben Sie erfahren, wie Sie eine Azure Bicep-Vorlage erstellen, mithilfe eines Vorlagenmoduls modularisieren, die Standard Bereitstellungsvorlage so ändern, dass sie das Modul und aktualisierte Abhängigkeiten verwendet, und schließlich die Vorlagen mithilfe von YAML-Pipelines in Azure bereitstellen.
+In dieser Übung haben Sie erfahren, wie Sie eine Azure Bicep-Vorlage erstellen, mithilfe eines Vorlagenmoduls modularisieren, die Hauptbereitstellungsvorlage so ändern, dass sie das Modul und aktualisierte Abhängigkeiten verwendet, und schließlich die Vorlagen mithilfe von YAML-Pipelines in Azure bereitstellen.
