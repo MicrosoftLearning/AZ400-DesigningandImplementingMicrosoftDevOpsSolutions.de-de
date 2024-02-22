@@ -65,7 +65,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
     - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
     - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-    - Der Ordner **src** enthält die .NET 7-Website, die für die Labszenarien verwendet wird.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
 
 #### Schritt 2: Erstellen von Azure-Ressourcen
 
@@ -218,7 +218,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 
 1. Navigieren Sie im linken Menü von Azure DevOps zu **Pipelines** und wählen Sie erneut **Pipelines**. Wählen Sie als Nächstes **Alle** aus, um alle Pipelinedefinitionen zu öffnen, nicht nur die zuletzt verwendeten.
 
-    > **Hinweis**: Wenn Sie alle vorherigen Pipelines aus früheren Labübungen beibehalten haben, hat diese neue Pipeline möglicherweise den Standardsequenznamen **EShopOnWeb (#)** für die Pipeline wiederverwendet, wie im folgenden Screenshot gezeigt. Wählen Sie eine Pipeline aus (höchstwahrscheinlich die mit der höchsten Sequenznummer, wählen Sie „Bearbeiten“ aus, und überprüfen Sie, ob sie auf die Codedatei m09l16-pipeline.yml zeigt).
+    > **Hinweis**: Wenn Sie alle vorherigen Pipelines aus früheren Labübungen beibehalten haben, hat diese neue Pipeline möglicherweise den Standardsequenznamen **eShopOnWeb (#)** für die Pipeline wiederverwendet, wie im folgenden Screenshot gezeigt. Wählen Sie eine Pipeline aus (höchstwahrscheinlich die mit der höchsten Sequenznummer, wählen Sie „Bearbeiten“ aus, und überprüfen Sie, ob sie auf die Codedatei m09l16-pipeline.yml zeigt).
 
     ![Screenshot von Azure Pipelines mit eShopOnWeb-Ausführungen](images/m3/eshoponweb-m9l16-pipeline.png)
 
@@ -243,7 +243,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 
 1. Wechseln Sie zurück zum Webbrowser-Fenster, in dem das Azure-Portal angezeigt wird, und navigieren Sie zu dem Blatt, auf dem die Eigenschaften der Azure-Webanwendung angezeigt werden.
 1. Klicken Sie auf dem Azure-Web-App-Blatt auf **Übersicht** und im Übersichts-Blatt auf **Durchsuchen**, um Ihre Site in einer neuen Webbrowser-Registerkarte zu öffnen.
-1. Überprüfen Sie, ob die bereitgestellte Site wie erwartet in der neuen Browser-Registerkarte geladen wird und die EShopOnWeb E-Commerce-Website anzeigt.
+1. Stellen Sie sicher, dass die bereitgestellte Website auf der neuen Browserregisterkarte mit der E-Commerce-Website „eShopOnWeb“ wie erwartet geladen wird.
 
 ### Übung 2: Bereitstellen und Einrichten von Azure Load Testing
 
@@ -260,7 +260,7 @@ In dieser Aufgabe werden Sie eine Azure Load Test-Ressource in Ihrem Azure-Abonn
 1. Geben Sie auf der Seite „Auslastungstestressource erstellen“ die erforderlichen Details für die Ressourcenbereitstellung an:
    - **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
    - **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, die Sie für die Bereitstellung des Web App Service in der vorherigen Übung verwendet haben.
-   - **Name**: EShopOnWebLoadTesting
+   - **Name**: eShopOnWebLoadTesting
    - **Region**: Wählen Sie unter Region eine Region in Ihrer Nähe aus.
 
     > **Hinweis**: Der Azure Load Testing-Dienst ist nicht in allen Azure-Regionen verfügbar.
@@ -268,7 +268,7 @@ In dieser Aufgabe werden Sie eine Azure Load Test-Ressource in Ihrem Azure-Abonn
 1. Klicken Sie auf **Überprüfen und Erstellen**, um Ihre Einstellungen validieren zu lassen.
 1. Klicken Sie auf **Erstellen**, um diese zu bestätigen, und stellen Sie die Azure Load Testing-Ressource bereit.
 1. Die Seite „Bereitstellung ist in Bearbeitung“ wird angezeigt. Warten Sie ein paar Minuten, bis die Bereitstellung erfolgreich abgeschlossen ist.
-1. Klicken Sie auf der Seite Bereitstellungsfortschritt auf **Gehe zur Ressource**, um zur Azure Load Testing-Ressource **EShopOnWebLoadTesting** zu navigieren.
+1. Klicken Sie auf der Seite „Bereitstellungsfortschritt“ auf **Zur Ressource wechseln**, um zur Azure Load Testing-Ressource **eShopOnWebLoadTesting** zu navigieren.
 
     > **Hinweis**: Wenn Sie die Seite oder das Azure-Portal während der Bereitstellung der Azure Load Testing-Ressource geschlossen haben, können Sie sie erneut mit dem Azure-Portal-Suchfeld oder in der Liste Ressourcen/Zuletzt verwendete Ressourcen finden.
 
@@ -276,7 +276,7 @@ In dieser Aufgabe werden Sie eine Azure Load Test-Ressource in Ihrem Azure-Abonn
 
 In dieser Aufgabe erstellen Sie verschiedene Azure Load Testing-Tests mit unterschiedlichen Einstellungen für die Auslastungskonfiguration.
 
-1. Navigieren Sie im Azure Load Testing-Ressourcenblatt **EShopOnWebLoadTesting** zu **Tests**. Klicken Sie auf die Menüoption **+Erstellen**, und wählen Sie **URL-basierten Test erstellen** aus.
+1. Navigieren Sie im Blatt der Azure Load Testing-Ressource **eShopOnWebLoadTesting** zu **Tests**. Klicken Sie auf die Menüoption **+Erstellen**, und wählen Sie **URL-basierten Test erstellen** aus.
 1. Füllen Sie die folgenden Parameter und Einstellungen aus, um einen Auslastungstest zu erstellen:
    - **Testen der URL**: Geben Sie die URL aus dem Azure App Service ein, den Sie in der vorherigen Übung bereitgestellt haben (az400eshoponweb... azurewebsites.net), **einschließlich https://**
    - **Auslastung angeben**: Virtuelle Benutzer
@@ -286,10 +286,10 @@ In dieser Aufgabe erstellen Sie verschiedene Azure Load Testing-Tests mit unters
 
 1. Bestätigen Sie die Konfiguration des Tests, indem Sie auf **Überprüfen und Erstellen** klicken,  (Nehmen Sie keine Änderungen an den anderen Registerkarten vor). Klicken Sie erneut auf **Erstellen**.
 1. Dadurch werden die Auslastungstests gestartet, die den Test während 5 Minuten ausführen werden.
-1. Navigieren Sie während der Ausführung des Tests zurück zur Seite der Azure Load Testing-Ressource **EShopOnWebLoadTesting** und navigieren Sie zu **Tests**. Wählen Sie **Tests** aus und sehen Sie sich den Test **Get_eshoponweb...** an.
+1. Navigieren Sie während der Ausführung des Tests zurück zur der Azure Load Testing-Ressource **eShopOnWebLoadTesting**, und navigieren Sie zu **Tests**, wählen Sie **Tests** aus, und Sie sehen einen Test **Get_eshoponweb...**
 1. Klicken Sie im obersten Menü auf **Erstellen**, **URL-basierten Test erstellen**, um einen zweiten Auslastungstest zu erstellen.
 1. Füllen Sie die folgenden Parameter und Einstellungen aus, um einen weiteren Auslastungstest zu erstellen:
-   - **Test-URL**: Geben Sie die URL aus dem Azure App Service ein, den Sie in der vorherigen Übung bereitgestellt haben (EShopOnWeb...azurewebsites.net), **einschließlich https://**
+   - **Testen der URL**: Geben Sie die URL aus dem Azure App Service ein, den Sie in der vorherigen Übung bereitgestellt haben (eShopOnWeb...azurewebsites.net), **einschließlich https://**
    - **Auslastung angeben**: Anfragen pro Sekunde (RPS)
    - **Anfragen pro Sekunde (RPS)**: 100
    - **Antwortzeit (Millisekunden)**: 500
@@ -325,13 +325,13 @@ Nach Abschluss dieser Übung verfügen Sie über einen CI/CD-Workflow, der für 
 
 In dieser Aufgabe erteilen Sie dem Dienstprinzipal der Azure DevOps-Dienstverbindung die erforderlichen Berechtigungen.
 
-1. Navigieren Sie im **Azure DevOps-Portal**(<https://dev.azure.com>) zum **EShopOnWeb**-Projekt.
+1. Navigieren Sie im **Azure DevOps-Portal**(<https://dev.azure.com>) zum Projekt **eShopOnWeb**.
 1. Wählen Sie links unten **Projekteinstellungen**.
 1. Wählen Sie im Abschnitt **Pipelines** die Option **Dienstverbindungen**.
 1. Achten Sie auf die Dienstverbindung, die den Namen Ihres Azure-Abonnements trägt, das Sie zu Beginn der Übung für die Bereitstellung von Azure-Ressourcen verwendet haben.
 1. **Wählen Sie die Dienstverbindung aus**. Navigieren Sie auf der Registerkarte **Übersicht** zu **Details** und wählen Sie **Dienstprinzipal verwalten**.
 1. Dies leitet Sie zum Azure-Portal weiter, von wo aus Sie die Details des **Dienstprinzipals** für das Identitätsobjekt öffnen.
-1. Kopieren Sie den Wert **Anzeigename** (formatiert wie Name_of_ADO_Organization_EShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4), da Sie diesen in den nächsten Schritten benötigen.
+1. Kopieren Sie den Wert des **Anzeigenamens** (formatiert wie Name_of_ADO_Organization_eShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4) zur Seite, da Sie diesen in den nächsten Schritten benötigen werden.
 
 #### Aufgabe 2: Erteilen von Berechtigungen für den Dienstprinzipal
 
@@ -361,7 +361,7 @@ Führen Sie die folgenden Schritte aus, um die Eingabedateien für einen vorhand
    - *config.yaml*: die YAML-Konfigurationsdatei für den Auslastungstest. Sie verweisen auf diese Datei in der CI/CD-Workflowdefinition.
    - *quick_test.jmx*: das JMeter-Testskript
 
-1. Committen Sie alle extrahierten Eingabedateien in Ihr Quellcodeverwaltungsrepository. Navigieren Sie hierzu zum **Azure DevOps-Portal**(<https://dev.azure.com>), und navigieren Sie dann zum DevOps-Projekt **EShopOnWeb**.
+1. Committen Sie alle extrahierten Eingabedateien in Ihr Quellcodeverwaltungsrepository. Navigieren Sie hierzu zum **Azure DevOps-Portal**(<https://dev.azure.com>), und navigieren Sie dann zum DevOps-Projekt **eShopOnWeb**.
 1. Wählen Sie **Repositorys** aus. Beachten Sie in der Struktur des Quellcodeordners den Unterordner **Tests**. Beachten Sie die Auslassungspunkte (...), und wählen Sie **Neu > Ordner** aus.
 1. Geben Sie **jmeter** als Ordnernamen und **placeholder.txt** als Dateinamen an (Hinweis: Ein Ordner kann nicht als leer erstellt werden)
 1. Klicken Sie auf **Commit**, um die Erstellung der Platzhalterdatei und des jmeter-Ordners zu bestätigen.
@@ -396,7 +396,7 @@ In dieser Aufgabe importieren Sie die Erweiterung „Azure Load Testing - Azure 
             azureSubscription: 'AZURE DEMO SUBSCRIPTION(b86d9ae1-1234-4b75-a8e7-27fb2ea7f9f4)'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
             resourceGroup: 'az400m05l11-RG'
-            loadTestResource: 'EShopOnWebLoadTesting'
+            loadTestResource: 'eShopOnWebLoadTesting'
             loadTestRunName: 'ado_run'
             loadTestRunDescription: 'load testing from ADO'
     ```
@@ -455,7 +455,7 @@ In dieser Aufgabe importieren Sie die Erweiterung „Azure Load Testing - Azure 
 
 In dieser Aufgabe werden Sie die Kriterien für das Scheitern von Lasttests verwenden, um eine Warnung zu erhalten (eine fehlgeschlagene Pipeline als Ergebnis), wenn die Anwendung nicht Ihren Qualitätsanforderungen entspricht.
 
-1. Navigieren Sie in Azure DevOps zum Projekt „EShopOnWeb“ und öffnen Sie **Repos**.
+1. Navigieren Sie in Azure DevOps zum Projekt „eShopOnWeb“, und öffnen Sie **Repositorys**.
 1. Navigieren Sie innerhalb von Repos zum Unterordner **/tests/jmeter**, der zuvor erstellt und verwendet wurde.
 1. Öffnen Sie die Datei Load Testing *config.yaml**. Klicken Sie auf **Bearbeiten**, um die Bearbeitung der Datei zu ermöglichen.
 1. Ersetzen Sie `failureCriteria: []` durch den folgenden Codeschnipsel:
@@ -467,7 +467,7 @@ In dieser Aufgabe werden Sie die Kriterien für das Scheitern von Lasttests verw
     ```
 
 1. Speichern Sie die Änderungen an der config.yaml, indem Sie auf **Commit** und ein weiteres Mal auf „Commit“ klicken.
-1. Navigieren Sie zurück zu **Pipelines** und führen Sie die Pipeline **EShopOnWeb** erneut aus. Nach ein paar Minuten wird der Lauf mit dem Status **Fehlgeschlagen** für die Aufgabe **AzureLoadTest** abgeschlossen.
+1. Navigieren Sie zurück zu **Pipelines**, und führen Sie die Pipeline **eShopOnWeb** erneut aus. Nach ein paar Minuten wird der Lauf mit dem Status **Fehlgeschlagen** für die Aufgabe **AzureLoadTest** abgeschlossen.
 1. Öffnen Sie die ausführliche Protokollierungsansicht für die Pipeline, und überprüfen Sie die Details des **AzureLoadtest**. Nachfolgend sehen Sie eine Beispielausgabe:
 
     ```text
