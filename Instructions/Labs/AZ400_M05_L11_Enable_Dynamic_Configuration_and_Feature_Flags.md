@@ -47,20 +47,20 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein und klicken Sie auf **Importieren**:
 
-2. Das Repository ist wie folgt organisiert:
+1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - Der Ordner **.azure** enthält eine Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Labs verwendet werden.
+    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
     - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-    - Der Ordner **src** enthält die .NET 7-Website, die für die Labszenarien verwendet wird.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
 #### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
 
 1. Wechseln Sie zu **Repos>Branches**.
-2. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
-3. Klicken Sie auf **Als Mainbranch festlegen**.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
 
 ### Übung 1: (überspringen, wenn erledigt) Importieren und Ausführen von CI/CD-Pipelines
 
@@ -71,13 +71,13 @@ In dieser Übung werden Sie die CI-Pipeline importieren und ausführen, die Dien
 Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
 1. Navigieren Sie zu **Pipelines>Pipelines**.
-2. Klicken Sie auf die Schaltfläche **Pipeline erstellen** (wenn keine Pipelines vorhanden sind) oder auf die Schaltfläche **Neue Pipeline** (wenn es bereits erstellte Pipelines gibt).
-3. Wählen Sie **Azure Repos Git (Yaml)**.
-4. Wählen Sie das Repository **eShopOnWeb** aus.
-5. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
-6. Wählen Sie die Datei **/.ado/eshoponweb-ci.yml** aus und klicken Sie dann auf **Weiter**.
-7. Klicken Sie auf die Schaltfläche **Ausführen**, um die Pipeline auszuführen.
-8. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
+1. Klicken Sie auf die Schaltfläche **Pipeline erstellen** (wenn keine Pipelines vorhanden sind) oder auf die Schaltfläche **Neue Pipeline** (wenn es bereits erstellte Pipelines gibt).
+1. Wählen Sie **Azure Repos Git (Yaml)**.
+1. Wählen Sie das Repository **eShopOnWeb** aus.
+1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
+1. Wählen Sie die Datei **/.ado/eshoponweb-ci.yml** aus und klicken Sie dann auf **Weiter**.
+1. Klicken Sie auf die Schaltfläche **Ausführen**, um die Pipeline auszuführen.
+1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
 
 #### Aufgabe 2: Verwalten der Dienstverbindung
 
@@ -95,12 +95,12 @@ Sie benötigen einen Dienstprinzipal, um Azure-Ressourcen aus Azure-Pipelines be
 Ein Dienstprinzipal wird automatisch von Azure Pipeline erstellt, wenn Sie eine Verbindung mit einem Azure-Abonnement innerhalb einer Pipelinedefinition herstellen oder wenn Sie eine neue Dienstverbindung über die Seite mit den Projekteinstellungen (automatische Option) erstellen. Sie können den Dienstprinzipal auch manuell über das Portal erstellen oder Azure CLI verwenden und es für alle Projekte wiederverwenden.
 
 1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, und das in dem in dem Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
-2. Klicken Sie im Azure-Portal auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Textfeld für die Suche im oberen Bereich der Seite befindet.
-3. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
+1. Klicken Sie im Azure-Portal auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Textfeld für die Suche im oberen Bereich der Seite befindet.
+1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
 
    >**Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
 
-4. Führen Sie in der **Bash**-Eingabeaufforderung im **Cloud Shell**-Bereich die folgenden Befehle aus, um die Werte des Azure-Abonnement-ID-Attributs abzurufen:
+1. Führen Sie in der **Bash**-Eingabeaufforderung im **Cloud Shell**-Bereich die folgenden Befehle aus, um die Werte des Azure-Abonnement-ID-Attributs abzurufen:
 
     ```sh
     subscriptionName=$(az account show --query name --output tsv)
@@ -111,7 +111,7 @@ Ein Dienstprinzipal wird automatisch von Azure Pipeline erstellt, wenn Sie eine 
 
     > **Hinweis**: Kopieren Sie beide Werte in eine Textdatei. Sie werden sie später in diesem Lab benötigen.
 
-5. Führen Sie in der **Bash**-Eingabeaufforderung im Bereich **Cloud Shell** den folgenden Befehl aus, um einen Dienstprinzipal zu erstellen:
+1. Führen Sie in der **Bash**-Eingabeaufforderung im Bereich **Cloud Shell** den folgenden Befehl aus, um einen Dienstprinzipal zu erstellen:
 
     ```sh
     az ad sp create-for-rbac --name sp-az400-azdo --role contributor --scopes /subscriptions/$subscriptionId
@@ -119,35 +119,35 @@ Ein Dienstprinzipal wird automatisch von Azure Pipeline erstellt, wenn Sie eine 
 
     > **Hinweis**: Der Befehl generiert eine JSON-Ausgabe. Kopieren Sie die Ausgabe in eine Textdatei. Sie benötigen diese später in diesem Lab.
 
-6. Starten Sie als Nächstes auf dem Laborcomputer einen Webbrowser, navigieren Sie zum Azure DevOps **eShopOnWeb**-Projekt. Klicken Sie auf **Project Einstellungen>Dienstverbindungen (unter Pipelines)** und **Neue Dienstverbindung**.
+1. Starten Sie als Nächstes auf dem Laborcomputer einen Webbrowser, navigieren Sie zum Azure DevOps **eShopOnWeb**-Projekt. Klicken Sie auf **Project Einstellungen>Dienstverbindungen (unter Pipelines)** und **Neue Dienstverbindung**.
 
-7. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus (Sie müssen möglicherweise scrollen).
+1. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus (Sie müssen möglicherweise scrollen).
 
-8. Wählen Sie **Dienstprinzipal (manuell)** aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie **Dienstprinzipal (manuell)** aus, und klicken Sie auf **Weiter**.
 
-9. Füllen Sie die leeren Felder mit den Informationen aus, die während der vorherigen Schritte gesammelt wurden:
+1. Füllen Sie die leeren Felder mit den Informationen aus, die während der vorherigen Schritte gesammelt wurden:
     - Abonnement-ID und -Name
     - Dienstprinzipal-ID (oder ClientId), Schlüssel (oder Kennwort) und TenantId.
     - Geben Sie in **Name der Dienstverbindung** **azure subs** ein. Auf diesen Namen wird in YAML-Pipelines verwiesen, wenn eine Azure DevOps-Dienstverbindung erforderlich ist, um mit Ihrem Azure-Abonnement zu kommunizieren.
 
-10. Klicken Sie auf **Überprüfen und speichern**.
+1. Klicken Sie auf **Überprüfen und speichern**.
 
 #### Aufgabe 3: Importieren und Ausführen der CD-Pipeline
 
 Importieren Sie nun die CD-Pipeline mit dem Namen [eshoponweb-cd-webapp-code.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-cd-webapp-code.yml).
 
 1. Navigieren Sie zu **Pipelines>Pipelines**.
-2. Klicken Sie auf die Schaltfläche **Neue Pipeline**.
-3. Wählen Sie **Azure Repos Git (Yaml)**.
-4. Wählen Sie das Repository **eShopOnWeb** aus.
-5. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
-6. Wählen Sie die Datei **/.ado/eshoponweb-cd-webapp-code.yml** und klicken Sie dann auf **Weiter**.
-7. Passen Sie in der YAML-Pipelinedefinition Folgendes an:
+1. Klicken Sie auf die Schaltfläche **Neue Pipeline**.
+1. Wählen Sie **Azure Repos Git (Yaml)**.
+1. Wählen Sie das Repository **eShopOnWeb** aus.
+1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
+1. Wählen Sie die Datei **/.ado/eshoponweb-cd-webapp-code.yml** und klicken Sie dann auf **Weiter**.
+1. Passen Sie in der YAML-Pipelinedefinition Folgendes an:
    - Ersetzen Sie **IHRE-ABONNEMENT-ID** durch Ihre Azure-Abonnement-ID.
    - **az400eshop-NAME** ersetzen Sie NAME, um ihn global eindeutig zu machen.
    - **AZ400-EWebShop-NAME** mit dem zuvor im Labor definierten Namen der Ressourcengruppe.
 
-8. Klicken Sie auf **Speichern und Ausführen**, und warten Sie, bis die Pipeline erfolgreich ausgeführt wird.
+1. Klicken Sie auf **Speichern und Ausführen**, und warten Sie, bis die Pipeline erfolgreich ausgeführt wird.
 
     > **Hinweis**: Die Bereitstellung kann einige Minuten dauern.
 
@@ -155,7 +155,7 @@ Importieren Sie nun die CD-Pipeline mit dem Namen [eshoponweb-cd-webapp-code.yml
     - **Ressourcen**: Sie ist darauf vorbereitet, automatisch nach Abschluss der CI-Pipeline ausgelöst zu werden. Außerdem wird das Repository für die Bicep-Datei heruntergeladen.
     - **AzureResourceManagerTemplateDeployment**: Stellt die Azure Web App mithilfe der Bicep-Vorlage bereit.
 
-9. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie es **eshoponweb-cd-webapp-code** und klicken Sie auf **Speichern**.
+1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie es **eshoponweb-cd-webapp-code** und klicken Sie auf **Speichern**.
 
 ### Übung 2: Verwalten der Azure App-Konfiguration
 
@@ -168,53 +168,53 @@ Wenn Sie wissen möchten, wie Sie dies in Ihrer Anwendung implementieren können
 #### Aufgabe 1: Erstellen Sie die App-Konfigurationsressource
 
 1. Suchen Sie im Azure-Portal nach dem Dienst **App-Konfiguration**.
-2. Klicken Sie auf **App-Konfiguration erstellen** und wählen Sie dann:
+1. Klicken Sie auf **App-Konfiguration erstellen** und wählen Sie dann:
     - Ihr Azure-Abonnement.
     - Die zuvor erstellte Ressourcengruppe (sie sollte **AZ400-EWebShop-NAME** heißen).
     - Der Speicherort.
     - Zum Beispiel ein eindeutiger Name wie **appcs-NAME-REGION**.
     - Wählen Sie den Tarif **Kostenlos**.
-3. Klicken Sie auf **Überprüfen+ erstellen** und danach auf **Erstellen**.
-4. Wechseln Sie nach dem Erstellen des App-Konfigurationsdiensts zu **Übersicht**, und kopieren/speichern Sie den Wert des **Endpunkts**.
+1. Klicken Sie auf **Überprüfen+ erstellen** und danach auf **Erstellen**.
+1. Wechseln Sie nach dem Erstellen des App-Konfigurationsdiensts zu **Übersicht**, und kopieren/speichern Sie den Wert des **Endpunkts**.
 
 #### Aufgabe 2: Verwaltete Identität aktivieren
 
 1. Gehen Sie zu der Web-App, die mit der Pipeline bereitgestellt wurde (sie sollte **az400-webapp-NAME** heißen).
-2. Klicken Sie im Abschnitt **Einstellungen** auf **Identität** und schalten Sie dann im Abschnitt **Vom System zugewiesen** den Status auf **Ein**. Klicken Sie auf **Speichern > Ja** und warten Sie einige Sekunden, bis der Vorgang abgeschlossen ist.
-3. Gehen Sie zurück zum App-Konfigurationsdienst und klicken Sie auf **Zugriffskontrolle** und dann auf **Rollenzuweisung hinzufügen**.
-4. Wählen Sie im Abschnitt **Rolle** die Option **App Configuration-Datenleser** aus.
-5. Aktivieren Sie im Abschnitt **Mitglieder** das Kontrollkästchen **Identität verwalten** und wählen Sie dann die verwaltete Identität Ihrer Web-App aus (sie sollten denselben Namen haben).
-6. Klicken Sie auf **Überprüfen und zuweisen**.
+1. Klicken Sie im Abschnitt **Einstellungen** auf **Identität** und schalten Sie dann im Abschnitt **Vom System zugewiesen** den Status auf **Ein**. Klicken Sie auf **Speichern > Ja** und warten Sie einige Sekunden, bis der Vorgang abgeschlossen ist.
+1. Gehen Sie zurück zum App-Konfigurationsdienst und klicken Sie auf **Zugriffskontrolle** und dann auf **Rollenzuweisung hinzufügen**.
+1. Wählen Sie im Abschnitt **Rolle** die Option **App Configuration-Datenleser** aus.
+1. Aktivieren Sie im Abschnitt **Mitglieder** das Kontrollkästchen **Identität verwalten** und wählen Sie dann die verwaltete Identität Ihrer Web-App aus (sie sollten denselben Namen haben).
+1. Klicken Sie auf **Überprüfen und zuweisen**.
 
 #### Aufgabe 5: Konfigurieren der Web-App
 
 Um sicherzustellen, dass Ihre Website auf die App-Konfiguration zugreift, müssen Sie die Konfiguration aktualisieren.
 
 1. Gehen Sie zurück zu Ihrer Web-App.
-2. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**.
-3. Fügen Sie zwei neue Anwendungseinstellungen hinzu:
+1. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**.
+1. Fügen Sie zwei neue Anwendungseinstellungen hinzu:
     - Erste App-Einstellung
         - **Name:** UseAppConfig
         - **Wert: true**
     - Zweite App-Einstellung
         - **Name:** AppConfigEndpoint
-        - **Wert:***der Wert, den Sie zuvor aus dem App Configuration Endpoint gespeichert/kopiert haben. Er sollte wie https://appcs-NAME-REGION.azconfig.io* aussehen
+        - **Wert:***der Wert, den Sie zuvor aus dem App Configuration Endpoint gespeichert/kopiert haben. Er sollte wie <https://appcs-NAME-REGION.azconfig.io>* aussehen
 
-4. Klicken Sie auf **Ok** und dann auf **Speichern** und warten Sie, bis die Einstellungen aktualisiert werden.
-5. Gehen Sie zu **Übersicht** und klicken Sie auf **Durchsuchen**
-6. In diesem Schritt werden keine Änderungen auf der Website angezeigt, da die App-Konfiguration keine Daten enthält. Dies ist das, was Sie in den nächsten Aufgaben tun werden.
+1. Klicken Sie auf **Ok** und dann auf **Speichern** und warten Sie, bis die Einstellungen aktualisiert werden.
+1. Gehen Sie zu **Übersicht** und klicken Sie auf **Durchsuchen**
+1. In diesem Schritt werden keine Änderungen auf der Website angezeigt, da die App-Konfiguration keine Daten enthält. Dies ist das, was Sie in den nächsten Aufgaben tun werden.
 
 #### Aufgabe 4: Testen der Konfigurationsverwaltung
 
 1. Wählen Sie auf Ihrer Website in der Dropdownliste **Marke** den Eintrag **Visual Studio**, und klicken Sie auf die Pfeilschaltfläche (**>**).
-2. Sie sehen die Meldung *ES GIBT KEINE ERGEBNISSE, DIE IHRER SUCHE ENTSPRECHEN*. Ziel dieses Labs ist es, diesen Wert zu aktualisieren, ohne den Code der Website zu aktualisieren oder ihn erneut bereitzustellen.
-3. Um dies zu versuchen, wechseln Sie zurück zur Appkonfiguration.
-4. Wählen Sie im Abschnitt **Vorgänge** die Option **Konfigurationsexplorer**.
-5. Klicken Sie auf **Erstellen > Schlüsselwert**, und fügen Sie dann Folgendes hinzu:
+1. Sie sehen die Meldung *ES GIBT KEINE ERGEBNISSE, DIE IHRER SUCHE ENTSPRECHEN*. Ziel dieses Labs ist es, diesen Wert zu aktualisieren, ohne den Code der Website zu aktualisieren oder ihn erneut bereitzustellen.
+1. Um dies zu versuchen, wechseln Sie zurück zur Appkonfiguration.
+1. Wählen Sie im Abschnitt **Vorgänge** die Option **Konfigurationsexplorer**.
+1. Klicken Sie auf **Erstellen > Schlüsselwert**, und fügen Sie dann Folgendes hinzu:
     - **Schlüssel:** eShopWeb:Einstellungen:NoResultsMessage
     - **Wert:***Geben Sie Ihre benutzerdefinierte Nachricht ein.*
-6. Klicken Sie auf **Anwenden**, gehen Sie zurück zu Ihrer Website, und aktualisieren Sie die Seite.
-7. Ihre neue Nachricht sollte anstelle des alten Standardwerts angezeigt werden.
+1. Klicken Sie auf **Anwenden**, gehen Sie zurück zu Ihrer Website, und aktualisieren Sie die Seite.
+1. Ihre neue Nachricht sollte anstelle des alten Standardwerts angezeigt werden.
 
 Herzlichen Glückwunsch! In dieser Aufgabe haben Sie den **Konfigurationsexplorer** in Azure App Configuration getestet.
 
@@ -223,13 +223,13 @@ Herzlichen Glückwunsch! In dieser Aufgabe haben Sie den **Konfigurationsexplore
 Testen wir weiter den Featuremanager.
 
 1. Um dies zu versuchen, wechseln Sie zurück zur Appkonfiguration.
-2. Wählen Sie im Abschnitt **Operations** (Vorgänge) die Option **Feature Manager** (Feature-Manager) aus.
-3. Klicken Sie auf **Erstellen**, und fügen Sie dann hinzu:
+1. Wählen Sie im Abschnitt **Operations** (Vorgänge) die Option **Feature Manager** (Feature-Manager) aus.
+1. Klicken Sie auf **Erstellen**, und fügen Sie dann hinzu:
     - **Featureflag aktivieren:** geprüft
     - **Featureflag-Name:** SalesWeekend
-4. Klicken Sie auf **Anwenden**, gehen Sie zurück zu Ihrer Website, und aktualisieren Sie die Seite.
-5. Sie sollten ein Bild mit dem Text „ALL T-SHIRTS ON SALE THIS WEEKEND“ sehen.
-6. Sie können dieses Feature in der Appkonfiguration deaktivieren – dann sehen Sie, dass das Bild ausgeblendet wird.
+1. Klicken Sie auf **Anwenden**, gehen Sie zurück zu Ihrer Website, und aktualisieren Sie die Seite.
+1. Sie sollten ein Bild mit dem Text „ALL T-SHIRTS ON SALE THIS WEEKEND“ sehen.
+1. Sie können dieses Feature in der Appkonfiguration deaktivieren – dann sehen Sie, dass das Bild ausgeblendet wird.
 
 Herzlichen Glückwunsch! In dieser Aufgabe haben Sie den **Featuremanager** in der Azure-Appkonfiguration getestet.
 
@@ -244,13 +244,13 @@ In dieser Übung entfernen Sie die in diesem Lab bereitgestellten Azure-Ressourc
 In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
 
 1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
-2. Listen Sie alle Ressourcengruppen auf, die während der Labs in diesem Modul erstellt wurden, indem Sie den folgenden Befehl ausführen:
+1. Listen Sie alle Ressourcengruppen auf, die während der Labs in diesem Modul erstellt wurden, indem Sie den folgenden Befehl ausführen:
 
     ```sh
     az group list --query "[?starts_with(name,'AZ400-EWebShop-')].name" --output tsv
     ```
 
-3. Löschen Sie alle Ressourcengruppen, die Sie während der praktischen Übungen in diesem Modul erstellt haben, indem Sie den folgenden Befehl ausführen:
+1. Löschen Sie alle Ressourcengruppen, die Sie während der praktischen Übungen in diesem Modul erstellt haben, indem Sie den folgenden Befehl ausführen:
 
     ```sh
     az group list --query "[?starts_with(name,'AZ400-EWebShop-')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
