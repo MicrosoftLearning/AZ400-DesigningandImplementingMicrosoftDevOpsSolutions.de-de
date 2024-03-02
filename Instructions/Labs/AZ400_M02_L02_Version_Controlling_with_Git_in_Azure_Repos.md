@@ -59,34 +59,34 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein und klicken Sie auf **Importieren**:
 
     ![Importieren eines Repositorys](images/import-repo.png)
 
-2. Das Repository ist wie folgt organisiert:
+1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - Der Ordner **.azure** enthält eine Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Labs verwendet werden.
+    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
     - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-    - Der Ordner **src** enthält die .NET 7-Website, die für die Labszenarien verwendet wird.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
 #### Aufgabe 3: Konfigurieren von Git und Visual Studio Code
 
 In dieser Aufgabe installieren und konfigurieren Sie Git und Visual Studio Code, einschließlich der Konfiguration des Git-Anmeldeinformationshelfers zum sicheren Speichern der Git-Anmeldeinformationen, die für die Kommunikation mit Azure DevOps verwendet werden. Wenn Sie diese Voraussetzungen bereits implementiert haben, können Sie direkt mit der nächsten Aufgabe fortfahren.
 
 1. Öffnen Sie auf dem Lab-Computer **Visual Studio Code**.
-2. Wählen Sie in der Visual Studio Code-Schnittstelle im Hauptmenü die Option **Terminal \| Neues Terminal** aus, um den **TERMINAL**-Bereich zu öffnen.
-3. Stellen Sie sicher, dass das aktuelle Terminal **PowerShell** ausführt, indem Sie überprüfen, ob in der Dropdownliste in der oberen rechten Ecke des **TERMINAL**-Bereichs **1: powershell** angezeigt wird.
+1. Wählen Sie in der Visual Studio Code-Schnittstelle im Hauptmenü die Option **Terminal \| Neues Terminal** aus, um den **TERMINAL**-Bereich zu öffnen.
+1. Stellen Sie sicher, dass das aktuelle Terminal **PowerShell** ausführt, indem Sie überprüfen, ob in der Dropdownliste in der oberen rechten Ecke des **TERMINAL**-Bereichs **1: powershell** angezeigt wird.
 
     > **Hinweis**: Um die aktuelle Terminalshell in **PowerShell** zu ändern, klicken Sie auf die Dropdownliste in der oberen rechten Ecke des **TERMINAL**-Bereichs und klicken Sie auf **Standardshell auswählen**. Wählen Sie oben im Visual Studio Code-Fenster Ihre bevorzugte Terminalshell **Windows PowerShell** aus und klicken Sie auf das Pluszeichen auf der rechten Seite der Dropdownliste, um ein neues Terminal mit der ausgewählten Standardshell zu öffnen.
 
-4. Führen Sie im **TERMINAL**-Bereich den folgenden Befehl aus, um das Hilfsprogramm für Anmeldeinformationen zu konfigurieren.
+1. Führen Sie im **TERMINAL**-Bereich den folgenden Befehl aus, um das Hilfsprogramm für Anmeldeinformationen zu konfigurieren.
 
     ```git
     git config --global credential.helper wincred
     ```
 
-5. Führen Sie im **TERMINAL**-Bereich die folgenden Befehle aus, um einen Benutzernamen und eine E-Mail für Git Commits zu konfigurieren (ersetzen Sie die Platzhalter in geschweiften Klammern durch Ihren bevorzugten Benutzernamen und E-Mail, wodurch die Symbole < und > entfernt werden):
+1. Führen Sie im **TERMINAL**-Bereich die folgenden Befehle aus, um einen Benutzernamen und eine E-Mail für Git Commits zu konfigurieren (ersetzen Sie die Platzhalter in geschweiften Klammern durch Ihren bevorzugten Benutzernamen und E-Mail, wodurch die Symbole < und > entfernt werden):
 
     ```git
     git config --global user.name "<John Doe>"
@@ -102,34 +102,34 @@ In dieser Übung verwenden Sie Visual Studio Code, um das Git-Repository zu klon
 In dieser Aufgabe durchlaufen Sie den Prozess des Klonens eines Git-Repositorys mithilfe von Visual Studio Code.
 
 1. Wechseln Sie zum Webbrowser, in dem Ihre Azure DevOps-Organisation mit dem **eShopOnWeb**-Projekt angezeigt wird, das Sie in der vorherigen Übung generiert haben.
-2. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals das Symbol **Repos** aus.
+1. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals das Symbol **Repos** aus.
 
-3. Klicken Sie in der oberen rechten Ecke des **eShopOnWeb**-Repositorybereichs auf **Klonen**.
+1. Klicken Sie in der oberen rechten Ecke des **eShopOnWeb**-Repositorybereichs auf **Klonen**.
 
     ![Git-Repository klonen](images/clone-repo.png)
 
     > **Hinweis**: Das Abrufen einer lokalen Kopie eines Git-Repositorys wird als *Klonen* bezeichnet. Jedes Standard-Entwicklungstool unterstützt diesen Befehl und kann eine Verbindung mit Azure Repos herstellen, um die neueste Quelle abzurufen, mit der es arbeiten kann.
 
-4. Klicken Sie im Bereich **Repository klonen** bei ausgewählter **HTTPS**-Befehlszeilenoption auf die Schaltfläche **In Zwischenablage kopieren** neben der URL des Repositoryklons.
+1. Klicken Sie im Bereich **Repository klonen** bei ausgewählter **HTTPS**-Befehlszeilenoption auf die Schaltfläche **In Zwischenablage kopieren** neben der URL des Repositoryklons.
 
     > **Hinweis**: Sie können diese URL mit jedem Git-kompatiblen Tool verwenden, um eine Kopie der Codebasis abzurufen.
 
-5. Schließen Sie den Bereich **Repository klonen**.
-6. Wechseln Sie auf Ihrem Lab-Computer zu **Visual Studio Code**.
-7. Klicken Sie auf die Menüüberschrift **Ansicht** und klicken Sie im Dropdownmenü auf **Befehlspalette**.
+1. Schließen Sie den Bereich **Repository klonen**.
+1. Wechseln Sie auf Ihrem Lab-Computer zu **Visual Studio Code**.
+1. Klicken Sie auf die Menüüberschrift **Ansicht** und klicken Sie im Dropdownmenü auf **Befehlspalette**.
 
     > **Hinweis**: Die Befehlspalette bietet eine einfache und bequeme Möglichkeit, auf eine Vielzahl von Aufgaben zuzugreifen, einschließlich derer, die als Drittanbietererweiterungen implementiert wurden. Alternativ können Sie auch die Tastenkombination **Strg+Umschalt+P** oder **F1** verwenden.
 
-8. Führen Sie in der Befehlspalette den Befehl **Git: Clone** aus.
+1. Führen Sie in der Befehlspalette den Befehl **Git: Clone** aus.
 
     ![VS Code-Befehlspalette](images/vscode-command.png)
 
     > **Hinweis**: Um alle relevanten Befehle anzuzeigen, können Sie zunächst **Git** eingeben.
 
-9. Fügen Sie in dem Textfeld **Repository-URL bereitstellen oder Repositoryquelle auswählen** aus, fügen Sie die URL des Repositoryklons ein, die Sie zuvor in dieser Aufgabe kopiert haben, und drücken Sie die Taste **Enter**.
-10. Navigieren Sie im Dialogfeld **Ordner auswählen** zum Laufwerk C:, erstellen Sie einen neuen Ordner namens **Git**, wählen Sie ihn aus, und klicken Sie dann auf **Repositoryspeicherort auswählen**.
-11. Melden Sie sich an Ihrem Azure-DevOps-Konto an, wenn die Aufforderung angezeigt wird.
-12. Klicken Sie nach Abschluss des Klonvorgangs in Visual Studio Code auf **Öffnen**, um das geklonte Repository zu öffnen.
+1. Fügen Sie in dem Textfeld **Repository-URL bereitstellen oder Repositoryquelle auswählen** aus, fügen Sie die URL des Repositoryklons ein, die Sie zuvor in dieser Aufgabe kopiert haben, und drücken Sie die Taste **Enter**.
+1. Navigieren Sie im Dialogfeld **Ordner auswählen** zum Laufwerk C:, erstellen Sie einen neuen Ordner namens **Git**, wählen Sie ihn aus, und klicken Sie dann auf **Repositoryspeicherort auswählen**.
+1. Melden Sie sich an Ihrem Azure-DevOps-Konto an, wenn die Aufforderung angezeigt wird.
+1. Klicken Sie nach Abschluss des Klonvorgangs in Visual Studio Code auf **Öffnen**, um das geklonte Repository zu öffnen.
 
     > **Hinweis**: Sie können Warnungen ignorieren, die Probleme beim Laden des Projekts betreffen. Die Lösung befindet sich möglicherweise nicht im Zustand, der für einen Build geeignet ist, aber wir konzentrieren uns auf die Arbeit mit Git, sodass ein Build des Projekts nicht erforderlich ist.
 
@@ -150,7 +150,7 @@ Git Commits besteht aus den folgenden Komponenten:
 In dieser Aufgabe verwenden Sie Visual Studio Code, um Änderungen durch einen Commit zu übernehmen.
 
 1. Wählen Sie im Visual Studio Code-Fenster oben auf der vertikalen Symbolleiste die Registerkarte **EXPLORER** aus, navigieren Sie zur Datei **/eShopOnWeb/src/Web/Program.cs** und wählen Sie sie aus. Dadurch wird der Inhalt automatisch im Detailbereich angezeigt.
-2. Fügen Sie in der ersten Zeile den folgenden Kommentar ein:
+1. Fügen Sie in der ersten Zeile den folgenden Kommentar ein:
 
     ```csharp
     // My first change
@@ -158,25 +158,25 @@ In dieser Aufgabe verwenden Sie Visual Studio Code, um Änderungen durch einen C
 
     > **Hinweis**: Es spielt keine Rolle, was der Kommentar ist, da es nur darum geht, eine Änderung vorzunehmen.
 
-3. Drücken Sie **STRG+S** , um die Änderung zu speichern.
-4. Wählen Sie im Visual Studio Code-Fenster die Registerkarte **QUELLCODEVERWALTUNG** aus, um zu überprüfen, ob Git die neueste Änderung an der Datei erkannt hat, die sich im lokalen Klon des Git-Repositorys befindet.
-5. Wenn die Registerkarte **QUELLCODEVERWALTUNG** ausgewählt ist, geben Sie in das Textfeld am oberen Rand des Bereichs **Mein Commit** als Commitnachricht ein, und drücken **Strrg+Enter**, um den Commit lokal zu übernehmen.
+1. Drücken Sie **STRG+S** , um die Änderung zu speichern.
+1. Wählen Sie im Visual Studio Code-Fenster die Registerkarte **QUELLCODEVERWALTUNG** aus, um zu überprüfen, ob Git die neueste Änderung an der Datei erkannt hat, die sich im lokalen Klon des Git-Repositorys befindet.
+1. Wenn die Registerkarte **QUELLCODEVERWALTUNG** ausgewählt ist, geben Sie in das Textfeld am oberen Rand des Bereichs **Mein Commit** als Commitnachricht ein, und drücken **Strrg+Enter**, um den Commit lokal zu übernehmen.
 
     ![Erster Commit](images/first-commit.png)
 
-6. Wenn Sie dazu aufgefordert werden sollen, ihre Änderungen automatisch zu stagen und direkt zu committen, klicken Sie auf **Immer**.
+1. Wenn Sie dazu aufgefordert werden sollen, ihre Änderungen automatisch zu stagen und direkt zu committen, klicken Sie auf **Immer**.
 
     > **Hinweis**: Wir werden das **Staging** später im Lab besprechen.
 
-7. Beachten Sie in der unteren linken Ecke des Visual Studio Code-Fensters rechts neben **Main** das Symbol **Änderungen synchronisieren**, ein Kreis mit zwei vertikalen Pfeilen, die in die entgegengesetzte Richtung zeigen, und die Zahl **1** neben dem Pfeil, der nach oben zeigt. Klicken Sie auf das Symbol, und klicken Sie, wenn Sie dazu aufgefordert werden, auf **OK**, um Commits an den ** origin/main ** zu übertragen bzw. davon abzurufen.
+1. Beachten Sie in der unteren linken Ecke des Visual Studio Code-Fensters rechts neben **Main** das Symbol **Änderungen synchronisieren**, ein Kreis mit zwei vertikalen Pfeilen, die in die entgegengesetzte Richtung zeigen, und die Zahl **1** neben dem Pfeil, der nach oben zeigt. Klicken Sie auf das Symbol, und klicken Sie, wenn Sie dazu aufgefordert werden, auf **OK**, um Commits an den ** origin/main ** zu übertragen bzw. davon abzurufen.
 
 #### Aufgabe 2: Überprüfen von Commits
 
 In dieser Aufgabe verwenden Sie das Azure DevOps-Portal, um Commits zu überprüfen.
 
 1. Wechseln Sie zu dem Webbrowser-Fenster, in dem die Azure DevOps-Schnittstelle angezeigt wird.
-2. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals im Abschnitt **Repos** die Option **Commits** aus.
-3. Vergewissern Sie sich, dass Ihr Commit oben in der Liste angezeigt wird.
+1. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals im Abschnitt **Repos** die Option **Commits** aus.
+1. Vergewissern Sie sich, dass Ihr Commit oben in der Liste angezeigt wird.
 
     ![ADO-Repo-Commits](images/ado-commit.png)
 
@@ -185,29 +185,29 @@ In dieser Aufgabe verwenden Sie das Azure DevOps-Portal, um Commits zu überprü
 In dieser Aufgabe lernen Sie kennen, wie Sie das Stagen von Änderungen mithilfe von Visual Studio Code verwenden. Mit dem Stagen von Änderungen können Sie bestimmte Dateien selektiv zu einem Commit hinzufügen, während sie die in anderen Dateien vorgenommenen Änderungen zurückstellen.
 
 1. Wechseln Sie zurück zum **Visual Studio Code**-Fenster.
-2. Aktualisieren Sie die geöffnete **Program.cs**-Klasse , indem Sie den ersten Kommentar wie folgt ändern und die Datei speichern.
+1. Aktualisieren Sie die geöffnete **Program.cs**-Klasse , indem Sie den ersten Kommentar wie folgt ändern und die Datei speichern.
 
     ```csharp
         //My second change
     ```
 
-3. Wechseln Sie im Visual Studio Code-Fenster zurück zur Registerkarte **EXPLORER**, navigieren Sie zur Datei **/eShopOnWeb/src/Web/Constants.cs** und wählen Sie sie aus. Dadurch wird der Inhalt automatisch im Detailbereich angezeigt.
-4. Fügen Sie der Datei **Constants.cs** einen Kommentar in der ersten Zeile hinzu, und speichern Sie die Datei.
+1. Wechseln Sie im Visual Studio Code-Fenster zurück zur Registerkarte **EXPLORER**, navigieren Sie zur Datei **/eShopOnWeb/src/Web/Constants.cs** und wählen Sie sie aus. Dadurch wird der Inhalt automatisch im Detailbereich angezeigt.
+1. Fügen Sie der Datei **Constants.cs** einen Kommentar in der ersten Zeile hinzu, und speichern Sie die Datei.
 
     ```csharp
     // My third change
     ```
 
-5. Wechseln Sie im Visual Studio Code-Fenster zur Registerkarte **QUELLCODEVERWALTUNG**, zeigen Sie mit dem Mauszeiger auf den Eintrag **Program.cs** und klicken Sie auf das Pluszeichen auf der rechten Seite dieses Eintrags.
+1. Wechseln Sie im Visual Studio Code-Fenster zur Registerkarte **QUELLCODEVERWALTUNG**, zeigen Sie mit dem Mauszeiger auf den Eintrag **Program.cs** und klicken Sie auf das Pluszeichen auf der rechten Seite dieses Eintrags.
 
     > **Hinweis**: Dadurch wird das Staging nur für die Änderung in der Datei **Program.cs** ausgeführt und der Commit ohne **Constants.cs** vorbereitet.
 
-6. Bei ausgewählter Registerkarte **QUELLCODEVERWALTUNG** geben Sie in das Textfeld am oberen Rand des Bereichs **Kommentare hinzugefügt** als Commitnachricht ein.
+1. Bei ausgewählter Registerkarte **QUELLCODEVERWALTUNG** geben Sie in das Textfeld am oberen Rand des Bereichs **Kommentare hinzugefügt** als Commitnachricht ein.
 
     ![Gestagete Änderungen](images/staged-changes.png)
 
-7. Klicken Sie oben auf der Registerkarte **QUELLCODEVERWALTUNG** auf das Symbol mit den Auslassungspunkten, wählen Sie im Dropdownmenü **Commit** aus und wählen Sie im hierarchischen Menü die Option **Commit gestaget** aus.
-8. Klicken Sie in der unteren linken Ecke des Visual Studio Code-Fensters auf die Schaltfläche **Änderungen synchronisieren**, um die Änderungen aus dem Commit mit dem Server zu synchronisieren. Wenn Sie dazu aufgefordert werden, klicken Sie auf **OK**, um Commits an **origin/main** per Push zu übertragen bzw. per Pull davon abzurufen.
+1. Klicken Sie oben auf der Registerkarte **QUELLCODEVERWALTUNG** auf das Symbol mit den Auslassungspunkten, wählen Sie im Dropdownmenü **Commit** aus und wählen Sie im hierarchischen Menü die Option **Commit gestaget** aus.
+1. Klicken Sie in der unteren linken Ecke des Visual Studio Code-Fensters auf die Schaltfläche **Änderungen synchronisieren**, um die Änderungen aus dem Commit mit dem Server zu synchronisieren. Wenn Sie dazu aufgefordert werden, klicken Sie auf **OK**, um Commits an **origin/main** per Push zu übertragen bzw. per Pull davon abzurufen.
 
     > **Hinweis**: Da nur die gestagete Änderung im Commit übernommen wurde, steht die Synchronisierung der anderen Änderung noch aus.
 
@@ -229,9 +229,9 @@ In dieser Aufgabe durchlaufen Sie den Commitverlauf mithilfe des Azure DevOps-Po
 
     > **Hinweis**: Es wird eine Vergleichsansicht geöffnet, in der Sie die von Ihnen vorgenommenen Änderungen leicht auffinden können. In diesem Fall ist es nur der einzige Kommentar.
 
-2. Wechseln Sie zum Webbrowser-Fenster, das den Bereich **Commits** des **Azure DevOps**-Portals anzeigt, um die Quellverzweigungen und Zusammenführungen zu überprüfen. Diese bieten eine bequeme Möglichkeit, um zu sehen, wann und wie Änderungen an der Quelle vorgenommen wurden.
-3. Scrollen Sie nach unten zum Eintrag **Mein Commit** (der zuvor gepusht wurde) und fahren Sie mit dem Mauszeiger darüber, um die Auslassungspunkte auf der rechten Seite zu sehen.
-4. Klicken Sie auf die Auslassungspunkte, wählen Sie im Dropdownmenü die Option **Dateien durchsuchen** und überprüfen Sie die Ergebnisse.
+1. Wechseln Sie zum Webbrowser-Fenster, das den Bereich **Commits** des **Azure DevOps**-Portals anzeigt, um die Quellverzweigungen und Zusammenführungen zu überprüfen. Diese bieten eine bequeme Möglichkeit, um zu sehen, wann und wie Änderungen an der Quelle vorgenommen wurden.
+1. Scrollen Sie nach unten zum Eintrag **Mein Commit** (der zuvor gepusht wurde) und fahren Sie mit dem Mauszeiger darüber, um die Auslassungspunkte auf der rechten Seite zu sehen.
+1. Klicken Sie auf die Auslassungspunkte, wählen Sie im Dropdownmenü die Option **Dateien durchsuchen** und überprüfen Sie die Ergebnisse.
 
     ![Commit durchsuchen](images/commit-browse.png)
 
@@ -250,13 +250,13 @@ Das Übertragen von Änderungen an eine Branch wirkt sich nicht auf andere Branc
 In dieser Aufgabe erstellen Sie eine Branch mit Hilfe von Visual Studio Code.
 
 1. Wechseln Sie auf Ihrem Lab-Computer zu **Visual Studio Code**.
-2. Klicken Sie bei ausgewählter Registerkarte **QUELLCODEVERWALTUNG** in der unteren linken Ecke des Visual Studio Code-Fensters auf **main**.
-3. Wählen Sie im Pop-up-Fenster **+ Neue Branch erstellen aus...**.
+1. Klicken Sie bei ausgewählter Registerkarte **QUELLCODEVERWALTUNG** in der unteren linken Ecke des Visual Studio Code-Fensters auf **main**.
+1. Wählen Sie im Pop-up-Fenster **+ Neue Branch erstellen aus...**.
 
     ![Verzweigung erstellen](images/create-branch.png)
 
-4. Geben Sie in das Textfeld **Branchname** **dev** ein, um die neue Branch anzugeben und drücken Sie **Eingabe**.
-5. Wählen Sie im Textfeld **Wählen Sie eine Referenz aus, von der aus Sie die Branch 'dev' erstellen wollen**, wählen Sie **main** als Referenzbranch.
+1. Geben Sie in das Textfeld **Branchname** **dev** ein, um die neue Branch anzugeben und drücken Sie **Eingabe**.
+1. Wählen Sie im Textfeld **Wählen Sie eine Referenz aus, von der aus Sie die Branch 'dev' erstellen wollen**, wählen Sie **main** als Referenzbranch.
 
     > **Anmerkung**: An dieser Stelle wird automatisch in die **dev**-Branch gewechselt.
 
@@ -267,44 +267,21 @@ In dieser Aufgabe werden Sie Visual Studio Code verwenden, um mit einer in der v
 Git merkt sich, an welcher Branch Sie arbeiten und stellt sicher, dass Ihre Dateien mit der letzten Übergabe in dieser Branch übereinstimmen, wenn Sie eine Branch auschecken. Branches bieten die Möglichkeit, gleichzeitig mit mehreren Versionen des Quellcodes im gleichen lokalen Git-Repository zu arbeiten. Sie können Visual Studio Code verwenden, um Branches zu veröffentlichen, auszuchecken und zu löschen.
 
 1. Klicken Sie im Fenster **Visual Studio Code** bei ausgewählter Registerkarte **QUELLCODEVERWALTUNG** in der unteren linken Ecke des Visual Studio Code-Fensters auf das Symbol **Änderungen veröffentlichen** (direkt rechts neben dem Label **dev**, das Ihre neu erstellte Branch darstellt).
-2. Wechseln Sie zum Webbrowser-Fenster, in dem der Bereich **Commits** des Portals **Azure DevOps** angezeigt wird, und wählen Sie **Branches**.
-3. Überprüfen Sie auf der Registerkarte **Meine** des Bereichs **Branches**, dass die Liste der Branches **dev** enthält.
-4. Bewegen Sie den Mauszeiger über den Eintrag **dev**, um die Auslassungspunkte auf der rechten Seite zu sehen.
-5. Klicken Sie auf die Auslassungspunkte, wählen Sie im Pop-up-Menü **Branche löschen**, und klicken Sie auf **Löschen**, wenn Sie zur Bestätigung aufgefordert werden.
+1. Wechseln Sie zum Webbrowser-Fenster, in dem der Bereich **Commits** des Portals **Azure DevOps** angezeigt wird, und wählen Sie **Branches**.
+1. Überprüfen Sie auf der Registerkarte **Meine** des Bereichs **Branches**, dass die Liste der Branches **dev** enthält.
+1. Bewegen Sie den Mauszeiger über den Eintrag **dev**, um die Auslassungspunkte auf der rechten Seite zu sehen.
+1. Klicken Sie auf die Auslassungspunkte, wählen Sie im Pop-up-Menü **Branche löschen**, und klicken Sie auf **Löschen**, wenn Sie zur Bestätigung aufgefordert werden.
 
     ![Branch löschen](images/delete-branch.png)
 
-6. Wechseln Sie zurück zum Fenster **Visual Studio Code** und klicken Sie bei ausgewählter Registerkarte **QUELLCODEVERWALTUNG** in der unteren linken Ecke des Fensters von Visual Studio Code auf den Eintrag **dev**. Dadurch werden die vorhandenen Branches im oberen Teil des Visual Studio Code-Fensters angezeigt.
-7. Überprüfen Sie, ob jetzt zwei **dev**-Branches aufgelistet sind.
-
-    > **Hinweis**: Die lokale (**dev**) Branch ist aufgelistet, weil ihre Existenz nicht von der Löschung der Branch im entfernten Repository betroffen ist. Der Server (**origin/dev**) ist aufgelistet, weil er noch nicht gelöscht wurde.
-
-8. Wählen Sie in der Liste der Branches die Branch **main** aus, um sie auszuchecken.
-9. Drücken Sie **Strg+Umschalt+P**, um die **Befehlspalette** zu öffnen.
-10. In der **Befehlspalette** beginnen Sie mit der Eingabe von **Git: Delete** und wählen Sie **Git: Delete Branch**, wenn sie sichtbar wird.
-11. Wählen Sie den Eintrag **dev** in der Liste der zu löschenden Branches.
-12. Klicken Sie in der unteren linken Ecke des Visual Studio Code-Fensters erneut auf den Eintrag **main**. Dadurch werden die vorhandenen Branches im oberen Teil des Visual Studio Code-Fensters angezeigt.
-13. Überprüfen Sie, ob die lokale Branch **dev** nicht mehr in der Liste erscheint, aber die entfernte Branch **origin/dev** noch vorhanden ist.
-14. Drücken Sie **Strg+Umschalt+P**, um die **Befehlspalette** zu öffnen.
-15. Beginnen Sie in der **Befehlspalette** mit der Eingabe von **Git: Fetch** und wählen Sie **Git: Fetch (Prune)**, wenn der Eintrag sichtbar wird.
-
-    > **Hinweis**: Dieser Befehl aktualisiert die ursprünglichen Branches im lokalen Snapshot und löscht diejenigen, die nicht mehr vorhanden sind.
-
-    > **Hinweis**: Sie können genau überprüfen, was diese Aufgaben tun, indem Sie das Fenster **Ausgabe** im unteren rechten Teil des Visual Studio Code-Fensters auswählen. Wenn Sie die Git-Protokolle nicht in der Ausgabekonsole sehen, stellen Sie sicher, dass Sie **Git** als Quelle auswählen.
-
-16. Klicken Sie in der unteren linken Ecke des Visual Studio Code-Fensters erneut auf den Eintrag **main**.
-17. Stellen Sie sicher, dass die Branch **origin/dev** nicht mehr in der Liste der Branches erscheint.
-
-#### Aufgabe 3: Wiederherstellen einer Branche
-
-In dieser Aufgabe verwenden Sie das Azure DevOps-Portal, um die Verzweigung wiederherzustellen, die Sie in der vorherigen Aufgabe gelöscht haben.
-
-1. Gehen Sie zum Webbrowser, der die Registerkarte **Mine** des Bereichs **Verzweigungen** im Azure DevOps-Portal anzeigt.
-2. Wählen Sie auf der Registerkarte **Mine** des Bereichs **Branches** die Registerkarte **Alle** aus.
-3. Geben Sie auf der Registerkarte **Alle** des Bereichs **Branches** in das Textfeld **Branchnamen suchen** **dev** ein.
-4. Überprüfen Sie den Abschnitt **Gelöschte Branches**, der den Eintrag für den eben gelöschten Branch enthält.
-5. Bewegen Sie den Mauszeiger im Abschnitt **Gelöschte Branches** über den Eintrag **dev**, um die Auslassungspunkte auf der rechten Seite zu sehen.
-6. Klicken Sie im Popupmenü auf die Auslassungspunkte und wählen Sie **Branch wiederherstellen** aus.
+1. Wechseln Sie zurück zum Fenster **Visual Studio Code** und klicken Sie bei ausgewählter Registerkarte **QUELLCODEVERWALTUNG** in der unteren linken Ecke des Fensters von Visual Studio Code auf den Eintrag **dev**. Dadurch werden die vorhandenen Branches im oberen Teil des Visual Studio Code-Fensters angezeigt.
+1. Überprüfen Sie, ob jetzt zwei **dev**-Branches aufgelistet sind.
+1. Wechseln Sie zum Webbrowser, in dem die Registerkarte **Meine** von **Branches** angezeigt wird.
+1. Wählen Sie auf der Registerkarte **Mine** des Bereichs **Branches** die Registerkarte **Alle** aus.
+1. Geben Sie auf der Registerkarte **Alle** des Bereichs **Branches** in das Textfeld **Branchnamen suchen** **dev** ein.
+1. Überprüfen Sie den Abschnitt **Gelöschte Branches**, der den Eintrag für den eben gelöschten Branch enthält.
+1. Bewegen Sie den Mauszeiger im Abschnitt **Gelöschte Branches** über den Eintrag **dev**, um die Auslassungspunkte auf der rechten Seite zu sehen.
+1. Klicken Sie im Popupmenü auf die Auslassungspunkte und wählen Sie **Branch wiederherstellen** aus.
 
     ![Branch wiederherstellen](images/restore-branch.png)
 
@@ -317,13 +294,13 @@ In dieser Aufgabe werden Sie das Azure DevOps-Portal verwenden, um der Hauptbran
 Der Einfachheit halber werden wir direkt mit dem Repo-Editor des Webbrowsers arbeiten (direkt in Origin), anstatt den lokalen Klon in VS Code zu verwenden (empfohlen für reale Szenarien).
 
 1. Wechseln Sie zu dem Webbrowser, der die Registerkarte **Mine** des Bereichs **Branches** im Azure DevOps-Portal anzeigt.
-2. Zeigen Sie auf der Registerkarte **Eigene** im Bereich **Verzweigungen** mit dem Mauszeiger auf den Eintrag **Haupt**-Verzweigung, um das Auslassungszeichen auf der rechten Seite anzuzeigen.
-3. Klicken Sie auf die Auslassungspunkte, und wählen Sie im Popupmenü **Verzweigungsrichtlinien** aus.
+1. Zeigen Sie auf der Registerkarte **Eigene** im Bereich **Verzweigungen** mit dem Mauszeiger auf den Eintrag **Haupt**-Verzweigung, um das Auslassungszeichen auf der rechten Seite anzuzeigen.
+1. Klicken Sie auf die Auslassungspunkte, und wählen Sie im Popupmenü **Verzweigungsrichtlinien** aus.
 
     ![Verzweigungsrichtlinien](images/branch-policies.png)
 
-4. Aktivieren Sie auf der Registerkarte **Haupt** der Repositoryeinstellungen die Option für **Mindestanzahl der Prüfer erforderlich machen**. Fügen Sie **1** Prüfer hinzu, und aktivieren Sie das Kontrollkästchen **Anforderern erlauben, ihre eigenen Änderungen zu genehmigen** (da Sie der einzige Benutzer in Ihrem Projekt für das Lab sind)
-5. Aktivieren Sie auf der Registerkarte **main** der Repository-Einstellungen die Option **Auf verknüpfte Arbeitselemente überprüfen** und behalten Sie dafür die Option **Erforderlich** bei.
+1. Aktivieren Sie auf der Registerkarte **Haupt** der Repositoryeinstellungen die Option für **Mindestanzahl der Prüfer erforderlich machen**. Fügen Sie **1** Prüfer hinzu, und aktivieren Sie das Kontrollkästchen **Anforderern erlauben, ihre eigenen Änderungen zu genehmigen** (da Sie der einzige Benutzer in Ihrem Projekt für das Lab sind)
+1. Aktivieren Sie auf der Registerkarte **main** der Repository-Einstellungen die Option **Auf verknüpfte Arbeitselemente überprüfen** und behalten Sie dafür die Option **Erforderlich** bei.
 
     ![Richtlinieneinstellungen](images/policy-settings.png)
 
@@ -332,62 +309,62 @@ Der Einfachheit halber werden wir direkt mit dem Repo-Editor des Webbrowsers arb
 In dieser Aufgabe werden Sie das Azure DevOps-Portal verwenden, um die Richtlinie zu testen und Ihren ersten Pull Request zu erstellen.
 
 1. Vergewissern Sie sich, dass im vertikalen Navigationsbereich des Azure DevOps-Portals unter **Repos>Dateien** der Branch **main** ausgewählt ist (Dropdown über dem angezeigten Inhalt).
-2. Um sicherzustellen, dass die Richtlinien funktionieren, versuchen Sie, eine Änderung vorzunehmen und sie im Branch **main** zu binden. Navigieren Sie dann zur Datei **/eShopOnWeb/src/Web/Program.cs** und wählen Sie sie aus. Dadurch wird der Inhalt automatisch im Detailbereich angezeigt.
-3. Fügen Sie in der ersten Zeile den folgenden Kommentar ein:
+1. Um sicherzustellen, dass die Richtlinien funktionieren, versuchen Sie, eine Änderung vorzunehmen und sie im Branch **main** zu binden. Navigieren Sie dann zur Datei **/eShopOnWeb/src/Web/Program.cs** und wählen Sie sie aus. Dadurch wird der Inhalt automatisch im Detailbereich angezeigt.
+1. Fügen Sie in der ersten Zeile den folgenden Kommentar ein:
 
     ```csharp
     // Testing main branch policy
     ```
 
-4. Klicken Sie auf **Commit > Commit**. Sie werden eine Warnung sehen: Änderungen am Hauptbranch können nur über einen Pull Request vorgenommen werden.
+1. Klicken Sie auf **Commit > Commit**. Sie werden eine Warnung sehen: Änderungen am Hauptbranch können nur über einen Pull Request vorgenommen werden.
 
     ![Richtlinie verweigerte Commit](images/policy-denied.png)
 
-5. Klicken Sie auf **Abbrechen**, um den Commit zu überspringen.
+1. Klicken Sie auf **Abbrechen**, um den Commit zu überspringen.
 
 #### Aufgabe 6: Arbeiten mit Pull Requests
 
 In dieser Aufgabe werden Sie das Azure DevOps-Portal verwenden, um einen Pull Request zu erstellen und den Branch **dev** zu verwenden, um eine Änderung im geschützten Branch **main** zusammenzuführen. Ein Azure DevOps-Arbeitselement wird mit den Änderungen verknüpft, um ausstehende Arbeiten über Codeaktivität verfolgen zu können.
 
 1. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals im Abschnitt **Boards** die Option **Arbeitselemente** aus.
-2. Klicken Sie auf **+ Neues Arbeitselement > Produkt-Backlog-Element**. Schreiben Sie in das Titelfeld **Meine erste PR testen** und klicken Sie auf **Speichern**.
-3. Gehen Sie nun zurück zum vertikalen Navigationsbereich des Azure DevOps-Portals und stellen Sie sicher, dass unter **Repos>Dateien** der Branch **dev** ausgewählt ist.
-4. Navigieren Sie zur Datei **/eShopOnWeb/src/Web/Program.cs** und nehmen Sie die folgende Änderung in der ersten Zeile vor:
+1. Klicken Sie auf **+ Neues Arbeitselement > Produkt-Backlog-Element**. Schreiben Sie in das Titelfeld **Meine erste PR testen** und klicken Sie auf **Speichern**.
+1. Gehen Sie nun zurück zum vertikalen Navigationsbereich des Azure DevOps-Portals und stellen Sie sicher, dass unter **Repos>Dateien** der Branch **dev** ausgewählt ist.
+1. Navigieren Sie zur Datei **/eShopOnWeb/src/Web/Program.cs** und nehmen Sie die folgende Änderung in der ersten Zeile vor:
 
     ```csharp
     // Testing my first PR
     ```
 
-5. Klicken Sie auf **Commit > Commit** (Standard-Commit-Nachricht belassen). Diesmal funktioniert die Übergabe und der Branch **dev** hat keine Richtlinien.
-6. Eine Nachricht erscheint, die vorschlägt, einen Pull Request zu erstellen (da Ihre Branch **dev** in Bezug auf die Änderungen im Vergleich zu **main** nun voraus ist). Klicken Sie auf **Pull Request erstellen**.
+1. Klicken Sie auf **Commit > Commit** (Standard-Commit-Nachricht belassen). Diesmal funktioniert die Übergabe und der Branch **dev** hat keine Richtlinien.
+1. Eine Nachricht erscheint, die vorschlägt, einen Pull Request zu erstellen (da Ihre Branch **dev** in Bezug auf die Änderungen im Vergleich zu **main** nun voraus ist). Klicken Sie auf **Pull Request erstellen**.
 
     ![Erstellen einer Pullanforderung](images/create-pr.png)
 
-7. Belassen Sie die Standardeinstellungen auf der Registerkarte **Neuer Pull Request** und klicken Sie auf **Erstellen**.
-8. Der Pull Request zeigt einige fehlgeschlagene/ausstehende Anforderungen an, basierend auf den Richtlinien, die auf unserem Zielbranch **main** angewendet werden.
+1. Belassen Sie die Standardeinstellungen auf der Registerkarte **Neuer Pull Request** und klicken Sie auf **Erstellen**.
+1. Der Pull Request zeigt einige fehlgeschlagene/ausstehende Anforderungen an, basierend auf den Richtlinien, die auf unserem Zielbranch **main** angewendet werden.
     - Vorgeschlagene Änderungen sollten mit einem Arbeitselemente verknüpft sein.
     - Mindestens 1 Benutzer*in sollte die Änderungen überprüfen und genehmigen.
 
-9. Klicken Sie in den Optionen auf der rechten Seite auf die Schaltfläche **+** neben **Arbeitselemente**. Verknüpfen Sie das zuvor erstellte Arbeitselement mit dem Pull Request, indem Sie es anklicken. Sie werden sehen, dass eine der Anforderungen ihren Status ändert.
+1. Klicken Sie in den Optionen auf der rechten Seite auf die Schaltfläche **+** neben **Arbeitselemente**. Verknüpfen Sie das zuvor erstellte Arbeitselement mit dem Pull Request, indem Sie es anklicken. Sie werden sehen, dass eine der Anforderungen ihren Status ändert.
 
     ![Verknüpfen eines Arbeitselements](images/link-wit.png)
 
-10. Öffnen Sie als Nächstes die Registerkarte **Dateien**, um die vorgeschlagenen Änderungen zu überprüfen. In einem umfassenderen Pull Request könnten Sie die Dateien einzeln überprüfen (als überprüft markiert) und Kommentare zu Zeilen öffnen, die möglicherweise nicht klar sind (wenn Sie mit der Maus über die Zeilennummer fahren, können Sie einen Kommentar abgeben).
-11. Gehen Sie zurück zur Registerkarte **Übersicht**, und klicken Sie oben rechts auf **Genehmigen**. Alle Anforderungen änder sich auf Grün. Jetzt können Sie auf **Abschließen** klicken.
-12. Auf der Registerkarte **Pull Request abschließen** werden mehrere Optionen angeboten, bevor die Zusammenführung abgeschlossen wird:
+1. Öffnen Sie als Nächstes die Registerkarte **Dateien**, um die vorgeschlagenen Änderungen zu überprüfen. In einem umfassenderen Pull Request könnten Sie die Dateien einzeln überprüfen (als überprüft markiert) und Kommentare zu Zeilen öffnen, die möglicherweise nicht klar sind (wenn Sie mit der Maus über die Zeilennummer fahren, können Sie einen Kommentar abgeben).
+1. Gehen Sie zurück zur Registerkarte **Übersicht**, und klicken Sie oben rechts auf **Genehmigen**. Alle Anforderungen änder sich auf Grün. Jetzt können Sie auf **Abschließen** klicken.
+1. Auf der Registerkarte **Pull Request abschließen** werden mehrere Optionen angeboten, bevor die Zusammenführung abgeschlossen wird:
     - **Zusammenführungstyp**: Es werden 4 Zusammenführungstypen angeboten, die Sie [hier](https://learn.microsoft.com/azure/devops/repos/git/complete-pull-requests?view=azure-devops&tabs=browser#complete-a-pull-request) hier überprüfen oder in den angegebenen Animationen beobachten können. Wählen Sie **Zusammenführen (kein schneller Vorlauf)**.
     - **Nachbearbeitungsoptionen**:
         - Markieren Sie **Zugehöriges Arbeitselement abschließen …**. Das zugehörige PBI wird in den Zustand **Fertig** versetzt.
 
-13. Klicken Sie auf **Zusammenführung abschließen**
+1. Klicken Sie auf **Zusammenführung abschließen**
 
 #### Aufgabe 7: Anwenden von Tags
 
 Das Produktteam hat beschlossen, dass die aktuelle Version der Website als v1.1.0-beta veröffentlicht werden soll.
 
 1. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals im Abschnitt **Repos** die Option **Tags** aus.
-2. Klicken Sie im Bereich **Tags** auf **Neues Tag**.
-3. Geben Sie im Bedienfeld **Tag erstellen** in das Textfeld **Name** den Wert **v1.1.0-beta** ein, lassen Sie in der Dropdown-Liste **Basierend auf** den Eintrag **main** ausgewählt, geben Sie in das Textfeld **Beschreibung** den Wert **Beta-Version v1.1.0** ein und klicken auf **Erstellen**.
+1. Klicken Sie im Bereich **Tags** auf **Neues Tag**.
+1. Geben Sie im Bedienfeld **Tag erstellen** in das Textfeld **Name** den Wert **v1.1.0-beta** ein, lassen Sie in der Dropdown-Liste **Basierend auf** den Eintrag **main** ausgewählt, geben Sie in das Textfeld **Beschreibung** den Wert **Beta-Version v1.1.0** ein und klicken auf **Erstellen**.
 
     > **Hinweis**: Sie haben das Repository jetzt mit dieser Version markiert (der letzte Commit wird mit der Markierung verknüpft). Sie können Commits aus einer Vielzahl von Gründen markieren und Azure DevOps bietet die Flexibilität, sie zu bearbeiten und zu löschen sowie ihre Berechtigungen zu verwalten.
 
@@ -395,19 +372,18 @@ Das Produktteam hat beschlossen, dass die aktuelle Version der Website als v1.1.
 
 Wenn Sie die verschiedenen Kurslabs in der Reihenfolge durchlaufen, in der sie präsentiert werden, wird die während dieses Labs konfigurierte Branchrichtlinie Übungen in zukünftigen Labs blockieren. Daher möchten wir, dass Sie die konfigurierten Branchrichtlinien entfernen.
 
-1. Navigieren Sie in der Azure DevOps **EShopOnWeb**-Projektansicht zu **Repos**, und wählen Sie **Branches** aus. Wählen Sie die Registerkarte **Meine** im Bereich **Branches** aus.
-2. Zeigen Sie auf der Registerkarte **Meine** des Bereichs **Branches** mit dem Mauszeiger auf den **Mainbranch**-Eintrag, um das Auslassungszeichen (das ...) auf der rechten Seite anzuzeigen.
-3. Klicken Sie auf die Auslassungspunkte, und wählen Sie im Popupmenü **Verzweigungsrichtlinien** aus.
+1. Navigieren Sie in der **eShopOnWeb**-Projektansicht in Azure DevOps zu **Repos**, und wählen Sie **Branches** aus. Wählen Sie die Registerkarte **Meine** im Bereich **Branches** aus.
+1. Zeigen Sie auf der Registerkarte **Meine** des Bereichs **Branches** mit dem Mauszeiger auf den **Mainbranch**-Eintrag, um das Auslassungszeichen (das ...) auf der rechten Seite anzuzeigen.
+1. Klicken Sie auf die Auslassungspunkte, und wählen Sie im Popupmenü **Verzweigungsrichtlinien** aus.
 
     ![Richtlinieneinstellungen](images/policy-settings.png)
 
-4. Deaktivieren Sie auf der Registerkarte **Main** der Repositoryeinstellungen die Option für **Mindestanzahl von Prüfern erfordern**.
-5. Deaktivieren Sie auf der Registerkarte **Main** der Repositoryeinstellungen die Option für **Auf verknüpfte Arbeitselemente überprüfen**.
+1. Deaktivieren Sie auf der Registerkarte **Main** der Repositoryeinstellungen die Option für **Mindestanzahl von Prüfern erfordern**.
+1. Deaktivieren Sie auf der Registerkarte **Main** der Repositoryeinstellungen die Option für **Auf verknüpfte Arbeitselemente überprüfen**.
 
     ![Verzweigungsrichtlinien](images/branch-policies.png)
 
-6. Sie haben jetzt die Branchrichtlinien für den Mainbranch deaktiviert/entfernt.
-    
+1. Sie haben jetzt die Branchrichtlinien für den Mainbranch deaktiviert/entfernt.
 
 ## Überprüfung
 

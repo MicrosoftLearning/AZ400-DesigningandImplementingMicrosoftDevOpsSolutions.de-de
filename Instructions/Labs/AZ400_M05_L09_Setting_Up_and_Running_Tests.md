@@ -48,12 +48,12 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - Der Ordner **.azure** enthält Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Lab-Szenarien verwendet werden.
+    - Der Ordner **infra** enthält die Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarios verwendet werden.
     - Der Ordner **.github** enthält YAML-GitHub-Workflowdefinitionen.
     - Der Ordner **src** enthält die .NET 6-Website, die in den Labszenarien verwendet wird.
 
@@ -115,7 +115,7 @@ Sie können feststellen, dass der Vorgang „Komponententests“ bereits Teil de
 
     > **Funktionstests** werden aus der Perspektive des Benutzenden geschrieben, um die Richtigkeit des Systems basierend auf den Anforderungen sicherzustellen. Im Gegensatz zu Integrationstests, die aus der Perspektive der Entwickler*innen geschrieben werden, um zu überprüfen, ob einige Systemkomponenten korrekt zusammenarbeiten.
 
-16. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderungen direkt in die Hauptverzweigung zu übertragen.
+1. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderungen direkt in die Hauptverzweigung zu übertragen.
 
 #### Aufgabe 4: Überprüfen der Testzusammenfassung
 
