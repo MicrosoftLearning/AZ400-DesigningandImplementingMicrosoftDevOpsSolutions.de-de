@@ -192,6 +192,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
     - Überprüfen Sie, dass **App Service-Typ** auf „Web-App unter Windows“ zeigt.
     - wählen Sie in der Dropdownliste **App Service-Name** den Namen der Web-App aus, die Sie zuvor im Lab bereitgestellt haben (**az400eshoponweb...).
     - **Aktualisieren** Sie im Textfeld **Paket oder Ordner** den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
+    - Erweitern Sie **Anwendungs- und Konfigurationseinstellungen**, und fügen Sie den Wert `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` hinzu.
 1. Bestätigen Sie die Einstellungen im Bereich Assistent, indem Sie auf die Schaltfläche **Hinzufügen** klicken.
 
     > **Hinweis**: Dadurch wird der YAML-Pipelinedefinition automatisch die Bereitstellungsaufgabe hinzugefügt.
@@ -206,6 +207,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
             appType: 'webApp'
             WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
+            AppSettings: '-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development'
     ```
 
     > **Hinweis**: Der **parameter packageForLinux** ist im Kontext dieses Labs irreführend, ist aber für Windows oder Linux gültig.
