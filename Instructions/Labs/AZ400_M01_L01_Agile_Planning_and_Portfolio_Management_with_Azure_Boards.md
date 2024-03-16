@@ -125,7 +125,7 @@ Arbeitsaufgaben spielen in Azure DevOps eine herausragende Rolle. Ob es sich nun
     ![Klicken Sie im Fenster „Boards“>„Arbeitselemente“ auf „Neues Arbeitselement“ >„Epic“](images/m1/EShop-WEB-create_epic_v1.png)
 
 1. Geben Sie im Textfeld **Titel eingeben** den Titel **Produktschulung** ein.
-1. Wählen Sie in der oberen linken Ecke den Eintrag **Nicht zugewiesen** aus, und wählen Sie in der Dropdownliste Ihr Benutzerkonto aus, um das neue Arbeitselement selbst zuzuweisen.
+1. Wählen Sie in der oberen linken Ecke den Eintrag **Nicht zugewiesen** aus, und wählen Sie in der Dropdownliste Ihr Benutzerkonto aus, um das neue Arbeitselement selbst zuzuweisen. Wenn Ihr Name nicht beginnt, beginnen Sie mit der Eingabe Ihres Namens, und klicken Sie auf **Suchen**.
 1. Wählen Sie neben dem Eintrag **Bereich** den Eintrag **eShopOnWeb** und dann in der Dropdownliste **EShop-WEB** aus. Dadurch wird der **Bereich** auf **eShopOnWeb\EShop-WEB** festgelegt.
 1. Wählen Sie neben dem Eintrag **Iteration** den Eintrag **eShopOnWeb** und in der Dropdownliste **Sprint 2** aus. Dadurch wird die **Iteration** auf **eShopOnWeb\Sprint 2** festgelegt.
 1. Klicken Sie zum Abschließen der Änderungen auf **Speichern**. **Schließen Sie es nicht**.
