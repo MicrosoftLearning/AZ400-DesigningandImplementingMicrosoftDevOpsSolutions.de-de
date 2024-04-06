@@ -125,7 +125,7 @@ In dieser Übung importieren Sie die CI-Pipeline und führen sie aus.
 #### Aufgabe 1: Importieren und Ausführen der CI-Pipeline
 
 1. Navigieren Sie zu **Pipelines>Pipelines**
-1. Klicken Sie auf die Schaltfläche **Neue Pipeline**
+1. Klicken Sie auf die Schaltfläche **Neue Pipeline** (oder **Pipeline erstellen**, wenn Sie noch keine anderen Pipelines erstellt haben)
 1. Wählen Sie **Azure Repos Git (YAML)** aus.
 1. Wählen Sie das **eShopOnWeb**-Repository
 1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
@@ -171,10 +171,10 @@ In dieser Aufgabe fügen Sie eine neue Rollenzuweisung hinzu, um Azure App Servi
     echo $roleName
     ```
 
-1. Nach dem Abrufen der Dienstprinzipal-ID und des Rollennamens erstellen wir die Rollenzuweisung durch Ausführen dieses Befehls (ersetzen Sie **rg-az400-container-NAME** durch ihren Ressourcengruppennamen)
+1. Nach dem Abrufen der Dienstprinzipal-ID und des Rollennamens erstellen wir die Rollenzuweisung durch Ausführen dieses Befehls (ersetzen Sie **&lt;rg-az400-container-NAME&gt;** durch ihren Ressourcengruppennamen)
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**rg-az400-container-NAME**
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/<rg-az400-container-NAME>
     ```
 
 Nun sollte die JSON-Ausgabe angezeigt werden, die den Erfolg der Ausführung des Befehls bestätigt.

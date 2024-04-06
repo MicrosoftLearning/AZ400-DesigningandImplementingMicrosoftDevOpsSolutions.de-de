@@ -70,7 +70,7 @@ In dieser Übung überprüfen Sie eine Azure Bicep-Vorlage und vereinfachen sie 
 
 In dieser Aufgabe verwenden Sie Visual Studio Code, um eine Azure Bicep-Vorlage zu erstellen.
 
-1. Navigieren Sie auf der Registerkarte Browser zu Ihrem Azure DevOps-Projekt, und navigieren Sie zu **Repos** und **Dateien**. Öffnen Sie den Ordner `.azure\bicep` und suchen Sie die Datei `simple-windows-vm.bicep`.
+1. Navigieren Sie auf der Registerkarte Browser zu Ihrem Azure DevOps-Projekt, und navigieren Sie zu **Repos** und **Dateien**. Öffnen Sie den Ordner `infra` und suchen Sie die Datei `simple-windows-vm.bicep`.
 
    ![Simple-windows-vm.bicep-Datei](./images/m06/browsebicepfile.png)
 
