@@ -57,7 +57,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-   - Der Ordner **src** enthält die .NET 7-Website, die für die Labszenarien verwendet wird.
+   - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
 
 #### Schritt 2: Erstellen von Azure-Ressourcen
 

@@ -56,7 +56,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - Der Ordner **infra** enthält die Bicep & ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+    - Der Ordner **infra** enthält die Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarios verwendet werden.
     - Der Ordner **.github** enthält YAML-GitHub-Workflowdefinitionen.
     - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
 
@@ -99,7 +99,7 @@ In dieser Aufgabe konfigurieren Sie Ihre virtuelle Maschine im Labor als Azure D
 
 1. Starten Sie in der Lab Virtual Machine (Lab VM) oder auf Ihrem eigenen Computer einen Webbrowser, navigieren Sie zum [Azure DevOps-Portal](https://dev.azure.com) und melden Sie sich mit dem Microsoft-Konto an, das mit Ihrer Azure DevOps-Organisation verbunden ist.
 
-  > **Hinweis**: Der virtuelle Lab-Computer sollte alle erforderlichen Softwarevoraussetzungen installiert haben. Wenn Sie die Installation auf Ihrem eigenen Computer durchführen, müssen Sie .NET 8.0.x-SDKs oder höher installieren, die zum Erstellen des Demoprojekts erforderlich sind. Siehe [Download .NET](https://dotnet.microsoft.com/download/dotnet).
+  > **Hinweis**: Der virtuelle Lab-Computer sollte alle erforderlichen Softwarevoraussetzungen installiert haben. Wenn Sie die Installation auf Ihrem eigenen Computer durchführen, müssen Sie .NET 8. SDKs oder höher installieren, die zum Erstellen des Demoprojekts erforderlich sind. Siehe [Download .NET](https://dotnet.microsoft.com/download/dotnet).
 
 1. Klicken Sie im Azure DevOps-Portal in der oberen rechten Ecke der Azure DevOps-Seite auf das Symbol **Benutzereinstellungen**. Je nachdem, ob Sie die Vorschaufunktionen aktiviert haben oder nicht, sollten Sie entweder ein Element **Sicherheit** oder **Persönliche Zugriffstoken** im Menü sehen. Wenn Sie **Sicherheit** sehen, klicken Sie darauf und wählen Sie dann **Persönliche Zugriffstoken**. Klicken Sie im Bereich **Personal Access Tokens** auf **+ New Token**.
 1. Klicken Sie im Bereich **Neues persönlichen Zugriffstoken erstellen** auf den Link **Alle Bereiche anzeigen** und geben Sie die folgenden Einstellungen an. Klicken Sie dann auf **Erstellen** (bei alle anderen Standardwerte lassen):

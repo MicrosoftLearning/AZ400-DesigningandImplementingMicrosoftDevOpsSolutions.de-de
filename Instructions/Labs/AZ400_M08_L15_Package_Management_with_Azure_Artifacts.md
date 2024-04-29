@@ -110,7 +110,7 @@ In dieser Aufgabe erstellen und veröffentlichen Sie ein selbst entwickeltes ben
 
     Aktivieren Sie das Kontrollkästchen **Platzieren Sie die Projektmappe und das Projekt im selben Verzeichnis**.
 
-1. Klicken Sie auf Weiter. Akzeptieren Sie **.NET 8.0** als Frameworkoption.
+1. Klicken Sie auf Weiter. Akzeptieren Sie **.NET 8** als Frameworkoption.
 1. Bestätigen Sie die Projekterstellung durch Drücken der Schaltfläche **Erstellen**.
 1. Klicken Sie in der Visual Studio-Benutzeroberfläche im Bereich **Solution Explorer** mit der rechten Maustaste auf **Class1.cs**, wählen Sie im Rechtsklick-Menü **Löschen** aus und klicken Sie auf **OK**, wenn Sie zur Bestätigung aufgefordert werden.
 1. Drücken Sie **Strg+Umschalt+B** oder **Klicken Sie mit der rechten Maustaste auf das EShopOnWeb.Shared Projekt** und wählen Sie **Erstellen** aus, um das Projekt zu erstellen.
