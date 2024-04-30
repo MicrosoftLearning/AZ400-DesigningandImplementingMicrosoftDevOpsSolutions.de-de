@@ -75,7 +75,7 @@ Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.ym
 1. Wählen Sie **Azure Repos Git (Yaml)**.
 1. Wählen Sie das Repository **eShopOnWeb** aus.
 1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
-1. Wählen Sie die Datei **/.ado/eshoponweb-ci.yml** aus und klicken Sie dann auf **Weiter**.
+1. Wählen Sie die **Haupt**-Verzweigung und die Datei **/.ado/eshoponweb-ci.yml** aus, und klicken Sie dann auf **Weiter**.
 1. Klicken Sie auf die Schaltfläche **Ausführen**, um die Pipeline auszuführen.
 1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
 
@@ -141,7 +141,7 @@ Importieren Sie nun die CD-Pipeline mit dem Namen [eshoponweb-cd-webapp-code.yml
 1. Wählen Sie **Azure Repos Git (Yaml)**.
 1. Wählen Sie das Repository **eShopOnWeb** aus.
 1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
-1. Wählen Sie die Datei **/.ado/eshoponweb-cd-webapp-code.yml** und klicken Sie dann auf **Weiter**.
+1. Wählen Sie die **Haupt**-Verzweigung und die Datei **/.ado/eshoponweb-cd-webapp-code.yml** aus, und klicken Sie dann auf **Weiter**.
 1. Passen Sie in der YAML-Pipelinedefinition Folgendes an:
    - Ersetzen Sie **IHRE-ABONNEMENT-ID** durch Ihre Azure-Abonnement-ID.
    - **az400eshop-NAME** ersetzen Sie NAME, um ihn global eindeutig zu machen.

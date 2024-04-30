@@ -153,7 +153,7 @@ In dieser Aufgabe installieren und konfigurieren Sie die SonarCloud Azure DevOps
 
 1. Im Fenster **Wo befindet Sich Ihr Code?** wählen Sie **Azure Repos Git (YAML)** aus. Wählen Sie dann das **eShopOnWeb-Repository** aus.
 
-1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Geben Sie den folgenden Pfad ein **/.ado/eshoponweb-sonar-ci.yml**, und klicken Sie auf **Weiter**. Überprüfen Sie die Pipeline mit den Details, die im nächsten Schritt **(einige Einstellungen sollten ersetzt werden)** erwähnt werden.
+1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Verzweigung auswählen: **Haupt**, geben Sie den Pfad **/.ado/eshoponweb-sonar-ci.yml** an, und klicken Sie auf **Weiter**. Überprüfen Sie die Pipeline mit den Details, die im nächsten Schritt **(einige Einstellungen sollten ersetzt werden)** erwähnt werden.
 
 1. Zurück auf der Sonarcloud-Website klicken Sie auf der Seite **Analysieren eines Projekts mit Azure Pipelines** im Abschnitt **Azure Pipelines konfigurieren** auf **.NET**. Dadurch wird eine Abfolge von Schritten angezeigt, die zum **Vorbereiten der Analysekonfiguration**, **Ausführen der Codeanalyse** und **Veröffentlichen des Quality Gate-Ergebnisses** erforderlich sind. Sie benötigen diese Anweisungen, um die **Aufgabe Analysekonfiguration vorbereiten in der YAML-Pipeline, die im vorherigen Schritt angegeben wurde, zu ändern.**
 

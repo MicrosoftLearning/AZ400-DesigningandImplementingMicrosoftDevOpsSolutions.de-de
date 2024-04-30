@@ -100,7 +100,7 @@ Jedes neue Projekt ist mit einem Standardteam konfiguriert, das dem Projektnamen
 
 1. Während Sie sich noch im Bereich **Projekteinstellungen/Boards/Teamkonfiguration** befinden, wählen Sie oben im Bereich die Registerkarte **Bereiche** aus. Dort werden Sie einen automatisch generierten Bereich mit dem Namen finden, der dem Namen des Teams entspricht.
 
-![Wählen Sie in „Bereiche“ die Option „eShopOnWeb\EShop-Web“ aus](images/m1/EShop-WEB-areas_v1.png)
+    ![Wählen Sie in „Bereiche“ die Option „eShopOnWeb\EShop-Web“ aus](images/m1/EShop-WEB-areas_v1.png)
 
 1. Klicken Sie neben dem Eintrag für den **Standardbereich** auf das Auslassungszeichen (...) und wählen Sie in der Dropdownliste **Unterbereiche einschließen** aus.
 
@@ -137,7 +137,7 @@ Arbeitsaufgaben spielen in Azure DevOps eine herausragende Rolle. Ob es sich nun
     > **Hinweis**: Das Formular Arbeitselemente enthält alle relevanten Einstellungen für Arbeitselemente. Dazu gehören Details darüber, wem sie zugewiesen ist, ihr Status in Bezug auf viele Parameter und alle zugehörigen Informationen und der Verarbeitungsverlauf seit ihrer Erstellung. Einer der wichtigsten Bereiche dabei sind **zugehörige Aufgaben**. Wir werden eine der Möglichkeiten erkunden, um diesem Epic ein Feature hinzuzufügen.
 
 1. Wählen Sie im Abschnitt **Verwandte Aufgaben** unten rechts den Eintrag **Link hinzufügen** aus, und wählen Sie in der Dropdownliste **Neues Element** aus.
-1. Wählen Sie im Bereich **Link hinzufügen** in der Dropdownliste **Linktyp** die Option **Untergeordnetes Element** aus. Wählen Sie als Nächstes in der Dropdownliste **Arbeitselementtyp** im Textfeld **Titel** die Option **Feature** aus, geben Sie **Schulungsdashboard** ein, und klicken Sie auf **OK**.
+1. Wählen Sie im Bereich **Link hinzufügen** in der Dropdownliste **Linktyp** die Option **Untergeordnetes Element** aus. Wählen Sie als Nächstes in der Dropdownliste **Arbeitselementtyp** die Option **Feature** aus, und geben Sie im Textfeld **Titel** **Schulungsdashboard** ein.
 
     ![Titel "Schulungsdashboard" einschließen und auf "OK" klicken](images/m1/EShop-WEB-create_child_feature.png)
 
@@ -145,7 +145,7 @@ Arbeitsaufgaben spielen in Azure DevOps eine herausragende Rolle. Ob es sich nun
 
 1. Klicken Sie auf **Link hinzufügen**, um das untergeordnete Element zu speichern. Klicken Sie im Bereich **Trainingsdashboard** (Neues Feature) auf **Speichern und Schließen**.
 
-![Epic mit verknüpften untergeordneten Elementen](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
+    ![Epic mit verknüpften untergeordneten Elementen](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
 1. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals in der Liste der **Boards**-Elemente die Option **Boards** aus.
 1. Wählen Sie im Bereich **Boards** den Eintrag **EShop-WEB Boards** aus. Dadurch wird das Board für dieses bestimmte Team geöffnet.
@@ -232,17 +232,17 @@ Nach Fertigstellung des Sprintplans sollten Ihre Sprint-Backlogs alle Informatio
 
 1. Wählen Sie die Registerkarte **Kapazität** der Ansicht **Sprint** aus.
 
-![Sprintkapazitätsansicht](images/m1/EShop-WEB-capacity_v1.png)
+    ![Sprintkapazitätsansicht](images/m1/EShop-WEB-capacity_v1.png)
 
-    > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
+    > **Hinweis**: Mit dieser Ansicht können Sie definieren, welche Aktivitäten und Kapazitätsstufe Benutzer*innen übernehmen können.
 
 1. Klicken Sie auf der Registerkarte **Kapazität** der Ansicht **Sprints** auf **+Benutzer*in hinzufügen**, und wählen Sie Ihr Benutzerkonto aus. Legen Sie für diese(n) Benutzer*in das Feld **Aktivität** auf **Entwicklung** fest, und geben Sie im Textfeld **Kapazität pro Tag** den Wert **1** ein.
 
     > **Hinweis**: Dies stellt 1 Stunde Entwicklungsarbeit pro Tag dar. Beachten Sie, dass Sie zusätzliche Aktivitäten pro Benutzer*in hinzufügen können, wenn diese mehr tun als nur Entwicklung.
 
-![Festlegen der Entwicklungskapazität für Benutzer*innen](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
+    ![Festlegen der Entwicklungskapazität für Benutzer*innen](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
 
-    > **Note**: Let's assume you're also going to take some vacation. Which should be added to the capacity view too.
+    > **Hinweis:** Nehmen wir an, Sie werden auch Urlaub nehmen. Dieser sollte der Kapazitätsansicht ebenfalls hinzugefügt werden.
 
 1. Klicken Sie auf der Registerkarte **Kapazität** der Ansicht **Sprints** direkt neben dem Eintrag, der Ihr Benutzerkonto darstellt, in der Spalte **Freie Tage** auf den Eintrag **0 Tage**. Dadurch wird ein Bereich angezeigt, in dem Sie Ihre Tage einstellen können.
 1. Verwenden Sie im angezeigten Bereich die Kalenderansicht, um Ihren Urlaub auf fünf Arbeitstage während des aktuellen Sprints (innerhalb der nächsten drei Wochen) festzulegen, und klicken Sie nach Abschluss auf **OK**.
@@ -376,7 +376,7 @@ Um die Fähigkeit eines Teams zu verbessern, dauerhaft hochwertige Software bere
 
     > **Hinweis**: Der Status **QA Approved** enthält jetzt die Spalten **In Bearbeitung** und **Fertig**. Sie können auch auf das Informationssymbol (mit Buchstaben **i** in einem Kreis) neben der Spaltenüberschrift klicken, um die **Definition von Fertig** zu lesen.
 
-![Geteilte Spalten für „QA genehmigt“](images/m1/EShop-WEB-qa_2columns_v1.png)
+    ![Geteilte Spalten für „QA genehmigt“](images/m1/EShop-WEB-qa_2columns_v1.png)
 
 1. Klicken Sie im Bereich **Boards** auf das Zahnradsymbol **Boardeinstellungen konfigurieren** (direkt rechts neben dem Trichtersymbol).
 

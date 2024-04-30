@@ -52,7 +52,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - Der Ordner **infra** enthält die Bicep & ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+    - Der Ordner **infra** enthält die Bicep- und ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarios verwendet werden.
     - Der Ordner **.github** enthält YAML-GitHub-Workflowdefinitionen.
     - Der Ordner **src** enthält die .NET 6-Website, die in den Labszenarien verwendet wird.
 
@@ -71,7 +71,7 @@ Beginnen wir mit dem Importieren der Buildpipeline mit dem Namen [eshoponweb-ci-
 1. Wählen Sie **Azure Repos Git (YAML)** aus.
 1. Wählen Sie das **eShopOnWeb**-Repository
 1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus
-1. Wählen Sie die Datei **/.ado/eshoponweb-ci-pr.yml** aus, und klicken Sie dann auf **Weiter**
+1. Wählen Sie die **Haupt**-Verzweigung und die Datei **/.ado/eshoponweb-ci-pr.yml** aus, und klicken Sie dann auf **Weiter**.
 
     Die Buildpipeline besteht aus den folgenden Aufgaben:
     - **DotNet Restore**: Mit NuGetPackage Restore können Sie alle Abhängigkeiten Ihres Projekts installieren, ohne sie in der Quellcodeverwaltung speichern zu müssen.
@@ -131,7 +131,7 @@ Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.ym
 1. Wählen Sie **Azure Repos Git** (YAML) aus.
 1. Wählen Sie das Repository **eShopOnWeb** aus.
 1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
-1. Wählen Sie die Datei **/.ado/eshoponweb-ci.yml** aus und klicken Sie dann auf **Weiter**.
+1. Wählen Sie die **Haupt**-Verzweigung und die Datei **/.ado/eshoponweb-ci.yml** aus, und klicken Sie dann auf **Weiter**.
 
     Die CI-Definition umfasst die folgenden Aufgaben:
     - **DotNet Restore**: Mit NuGetPackage Restore können Sie alle Abhängigkeiten Ihres Projekts installieren, ohne sie in der Quellcodeverwaltung speichern zu müssen.
