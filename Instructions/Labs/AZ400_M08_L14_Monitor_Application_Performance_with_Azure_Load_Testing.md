@@ -105,7 +105,62 @@ In dieser Aufgabe erstellen Sie eine Azure-Webanwendung mithilfe der Cloud Shel
 
 In dieser Übung werden Sie CI/CD-Pipelines-as-Code mit YAML in Azure DevOps konfigurieren.
 
-#### Aufgabe 1: Ein YAML-Build und eine Bereitstellungsdefinition hinzufügen
+#### Aufgabe 1: (überspringen, wenn erledigt) Erstellen einer Dienstverbindung für die Bereitstellung
+
+In dieser Aufgabe erstellen Sie mithilfe der Azure CLI ein Dienstprinzipal, der es Azure DevOps ermöglicht:
+
+- Ressourcen in Ihrem Azure-Abonnement bereitstellen.
+- Sie haben Lesezugriff auf die später erstellten Key Vault-Geheimnisse.
+
+> **Hinweis**: Wenn Sie bereits über ein Dienstprinzipal verfügen, können Sie direkt mit der nächsten Aufgabe fortfahren.
+
+Sie benötigen ein Dienstprinzipal, um Azure-Ressourcen über Azure Pipelines bereitzustellen. Da Sie Geheimnisse in einer Pipeline abrufen werden, müssen Sie dem Dienst bei der Erstellung des Azure Key Vault eine Berechtigung erteilen.
+
+Ein Dienstprinzipal wird automatisch von Azure Pipelines erstellt, wenn Sie eine Verbindung zu einem Azure-Abonnement innerhalb einer Pipeline-Definition herstellen oder wenn Sie eine neue Dienstverbindung über die Projekteinstellungsseite erstellen (automatische Option). Sie können den Dienstprinzipal auch manuell über das Portal oder mithilfe von Azure CLI erstellen und ihn projektübergreifend wiederverwenden.
+
+1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, und das in dem in dem Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
+1. Klicken Sie im Azure-Portal auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Textfeld für die Suche im oberen Bereich der Seite befindet.
+1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
+
+   >**Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
+
+1. Führen Sie an der Eingabeaufforderung **Bash** im Bereich **Cloud Shell** die folgenden Befehle aus, um die Werte der Attribute „Azure-Abonnement-ID“ und „Abonnementname“ abzurufen:
+
+    ```bash
+    az account show --query id --output tsv
+    az account show --query name --output tsv
+    ```
+
+    > **Hinweis**: Kopieren Sie beide Werte in eine Textdatei. Sie werden sie später in diesem Lab benötigen.
+
+1. Führen Sie an der Eingabeaufforderung **Bash**im Bereich **Cloud Shell** den folgenden Befehl aus, um ein Dienstprinzipal zu erstellen (ersetzen Sie **myServicePrincipalName** durch eine beliebige eindeutige Zeichenfolge aus Buchstaben und Ziffern) und **mySubscriptionID** durch Ihre Azure subscriptionId :
+
+    ```bash
+    az ad sp create-for-rbac --name myServicePrincipalName \
+                         --role contributor \
+                         --scopes /subscriptions/mySubscriptionID
+    ```
+
+    > **Hinweis**: Der Befehl generiert eine JSON-Ausgabe. Kopieren Sie die Ausgabe in eine Textdatei. Sie benötigen diese später in diesem Lab.
+
+1. Starten Sie als Nächstes auf dem Laborcomputer einen Webbrowser, navigieren Sie zum Azure DevOps **eShopOnWeb**-Projekt. Klicken Sie auf **Project Einstellungen>Dienstverbindungen (unter Pipelines)** und **Neue Dienstverbindung**.
+
+    ![Neue Dienstverbindung](images/new-service-connection.png)
+
+1. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus (Sie müssen möglicherweise scrollen).
+
+1. Wählen Sie **Dienstprinzipal (manuell)** und klicken Sie auf **Weiter**.
+
+1. Füllen Sie die leeren Felder mit den Informationen aus, die während der vorherigen Schritte gesammelt wurden:
+    - Abonnement-ID und -Name.
+    - Dienstprinzipal-ID (appId), Dienstprinzipalschlüssel (Kennwort) und Mandanten-ID (Mandant).
+    - Geben Sie in **Name der Dienstverbindung** **azure subs** ein. Auf diesen Namen wird in YAML-Pipelines verwiesen, wenn eine Azure DevOps-Dienstverbindung erforderlich ist, um mit Ihrem Azure-Abonnement zu kommunizieren.
+
+    ![Azure-Serviceverbindung](images/azure-service-connection.png)
+
+1. Klicken Sie auf **Überprüfen und speichern**.
+
+#### Aufgabe 2: Hinzufügen einer YAML-Build- und Bereitstellungsdefinition
 
 In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition hinzu.
 
@@ -188,7 +243,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 1. Klicken Sie auf der rechten Seite des Portals auf **Assistent anzeigen**. Suchen Sie in der Liste der Aufgaben nach der Aufgabe **Azure App Service-Bereitstellung**, und wählen Sie diese aus.
 1. Geben Sie im Bereich **Azure-App Sevice-Bereitstellung** die folgenden Einstellungen an, und klicken Sie auf **Hinzufügen**:
 
-    - wählen Sie in der Dropdownliste **Azure-Abonnements** das Azure-Abonnement aus, in dem Sie die Azure-Ressourcen weiter oben im Lab bereitgestellt haben. Falls erforderlich (nur wenn dies die erste von Ihnen erstellte Pipeline ist), klicken Sie auf **Autorisieren**, und authentifizieren Sie sich, wenn Sie dazu aufgefordert werden, indem Sie dasselbe Benutzerkonto verwenden, das Sie während der Azure-Ressourcenbereitstellung verwendet haben.
+    - wählen Sie in der Dropdown-Liste **Azure-Abonnement** die soeben erstellte Dienstverbindung.
     - Überprüfen Sie, dass **App Service-Typ** auf „Web-App unter Windows“ zeigt.
     - wählen Sie in der Dropdownliste **App Service-Name** den Namen der Web-App aus, die Sie zuvor im Lab bereitgestellt haben (**az400eshoponweb...).
     - **Aktualisieren** Sie im Textfeld **Paket oder Ordner** den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
@@ -203,7 +258,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
         - task: AzureRmWebAppDeployment@4
           inputs:
             ConnectionType: 'AzureRM'
-            azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+            azureSubscription: 'SERVICE CONNECTION NAME'
             appType: 'webApp'
             WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
