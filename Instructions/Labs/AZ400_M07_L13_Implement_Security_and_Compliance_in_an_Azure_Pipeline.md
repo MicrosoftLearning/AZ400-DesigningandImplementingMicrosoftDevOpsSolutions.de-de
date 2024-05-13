@@ -101,7 +101,7 @@ In dieser Aufgabe erstellen Sie eine CI-Buildpipeline innerhalb des Azure DevOps
 
 1. Im Fenster **Wo befindet Sich Ihr Code?** wählen Sie **Azure Repos Git (YAML)** aus. Wählen Sie dann das **eShopOnWeb-Repository** aus.
 
-1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Geben Sie den folgenden Pfad **/.ado/eshoponweb-ci-mend.yml** an, und klicken Sie auf **Weiter**.
+1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Verzweigung auswählen: **Haupt**, geben Sie den Pfad **/.ado/eshoponweb-ci-mend.yml** an, und klicken Sie auf **Weiter**.
 
     ![Wählen Sie Pipeline aus.](images/select-pipeline.png)
 

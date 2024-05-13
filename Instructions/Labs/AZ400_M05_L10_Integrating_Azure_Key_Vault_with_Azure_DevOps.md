@@ -13,7 +13,6 @@ lab:
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://learn.microsoft.com/azure/devops/server/compatibility) erforderlich.
 
 - **Einrichten einer Azure DevOps-Organisation**: Wenn Sie nicht bereits eine Azure DevOps-Organisation haben, die Sie für dieses Lab verwenden können, müssen Sie diese erstellen, indem Sie die unter [Erstellen einer Organisation oder Projektsammlung](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization) beschriebenen Anweisungen befolgen.
-
 - Identifizieren Sie ein vorhandenes Azure-Abonnement, oder erstellen Sie ein neues Abonnement.
 
 ## Übersicht über das Labor
@@ -137,7 +136,7 @@ In dieser Aufgabe importieren Sie eine bestehende CI YAML-Pipeline-Definition, �
 
 1. Im Fenster **Wo befindet Sich Ihr Code?** wählen Sie **Azure Repos Git (YAML)** aus. Wählen Sie dann das **eShopOnWeb-Repository** aus.
 
-1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Geben Sie den folgenden Pfad **/.ado/eshoponweb-ci-dockercompose.yml** an und klicken Sie auf **Fortfahren**.
+1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Verzweigung auswählen: **Haupt**, geben Sie den Pfad **/.ado/eshoponweb-ci-dockercompose.yml** an, und klicken Sie auf **Weiter**.
 
     ![Wählen Sie Pipeline aus.](images/select-ci-container-compose.png)
 
@@ -235,7 +234,7 @@ In dieser Aufgabe importieren Sie eine CD-Pipeline, passen sie an und führen si
 
 1. Im Fenster **Wo befindet Sich Ihr Code?** wählen Sie **Azure Repos Git (YAML)** aus. Wählen Sie dann das **eShopOnWeb-Repository** aus.
 
-1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Geben Sie den folgenden Pfad an **/.ado/eshoponweb-cd-aci.yml** und klicken Sie auf **Fortfahren**.
+1. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Vorhandene Azure Pipelines YAML-Datei** aus. Verzweigung auswählen: **Haupt**, geben Sie den Pfad **/.ado/eshoponweb-cd-aci.yml** an, und klicken Sie auf **Weiter**.
 
 1. Passen Sie in der YAML-Pipelinedefinition Folgendes an:
 
