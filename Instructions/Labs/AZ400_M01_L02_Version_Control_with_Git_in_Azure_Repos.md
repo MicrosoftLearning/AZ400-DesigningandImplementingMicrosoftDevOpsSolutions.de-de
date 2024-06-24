@@ -127,7 +127,7 @@ In dieser Aufgabe durchlaufen Sie den Prozess des Klonens eines Git-Repositorys 
     > **Hinweis**: Um alle relevanten Befehle anzuzeigen, können Sie zunächst **Git** eingeben.
 
 1. Fügen Sie in dem Textfeld **Repository-URL bereitstellen oder Repositoryquelle auswählen** aus, fügen Sie die URL des Repositoryklons ein, die Sie zuvor in dieser Aufgabe kopiert haben, und drücken Sie die Taste **Enter**.
-1. Navigieren Sie im Dialogfeld **Ordner auswählen** zum Laufwerk C:, erstellen Sie einen neuen Ordner namens **Git**, wählen Sie ihn aus, und klicken Sie dann auf **Repositoryspeicherort auswählen**.
+1. Navigieren Sie im Dialogfeld **Ordner auswählen** zum Laufwerk C:, erstellen Sie einen neuen Ordner mit dem Namen **Git**, wählen Sie ihn aus und klicken Sie dann auf **Als Repositoryziel auswählen**.
 1. Melden Sie sich an Ihrem Azure-DevOps-Konto an, wenn die Aufforderung angezeigt wird.
 1. Klicken Sie nach Abschluss des Klonvorgangs in Visual Studio Code auf **Öffnen**, um das geklonte Repository zu öffnen.
 
@@ -255,8 +255,8 @@ In dieser Aufgabe erstellen Sie eine Branch mit Hilfe von Visual Studio Code.
 
     ![Verzweigung erstellen](images/create-branch.png)
 
+1. Legen Sie im Textfeld **Wählen Sie einen Verweis zum Erstellen den Verzweigung aus** **Main** als Verweisverzweigung fest.
 1. Geben Sie in das Textfeld **Branchname** **dev** ein, um die neue Branch anzugeben und drücken Sie **Eingabe**.
-1. Wählen Sie im Textfeld **Wählen Sie eine Referenz aus, von der aus Sie die Branch 'dev' erstellen wollen**, wählen Sie **main** als Referenzbranch.
 
     > **Anmerkung**: An dieser Stelle wird automatisch in die **dev**-Branch gewechselt.
 

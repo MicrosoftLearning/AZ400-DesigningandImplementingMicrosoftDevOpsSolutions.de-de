@@ -165,7 +165,7 @@ In dieser Aufgabe konfigurieren Sie Ihre virtuelle Maschine im Labor als Azure D
 1. Klicken Sie in der Liste der Projekte auf die Kachel, die Ihr Projekt **EShopOnWeb** darstellt.
 1. Klicken Sie im Bereich **eShopOnWeb** im vertikalen Navigationsbereich auf der linken Seite im Abschnitt **Pipelines** auf **Pipelines**.
 1. Wählen Sie auf der Registerkarte **Zuletzt verwendet** im Bereich **Pipelines** den Eintrag **eShopOnWeb** aus, und wählen Sie im Bereich **eShopOnWeb** die Option **Bearbeiten** aus.
-1. Ersetzen Sie im Bearbeitungsbereich **eShopOnWeb** in der vorhandenen YAML-basierten Pipeline Zeile 13, die Folgendes besagt: `vmImage: windows-latest` Angabe des Ziel-Agentpools mit dem folgenden Inhalt, Angabe des neu erstellten selbst gehosteten Agentpools:
+1. Ersetzen Sie im Bearbeitungsbereich **eShopOnWeb** in der vorhandenen YAML-basierten Pipeline Zeile 13, die Folgendes besagt: `vmImage: ubuntu-latest` Angabe des Ziel-Agentpools mit dem folgenden Inhalt, Angabe des neu erstellten selbst gehosteten Agentpools:
 
     ```yaml
     name: az400m03l03a-pool
@@ -173,11 +173,11 @@ In dieser Aufgabe konfigurieren Sie Ihre virtuelle Maschine im Labor als Azure D
     - Agent.Name -equals az400m03-vm0
     ```
 
-    > **WARNUNG**: Seien Sie vorsichtig beim Kopieren/Einfügen, stellen Sie sicher, dass Sie die gleiche Einrückung wie oben gezeigt haben.
+    > **WARNUNG**: Achten Sie beim Kopieren/Einfügen darauf, dass Sie den gleichen Einzug wie oben gezeigt haben.
 
     ![Yaml-Poolsyntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
-1. Klicken Sie im Bearbeitungsbereich **EShopOnWeb** in der oberen rechten Ecke auf **Speichern und Ausführen**. Dadurch wird der Build automatisch auf der Grundlage dieser Pipeline ausgelöst.
+1. Klicken Sie im Bearbeitungsbereich **eShopOnWeb** in der oberen rechten Ecke auf **Überprüfen und Speichern**. Dadurch wird der Build automatisch auf der Grundlage dieser Pipeline ausgelöst.
 1. Klicken Sie im Azure DevOps-Portal im vertikalen Navigationsbereich auf der linken Seite im Abschnitt **Pipelines** auf **Pipelines**. Je nach Ihrem Lab-Setup werden Sie möglicherweise von der Pipeline zur Eingabe von Berechtigungen aufgefordert. Klicken Sie auf **Zulassen**, um die Ausführung der Pipeline zuzulassen. 
 1. Klicken Sie auf der Registerkarte **Zuletzt verwendet** des Bereichs **Pipelines** auf den Eintrag **eShopOnWeb**. Wählen Sie auf der Registerkarte **Ausführungen** im Bereich **eShopOnWeb** die letzte Ausführung aus. Scrollen Sie im Bereich **Zusammenfassung** der Ausführung nach unten. Klicken Sie im Abschnitt **Aufträge** auf **Phase 1**, und überwachen Sie den Auftrag bis zum erfolgreichen Abschluss.
 
@@ -186,7 +186,7 @@ In dieser Aufgabe konfigurieren Sie Ihre virtuelle Maschine im Labor als Azure D
 1. Stoppen und entfernen Sie den Agent-Dienst, indem Sie `.\config.cmd remove` über die Eingabeaufforderung ausführen.
 1. Löschen Sie den Agent-Pool.
 1. Widerrufen Sie das PAT-Token.
-1. Machen Sie die Änderungen in der Datei **eshoponweb-ci-pr.yml** rückgängig, indem Sie von „Repos/.ado/eshoponweb-ci-pr.yml“ zu ihr navigieren, **Bearbeiten** auswählen und die Zeilen 13-15 (den Agentpoolausschnitt) entfernen und die `vmImage: windows-latest` wieder in den ursprünglichen Zustand zurück ändern. (Dies liegt daran, dass Sie dieselbe Beispielpipelinedatei in einer zukünftigen Labübung verwenden werden.)
+1. Machen Sie die Änderungen in der Datei **eshoponweb-ci-pr.yml** rückgängig, indem Sie von „Repos/.ado/eshoponweb-ci-pr.yml“ zu ihr navigieren, **Bearbeiten** auswählen und die Zeilen 13-15 (den Agentpoolausschnitt) entfernen und die `vmImage: ubuntu-latest` wieder in den ursprünglichen Zustand zurück ändern. (Dies liegt daran, dass Sie dieselbe Beispielpipelinedatei in einer zukünftigen Labübung verwenden werden.)
 
 ![Wiederherstellen des Pipelinepools auf vmImage-Einstellungen](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 

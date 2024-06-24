@@ -143,7 +143,7 @@ Arbeitsaufgaben spielen in Azure DevOps eine herausragende Rolle. Ob es sich nun
 
     > **Hinweis:** Beachten Sie im Bereich **Schulungsdashboard**, dass die Zuordnung, der **Bereich** und die **Iteration** bereits auf die gleichen Werte wie das Epic festgelegt sind, auf dem das Feature basiert. Darüber hinaus wird das Feature automatisch mit dem übergeordneten Element verknüpft, aus dem es erstellt wurde.
 
-1. Klicken Sie auf **Link hinzufügen**, um das untergeordnete Element zu speichern. Klicken Sie im Bereich **Trainingsdashboard** (Neues Feature) auf **Speichern und Schließen**.
+1. Klicken Sie auf **OK**, um das untergeordnete Element zu speichern. Klicken Sie im Bereich **Trainingsdashboard** (Neues Feature) auf **Speichern und Schließen**.
 
     ![Epic mit verknüpften untergeordneten Elementen](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
@@ -182,7 +182,7 @@ Arbeitsaufgaben spielen in Azure DevOps eine herausragende Rolle. Ob es sich nun
     > **Hinweis**: Sie können die Karten für Arbeitsaufgabe auch vergrößern, um bequem alle bearbeitbaren Details zu erreichen.
 
 1. Zeigen Sie mit dem Mauszeiger auf das Rechteck der Arbeitsaufgabe, die Sie in **Genehmigt** verschoben haben. Dadurch wird das nach unten zeigende Caretsymbol angezeigt.
-1. Klicken Sie auf das nach unten zeigende Caretsymbol, um die Arbeitsaufgabenkarte zu erweitern, wählen Sie den Eintrag **Nicht zugewiesen** aus, und wählen Sie in der Liste der Benutzerkonten Ihr Konto aus, um sich die verschobene PBI selbst zuzuweisen.
+1. Klicken Sie auf das nach unten weisende Caretzeichen, um die Arbeitselementkarte zu erweitern, ersetzen Sie den Eintrag **Nicht zugewiesen** durch Ihren Namen, und wählen Sie dann Ihr Konto aus, um sich das verschobene PBI selbst zuzuweisen.
 1. Ziehen Sie auf der Registerkarte **Board** im Bereich **EShop-WEB** das zweite Arbeitselement namens **Als Kundschaft möchte ich meine kürzlich angesehenenTutorials sehen** von Status **Neu** auf **Ausgeliefert**.
 1. Ziehen Sie auf der Registerkarte **Board** im Bereich **EShop-WEB** das dritte Arbeitselement namens **Als Kundschaft möchte ich neue Tutorials anfordern** von Status **Neu** auf **Fertig**.
 
@@ -198,7 +198,7 @@ Arbeitsaufgaben spielen in Azure DevOps eine herausragende Rolle. Ob es sich nun
 
     > **Hinweis**: Sie können das zweite Pluszeichen direkt links vom ersten Backlogelement verwenden, um eine neue Aufgabe hinzuzufügen.
 
-1. Klicken Sie auf der Registerkarte **Backlog** in der oberen linken Ecke des Bereichs **EShop-WEB** auf das zweite Pluszeichen von oben, das neben der ersten Arbeitsaufgabe. Dadurch wird der Bereich **NEUE AUFGABE** angezeigt.
+1. Klicken Sie auf der Registerkarte **Backlog** im Bereich **EShop-WEB** in der oberen linken Ecke auf das Pluszeichen neben dem ersten Arbeitselement. Dadurch wird der Bereich **NEUE AUFGABE** angezeigt.
 
     ![Klicken Sie auf "+", um die Aufgabe zu erstellen.](images/m1/new_task_v1.png)
 
@@ -236,7 +236,7 @@ Nach Fertigstellung des Sprintplans sollten Ihre Sprint-Backlogs alle Informatio
 
     > **Hinweis**: Mit dieser Ansicht können Sie definieren, welche Aktivitäten und Kapazitätsstufe Benutzer*innen übernehmen können.
 
-1. Klicken Sie auf der Registerkarte **Kapazität** der Ansicht **Sprints** auf **+Benutzer*in hinzufügen**, und wählen Sie Ihr Benutzerkonto aus. Legen Sie für diese(n) Benutzer*in das Feld **Aktivität** auf **Entwicklung** fest, und geben Sie im Textfeld **Kapazität pro Tag** den Wert **1** ein.
+1. Legen Sie auf der Registerkarte **Kapazität** der Ansicht **Sprints** für Ihr Benutzerkonto das Feld **Aktivität** auf **Entwicklung** fest, und geben Sie **1** in das Textfeld ** Kapazität pro Tag** ein. Klicken Sie anschließend auf **Speichern**.
 
     > **Hinweis**: Dies stellt 1 Stunde Entwicklungsarbeit pro Tag dar. Beachten Sie, dass Sie zusätzliche Aktivitäten pro Benutzer*in hinzufügen können, wenn diese mehr tun als nur Entwicklung.
 
@@ -266,7 +266,7 @@ Nach Fertigstellung des Sprintplans sollten Ihre Sprint-Backlogs alle Informatio
 
     > **Hinweis**: Eine Möglichkeit, dieses Kapazitätsproblem zu beheben, besteht darin, die Aufgabe in eine zukünftige Iteration zu verschieben. Dafür gibt es mehrere Möglichkeiten. Sie können die Aufgabe beispielsweise hier öffnen und im Bereich mit den Aufgabendetails bearbeiten. Ein weiterer Ansatz wäre die Verwendung der **Backlog**-Ansicht, die eine Inlinemenüoption zum Verschieben bereitstellt. Zu diesem Zeitpunkt sollten Sie die Aufgabe jedoch noch nicht verschieben.
 
-1. Wählen Sie auf der Registerkarte **Taskboard** der Ansicht **Sprints** auf der Symbolleiste auf der rechten Seite das Symbol **Ansichtsoptionen** aus (direkt links neben dem Trichtersymbol), und wählen Sie in der Dropdownliste **Ansichtsoptionen** den Eintrag **Zugewiesen zu=** aus.
+1. Wählen Sie auf der Registerkarte **Taskboard** der **Sprints**-Ansicht auf der Symbolleiste auf der rechten Seite das Symbol  **Ansichtsoptionen** (direkt links neben dem Trichtersymbol) aus und dann in der Dropdownliste **Ansichtsoptionen** den Eintrag **Personen**.
 
     > **Hinweis**: Dadurch wird Ihre Ansicht so angepasst, dass Sie den Fortschritt von Aufgaben nach Person statt nach Backlog-Element überprüfen können.
 
@@ -277,7 +277,7 @@ Nach Fertigstellung des Sprintplans sollten Ihre Sprint-Backlogs alle Informatio
 
     > **Hinweis**: Dadurch werden alle Karten grün gefärbt, wenn sie die im Abschnitt **Regelkriterien** direkt darunter festgelegten Regelkriterien erfüllen.
 
-1. Wählen Sie im Abschnitt **Regelkriterien** in der Dropdown-Liste **Feld** den Eintrag **Aktivität**, in der Dropdown-Liste **Operator** den Eintrag **=** und in der Dropdown-Liste **Wert** den Eintrag **Entwicklung**.
+1. Wählen Sie im Abschnitt **Regelkriterien** **+ Neue Klausel hinzufügen** und dann in der Dropdownliste **Feld** **Aktivität** aus. Anschließend wählen Sie in der Dropdownliste **Operator** **=** und in der Dropdownliste **Wert** **Entwicklung** aus.
 
     ![Fenster „Einstellungen“: Stellen Sie sicher, dass alle Felder über die erwähnten Informationen verfügen.](images/m1/EShop-WEB-styles_v1.png)
 
@@ -349,9 +349,9 @@ Um die Fähigkeit eines Teams zu verbessern, dauerhaft hochwertige Software bere
     ![Klicken Sie "Speichern & Schließen" im Bereich "Einstellungen"](images/m1/EShop-WEB-qa_column_v1.png)
 
 1. Wählen Sie im Bereich **Einstellungen** erneut die Registerkarte **Spalten** aus. Beachten Sie die Auslassungspunkte neben der von Ihnen erstellten Spalte **QA genehmigt**. Wählen Sie zweimal **Nach rechts verschieben** aus, sodass die Spalte „QA genehmigt“ zwischen **Committet** und **Fertig** positioniert wird.
-1. Klicken Sie im Bereich **Einstellungen** auf **Speichern**.
+1. Klicken Sie im Bereich **Einstellungen** auf **Speichern und Schließen**.
 
-1. **Aktualisieren** Sie das **Boards-Portal**, damit die Spalte **QA genehmigt** jetzt in der Kanban-Boardansicht sichtbar ist.
+1. Im **Boards-Portal** ist jetzt die Spalte **QA genehmigt** in der Kanban-Boardansicht sichtbar.
 1. Ziehen Sie das Arbeitselement **Als Kundschaft möchte ich meine kürzlich angesehenenTutorials sehen** vom Status **Geliefert** in den Status **QA Genehmigt**.
 1. Ziehen Sie das Arbeitselement **Als Kundschaft möchte ich neue Tutorials ansehen** aus dem Status **Genehmigt** in den Status **QA Genehmigt**.
 
@@ -374,7 +374,7 @@ Um die Fähigkeit eines Teams zu verbessern, dauerhaft hochwertige Software bere
 
     ![Überprüfen Sie im Bereich "Einstellungen" die Informationen, und klicken Sie auf "Speichern und schließen".](images/m1/dd_v1.png)
 
-    > **Hinweis**: Der Status **QA Approved** enthält jetzt die Spalten **In Bearbeitung** und **Fertig**. Sie können auch auf das Informationssymbol (mit Buchstaben **i** in einem Kreis) neben der Spaltenüberschrift klicken, um die **Definition von Fertig** zu lesen.
+    > **Hinweis**: Der Status **QA Approved** enthält jetzt die Spalten **In Bearbeitung** und **Fertig**. Sie können auch auf das Informationssymbol (mit Buchstaben **i** in einem Kreis) neben der Spaltenüberschrift klicken, um die **Definition von Fertig** zu lesen. Möglicherweise müssen Sie den Browser aktualisieren, um Änderungen anzuzeigen.
 
     ![Geteilte Spalten für „QA genehmigt“](images/m1/EShop-WEB-qa_2columns_v1.png)
 
@@ -384,11 +384,13 @@ Um die Fähigkeit eines Teams zu verbessern, dauerhaft hochwertige Software bere
 
 1. Wählen Sie im Bereich **Einstellungen** die Registerkarte **Verantwortlichkeitsbereiche** aus.
 1. Klicken Sie auf der Registerkarte **Verantwortlichkeitsbereiche** direkt unter dem Wort **Verantwortlichkeitsbereich** auf **+Verantwortlichkeitsbereich**. Geben Sie im Textfeld **Name** den Text **Beschleunigen** ein.
-1. Klicken Sie im Bereich **Einstellungen** auf **Speichern**.
+1. Klicken Sie im Bereich **Einstellungen** auf **Speichern und Schließen**.
 
     ![Überprüfen Sie im Bereich „Einstellungen“ die Informationen, und klicken Sie auf „Speichern“](images/m1/EShop-WEB-swimlane_v1.png)
 
 1. Zurück auf der Registerkarte **Board** im Bereich **Boards** ziehen Sie die Aufgabe aus **Geliefert** in die Phase **QA Genehmigt \|In Bearbeitung** des Verantwortlichkeitsbereichs **Beschleunigen**, sodass erkennbar ist, dass sie Priorität hat, sobald QA-Kapazität verfügbar wird.
+
+    > **Hinweis:** Möglicherweise müssen Sie den Browser aktualisieren, um den Verantwortlichkeitsbereich sichtbar zu machen.
 
 #### Aufgabe 5: Anpassen des Teamprozesses.
 
@@ -460,7 +462,7 @@ Dashboards ermöglichen es den Teams, den Status zu visualisieren und den Fortsc
 
     ![Wählen Sie gegebenenfalls im Bereich „Dashboards" in der oberen linken Ecke im Abschnitt „eShopOnWeb-Team" die Option „eShopOnWeb-Team – Übersicht".](images/m1/EShop-WEB-dashboard_v1.png)
 
-1. Wählen Sie im Bereich **Dashboards** das Dropdown-Menü neben dem Titel **eShopOnWeb-Team – Übersicht**, und wählen Sie **+ Neues Dashboard**.
+1. Wählen Sie im Bereich **Dashboards** in der oberen rechten Ecke **+ Neues Dashboard** aus.
 
     ![Wählen Sie im Bereich „Dashboards“ in der oberen linken Ecke im Abschnitt „eShopOnWeb Team“ die Option „+ Neues Dashboard“.](images/m1/new_dashboard_v1.png)
 
@@ -469,7 +471,7 @@ Dashboards ermöglichen es den Teams, den Status zu visualisieren und den Fortsc
     ![Geben Sie im Bereich „Dashboard erstellen" in das Textfeld „Name" den Begriff „Produktschulung" ein, wählen Sie in der Dropdown-Liste „Team" das Team „EShop-WEB" und klicken Sie auf „Erstellen".](images/m1/EShop-WEB-create_dash_v1.png)
 
 1. Klicken Sie im neuen Dashboard-Bereich auf **Widget hinzufügen**.
-1. Geben Sie auf der Seite **Widget hinzufügen** in das Textfeld **Suchen** **sprint** ein, um vorhandene Widgets zu finden, die sich auf Sprints konzentrieren. Wählen Sie in der Ergebnisliste **Sprintübersicht** und klicken Sie auf **Hinzufügen**.
+1. Geben Sie im Panel **Widget hinzufügen** im Textfeld **Widgets durchsuchen** **Sprint** ein, um vorhandene Widgets zu suchen, die für Sprints verwendet werden. Wählen Sie in der Ergebnisliste **Sprintübersicht** und klicken Sie auf **Hinzufügen**.
 1. Klicken Sie in dem Rechteck, das das neu hinzugefügte Widget darstellt, auf das Zahnradsymbol **Einstellungen** und sehen Sie sich den Bereich **Konfiguration** an.
 
     > **Hinweis**: Die Anpassungsebene variiert je nach Widget.
@@ -494,7 +496,7 @@ Dashboards ermöglichen es den Teams, den Status zu visualisieren und den Fortsc
 
 1. Geben Sie im Bereich **Neue Abfrage** im Textfeld **Name eingeben** den Text **Webaufgaben** ein, wählen Sie in der Dropdown-Liste **Ordner** die Option **Gemeinsame Abfragen** und klicken Sie auf **OK**.
 1. Wählen Sie in der Ansicht **Abfragen>Freigegebene Abfragen** die Registerkarte **Diagramme** aus, und klicken Sie auf **+Neues Diagramm**.
-1. Geben Sie im Bereich **Diagramm konfigurieren** im Textfeld **Name** den Wert **Webaufgaben – Nach Zuweisung** ein, wählen Sie in der Dropdownliste **Gruppieren nach** die Option **Zugewiesen zu** aus, und klicken Sie auf **Diagramm speichern**, um die Änderungen zu speichern.
+1. Geben Sie im Bereich **Diagramm konfigurieren** im Textfeld **Name** den Text **Webaufgaben – Nach Zuweisung** ein, wählen Sie in der Dropdown-Liste **Gruppieren nach** die Option **Zugewiesen an** und klicken Sie auf **OK**, um die Änderungen zu speichern.
 
     ![Geben Sie im Bereich „Diagramm konfigurieren“ in das Textfeld „Name“ den Text „Webaufgaben - Nach Zuweisung“ ein, wählen Sie in der Dropdown-Liste „Gruppieren nach“ die Option „Zugewiesen an“ und klicken Sie auf „OK", um die Änderungen zu speichern.](images/m1/EShop-WEB-chart_v1.png)
 

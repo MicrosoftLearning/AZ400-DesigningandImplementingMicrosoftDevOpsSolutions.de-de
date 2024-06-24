@@ -32,10 +32,14 @@ lab:
 1. Sobald der Bildschirm die verknüpfte Azure-Abonnement-ID oben anzeigt, ändern Sie die Anzahl der **bezahlten parallelen Jobs** für **MS Hosted CI/CD** von 0 auf **1**. Klicken Sie dann auf die Schaltfläche **SPEICHERN** am unteren Rand.
 1. Gehen Sie in **Organisationseinstellungen** zum Abschnitt **Pipelines** und klicken Sie auf **Einstellungen**.
 1. Schalten Sie den Schalter auf **Aus** für **Erstellung von klassischen Build-Pipelines deaktivieren** und **Erstellung von klassischen Release-Pipelines deaktivieren**.
+
     > Hinweis: Der Schalter **Erstellung klassischer Release-Pipelines deaktivieren**, der auf **Ein** gesetzt ist, blendet die Optionen für die Erstellung klassischer Release-Pipelines wie das Menü **Release** im Abschnitt **Pipeline** von DevOps-Projekten aus.
+
 1. Gehen Sie in **Organisationseinstellungen** zum Abschnitt **Sicherheit** und klicken Sie auf **Richtlinien**.
 1. Schalten Sie den Schalter für **Öffentliche Projekte zulassen** auf **Ein**
+
     > Hinweis: Für die in einigen Labors verwendeten Erweiterungen ist möglicherweise ein öffentliches Projekt erforderlich, damit die kostenlose Version verwendet werden kann.
+
 1. **Warten Sie mindestens 3 Stunden, bevor Sie die CI/CD-Funktionen nutzen**, damit die neuen Einstellungen im Backend berücksichtigt werden. Andernfalls wird weiterhin die Meldung *„Es wurde keine gehostete Parallelität erworben oder gewährt“* angezeigt.
 
 ## Anweisungen zum Erstellen des Azure DevOps-Beispielprojekts (Sie müssen dies nur einmal tun)
