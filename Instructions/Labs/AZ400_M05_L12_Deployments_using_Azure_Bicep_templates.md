@@ -109,7 +109,7 @@ In dieser Aufgabe erstellen Sie ein Speichervorlagenmodul **storage.bicep**, das
 
    ![Committen der Datei](./images/m06/commit.png)
 
-1. Bewegen Sie als Nächstes den Mauszeiger über den Bicep-Ordner und klicken Sie auf das Auslassungspunktesymbol. Wählen Sie dann **Neu** und **Datei**. Geben Sie **storage.bicep** als Namen ein und klicken Sie auf **Erstellen**.
+1. Zeigen Sie als Nächstes mit der Maus auf den `Infra` Ordner, und klicken Sie auf das Auslassungssymbol, und wählen Sie **dann Neu** und **Datei** aus. Geben Sie **storage.bicep** als Namen ein und klicken Sie auf **Erstellen**.
 
    ![Menü „Neue Datei“](./images/m06/newfile.png)
 
