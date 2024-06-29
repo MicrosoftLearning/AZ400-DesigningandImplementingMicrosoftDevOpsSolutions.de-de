@@ -62,7 +62,13 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
     - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
     - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
+
+#### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
+
+1. Wechseln Sie zu **Repos>Branches**.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
 
 ### Übung 1: Einrichten einer CI-Pipeline zur Erstellung des eShopOnWeb-Containers
 

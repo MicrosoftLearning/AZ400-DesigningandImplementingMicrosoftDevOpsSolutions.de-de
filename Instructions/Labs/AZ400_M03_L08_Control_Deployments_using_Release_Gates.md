@@ -81,6 +81,10 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
+1. Wechseln Sie zu **Repos>Branches**.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
+
 #### Aufgabe 3: (Überspringen, falls bereits erledigt) Die CI-Pipeline as Code mit YAML in Azure DevOps konfigurieren
 
 In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition hinzu.

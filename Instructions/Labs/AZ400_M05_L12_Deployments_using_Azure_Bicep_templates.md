@@ -62,6 +62,12 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
     - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
     - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
+#### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
+
+1. Wechseln Sie zu **Repos>Branches**.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
+
 ### Übung 1: Verstehen einer Azure Bicep-Vorlage und Vereinfachen der Vorlage mithilfe eines wiederverwendbaren Moduls
 
 In dieser Übung überprüfen Sie eine Azure Bicep-Vorlage und vereinfachen sie mithilfe eines wiederverwendbaren Moduls.
