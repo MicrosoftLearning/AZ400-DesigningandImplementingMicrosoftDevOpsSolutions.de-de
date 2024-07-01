@@ -57,7 +57,11 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-   - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
+   - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
+
+1. Wechseln Sie zu **Repos>Branches**.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
 
 #### Schritt 2: Erstellen von Azure-Ressourcen
 
@@ -197,7 +201,7 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
 1. Der hinzugefügte Codeschnipsel sollte etwa so aussehen wie unten:
 
    ```yaml
-   - task: DownloadBuildArtifacts@0
+   - task: DownloadBuildArtifacts@1
      inputs:
        buildType: "current"
        downloadType: "single"
@@ -386,7 +390,7 @@ YAML-Pipelines-as-Code haben keine Release/Quality Gates, wie es bei Azure DevOp
            runOnce:
              deploy:
                steps:
-                 - task: DownloadBuildArtifacts@0
+                 - task: DownloadBuildArtifacts@1
                    inputs:
                      buildType: "current"
                      downloadType: "single"
