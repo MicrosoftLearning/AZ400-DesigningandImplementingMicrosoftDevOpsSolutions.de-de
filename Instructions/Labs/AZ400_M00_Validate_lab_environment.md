@@ -77,6 +77,12 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
     - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
     - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
     - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
+
+#### Aufgabe 3: Mainbranch als Standardbranch festlegen
+
+1. Wechseln Sie zu **Repos>Branches**.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
 
 Sie haben nun die notwendigen Voraussetzungen erfüllt, um mit den verschiedenen Einzelübungen für diesen AZ-400-Kurs fortzufahren.

@@ -191,7 +191,7 @@ Wenn Sie wissen möchten, wie Sie dies in Ihrer Anwendung implementieren können
 Um sicherzustellen, dass Ihre Website auf die App-Konfiguration zugreift, müssen Sie die Konfiguration aktualisieren.
 
 1. Gehen Sie zurück zu Ihrer Web-App.
-1. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**.
+1. Klicken Sie im Abschnitt **Einstellungen** auf **Umgebungsvariablen**.
 1. Fügen Sie zwei neue Anwendungseinstellungen hinzu:
     - Erste App-Einstellung
         - **Name:** UseAppConfig
@@ -200,7 +200,7 @@ Um sicherzustellen, dass Ihre Website auf die App-Konfiguration zugreift, müsse
         - **Name:** AppConfigEndpoint
         - **Wert:***der Wert, den Sie zuvor aus dem App Configuration Endpoint gespeichert/kopiert haben. Er sollte wie <https://appcs-NAME-REGION.azconfig.io>* aussehen
 
-1. Klicken Sie auf **Ok** und dann auf **Speichern** und warten Sie, bis die Einstellungen aktualisiert werden.
+1. Klicken Sie auf **Anwenden** und dann **Bestätigen**, und warten Sie, bis die Einstellungen aktualisiert werden.
 1. Gehen Sie zu **Übersicht** und klicken Sie auf **Durchsuchen**
 1. In diesem Schritt werden keine Änderungen auf der Website angezeigt, da die App-Konfiguration keine Daten enthält. Dies ist das, was Sie in den nächsten Aufgaben tun werden.
 
