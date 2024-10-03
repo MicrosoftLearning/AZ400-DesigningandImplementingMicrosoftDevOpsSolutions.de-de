@@ -279,25 +279,25 @@ Nach Fertigstellung des Sprintplans sollten Ihre Sprint-Backlogs alle Informatio
 
 1. Wählen Sie im Abschnitt **Regelkriterien** **+ Neue Klausel hinzufügen** und dann in der Dropdownliste **Feld** **Aktivität** aus. Anschließend wählen Sie in der Dropdownliste **Operator** **=** und in der Dropdownliste **Wert** **Entwicklung** aus.
 
-    ![Fenster „Einstellungen“: Stellen Sie sicher, dass alle Felder über die erwähnten Informationen verfügen.](images/m1/EShop-WEB-styles_v1.png)
+    ![Fenster „Einstellungen“: Stellen Sie sicher, dass alle Felder über die erwähnten Informationen verfügen.](images/m1/EShop-WEB-styles_v2.png)
 
     > **Hinweis**: Dadurch werden alle Karten, die Aktivitäten vom Typ **Entwicklung** zugeordnet sind, auf grün eingestellt.
 
     ![Formatvorlagen für Sprintaufgaben](images/m1/EShop-WEB-sprint-green_v1.png)
 
-1. Wählen Sie im Bereich **Einstellungen** die Registerkarte **Backlogs** aus.
+1. Wählen Sie im Bereich **Einstellungen** die Registerkarte **Allgemein** aus, um die Navigationsebenen im **Backlog-Abschnitt** anzuzeigen und zu konfigurieren.
 
-    > **Hinweis**: Mit Einträgen auf dieser Registerkarte können Sie die für die Navigation verfügbaren Ebenen festlegen. Epics sind nicht standardmäßig enthalten, aber Sie könnten dies ändern.
+    > **Hinweis**: Epics sind standardmäßig nicht enthalten, aber Sie können das ändern.
 
-1. Wählen Sie im Bereich **Einstellungen** die Registerkarte **Arbeitstage** aus.
+1. Wählen Sie im Bereich **Einstellungen** die Registerkarte **Allgemein** und geben Sie unter dem Abschnitt **Arbeitstage** die Arbeitstage an, an denen das Team arbeitet.
 
-    > **Hinweis**: Einträge auf dieser Registerkarte ermöglichen es Ihnen, die **Arbeitstage** des Teams anzugeben. Dies gilt für Kapazitäts- und Burndownberechnungen.
+    > **Hinweis**: Dies gilt für Kapazitäts- und Burndown-Berechnungen.
 
-1. Wählen Sie im Bereich **Einstellungen** die Registerkarte **Arbeiten mit Fehlern** aus.
+1. In den **Einstellungen**, wählen Sie die Registerkarte **Allgemein**, und unter dem Abschnitt **Bearbeitung von Fehlern** können Sie festlegen, wie Sie Fehler in Backlogs und Boards verwalten.
 
     > **Hinweis**: Einträge auf dieser Registerkarte ermöglichen es Ihnen, anzugeben, wie Fehler auf dem Board dargestellt werden.
 
-1. Klicken Sie im Bereich **Einstellungen** auf **Speichern und schließen**, um die Formatierungsregel zu speichern.
+1. Klicken Sie im Bereich **Einstellungen** auf **Speichern**, um die Stilregel zu speichern und zu schließen.
 
     > **Hinweis**: Die mit  **Entwicklung** verbundene Aufgabe ist jetzt grün und sehr einfach zu identifizieren.
 
