@@ -190,6 +190,8 @@ In dieser Aufgabe konfigurieren Sie Ihre virtuelle Maschine im Labor als Azure D
 ### Übung 3: Entfernen der im Lab verwendeten Ressourcen
 
 1. Stoppen und entfernen Sie den Agent-Dienst, indem Sie `.\config.cmd remove` über die Eingabeaufforderung ausführen.
+   - Sie werden aufgefordert, Ihr persönliches Zugriffstoken erneut einzugeben, um Ihren Agent aus Ihrer Organisation zu entfernen.
+   - Wenn Sie das persönliche Zugriffstoken nicht mehr haben, können Sie das Token, das Sie ursprünglich in Übung 2, Aufgabe 1, Schritt 2 erstellt haben, erneut generieren.
 1. Löschen Sie den Agent-Pool.
 1. Widerrufen Sie das PAT-Token.
 1. Machen Sie die Änderungen in der Datei **eshoponweb-ci-pr.yml** rückgängig, indem Sie von „Repos/.ado/eshoponweb-ci-pr.yml“ zu ihr navigieren, **Bearbeiten** auswählen und die Zeilen 13-15 (den Agentpoolausschnitt) entfernen und die `vmImage: ubuntu-latest` wieder in den ursprünglichen Zustand zurück ändern. (Dies liegt daran, dass Sie dieselbe Beispielpipelinedatei in einer zukünftigen Labübung verwenden werden.)
