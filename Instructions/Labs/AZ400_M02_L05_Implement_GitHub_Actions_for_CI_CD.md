@@ -38,11 +38,11 @@ In diesem Lab lernen Sie Folgendes:
 In dieser Übung importieren Sie den Code des bestehenden [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)-Repositorys in Ihr eigenes privates GitHub-Repository.
 
 Das Repository ist wie folgt organisiert:
-    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
-    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
-    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
+- Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
+- Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+- Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+- Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+- Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
 
 #### Aufgabe 1: Erstellen Sie ein öffentliches Repository in GitHub und importieren Sie eShopOnWeb
 
