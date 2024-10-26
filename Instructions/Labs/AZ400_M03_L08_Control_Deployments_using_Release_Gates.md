@@ -160,15 +160,12 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
    | Resource group | **az400m04l09-RG**                                                                    |
    | Name           | der Name der DevTest-Web-App, die Sie in der vorherigen Aufgabe aufgezeichnet haben                     |
    | Region         | die gleiche Azure-Region, in der Sie die Web-Apps in der vorherigen Aufgabe bereitgestellt haben |
-   | Ressourcenmodus  | **Klassisch**                                                                           |
-
-   > **Anmerkung**: Ignorieren Sie die Verwerfungsmeldung. Dies ist erforderlich, um Fehler bei der DevOps-Aufgabe "Enable Continuous Integration" zu vermeiden, die Sie später in dieser Übung verwenden werden.
 
 1. Klicken Sie auf **Überprüfen + erstellen** und dann auf **Erstellen**.
 1. Warten Sie auf den Abschluss des Bereitstellungsvorgangs.
 1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe **az400m04l09-RG**, die Sie in der vorherigen Aufgabe erstellt haben.
 1. Klicken Sie in der Liste der Ressourcen auf die Web-App **DevTest**.
-1. Klicken Sie auf der Web-App-Seite **DevTest** im vertikalen Menü links im Abschnitt **Einstellungen** auf ** Application Insights**.
+1. Klicken Sie auf der Web-App-Seite **DevTest** im vertikalen Menü links im Abschnitt **Überwachen** auf **Application Insights**.
 1. Klicken Sie im Blatt **Application Insights** auf **Application Insights aktivieren**.
 1. Klicken Sie im Abschnitt **Ressource ändern** auf die Option **Vorhandene Ressource auswählen**, wählen Sie in der Liste der vorhandenen Ressourcen die neu erstellte Application Insight-Ressource aus, klicken Sie auf **Anwenden** und, wenn Sie zur Bestätigung aufgefordert werden, auf **Ja**.
 1. Warten Sie, bis die Änderung wirksam wird.
@@ -177,7 +174,7 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
 
 1. Wählen Sie im Menü **Einstellungen** / **Anwendungsübersichten** in der Web-App die Option **Anwendungsübersichten-Daten anzeigen**. Das Blatt Application Insights wird im Azure-Portal geöffnet.
 1. Klicken Sie auf dem Blatt "Application Insights Resource" im Abschnitt **Überwachung** auf **Warnungen** und dann auf **Erstellen einer >Alarmregel**.
-1. Auf dem Blatt **Wählen Sie ein Signal**, im Textfeld **Suchen Sie nach Signalnamen** , geben Sie **Abfragen** ein. Wählen Sie in der Ergebnisliste **Fehlgeschlagene Abfragen**.
+1. Klicken Sie auf dem Blatt **Warnungsregel erstellen** im Abschnitt **Bedingung** auf **Alle Signale anzeigen** und geben Sie **Abfragen** ein. Wählen Sie in der Ergebnisliste **Fehlgeschlagene Abfragen**.
 1. Lassen Sie auf der Seite **Erstellen Sie eine Alarmregel** im Abschnitt **Bedingung** den **Schwellenwert** auf **Statisch** gesetzt und bestätigen Sie die anderen Standardeinstellungen wie folgt:
 
    - Aggregationstyp: Count

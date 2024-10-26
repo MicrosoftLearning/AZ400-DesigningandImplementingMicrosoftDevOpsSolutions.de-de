@@ -86,9 +86,10 @@ In dieser Aufgabe werden Sie eine vorlagenbasierte Azure DevOps YAML-Pipeline er
 
    - Eine einzelne Phase: Build
    - Ein einzelner Auftrag: Build
-   - 3 Aufgaben innerhalb des Buildauftrags:
+   - 4 Aufgaben innerhalb des Build-Auftrags:
    - Dotnet Restore
    - Dotnet Build
+   - Dotnet Test
    - Dotnet Publish
 
 1. Klicken Sie im Bereich **Überprüfen Sie Ihre Pipeline-YAML** auf das nach unten zeigende Caret-Symbol neben der Schaltfläche **Ausführen** und dann auf **Speichern**.
@@ -196,7 +197,7 @@ In dieser Aufgabe konfigurieren Sie Ihre virtuelle Maschine im Labor als Azure D
 1. Widerrufen Sie das PAT-Token.
 1. Machen Sie die Änderungen in der Datei **eshoponweb-ci-pr.yml** rückgängig, indem Sie von „Repos/.ado/eshoponweb-ci-pr.yml“ zu ihr navigieren, **Bearbeiten** auswählen und die Zeilen 13-15 (den Agentpoolausschnitt) entfernen und die `vmImage: ubuntu-latest` wieder in den ursprünglichen Zustand zurück ändern. (Dies liegt daran, dass Sie dieselbe Beispielpipelinedatei in einer zukünftigen Labübung verwenden werden.)
 
-![Wiederherstellen des Pipelinepools auf vmImage-Einstellungen](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
+![Wiederherstellen des Pipelinepools auf vmImage-Einstellungen](images/m3/eshoponweb-ci-pr-vmimage_v2.png)
 
 ## Überprüfung
 
