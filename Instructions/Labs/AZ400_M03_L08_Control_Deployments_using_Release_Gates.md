@@ -6,8 +6,6 @@ lab:
 
 # Steuern von Bereitstellungen mithilfe von Releasegates
 
-## Lab-Handbuch für Kursteilnehmer
-
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -54,25 +52,23 @@ In diesem Lab lernen Sie Folgendes:
 
 ### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
-> **Hinweis**: Wenn Sie dieses Projekt bereits in früheren Laboren erstellt haben, kann diese Übung übersprungen werden.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein.
 
-In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
-
-#### Aufgabe 1: (überspringen, falls bereits erledigt) Erstellen und Konfigurieren des Teamprojekts
+#### Aufgabe 1: (überspringen, wenn fertig) Erstellen und Konfigurieren des Teamprojekts
 
 In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von mehreren Labs verwendet werden soll.
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Weisen Sie Ihrem Projekt den Namen **eShopOnWeb** zu, und lassen Sie die anderen Felder auf den Standardwerten. Klicken Sie auf **Erstellen**.
 
-   ![Erstellen eines Projekts](images/create-project.png)
+   ![Screenshot des Fensters „Neues Projekt erstellen“.](images/create-project.png)
 
-#### Aufgabe 2: (Überspringen, falls bereits erledigt) Das eShopOnWeb Git-Repository importieren
+#### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
-   ![Importieren eines Repositorys](images/import-repo.png)
+   ![Screenshot des Bereichs „Repository importieren“.](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -81,11 +77,11 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
-1. Wechseln Sie zu **Repos>Branches**.
+1. Wechseln Sie zu **Repos > Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
-#### Aufgabe 3: (Überspringen, falls bereits erledigt) Die CI-Pipeline as Code mit YAML in Azure DevOps konfigurieren
+#### Aufgabe 3: Konfigurieren einer CI-Pipeline-as-Code mit YAML in Azure DevOps
 
 In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition hinzu.
 
@@ -106,9 +102,9 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 
    > **Hinweis**: Jede Aufgabe aus der YAML-Datei steht zur Überprüfung zur Verfügung, einschließlich aller Warnungen und Fehler.
 
-1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
+1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines > Pipelines**, und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Benennen Sie sie**`eshoponweb-ci`**, und klicken Sie auf **Speichern**.
 
-### Übung 2: Die erforderlichen Azure-Ressourcen für die Releasepipeline erstellen
+### Übung 1: Die erforderlichen Azure-Ressourcen für die Releasepipeline erstellen
 
 #### Aufgabe 1: Zwei Azure-Webanwendungen erstellen
 
@@ -126,14 +122,14 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
 
    ```bash
    REGION='centralus'
-   RESOURCEGROUPNAME='az400m04l09-RG'
+   RESOURCEGROUPNAME='az400m03l08-RG'
    az group create -n $RESOURCEGROUPNAME -l $REGION
    ```
 
 1. So erstellen Sie einen App-Serviceplan
 
    ```bash
-   SERVICEPLANNAME='az400m04l09-sp1'
+   SERVICEPLANNAME='az400m03l08-sp1'
    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
    ```
 
@@ -157,13 +153,13 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
 
    | Einstellung        | Wert                                                                                 |
    | -------------- | ------------------------------------------------------------------------------------- |
-   | Resource group | **az400m04l09-RG**                                                                    |
+   | Resource group | **az400m03l08-RG**                                                                    |
    | Name           | der Name der DevTest-Web-App, die Sie in der vorherigen Aufgabe aufgezeichnet haben                     |
    | Region         | die gleiche Azure-Region, in der Sie die Web-Apps in der vorherigen Aufgabe bereitgestellt haben |
 
 1. Klicken Sie auf **Überprüfen + erstellen** und dann auf **Erstellen**.
 1. Warten Sie auf den Abschluss des Bereitstellungsvorgangs.
-1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe **az400m04l09-RG**, die Sie in der vorherigen Aufgabe erstellt haben.
+1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe **az400m03l08-RG**, die Sie in der vorherigen Aufgabe erstellt haben.
 1. Klicken Sie in der Liste der Ressourcen auf die Web-App **DevTest**.
 1. Klicken Sie auf der Web-App-Seite **DevTest** im vertikalen Menü links im Abschnitt **Überwachen** auf **Application Insights**.
 1. Klicken Sie im Blatt **Application Insights** auf **Application Insights aktivieren**.
@@ -195,7 +191,7 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
 
 1. Bestätigen Sie die Erstellung der Warnungsregel, indem Sie auf **Überprüfen+Erstellen** klicken und erneut bestätigen, indem Sie auf **Erstellen** klicken. Warten Sie, bis die Warnungsregel erfolgreich erstellt wurde.
 
-### Übung 3: Konfigurieren der Releasepipeline
+### Übung 2: Konfigurieren der Releasepipeline
 
 In dieser Übung konfigurieren Sie eine Releasepipeline.
 
@@ -223,7 +219,7 @@ In dieser Aufgabe richten Sie die Releaseaufgaben als Teil der Releasepipeline e
 1. Stellen Sie sicher, dass der App-Typ auf „Web-App unter Windows“ eingestellt ist. Wählen Sie anschließend in der Dropdownliste **App Service-Name** den Namen der Web App **DevTest**.
 1. Wählen Sie den Task **Azure App Service bereitstellen**. Aktualisieren Sie im Feld **Paket oder Ordner** den Standardwert von „$(System.DefaultWorkingDirectory)/\*\*/\*.zip“ auf „$(System.DefaultWorkingDirectory)/\*\*/Web.zip“.
 
-   > Beachten Sie das Ausrufezeichen neben der Registerkarte „Aufgaben“. Dies ist beabsichtigt, da die Einstellungen für die Produktionsphase konfiguriert werden müssen.
+   > **Hinweis**: Beachten Sie das Ausrufezeichen neben der Registerkarte „Aufgaben“. Dies ist beabsichtigt, da die Einstellungen für die Produktionsphase konfiguriert werden müssen.
 
 1. Öffnen Sie den Bereich **Anwendungs- und Konfigurationseinstellungen**, und geben Sie `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` in das Feld **App-Einstellungen** ein.
 
@@ -243,13 +239,13 @@ In dieser Aufgabe richten Sie die Releaseaufgaben als Teil der Releasepipeline e
 
 1. Klicken Sie in der vertikalen Navigationsleiste im Abschnitt **Pipelines** auf **Releases** und im Abschnitt **eshoponweb-cd** auf den Eintrag, der der neuesten Version entspricht.
 1. Überwachen Sie auf dem **eshoponweb-cd > Release-1**-Blatt den Fortschritt des Releases und vergewissern Sie sich, dass die Bereitstellung für beide Web-Apps erfolgreich abgeschlossen wurde.
-1. Wechseln Sie zur Azure-Portal-Schnittstelle, navigieren Sie zur Ressourcengruppe **az400m04l09-RG**, klicken Sie in der Ressourcenliste auf die Web App **DevTest**, klicken Sie auf dem Web-App-Blatt auf **Durchsuchen** und überprüfen Sie, ob die Webseite (E-Commerce-Website) erfolgreich in einer neuen Webbrowserregisterkarte geladen wird.
-1. Wechseln Sie zurück zur Azure-Portal-Schnittstelle und navigieren Sie diesmal zur Ressourcengruppe **az400m04l09-RG**. Klicken Sie in der Ressourcenliste auf die Web App **Produktion**, klicken Sie im Web-App-Blatt auf **Durchsuchen** und überprüfen Sie, ob die Webseite erfolgreich in einer neuen Webbrowserregisterkarte geladen wird.
+1. Wechseln Sie zur Azure-Portal-Schnittstelle, navigieren Sie zur Ressourcengruppe **az400m03l08-RG**, klicken Sie in der Ressourcenliste auf die Web-App **DevTest**, klicken Sie auf dem Web-App-Blatt auf **Durchsuchen** und überprüfen Sie, ob die Webseite (E-Commerce-Website) erfolgreich in einer neuen Webbrowserregisterkarte geladen wird.
+1. Wechseln Sie zurück zur Azure-Portal-Schnittstelle und navigieren Sie diesmal zur Ressourcengruppe **az400m03l08-RG**. Klicken Sie in der Ressourcenliste auf die Web-App **Produktion**, klicken Sie im Web-App-Blatt auf **Durchsuchen** und überprüfen Sie, ob die Webseite erfolgreich in einer neuen Webbrowserregisterkarte geladen wird.
 1. Schließen Sie die Webbrowserregisterkarte, die die **EShopOnWeb**-Website anzeigt.
 
    > **Hinweis**: Sie haben nun die Anwendung mit CI/CD konfiguriert. In der nächsten Übung richten Sie Quality Gates als Teil einer erweiterten Release-Pipeline ein.
 
-### Übung 4: Konfigurieren von Release-Gates
+### Übung 3: Konfigurieren von Release-Gates
 
 In dieser Übung richten Sie Quality Gates in der Release-Pipeline ein.
 
@@ -274,7 +270,7 @@ In dieser Aufgabe aktivieren Sie das Gate nach der Bereitstellung für die DevTe
 
 1. Klicken Sie im Bereich **Alle Pipelines > eshoponweb-cd** am rechten Rand des Rechtecks, das für die **DevTest-Umgebung** steht, auf die ovale Form, die die **Bedingungen nach der Bereitstellung** darstellt.
 1. Stellen Sie im Bereich **Bedingungen nach der Bereitstellung** den Schieberegler **Gates** auf **Aktiviert**, klicken Sie auf **+ Hinzufügen** und dann im Popupmenü auf **Azure Monitor-Warnungen abfragen**.
-1. Wählen Sie im Bereich **Bedingungen nach der Bereitstellung** im Abschnitt **Azure Monitor-Warnungen abfragen** in der Dropdownliste **Azure-Abonnement** den Eintrag **Serviceverbindung** aus, der für die Verbindung zu Ihrem Azure-Abonnement steht. Wählen Sie dann in der Dropdownliste **Ressourcengruppe** den Eintrag **az400m04l09-RG** aus.
+1. Wählen Sie im Bereich **Bedingungen nach der Bereitstellung** im Abschnitt **Azure Monitor-Warnungen abfragen** in der Dropdownliste **Azure-Abonnement** den Eintrag **Serviceverbindung** aus, der für die Verbindung zu Ihrem Azure-Abonnement steht. Wählen Sie dann in der Dropdownliste **Ressourcengruppe** den Eintrag **az400m03l08-RG** aus.
 1. Erweitern Sie im Bereich **Bedingungen nach der Bereitstellung** den Abschnitt **Erweitert**, und konfigurieren Sie die folgenden Optionen:
 
    - Filtertyp: **Kein Filter**
@@ -305,8 +301,8 @@ In dieser Aufgabe generieren Sie zunächst einige Warnungen für die DevTest-Web
 1. Navigieren Sie im Azure-Portal zu der zuvor bereitgestellten Ressource **DevTest-Web-App**.
 1. Beachten Sie im Übersichtsfenster das Feld **URL**, das den Hyperlink der Webanwendung anzeigt. Klicken Sie auf diesen Link, der Sie an die eShopOnWeb-Webanwendung im Browser weiterleitet.
 1. Um eine **Fehlgeschlagene Anfrage** zu simulieren, fügen Sie **/discount** in die URL ein, was zu einer Fehlermeldung führt, da diese Seite nicht existiert. Aktualisieren Sie diese Seite mehrmals, um mehrere Ereignisse zu generieren.
-1. Geben Sie im Azure Portal im Feld „Ressourcen, Dienste und Dokumente durchsuchen“ **Application Insights** ein und wählen Sie die in der vorherigen Übung erstellte Ressource **DevTest-AppInsights** aus. Navigieren Sie als Nächstes zu **Warnungen**.
-1. Es sollte mindestens **1** neue Warnung in der Ergebnisliste sein, mit einem **Schweregrad 2** geben Sie **Warnungen** ein, um den Warnungsdienst von Azure Monitor zu öffnen.
+1. Geben Sie im Azure Portal im Feld „Ressourcen, Dienste und Dokumente durchsuchen“ **`Application Insights`** ein und wählen Sie die in der vorherigen Übung erstellte Ressource **DevTest-AppInsights** aus. Navigieren Sie als Nächstes zu **Warnungen**.
+1. Es sollte mindestens **1** neue Warnung in der Ergebnisliste sein, mit einem **Schweregrad 2** geben Sie **`Alerts`** ein, um den Warnungsdienst von Azure Monitor zu öffnen.
 1. Beachten Sie, dass mindestens **1** Failed_Alert mit **Schweregrad 2: Warnung** in der Liste auftauchen sollte. Dies wurde ausgelöst, als Sie in der vorherigen Übung die nicht existierende URL-Adresse der Website überprüft haben.
 
    > **Hinweis:** Wenn noch keine Warnung angezeigt wird, warten Sie ein paar Minuten.
@@ -325,30 +321,8 @@ In dieser Aufgabe generieren Sie zunächst einige Warnungen für die DevTest-Web
 
    > **Hinweis:** Wenn Ihr Gate fehlschlägt, schließen Sie die Warnung.
 
-### Übung 6: Entfernen der Azure Lab-Ressourcen
-
-In dieser Übung entfernen Sie die in diesem Lab bereitgestellten Azure-Ressourcen, um unerwartete Gebühren zu vermeiden.
-
-> **Hinweis**: Denken Sie daran, alle neu erstellten Azure-Ressourcen zu entfernen, die Sie nicht mehr verwenden. Durch das Entfernen nicht verwendeter Ressourcen wird sichergestellt, dass keine unerwarteten Gebühren anfallen.
-
-#### Aufgabe 1: Entfernen der Azure Lab-Ressourcen
-
-In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
-
-1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
-1. Listen Sie alle Ressourcengruppen auf, die während der Labs in diesem Modul erstellt wurden, indem Sie den folgenden Befehl ausführen:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].name" --output tsv
-   ```
-
-1. Löschen Sie alle Ressourcengruppen, die Sie während der praktischen Übungen in diesem Modul erstellt haben, indem Sie den folgenden Befehl ausführen:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Hinweis**: Der Befehl wird (dem --nowait-Parameter entsprechend) asynchron ausgeführt. Dies bedeutet, dass Sie zwar einen weiteren Azure CLI-Befehl in derselben Bash-Sitzung direkt im Anschluss ausführen können, es jedoch einige Minuten dauert, bis die Ressourcengruppen tatsächlich entfernt werden.
+   > [!IMPORTANT]
+   > Denken Sie daran, die im Azure-Portal erstellten Ressourcen zu löschen, um unnötige Gebühren zu vermeiden.
 
 ## Überprüfung
 

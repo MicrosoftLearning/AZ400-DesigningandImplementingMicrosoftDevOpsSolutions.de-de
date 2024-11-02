@@ -6,8 +6,6 @@ lab:
 
 # Paketverwaltung mit Azure Artifacts
 
-## Lab-Handbuch für Kursteilnehmer
-
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -41,9 +39,38 @@ In diesem Lab lernen Sie Folgendes:
 
 ### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
-In dieser Übung sollen Sie die Labvoraussetzungen überprüfen. Es müssen sowohl eine Azure DevOps-Organisation als auch das eShopOnWeb-Projekt vorhanden sein. Weitere Einzelheiten finden Sie in den obigen Anweisungen.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein.
 
-#### Aufgabe 1: Konfigurieren der eShopOnWeb-Projektmappe in Visual Studio
+#### Aufgabe 1: (überspringen, wenn fertig) Erstellen und Konfigurieren des Teamprojekts
+
+In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von mehreren Labs verwendet werden soll.
+
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Weisen Sie Ihrem Projekt den Namen **eShopOnWeb** zu, und lassen Sie die anderen Felder auf den Standardwerten. Klicken Sie auf **Erstellen**.
+
+    ![Screenshot des Fensters „Neues Projekt erstellen“](images/create-project.png)
+
+#### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
+
+Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
+
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf „**Repos > Dateien**“, „**Repository importieren**“. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+
+    ![Screenshot des Fensters: „Repository importieren“](images/import-repo.png)
+
+1. Das Repository ist wie folgt organisiert:
+    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
+    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
+
+#### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
+
+1. Gehen Sie zu „**Repos > Branches**“.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
+
+#### Aufgabe 4: Konfigurieren der eShopOnWeb-Lösung in Visual Studio
 
 In dieser Aufgabe werden Sie Visual Studio konfigurieren, um sich auf das Lab vorzubereiten.
 
@@ -76,7 +103,7 @@ In dieser Aufgabe erstellen Sie einen Feed und stellen eine Verbindung dazu her.
 
     > **Hinweis**: Bei diesem Feed handelt es sich um eine Sammlung von NuGet-Paketen, die den Benutzer*innen innerhalb der Organisation zur Verfügung stehen und neben dem öffentlichen NuGet-Feed als Peer fungieren. Das Szenario in dieser Übung konzentriert sich auf den Arbeitsablauf für die Verwendung von Azure Artifacts, sodass die tatsächlichen Architektur- und Entwicklungsentscheidungen rein illustrativ sind.  Dieser Feed wird gemeinsame Funktionen enthalten, die von allen Projekten in dieser Organisation gemeinsam genutzt werden können.
 
-1. Geben Sie im Bereich **Neuen Feed erstellen** im Textfeld **Name** den Text **eShopOnWebShared** ein, wählen Sie im Abschnitt **Umfang** die Option **Organisation** aus, behalten Sie für andere Einstellungen die Standardwerte bei, und klicken Sie auf **Erstellen**.
+1. Geben Sie im Bereich „**Neuen Feed erstellen**“ im Textfeld „**Name**“ „**`eShopOnWebShared`**“ ein, wählen Sie im Abschnitt „**Geltungsbereich**“ die Option „**Organisation**“ aus, übernehmen Sie die Standardwerte für die anderen Einstellungen und klicken Sie auf „**Erstellen**“.
 
     > **Hinweis**: Alle Benutzer*innen, die eine Verbindung zu diesem NuGet-Feed herstellen möchten, müssen ihre Umgebung konfigurieren.
 
@@ -129,7 +156,7 @@ In dieser Aufgabe erstellen und veröffentlichen Sie ein selbst entwickeltes ben
     dotnet pack .\eShopOnWeb.Shared.csproj
     ```
 
-    > **Hinweis:** Der Befehl **dotnet pack** kompiliert das Projekt und erstellt ein NuGet-Paket im Ordner **bin\Release**.
+    > **Hinweis:** Der Befehl **dotnet pack** kompiliert das Projekt und erstellt ein NuGet-Paket im Ordner **bin\Release**. Wenn Sie keinen **Freigabe**-Ordner haben, können Sie stattdessen den **Debug**-Ordner verwenden.
 
     > **Hinweis**: Ignorieren Sie alle Warnungen, die im Fenster **Administrator: Windows PowerShell** angezeigt werden.
 
@@ -228,7 +255,7 @@ Bei der Erstellung des Azure DevOps Artifacts Package Feeds wurden **Upstream-Qu
 
 1. Wechseln Sie zum Azure DevOps-Portal, navigieren Sie zu **Artefakte**, und wählen Sie den **eShopOnWebShared**-Feed aus.
 1. Klicken Sie auf **Upstreamquellen durchsuchen**
-1. Wählen Sie im Fenster **Gehen Sie zu einem Upstream-Paket** die Option **NuGet** als Pakettyp aus, und geben Sie **Newtonsoft.Json** in das Suchfeld ein.
+1. Wählen Sie im Fenster **Zu einem Upstream-Paket gehen** als Pakettyp **NuGet** aus und geben Sie **`Newtonsoft.Json`** in das Suchfeld ein.
 1. Bestätigen Sie durch Drücken der Schaltfläche **Suchen**.
 1. Das Ergebnis ist eine Liste aller Newtonsoft.Json-Pakete mit den verschiedenen verfügbaren Versionen.
 1. Drücken Sie die **NACH-LINKS-TASTE**, um zum **eShopOnWebShared**-Feed zurückzukehren.
