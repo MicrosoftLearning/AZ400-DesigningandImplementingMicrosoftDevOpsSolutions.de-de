@@ -60,15 +60,15 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Weisen Sie Ihrem Projekt den Namen **eShopOnWeb** zu, und lassen Sie die anderen Felder auf den Standardwerten. Klicken Sie auf **Erstellen**.
 
-   ![Screenshot des Fensters „Neues Projekt erstellen“.](images/create-project.png)
+   ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
 
 #### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** , **Importiere ein Repository**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
-   ![Screenshot des Bereichs „Repository importieren“.](images/import-repo.png)
+   ![Screenshot: Fenster „Repository importieren“](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.

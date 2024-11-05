@@ -31,7 +31,7 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 0: (Überspringen, wenn bereits abgeschlossen) Konfigurieren der Lab-Voraussetzungen
+### Übung 0: (überspringen, falls bereits erledigt) Konfigurieren Sie die Lab-Voraussetzungen
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
@@ -75,7 +75,7 @@ Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.ym
 1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
 1. Wählen Sie die **Haupt**-Verzweigung und die Datei **/.ado/eshoponweb-ci.yml** aus, und klicken Sie dann auf **Weiter**.
 1. Klicken Sie auf die Schaltfläche **Ausführen**, um die Pipeline auszuführen.
-1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Gehen Sie zu **Pipelines > Pipelines** und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
+1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines > Pipelines**, und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
 
 #### Übung 2: Importieren und Ausführen der CD-Pipeline
 
@@ -100,7 +100,7 @@ Importieren Sie nun die CD-Pipeline mit dem Namen [eshoponweb-cd-webapp-code.yml
     - **Ressourcen**: Sie ist darauf vorbereitet, automatisch nach Abschluss der CI-Pipeline ausgelöst zu werden. Außerdem wird das Repository für die Bicep-Datei heruntergeladen.
     - **AzureResourceManagerTemplateDeployment**: Stellt die Azure Web App mithilfe der Bicep-Vorlage bereit.
 
-1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Gehen Sie zu **Pipelines > Pipelines** und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie es **eshoponweb-cd-webapp-code** und klicken Sie auf **Speichern**.
+1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines > Pipelines**, und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie es **eshoponweb-cd-webapp-code** und klicken Sie auf **Speichern**.
 
 ### Übung 2: Verwalten der Azure App-Konfiguration
 
@@ -175,7 +175,7 @@ Testen wir weiter den Featuremanager.
 1. Sie können dieses Feature in der Appkonfiguration deaktivieren – dann sehen Sie, dass das Bild ausgeblendet wird.
 
    > [!IMPORTANT]
-   > Denken Sie daran, die im Azure-Portal erstellten Ressourcen zu löschen, um unnötige Kosten zu vermeiden. Achten Sie darauf, die **eshoponweb-cd-webapp-code** Pipeline zu deaktivieren, da sonst eine gelöschte Ressourcengruppe und die zugehörigen Ressourcen nach dem nächsten Lauf von **eshoponweb-ci** neu erstellt werden.
+   > Denken Sie daran, die im Azure-Portal erstellten Ressourcen zu löschen, um unnötige Gebühren zu vermeiden. Achten Sie darauf, die **eshoponweb-cd-webapp-code** Pipeline zu deaktivieren, da sonst eine gelöschte Ressourcengruppe und die zugehörigen Ressourcen nach dem nächsten Lauf von **eshoponweb-ci** neu erstellt werden.
 
 ## Überprüfung
 

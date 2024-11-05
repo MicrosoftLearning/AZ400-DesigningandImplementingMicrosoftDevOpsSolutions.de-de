@@ -40,7 +40,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb_MultiStageYAML** Azure DevOps-P
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Geben Sie Ihrem Projekt den Namen **eShopOnWeb_MultiStageYAML** und lassen Sie die anderen Felder auf Standardwerten. Klicken Sie auf **Erstellen**.
 
-   ![Screenshot des Fensters „Neues Projekt erstellen“](images/create-project.png)
+   ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
 
 #### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
 

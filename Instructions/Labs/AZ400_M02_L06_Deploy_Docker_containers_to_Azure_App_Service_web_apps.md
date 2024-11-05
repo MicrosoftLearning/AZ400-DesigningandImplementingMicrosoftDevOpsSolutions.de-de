@@ -32,7 +32,7 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 0: (Überspringen, wenn bereits geschehen) Konfigurieren der Lab-Voraussetzungen
+### Übung 0: (überspringen, falls bereits erledigt) Konfigurieren Sie die Lab-Voraussetzungen
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
@@ -46,7 +46,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** und **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Files**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein und klicken Sie auf **Importieren**:
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.

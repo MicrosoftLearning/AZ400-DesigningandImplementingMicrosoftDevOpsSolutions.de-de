@@ -35,7 +35,7 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 0: (Überspringen, falls bereits geschehen) Konfigurieren der Übungsvoraussetzungen
+### Übung 0: (überspringen, falls bereits erledigt) Konfigurieren Sie die Lab-Voraussetzungen
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
