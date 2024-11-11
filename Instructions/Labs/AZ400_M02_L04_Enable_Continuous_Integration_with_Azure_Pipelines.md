@@ -6,6 +6,8 @@ lab:
 
 # Aktivieren von Continuous Integration mit Azure Pipelines
 
+## Lab-Handbuch für Kursteilnehmer
+
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -27,11 +29,11 @@ In diesem Lab lernen Sie Folgendes:
 - Einschließen der Buildvalidierung als Teil eines Pull Requests
 - Konfigurieren der CI-Pipeline als Code mit YAML
 
-## Geschätzte Zeit: 30 Minuten
+## Geschätzte Dauer: 45 Minuten
 
 ## Anweisungen
 
-### Übung 0: (überspringen, falls bereits erledigt) Konfigurieren Sie die Lab-Voraussetzungen
+### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
@@ -45,7 +47,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** , **Importiere ein Repository**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -56,7 +58,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 
 #### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
 
-1. Wechseln Sie zu **Repos > Branches**.
+1. Wechseln Sie zu **Repos>Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
@@ -70,7 +72,7 @@ In dieser Aufgabe importieren Sie die YAML-Builddefinition, die als Branch-Richt
 
 Beginnen wir mit dem Importieren der Buildpipeline mit dem Namen [eshoponweb-ci-pr.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci-pr.yml).
 
-1. Wechseln Sie zu **Pipelines > Pipelines**
+1. Navigieren Sie zu **Pipelines>Pipelines**
 1. Klicken Sie auf die Schaltfläche **Pipeline erstellen** oder **Neue Pipeline**
 1. Wählen Sie **Azure Repos Git (YAML)** aus.
 1. Wählen Sie das **eShopOnWeb**-Repository
@@ -84,13 +86,13 @@ Beginnen wir mit dem Importieren der Buildpipeline mit dem Namen [eshoponweb-ci-
     - **DotNet Publish**: Veröffentlicht die Anwendung und ihre Abhängigkeiten in einem Ordner für die Bereitstellung auf einem Hostsystem. In diesem Fall ist das **Build.ArtifactStagingDirectory**.
 
 1. Klicken Sie auf die Schaltfläche **Speichern**, um Ihre Pipelinedefinition zu speichern.
-1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines > Pipelines**, und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie es **eshoponweb-ci-pr** und klicken Sie auf **Speichern**.
+1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie es **eshoponweb-ci-pr** und klicken Sie auf **Speichern**.
 
 #### Aufgabe 2: Branchrichtlinien
 
 In dieser Aufgabe fügen Sie dem Mainbranch Richtlinien hinzu und lassen nur Änderungen mithilfe von Pull Requests zu, die den definierten Richtlinien entsprechen. Sie möchten sicherstellen, dass Änderungen in einem Branch überprüft werden, bevor sie zusammengeführt werden.
 
-1. Wechseln Sie zum Abschnitt **Repos > Branches**.
+1. Wechseln Sie zum Abschnitt **Repos>Branches**.
 1. Zeigen Sie auf der Registerkarte **Eigene** im Bereich **Verzweigungen** mit dem Mauszeiger auf den Eintrag **Haupt**-Verzweigung, um das Auslassungszeichen auf der rechten Seite anzuzeigen.
 1. Klicken Sie auf die Auslassungspunkte, und wählen Sie im Popupmenü **Verzweigungsrichtlinien** aus.
 1. Aktivieren Sie auf der Registerkarte **Haupt** der Repositoryeinstellungen die Option für **Mindestanzahl der Prüfer erforderlich machen**. Fügen Sie **1** Prüfer hinzu, und aktivieren Sie das Kontrollkästchen **Anforderern erlauben, ihre eigenen Änderungen zu genehmigen** (da Sie der einzige Benutzer in Ihrem Projekt für das Lab sind)
@@ -130,7 +132,7 @@ In dieser Aufgabe fügen Sie die YAML-Builddefinition hinzu, die zum Implementie
 
 Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Navigieren Sie zu **Pipelines > Pipelines**.
+1. Navigieren Sie zu **Pipelines>Pipelines**.
 1. Klicken Sie auf die Schaltfläche **Neue Pipeline**.
 1. Wählen Sie **Azure Repos Git** (YAML) aus.
 1. Wählen Sie das Repository **eShopOnWeb** aus.
@@ -144,8 +146,6 @@ Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.ym
     - **DotNet Publish**: Veröffentlicht die Anwendung und ihre Abhängigkeiten in einem Ordner für die Bereitstellung auf einem Hostsystem. In diesem Fall ist das **Build.ArtifactStagingDirectory**.
     - **Artefakt veröffentlichen – Website**: Veröffentlichen Sie das App-Artefakt (erstellt im vorherigen Schritt), und stellen Sie es als Pipelineartefakt zur Verfügung.
     - **Artefakt veröffentlichen – Bicep**: Veröffentlichen Sie das Infrastrukturartefakt (Bicep-Datei), und stellen Sie es als Pipelineartefakt zur Verfügung.
-
-1. Klicken Sie auf **Ausführen** und warten Sie, bis die Pipeline erfolgreich ausgeführt wird.
 
 #### Aufgabe 2: Aktivieren von Continuous Integration
 
@@ -172,7 +172,7 @@ Die Standardmäßige Buildpipelinedefinition aktiviert keine Continuous Integrat
 1. Wählen Sie **Für diesen Commit neuen Branch erstellen**.
 1. Übernehmen Sie den Standardnamen der Verzweigung und belassen Sie **Pull Request starten** markiert.
 1. Klicken Sie auf **Speichern**.
-1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines > Pipelines**, und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
+1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines>Pipelines** , und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie ihn **eshoponweb-ci** und klicken Sie auf **Speichern**.
 1. Gehen Sie zu **Repos > Pull Requests**.
 1. Klicken Sie auf die Pull Request **„eshoponweb-ci.yml für Azure Pipelines aktualisieren“**.
 1. Nachdem alle Überprüfungen erfolgreich waren, klicken Sie oben mit der rechten Maustaste auf **Genehmigen**. Jetzt können Sie auf **Abschließen** klicken.
@@ -182,7 +182,7 @@ Die Standardmäßige Buildpipelinedefinition aktiviert keine Continuous Integrat
 
 In dieser Aufgabe erstellen Sie einen Pull Request mit einem neuen Branch, um eine Änderung mit dem geschützten **Mainbranch** zusammenzuführen und die CI-Pipeline automatisch auszulösen.
 
-1. Navigieren Sie zum Abschnitt **Repos** und klicken Sie auf **Verzweigungen**.
+1. Navigieren Sie zum Abschnitt **Repos**.
 1. Erstellen Sie eine neue Verzweigung mit dem Namen **Feature02** basierend auf der **Haupt**-Verzweigung.
 1. Klicken Sie auf die neue Verzweigung **Feature02**.
 1. Navigieren Sie zur Datei **/eShopOnWeb/src/Web/Program.cs**, und klicken Sie oben rechts auf **Bearbeiten**.
@@ -199,7 +199,7 @@ In dieser Aufgabe erstellen Sie einen Pull Request mit einem neuen Branch, um ei
 1. Der Pull Request zeigt einige ausstehende Anforderungen basierend auf den Richtlinien an, die für die Ziel-**Hauptverzweigung** gelten.
 1. Nachdem alle Überprüfungen erfolgreich waren, klicken Sie oben mit der rechten Maustaste auf **Genehmigen**. Jetzt können Sie im Dropdownmenü **AutoVervollständigen festlegen** auf **Vervollständigen** klicken.
 1. Klicken Sie auf der Registerkarte **Pull Request abschließen** auf **Zusammenführen abschließen**.
-1. Wechseln Sie zurück zu **Pipelines > Pipelines**. Sie werden feststellen, dass der Build **eshoponweb-ci** automatisch ausgelöst wurde, nachdem der Code zusammengeführt wurde.
+1. Wechseln Sie zurück zu **Pipelines>Pipelines**. Sie werden feststellen, dass der Build **eshoponweb-ci** automatisch ausgelöst wurde, nachdem der Code zusammengeführt wurde.
 1. Klicken Sie auf den **eshoponweb-ci** Build, und wählen Sie dann die letzte Ausführung aus.
 1. Klicken Sie nach erfolgreicher Ausführung auf **Zugehörige > Veröffentlicht**, um die veröffentlichten Artefakte zu überprüfen:
     - Bicep: das Infrastrukturartefakt.

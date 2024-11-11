@@ -6,6 +6,8 @@ lab:
 
 # Implementieren von GitHub Actions für CI/CD
 
+## Lab-Handbuch für Kursteilnehmer
+
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -31,16 +33,16 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 1: Importieren Sie eShopOnWeb in Ihr GitHub-Repository
+### Übung 0: Importieren Sie eShopOnWeb in Ihr GitHub-Repository
 
 In dieser Übung importieren Sie den Code des bestehenden [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)-Repositorys in Ihr eigenes privates GitHub-Repository.
 
 Das Repository ist wie folgt organisiert:
-- Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
-- Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-- Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
-- Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-- Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
+    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
+    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarien verwendet wird.
 
 #### Aufgabe 1: Erstellen Sie ein öffentliches Repository in GitHub und importieren Sie eShopOnWeb
 
@@ -48,11 +50,11 @@ In dieser Aufgabe erstellen Sie ein leeres öffentliches GitHub-Repository und i
 
 1. Starten Sie vom Laborcomputer aus einen Web-Browser, navigieren Sie zur [GitHub-Website](https://github.com/), melden Sie sich mit Ihrem Konto an und klicken Sie auf **Neu**, um ein neues Repository zu erstellen.
 
-    ![Screenshot der Schaltfläche „Neues Repository erstellen“.](images/github-new.png)
+    ![Erstellen eines Repositorys](images/github-new.png)
 
 1. Klicken Sie auf der Seite **Ein neues Repository erstellen** auf den Link **Repository importieren** (unterhalb des Seitentitels).
 
-    > **Hinweis**: Sie können die Import-Website auch direkt aufrufen unter <https://github.com/new/import>
+    > HINWEIS: Sie können die Import-Website auch direkt aufrufen unter <https://github.com/new/import>
 
 1. Auf der Seite **Importieren Sie Ihr Projekt auf GitHub**:
 
@@ -67,9 +69,9 @@ In dieser Aufgabe erstellen Sie ein leeres öffentliches GitHub-Repository und i
 
 1. Gehen Sie auf der Repository-Seite zu **Einstellungen**, klicken Sie auf **Aktionen > Allgemein** und wählen Sie die Option **Alle Aktionen und wiederverwendbare Workflows zulassen**. Klicken Sie auf **Speichern**.
 
-    ![Screenshot der Option „Aktivierung von GitHub Actions“.](images/enable-actions.png)
+    ![Aktivieren von GitHub Actions](images/enable-actions.png)
 
-### Übung 2: Einrichten des GitHub-Repositorys und des Azure-Zugangs
+### Übung 1: Einrichten des GitHub-Repositorys und des Azure-Zugangs
 
 In dieser Übung erstellen Sie ein Azure-Dienstprinzipal, um GitHub-Zugriff auf Ihr Azure-Abonnement über GitHub Aktionen zu autorisieren. Sie werden auch den GitHub-Workflow einrichten, mit dem Sie Ihre Website erstellen, testen und auf Azure bereitstellen können.
 
@@ -77,21 +79,20 @@ In dieser Übung erstellen Sie ein Azure-Dienstprinzipal, um GitHub-Zugriff auf 
 
 In dieser Aufgabe erstellen Sie den Azure-Dienstprinzipal, der von GitHub verwendet wird, um die gewünschten Ressourcen bereitzustellen. Alternativ können Sie auch [OpenID Connect in Azure](https://docs.github.com/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-azure) als geheimnislosen Authentifizierungsmechanismus verwenden.
 
-1. Öffnen Sie auf Ihrem Laborcomputer in einem Browserfenster das Azure-Portal (<https://portal.azure.com/>).
+1. Öffnen Sie auf Ihrem Laborcomputer in einem Browserfenster das Azure-Portal (https://portal.azure.com/).
 1. Suchen Sie im Portal nach **Ressourcengruppen** und klicken Sie darauf.
 1. Klicken Sie auf **+ Erstellen**, um eine neue Ressourcengruppe für die Übung zu erstellen.
-1. Geben Sie auf der Registerkarte **Erstellen einer Ressourcengruppe** der Ressourcengruppe **rg-eshoponweb-NAME** (Name für einen eindeutigen Alias ersetzen) den folgenden Namen. Klicken Sie auf **Überprüfen + Erstellen > Erstellen**.
+1. Geben Sie auf der Registerkarte **Erstellen einer Ressourcengruppe** der Ressourcengruppe **rg-eshoponweb-NAME** (Name für einen eindeutigen Alias ersetzen) den folgenden Namen. Klicken Sie auf **Überprüfen+Erstellen > Erstellen**.
 1. Öffnen Sie im Azure-Portal die **Cloud Shell** (neben der Suchleiste).
 
-    > **Hinweis**: Wenn Sie die Cloud Shell zum ersten Mal öffnen, müssen Sie den [beständigen Speicher](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage) konfigurieren
+    > HINWEIS: Wenn Sie die Cloud Shell zum ersten Mal öffnen, müssen Sie den [persistenten Speicher](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage) konfigurieren
 
 1. Stellen Sie sicher, dass das Terminal im **Bash**-Modus läuft und führen Sie den folgenden Befehl aus, wobei Sie **SUBSCRIPTION-ID** und **RESOURCE-GROUP** durch Ihre eigenen Bezeichnungen ersetzen (beide finden Sie auf der **Übersicht**-Seite der Ressourcengruppe):
 
     `az ad sp create-for-rbac --name GH-Action-eshoponweb --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP --sdk-auth`
 
-    > **Hinweis**: Achten Sie darauf, dass dies in einer einzigen Zeile getippt oder eingefügt wird!
-
-    > **Hinweis**: Mit diesem Befehl wird ein Dienstprinzipal mit Contributor-Zugriff auf die zuvor erstellte Ressourcengruppe erstellt. Auf diese Weise stellen wir sicher, dass GitHub-Aktionen nur die Berechtigungen haben, die für die Interaktion mit dieser Ressourcengruppe erforderlich sind (nicht für den Rest des Abonnements)
+    > HINWEIS: Achten Sie darauf, dass dies in einer einzigen Zeile getippt oder eingefügt wird!
+    > HINWEIS: Mit diesem Befehl wird ein Dienstprinzipal mit Contributor-Zugriff auf die zuvor erstellte Ressourcengruppe erstellt. Auf diese Weise stellen wir sicher, dass GitHub-Aktionen nur die Berechtigungen haben, die für die Interaktion mit dieser Ressourcengruppe erforderlich sind (nicht für den Rest des Abonnements)
 
 1. Der Befehl gibt ein JSON-Objekt aus, das Sie später als GitHub-Geheimnis für den Workflow verwenden werden. Kopieren Sie das JSON-Objekt. Das JSON-Objekt enthält die Identifikatoren, die zur Authentifizierung gegenüber Azure im Namen einer Microsoft Entra-Identität (Dienstprinzipal) verwendet werden.
 
@@ -105,7 +106,7 @@ In dieser Aufgabe erstellen Sie den Azure-Dienstprinzipal, der von GitHub verwen
         }
     ```
 
-1. (Überspringen, falls bereits registriert) Sie müssen auch den folgenden Befehl ausführen, um den Ressourcenanbieter für den **Azure App Service** zu registrieren, den Sie später bereitstellen werden:
+1. Sie müssen auch den folgenden Befehl ausführen, um den Ressourcenanbieter für den **Azure App Service** zu registrieren, den Sie später bereitstellen werden:
 
    ```bash
    az provider register --namespace Microsoft.Web
@@ -141,15 +142,15 @@ In dieser Aufgabe überprüfen Sie die Ausführung des GitHub-Workflows:
 1. Gehen Sie in einem Browserfenster zurück zu Ihrem **eShopOnWeb** GitHub-Repository.
 1. Gehen Sie auf der Repository-Seite zu **Aktionen**, dort sehen Sie die Workflow-Einrichtung vor der Ausführung. Klicken Sie darauf.
 
-    ![Screenshot des GitHub-Workflows in Bearbeitung.](images/gh-actions.png)
+    ![GitHub-Workflow wird ausgeführt](images/gh-actions.png)
 
 1. Warten Sie, bis der Workflow abgeschlossen ist. In der **Zusammenfassung** sehen Sie die beiden Workflow-Jobs, den Status und die bei der Ausführung erhaltenen Artefakte. Sie können jeden Auftrag anklicken, um die Protokolle einzusehen.
 
-    ![Screenshot des erfolgreichen Workflows.](images/gh-action-success.png)
+    ![Erfolgreicher Workflow](images/gh-action-success.png)
 
 1. Wechseln Sie in einem Browserfenster zurück zum Azure-Portal (<https://portal.azure.com/>). Öffnen Sie die zuvor erstellte Ressourcengruppe. Sie sehen, dass die GitHub-Aktion mithilfe einer Bicep-Vorlage einen Azure-App ServicePlan + App Service erstellt hat. Sie können die veröffentlichte Website sehen, indem Sie den App Service öffnen und auf **Durchsuchen** klicken.
 
-    ![Screenshot der WebApp „Durchsuchen“](images/browse-webapp.png)
+    ![Durchsuchen von WebApp](images/browse-webapp.png)
 
 #### (OPTIONAL) Aufgabe 4: Hinzufügen einer manuellen Genehmigung mithilfe von GitHub-Umgebungen vor der Bereitstellung
 
@@ -161,23 +162,39 @@ In dieser Aufgabe verwenden Sie GitHub-Umgebungen, um eine manuelle Genehmigung 
 1. Wechseln Sie auf der Repositoryseite zu **Einstellungen**, öffnen Sie **Umgebungen**, und klicken Sie auf **Neue Umgebung**.
 1. Geben Sie ihr den Namen **Entwicklung** und klicken Sie auf **Umgebung konfigurieren**.
 
-    > **Hinweis**: Wenn eine Umgebung namens **Entwicklung** bereits in der Liste **Umgebungen** vorhanden ist, öffnen Sie die Konfiguration, indem Sie auf den Umgebungsnamen klicken.  
+    > HINWEIS: Wenn eine Umgebung namens **Entwicklung** bereits in der Liste **Umgebungen** vorhanden ist, öffnen Sie die Konfiguration, indem Sie auf den Umgebungsnamen klicken.  
 
 1. Aktivieren Sie auf der Registerkarte **Entwicklung konfigurieren** die Option **Erforderliche Prüfer** und Ihr GitHub-Konto als Prüfer. Klicken Sie auf **Schutzregeln speichern**.
-1. Jetzt können Sie die Schutzregel testen. Wechseln Sie auf der Repositoryseite zu **Aktionen**, klicken Sie auf den Workflow **eShopOnWeb erstellen und testen** und klicken Sie auf **Workflow ausführen > Workflow ausführen**, um ihn manuell auszuführen.
+1. Jetzt können Sie die Schutzregel testen. Wechseln Sie auf der Repositoryseite zu **Aktionen**, klicken Sie auf den **eShopOnWeb Build und Test**-Workflow und klicken Sie auf **Workflow ausführen>Workflow ausführen**, um ihn manuell auszuführen.
 
-    ![Screenshot des manuell ausgelösten Workflows.](images/gh-manual-run.png)
+    ![Workflow manuell auslösen](images/gh-manual-run.png)
 
 1. Klicken Sie auf die gestartete Ausführung des Workflows und warten Sie, bis der **Buildandtest**-Auftrag abgeschlossen ist. Beim Erreichen des **Bereitstellungsauftrags** wird eine Überprüfungsanforderung angezeigt.
 
 1. Klicken Sie auf **Bereitstellungen überprüfen**, überprüfen Sie die **Entwicklung** und klicken Sie auf **Genehmigen und Bereitstellen**.
 
-    ![Screenshot der Genehmigung von Aktionen.](images/gh-approve.png)
+    ![Genehmigung](images/gh-approve.png)
 
 1. Workflow folgt der Ausführung des **Bereitstellungsauftrags** und wird abgeschlossen.
 
-> [!IMPORTANT]
-> Denken Sie daran, die im Azure-Portal erstellten Ressourcen zu löschen, um unnötige Gebühren zu vermeiden.
+### Übung 2: Entfernen Sie die Azure-Laborressourcen
+
+In dieser Übung verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu beseitigen.
+
+1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
+1. Listen Sie alle Ressourcengruppen auf, die während der Labs in diesem Modul erstellt wurden, indem Sie den folgenden Befehl ausführen:
+
+    ```sh
+    az group list --query "[?starts_with(name,'rg-eshoponweb')].name" --output tsv
+    ```
+
+1. Löschen Sie alle Ressourcengruppen, die Sie während der praktischen Übungen in diesem Modul erstellt haben, indem Sie den folgenden Befehl ausführen:
+
+    ```sh
+    az group list --query "[?starts_with(name,'rg-eshoponweb')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+    ```
+
+    >**Hinweis**: Der Befehl wird (dem --nowait-Parameter entsprechend) asynchron ausgeführt. Dies bedeutet, dass Sie zwar einen weiteren Azure CLI-Befehl in derselben Bash-Sitzung direkt im Anschluss ausführen können, es jedoch einige Minuten dauert, bis die Ressourcengruppen tatsächlich entfernt werden.
 
 ## Überprüfung
 
