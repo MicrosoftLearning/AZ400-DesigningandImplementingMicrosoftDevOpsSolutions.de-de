@@ -6,8 +6,6 @@ lab:
 
 # Überwachen der Anwendungsleistung mit Azure Load Testing
 
-## Lab-Handbuch für Kursteilnehmer
-
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -42,7 +40,7 @@ In diesem Lab lernen Sie Folgendes:
 
 ### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
-In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein.
 
 #### Aufgabe 1: (überspringen, wenn fertig) Erstellen und Konfigurieren des Teamprojekts
 
@@ -50,15 +48,15 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Geben Sie Ihrem Projekt den Namen **eShopOnWeb**, und wählen Sie **Scrum** in der Dropdownliste **Arbeitselementprozess** aus. Klicken Sie auf **Erstellen**.
 
-    ![Erstellen eines Projekts](images/create-project.png)
+    ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
 
 #### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Files**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein und klicken Sie auf **Importieren**:
 
-    ![Importieren eines Repositorys](images/import-repo.png)
+    ![Screenshot der Schaltfläche „Repository importieren“](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines
@@ -67,23 +65,25 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
     - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
     - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
-1. Wechseln Sie zu **Repos>Branches**.
+#### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
+
+1. Wechseln Sie zu **Repos > Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
-#### Aufgabe 3: Erstellen von Azure-Ressourcen
+#### Aufgabe 4: Erstellen von Azure-Ressourcen
 
 In dieser Aufgabe erstellen Sie eine Azure-Webanwendung mithilfe der Cloud Shell in Azure-Portal.
 
-1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, und das in dem in dem Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
+1. Starten Sie auf dem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com) und melden Sie sich an.
 1. Klicken Sie im Azure-Portal in der Symbolleiste auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Suchtextfeld befindet.
 1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
-    >**Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
+    > **Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
 
 1. Führen Sie in der **Bash**-Eingabeaufforderung im **Cloud Shell**-Bereich den folgenden Befehl aus, um eine Ressourcengruppe zu erstellen (ersetzen Sie den `<region>`-Platzhalter durch den Namen der Azure-Region, die Ihnen am nächsten kommt, z. B. "eastus").
 
     ```bash
-    RESOURCEGROUPNAME='az400m09l16-RG'
+    RESOURCEGROUPNAME='az400m08l14-RG'
     LOCATION='<region>'
     az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
@@ -91,7 +91,7 @@ In dieser Aufgabe erstellen Sie eine Azure-Webanwendung mithilfe der Cloud Shel
 1. Um einen Windows-App-Service-Plan zu erstellen, führen Sie den folgenden Befehl aus:
 
     ```bash
-    SERVICEPLANNAME='az400l16-sp'
+    SERVICEPLANNAME='az400l14-sp'
     az appservice plan create --resource-group $RESOURCEGROUPNAME \
         --name $SERVICEPLANNAME --sku B3
     ```
@@ -109,62 +109,7 @@ In dieser Aufgabe erstellen Sie eine Azure-Webanwendung mithilfe der Cloud Shel
 
 In dieser Übung werden Sie CI/CD-Pipelines-as-Code mit YAML in Azure DevOps konfigurieren.
 
-#### Aufgabe 1: (überspringen, wenn erledigt) Erstellen einer Dienstverbindung für die Bereitstellung
-
-In dieser Aufgabe erstellen Sie mithilfe der Azure CLI ein Dienstprinzipal, der es Azure DevOps ermöglicht:
-
-- Ressourcen in Ihrem Azure-Abonnement bereitstellen.
-- Sie haben Lesezugriff auf die später erstellten Key Vault-Geheimnisse.
-
-> **Hinweis**: Wenn Sie bereits über ein Dienstprinzipal verfügen, können Sie direkt mit der nächsten Aufgabe fortfahren.
-
-Sie benötigen ein Dienstprinzipal, um Azure-Ressourcen über Azure Pipelines bereitzustellen. Da Sie Geheimnisse in einer Pipeline abrufen werden, müssen Sie dem Dienst bei der Erstellung des Azure Key Vault eine Berechtigung erteilen.
-
-Ein Dienstprinzipal wird automatisch von Azure Pipelines erstellt, wenn Sie eine Verbindung zu einem Azure-Abonnement innerhalb einer Pipeline-Definition herstellen oder wenn Sie eine neue Dienstverbindung über die Projekteinstellungsseite erstellen (automatische Option). Sie können den Dienstprinzipal auch manuell über das Portal oder mithilfe von Azure CLI erstellen und ihn projektübergreifend wiederverwenden.
-
-1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, und das in dem in dem Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
-1. Klicken Sie im Azure-Portal auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Textfeld für die Suche im oberen Bereich der Seite befindet.
-1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
-
-   >**Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
-
-1. Führen Sie an der Eingabeaufforderung **Bash** im Bereich **Cloud Shell** die folgenden Befehle aus, um die Werte der Attribute „Azure-Abonnement-ID“ und „Abonnementname“ abzurufen:
-
-    ```bash
-    az account show --query id --output tsv
-    az account show --query name --output tsv
-    ```
-
-    > **Hinweis**: Kopieren Sie beide Werte in eine Textdatei. Sie werden sie später in diesem Lab benötigen.
-
-1. Führen Sie an der Eingabeaufforderung **Bash**im Bereich **Cloud Shell** den folgenden Befehl aus, um ein Dienstprinzipal zu erstellen (ersetzen Sie **myServicePrincipalName** durch eine beliebige eindeutige Zeichenfolge aus Buchstaben und Ziffern) und **mySubscriptionID** durch Ihre Azure subscriptionId :
-
-    ```bash
-    az ad sp create-for-rbac --name myServicePrincipalName \
-                         --role contributor \
-                         --scopes /subscriptions/mySubscriptionID
-    ```
-
-    > **Hinweis**: Der Befehl generiert eine JSON-Ausgabe. Kopieren Sie die Ausgabe in eine Textdatei. Sie benötigen diese später in diesem Lab.
-
-1. Starten Sie als Nächstes auf dem Laborcomputer einen Webbrowser, navigieren Sie zum Azure DevOps **eShopOnWeb**-Projekt. Klicken Sie auf **Project Einstellungen>Dienstverbindungen (unter Pipelines)** und **Neue Dienstverbindung**.
-
-    ![Neue Dienstverbindung](images/new-service-connection.png)
-
-1. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus (Sie müssen möglicherweise scrollen).
-
-1. Wählen Sie **Dienstprinzipal (manuell)** und klicken Sie auf **Weiter**.
-
-1. Füllen Sie die leeren Felder mit den Informationen aus, die während der vorherigen Schritte gesammelt wurden:
-    - Abonnement-ID und -Name.
-    - Dienstprinzipal-ID (appId), Dienstprinzipalschlüssel (Kennwort) und Mandanten-ID (Mandant).
-    - Geben Sie in **Name der Dienstverbindung** **azure subs** ein. Auf diesen Namen wird in YAML-Pipelines verwiesen, wenn eine Azure DevOps-Dienstverbindung erforderlich ist, um mit Ihrem Azure-Abonnement zu kommunizieren.
-
-    ![Azure-Serviceverbindung](images/azure-service-connection.png)
-
-1. Klicken Sie auf **Überprüfen und speichern**.
-
-#### Aufgabe 2: Hinzufügen einer YAML-Build- und Bereitstellungsdefinition
+#### Aufgabe 1: Ein YAML-Build und eine Bereitstellungsdefinition hinzufügen
 
 In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition hinzu.
 
@@ -251,7 +196,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
     - Überprüfen Sie, dass **App Service-Typ** auf „Web-App unter Windows“ zeigt.
     - wählen Sie in der Dropdownliste **App Service-Name** den Namen der Web-App aus, die Sie zuvor im Lab bereitgestellt haben (**az400eshoponweb...).
     - **Aktualisieren** Sie im Textfeld **Paket oder Ordner** den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-    - Erweitern Sie **Anwendungs- und Konfigurationseinstellungen**, und fügen Sie den Wert `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` hinzu.
+    - Erweitern Sie **Anwendungs- und Konfigurationseinstellungen**, und fügen Sie im Textfeld „App-Einstellungen“ die folgenden Schlüssel-Wert-Paare hinzu: `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
 1. Bestätigen Sie die Einstellungen im Bereich Assistent, indem Sie auf die Schaltfläche **Hinzufügen** klicken.
 
     > **Hinweis**: Dadurch wird der YAML-Pipelinedefinition automatisch die Bereitstellungsaufgabe hinzugefügt.
@@ -271,17 +216,17 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 
     > **Hinweis**: Der **parameter packageForLinux** ist im Kontext dieses Labs irreführend, ist aber für Windows oder Linux gültig.
 
-1. Bevor Sie die Aktualisierungen in der YML-Datei speichern, geben Sie ihnen einen eindeutigeren Namen. Oben im Fenster des YAML-Editors wird **EShopOnweb/azure-pipelines-#.yml** angezeigt. (wobei # eine Zahl ist, in der Regel 1, sie könnte aber in Ihrem Setup unterschiedlich sein.) Wählen Sie **diesen Dateinamen** aus, und benennen Sie ihn in **m09l16-pipeline.yml** um
+1. Bevor Sie die Aktualisierungen in der YML-Datei speichern, geben Sie ihnen einen eindeutigeren Namen. Oben im Fenster des YAML-Editors wird **EShopOnweb/azure-pipelines-#.yml** angezeigt. (wobei # eine Zahl ist, in der Regel 1, sie könnte aber in Ihrem Setup unterschiedlich sein.) Wählen Sie **diesen Dateinamen** aus, und benennen Sie ihn in **m08l14-pipeline.yml** um
 
-1. Klicken Sie auf **Speichern**. Klicken Sie im Bereich **Speichern** erneut auf **Speichern**, um die Änderung direkt in den Masterzweig zu übertragen.
+1. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderung direkt in die Hauptverzweigung zu übernehmen.
 
     > **Hinweis**: Da unser ursprüngliches CI-YAML nicht so konfiguriert wurde, dass automatisch ein neuer Build ausgelöst wird, müssen wir diesen manuell initiieren.
 
 1. Navigieren Sie im linken Menü von Azure DevOps zu **Pipelines** und wählen Sie erneut **Pipelines**. Wählen Sie als Nächstes **Alle** aus, um alle Pipelinedefinitionen zu öffnen, nicht nur die zuletzt verwendeten.
 
-    > **Hinweis**: Wenn Sie alle vorherigen Pipelines aus früheren Labübungen beibehalten haben, hat diese neue Pipeline möglicherweise den Standardsequenznamen **eShopOnWeb (#)** für die Pipeline wiederverwendet, wie im folgenden Screenshot gezeigt. Wählen Sie eine Pipeline aus (höchstwahrscheinlich die mit der höchsten Sequenznummer, wählen Sie „Bearbeiten“ aus, und überprüfen Sie, ob sie auf die Codedatei m09l16-pipeline.yml zeigt).
+    > **Hinweis**: Wenn Sie alle vorherigen Pipelines aus früheren Labübungen beibehalten haben, hat diese neue Pipeline möglicherweise den Standardsequenznamen **eShopOnWeb (#)** für die Pipeline wiederverwendet, wie im folgenden Screenshot gezeigt. Wählen Sie eine Pipeline aus (höchstwahrscheinlich die mit der höchsten Sequenznummer, wählen Sie „Bearbeiten“ aus, und überprüfen Sie, ob sie auf die Codedatei m08l14-pipeline.yml zeigt).
 
-    ![Screenshot von Azure Pipelines mit eShopOnWeb-Ausführungen](images/m3/eshoponweb-m9l16-pipeline.png)
+    ![Screenshot von Azure Pipelines mit eShopOnWeb-Ausführungen.](images/m3/eshoponweb-m9l16-pipeline.png)
 
 1. Bestätigen Sie die Ausführung dieser Pipeline, indem Sie im angezeigten Bereich auf **Ausführen** klicken, und bestätigen Sie dies, indem Sie erneut auf **Ausführen** klicken.
 1. Beachten Sie die zwei dargestellten Phasen **Build .Net Core Solution** und **Deploy to Azure Web App**.
@@ -315,13 +260,13 @@ In dieser Übung stellen Sie eine Azure Load Testing-Ressource in Azure bereit u
 In dieser Aufgabe werden Sie eine Azure Load Test-Ressource in Ihrem Azure-Abonnement bereitstellen.
 
 1. Navigieren Sie im Azure-Portal (<https://portal.azure.com>) zu **Azure-Ressource erstellen**.
-1. Geben Sie im Suchfeld „Suchdienste und Marktplatz“ **Azure Load Testing** ein.
+1. Geben Sie im Suchfeld „Suchdienste und Marktplatz“ **`Azure Load Testing`** ein.
 1. Wählen Sie **Azure Load Testing** (veröffentlicht von Microsoft) aus den Suchergebnissen.
 1. Klicken Sie auf der Seite Azure Load Testing auf **Erstellen**, um den Bereitstellungsprozess zu starten.
 1. Geben Sie auf der Seite „Auslastungstestressource erstellen“ die erforderlichen Details für die Ressourcenbereitstellung an:
    - **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
    - **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, die Sie für die Bereitstellung des Web App Service in der vorherigen Übung verwendet haben.
-   - **Name**: eShopOnWebLoadTesting
+   - **Name**: `eShopOnWebLoadTesting`
    - **Region**: Wählen Sie unter Region eine Region in Ihrer Nähe aus.
 
     > **Hinweis**: Der Azure Load Testing-Dienst ist nicht in allen Azure-Regionen verfügbar.
@@ -337,7 +282,8 @@ In dieser Aufgabe werden Sie eine Azure Load Test-Ressource in Ihrem Azure-Abonn
 
 In dieser Aufgabe erstellen Sie verschiedene Azure Load Testing-Tests mit unterschiedlichen Einstellungen für die Auslastungskonfiguration.
 
-1. Navigieren Sie im Blatt der Azure Load Testing-Ressource **eShopOnWebLoadTesting** zu **Tests**. Klicken Sie auf die Menüoption **+Erstellen**, und wählen Sie **URL-basierten Test erstellen** aus.
+1. Navigieren Sie im Blatt der Azure Load Testing-Ressource **eShopOnWebLoadTesting** unter **Tests** zu **Tests**. Klicken Sie auf die Menüoption **+ Erstellen**, und wählen Sie **URL-basierten Test erstellen** aus.
+1. Deaktivieren Sie das Kontrollkästchen **Erweiterte Einstellungen aktivieren**, um die erweiterten Einstellungen anzuzeigen.
 1. Füllen Sie die folgenden Parameter und Einstellungen aus, um einen Auslastungstest zu erstellen:
    - **Testen der URL**: Geben Sie die URL aus dem Azure App Service ein, den Sie in der vorherigen Übung bereitgestellt haben (az400eshoponweb... azurewebsites.net), **einschließlich https://**
    - **Auslastung angeben**: Virtuelle Benutzer
@@ -382,27 +328,24 @@ Sie beginnen mit der Automatisierung von Auslastungstests in Azure Load Testing,
 
 Nach Abschluss dieser Übung verfügen Sie über einen CI/CD-Workflow, der für die Durchführung eines Auslastungstests mit Azure Load Testing konfiguriert ist.
 
-#### Aufgabe 1: Die Details der ADO-Dienstverbindung identifizieren
+#### Aufgabe 1: Identifizieren der Details der Azure DevOps-Dienstverbindung
 
-In dieser Aufgabe erteilen Sie dem Dienstprinzipal der Azure DevOps-Dienstverbindung die erforderlichen Berechtigungen.
+In dieser Aufgabe erteilen Sie der Azure DevOps-Dienstverbindung die erforderlichen Berechtigungen.
 
-1. Navigieren Sie im **Azure DevOps-Portal**(<https://dev.azure.com>) zum Projekt **eShopOnWeb**.
+1. Navigieren Sie im **Azure DevOps-Portal**(<https://aex.dev.azure.com>) zum Projekt **eShopOnWeb**.
 1. Wählen Sie links unten **Projekteinstellungen**.
 1. Wählen Sie im Abschnitt **Pipelines** die Option **Dienstverbindungen**.
 1. Achten Sie auf die Dienstverbindung, die den Namen Ihres Azure-Abonnements trägt, das Sie zu Beginn der Übung für die Bereitstellung von Azure-Ressourcen verwendet haben.
-1. **Wählen Sie die Dienstverbindung aus**. Navigieren Sie auf der Registerkarte **Übersicht** zu **Details** und wählen Sie **Dienstprinzipal verwalten**.
-1. Dies leitet Sie zum Azure-Portal weiter, von wo aus Sie die Details des **Dienstprinzipals** für das Identitätsobjekt öffnen.
-1. Kopieren Sie den Wert des **Anzeigenamens** (formatiert wie Name_of_ADO_Organization_eShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4) zur Seite, da Sie diesen in den nächsten Schritten benötigen werden.
+1. **Wählen Sie die Dienstverbindung aus**. Navigieren Sie auf der Registerkarte **Übersicht** zu **Details** und wählen Sie **Dienstverbindungsrollen verwalten** aus.
+1. Dadurch gelangen Sie zum Azure-Portal, von wo aus die Ressourcengruppendetails im Blatt „Zugriffssteuerung (IAM)“ geöffnet werden.
 
-#### Aufgabe 2: Erteilen von Berechtigungen für den Dienstprinzipal
+#### Aufgabe 2: Erteilen von Berechtigungen für die Azure Load Testing-Ressource
 
-Azure Load Testing verwendet Azure RBAC, um Berechtigungen für die Ausführung bestimmter Aktivitäten für Ihre Auslastungstestressource zu erteilen. Um einen Auslastungstest von Ihrer CI/CD-Pipeline aus durchzuführen, gewähren Sie dem Dienstprinzipal die Rolle **Auslastungstestmitwirkender**.
+Azure Load Testing verwendet Azure RBAC, um Berechtigungen für die Ausführung bestimmter Aktivitäten für Ihre Auslastungstestressource zu erteilen. Um einen Auslastungstest von Ihrer CI/CD-Pipeline aus durchzuführen, gewähren Sie der Azure DevOps-Dienstverbindung die Rolle **Auslastungstestmitwirkender**.
 
-1. Navigieren Sie im **Azure-Portal** zu Ihrer **Azure Load Testing**-Ressource.
-1. Wählen Sie **Zugriffssteuerung (IAM)** > Hinzufügen > Rollenzuweisung hinzufügen.
+1. Wählen Sie **+Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.
 1. Wählen Sie auf der **Registerkarte "Rolle"** in der Liste der Auftragsfunktionsrollen die Option **Auslastungstestmitwirkender** aus.
-1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Mitglieder auswählen** und verwenden Sie dann den **Anzeigenamen**, den Sie zuvor kopiert haben, um den Dienstprinzipal zu suchen.
-1. Wählen Sie den **Dienstprinzipal** und anschließend die Option **Auswählen**.
+1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Mitglieder auswählen** aus, suchen Sie dann Ihr Benutzerkonto, wählen Sie es aus und klicken Sie auf **Auswählen**.
 1. Wählen Sie auf der Registerkarte **Überprüfen + zuweisen** die Option **Überprüfen + zuweisen** aus, um die Rollenzuweisung hinzuzufügen.
 
 Sie können jetzt die Dienstverbindung in Ihrer Azure Pipelines-Workflowdefinition verwenden, um auf Ihre Azure-Auslastungstestressource zuzugreifen.
@@ -422,7 +365,7 @@ Führen Sie die folgenden Schritte aus, um die Eingabedateien für einen vorhand
    - *config.yaml*: die YAML-Konfigurationsdatei für den Auslastungstest. Sie verweisen auf diese Datei in der CI/CD-Workflowdefinition.
    - *quick_test.jmx*: das JMeter-Testskript
 
-1. Committen Sie alle extrahierten Eingabedateien in Ihr Quellcodeverwaltungsrepository. Navigieren Sie hierzu zum **Azure DevOps-Portal**(<https://dev.azure.com>), und navigieren Sie dann zum DevOps-Projekt **eShopOnWeb**.
+1. Committen Sie alle extrahierten Eingabedateien in Ihr Quellcodeverwaltungsrepository. Navigieren Sie hierzu zum **Azure DevOps-Portal**(<https://aex.dev.azure.com/>), und navigieren Sie dann zum DevOps-Projekt **eShopOnWeb**.
 1. Wählen Sie **Repositorys** aus. Beachten Sie in der Struktur des Quellcodeordners den Unterordner **Tests**. Beachten Sie die Auslassungspunkte (...), und wählen Sie **Neu > Ordner** aus.
 1. Geben Sie **jmeter** als Ordnernamen und **placeholder.txt** als Dateinamen an (Hinweis: Ein Ordner kann nicht als leer erstellt werden)
 1. Klicken Sie auf **Commit**, um die Erstellung der Platzhalterdatei und des jmeter-Ordners zu bestätigen.
@@ -431,8 +374,6 @@ Führen Sie die folgenden Schritte aus, um die Eingabedateien für einen vorhand
 1. Klicken Sie auf **Commit**, um den Dateiupload in die Quellcodeverwaltung zu bestätigen.
 
 #### Aufgabe 4: Aktualisieren der YAML-Definitionsdatei des CI/CD-Workflows
-
-In dieser Aufgabe importieren Sie die Erweiterung „Azure Load Testing - Azure DevOps Marketplace“ sowie die vorhandene CI/CD-Pipeline mit der AzureLoadTest-Aufgabe.
 
 1. Zum Erstellen und Ausführen eines Auslastungstests verwendet die Azure Pipelines-Workflowdefinition die Erweiterung **Azure Load Testing-Aufgabe** aus dem Azure DevOps-Marketplace. Öffnen Sie die [Azure Load Testing-Aufgabenerweiterung](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) im Azure DevOps-Marketplace und wählen Sie **Kostenlos abrufen** aus.
 1. Wählen Sie Ihre Azure DevOps-Organisation aus und wählen Sie dann **Installieren** aus, um die Erweiterung zu installieren.
@@ -443,7 +384,7 @@ In dieser Aufgabe importieren Sie die Erweiterung „Azure Load Testing - Azure 
    - Azure-Abonnement: Wählen Sie das Abonnement, auf dem Ihre Azure-Ressourcen laufen.
    - Auslastungstestdatei: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
    - Auslastungstest-Ressourcengruppe: Die Ressourcengruppe, die Ihre Azure Load Testing-Ressourcen enthält
-   - Auslastungstest-Ressourcenname: ESHopOnWebLoadTesting
+   - Name der Auslastungstestressource: `eShopOnWebLoadTesting`
    - Name des Auslastungstestlaufs: ado_run
    - Beschreibung des Auslastungstestlaufs: Auslastungstest aus ADO
 
@@ -454,7 +395,7 @@ In dieser Aufgabe importieren Sie die Erweiterung „Azure Load Testing - Azure 
     ```yml
          - task: AzureLoadTest@1
           inputs:
-            azureSubscription: 'AZURE DEMO SUBSCRIPTION(b86d9ae1-1234-4b75-a8e7-27fb2ea7f9f4)'
+            azureSubscription: 'AZURE DEMO SUBSCRIPTION'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
             resourceGroup: 'az400m05l11-RG'
             loadTestResource: 'eShopOnWebLoadTesting'
@@ -565,34 +506,12 @@ In dieser Aufgabe werden Sie die Kriterien für das Scheitern von Lasttests verw
 
 1. Beachten Sie, dass die letzte Zeile der Lasttest-Ausgabe **##[error]TestResult: FAILED** ist; da wir ein **FailCriteria** mit einer durchschnittlichen Antwortzeit von > 300 oder einem Fehlerprozentsatz von > 20 definiert haben und nun eine durchschnittliche Antwortzeit von mehr als 300 sehen, wird die Aufgabe als fehlgeschlagen gekennzeichnet.
 
-    > Hinweis: Stellen Sie sich vor, Sie würden in einem realen Szenario die Leistung Ihres App Service überprüfen, und wenn die Leistung unter einem bestimmten Schwellenwert liegt (was in der Regel bedeutet, dass die Web App stärker auslastet wird), könnten Sie eine neue Bereitstellung für einen zusätzlichen Azure App Service auslösen. Da wir die Reaktionszeit für Azure-Laborumgebungen nicht kontrollieren können, haben wir beschlossen, die Logik umzukehren, um den Ausfall zu garantieren.
+    > **Hinweis**: Stellen Sie sich vor, Sie würden in einem realen Szenario die Leistung Ihres App Service überprüfen, und wenn die Leistung unter einem bestimmten Schwellenwert liegt (was in der Regel bedeutet, dass die Web-App stärker auslastet ist), könnten Sie eine neue Bereitstellung für einen zusätzlichen Azure App Service auslösen. Da wir die Reaktionszeit für Azure-Laborumgebungen nicht kontrollieren können, haben wir beschlossen, die Logik umzukehren, um den Ausfall zu garantieren.
 
 1. Der FAILED-Status des Pipelinevorgangs spiegelt tatsächlich einen ERFOLG der Überprüfung der Anforderungskriterien für Azure Load Testing wider.
 
-### Übung 3: Entfernen der Azure-Laborressourcen
-
-In dieser Übung entfernen Sie die in diesem Lab bereitgestellten Azure-Ressourcen, um unerwartete Gebühren zu vermeiden.
-
-> **Hinweis**: Denken Sie daran, alle neu erstellten Azure-Ressourcen zu entfernen, die Sie nicht mehr verwenden. Durch das Entfernen nicht verwendeter Ressourcen wird sichergestellt, dass keine unerwarteten Gebühren anfallen.
-
-#### Aufgabe 1: Entfernen der Azure Lab-Ressourcen
-
-In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
-
-1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
-1. Listen Sie alle Ressourcengruppen auf, die während der Labs in diesem Modul erstellt wurden, indem Sie den folgenden Befehl ausführen:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m09l16')].name" --output tsv
-    ```
-
-1. Löschen Sie alle Ressourcengruppen, die Sie während der praktischen Übungen in diesem Modul erstellt haben, indem Sie den folgenden Befehl ausführen:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m09l16')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    >**Hinweis**: Der Befehl wird (dem --nowait-Parameter entsprechend) asynchron ausgeführt. Dies bedeutet, dass Sie zwar einen weiteren Azure CLI-Befehl in derselben Bash-Sitzung direkt im Anschluss ausführen können, es jedoch einige Minuten dauert, bis die Ressourcengruppen tatsächlich entfernt werden.
+   > [!IMPORTANT]
+   > Denken Sie daran, die im Azure-Portal erstellten Ressourcen zu löschen, um unnötige Gebühren zu vermeiden.
 
 ## Überprüfung
 
