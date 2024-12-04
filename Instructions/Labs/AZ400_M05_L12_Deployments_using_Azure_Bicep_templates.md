@@ -6,6 +6,8 @@ lab:
 
 # Bereitstellungen mit Azure Bicep-Vorlagen
 
+## Lab-Handbuch für Kursteilnehmer
+
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -33,7 +35,7 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 0: (Überspringen, wenn bereits abgeschlossen) Konfigurieren der Lab-Voraussetzungen
+### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
@@ -43,15 +45,15 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Weisen Sie Ihrem Projekt den Namen **eShopOnWeb** zu, und lassen Sie die anderen Felder auf den Standardwerten. Klicken Sie auf **Erstellen**.
 
-    ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
+    ![Erstellen eines Projekts](images/create-project.png)
 
 #### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** , **Importiere ein Repository**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
-    ![Screenshot: Fenster „Repository importieren“](images/import-repo.png)
+    ![Importieren eines Repositorys](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -62,7 +64,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 
 #### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
 
-1. Wechseln Sie zu **Repos > Branches**.
+1. Wechseln Sie zu **Repos>Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
@@ -76,7 +78,7 @@ In dieser Aufgabe verwenden Sie Visual Studio Code, um eine Azure Bicep-Vorlage 
 
 1. Navigieren Sie auf der Registerkarte Browser zu Ihrem Azure DevOps-Projekt, und navigieren Sie zu **Repos** und **Dateien**. Öffnen Sie den Ordner `infra` und suchen Sie die Datei `simple-windows-vm.bicep`.
 
-   ![Screenshot des Dateipfads „simple-windows-vm.bicep“.](./images/m06/browsebicepfile.png)
+   ![Simple-windows-vm.bicep-Datei](./images/m06/browsebicepfile.png)
 
 1. Überprüfen Sie die Vorlage, um ein besseres Verständnis der Struktur zu erhalten. Es gibt Parameter mit Typen, Standardwerten und Validierung, einige Variablen und eine ganze Reihe von Ressourcen mit diesen Typen:
 
@@ -94,7 +96,7 @@ In dieser Aufgabe erstellen Sie ein Speichervorlagenmodul **storage.bicep**, das
 
 1. Zunächst muss die Speicherressource aus der Hauptvorlage entfernt werden. Klicken Sie in der oberen rechten Ecke Ihres Browserfensters auf die Schaltfläche **Bearbeiten**:
 
-   ![Screenshot der Schaltfläche: „Pipeline bearbeiten“](./images/m06/edit.png)
+   ![Schaltfläche „Bearbeiten“](./images/m06/edit.png)
 
 1. Löschen Sie nun die Speicherressource:
 
@@ -111,11 +113,11 @@ In dieser Aufgabe erstellen Sie ein Speichervorlagenmodul **storage.bicep**, das
 
 1. Committen Sie die Datei, auch wenn Sie damit noch nicht ganz fertig sind.
 
-   ![Screenshot der Schaltfläche: „Übertragen von Dateien“](./images/m06/commit.png)
+   ![Committen der Datei](./images/m06/commit.png)
 
-1. Zeigen Sie als Nächstes mit der Maus auf den `Infra` Ordner, und klicken Sie auf das Auslassungssymbol, und wählen Sie **dann Neu** und **Datei** aus. Geben Sie „**`storage.bicep`**“ für den Namen ein und klicken Sie auf „**Erstellen**“.
+1. Zeigen Sie als Nächstes mit der Maus auf den `Infra` Ordner, und klicken Sie auf das Auslassungssymbol, und wählen Sie **dann Neu** und **Datei** aus. Geben Sie **storage.bicep** als Namen ein und klicken Sie auf **Erstellen**.
 
-   ![Screenshot des neuen „Datei“-Menüs](./images/m06/newfile.png)
+   ![Menü „Neue Datei“](./images/m06/newfile.png)
 
 1. Kopieren Sie nun den folgenden Codeausschnitt in die Datei und committen Sie Ihre Änderungen:
 
@@ -179,9 +181,64 @@ In dieser Aufgabe ändern Sie die Hauptvorlage so, dass sie auf das Vorlagenmodu
 
 ### Übung 2: Bereitstellen der Vorlagen in Azure mithilfe von YAML-Pipelines
 
-In diesem Lab verwenden Sie eine Azure DevOps-YAML-Pipeline, um Ihre Vorlage in Ihrer Azure-Umgebung bereitzustellen.
+In dieser Übung erstellen Sie eine Dienstverbindung und verwenden diese in einer Azure DevOps YAML-Pipeline, um Ihre Vorlage in Ihrer Azure-Umgebung bereitzustellen.
 
-#### Aufgabe 1: Bereitstellen von Ressourcen in Azure durch YAML-Pipelines
+#### Aufgabe 1: (überspringen, wenn erledigt) Erstellen einer Dienstverbindung für die Bereitstellung
+
+In dieser Aufgabe erstellen Sie mithilfe der Azure CLI ein Dienstprinzipal, der es Azure DevOps ermöglicht:
+
+- Ressourcen in Ihrem Azure-Abonnement bereitstellen.
+- Sie haben Lesezugriff auf die später erstellten Key Vault-Geheimnisse.
+
+> **Hinweis**: Wenn Sie bereits über ein Dienstprinzipal verfügen, können Sie direkt mit der nächsten Aufgabe fortfahren.
+
+Sie benötigen ein Dienstprinzipal, um Azure-Ressourcen über Azure Pipelines bereitzustellen. Da Sie Geheimnisse in einer Pipeline abrufen werden, müssen Sie dem Dienst bei der Erstellung des Azure Key Vault eine Berechtigung erteilen.
+
+Ein Dienstprinzipal wird automatisch von Azure Pipelines erstellt, wenn Sie eine Verbindung zu einem Azure-Abonnement innerhalb einer Pipeline-Definition herstellen oder wenn Sie eine neue Dienstverbindung über die Projekteinstellungsseite erstellen (automatische Option). Sie können den Dienstprinzipal auch manuell über das Portal oder mithilfe von Azure CLI erstellen und ihn projektübergreifend wiederverwenden.
+
+1. Starten Sie auf Ihrem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com), und melden Sie sich an. Verwenden Sie hierzu die Anmeldeinformationen eines Benutzerkontos, das in dem Abonnement, das Sie in diesem Lab verwenden, und das in dem in dem Microsoft Entra-Mandanten, der dem Abonnement zugeordnet ist, über die Rolle „Globaler Administrator“ verfügt.
+1. Klicken Sie im Azure-Portal auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Textfeld für die Suche im oberen Bereich der Seite befindet.
+1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
+
+   >**Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
+
+1. Führen Sie an der Eingabeaufforderung **Bash** im Bereich **Cloud Shell** die folgenden Befehle aus, um die Werte der Attribute „Azure-Abonnement-ID“ und „Abonnementname“ abzurufen:
+
+    ```bash
+    az account show --query id --output tsv
+    az account show --query name --output tsv
+    ```
+
+    > **Hinweis**: Kopieren Sie beide Werte in eine Textdatei. Sie werden sie später in diesem Lab benötigen.
+
+1. Führen Sie an der Eingabeaufforderung **Bash**im Bereich **Cloud Shell** den folgenden Befehl aus, um ein Dienstprinzipal zu erstellen (ersetzen Sie **myServicePrincipalName** durch eine beliebige eindeutige Zeichenfolge aus Buchstaben und Ziffern) und **mySubscriptionID** durch Ihre Azure subscriptionId :
+
+    ```bash
+    az ad sp create-for-rbac --name myServicePrincipalName \
+                         --role contributor \
+                         --scopes /subscriptions/mySubscriptionID
+    ```
+
+    > **Hinweis**: Der Befehl generiert eine JSON-Ausgabe. Kopieren Sie die Ausgabe in eine Textdatei. Sie benötigen diese später in diesem Lab.
+
+1. Starten Sie als Nächstes auf dem Laborcomputer einen Webbrowser, navigieren Sie zum Azure DevOps **eShopOnWeb**-Projekt. Klicken Sie auf **Project Einstellungen>Dienstverbindungen (unter Pipelines)** und **Neue Dienstverbindung**.
+
+    ![Neue Dienstverbindung](images/new-service-connection.png)
+
+1. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus (Sie müssen möglicherweise scrollen).
+
+1. Wählen Sie **Dienstprinzipal (manuell)** und klicken Sie auf **Weiter**.
+
+1. Füllen Sie die leeren Felder mit den Informationen aus, die während der vorherigen Schritte gesammelt wurden:
+    - Abonnement-ID und -Name.
+    - Dienstprinzipal-ID (appId), Dienstprinzipalschlüssel (Kennwort) und Mandanten-ID (Mandant).
+    - Geben Sie in **Name der Dienstverbindung** **azure subs** ein. Auf diesen Namen wird in YAML-Pipelines verwiesen, wenn eine Azure DevOps-Dienstverbindung erforderlich ist, um mit Ihrem Azure-Abonnement zu kommunizieren.
+
+    ![Azure-Serviceverbindung](images/azure-service-connection.png)
+
+1. Klicken Sie auf **Überprüfen und speichern**.
+
+#### Aufgabe 2: Bereitstellen von Ressourcen in Azure durch YAML-Pipelines
 
 1. Navigieren Sie zurück zum Bereich **Pipelines** im **Pipelinehub**.
 1. Klicken Sie im Fenster **Erste Pipeline erstellen** auf **Pipeline erstellen**.
@@ -198,13 +255,23 @@ In diesem Lab verwenden Sie eine Azure DevOps-YAML-Pipeline, um Ihre Vorlage in 
 1. Wählen Sie im Abschnitt Variablen einen Namen für Ihre Ressourcengruppe aus, legen Sie den gewünschten Speicherort fest, und ersetzen Sie den Wert der Dienstverbindung durch eine Ihrer vorhandenen Dienstverbindungen, die Sie zuvor erstellt haben.
 1. Klicken Sie in der oberen rechten Ecke auf die Schaltfläche **Speichern und ausführen**. Wenn der Commit-Dialog angezeigt wird, klicken Sie erneut auf **Speichern**.
 
-   ![Screenshot der Schaltfläche: „Speichern und ausführen“](./images/m06/saveandrun.png)
+   ![Speichern und Ausführen der YAML-Pipeline nach dem Vornehmen von Änderungen](./images/m06/saveandrun.png)
 
 1. Warten Sie, bis die Bereitstellung abgeschlossen ist, und überprüfen Sie die Ergebnisse.
-   ![Screenshot der erfolgreichen Bereitstellung von Ressourcen in Azure mithilfe von YAML-Pipelines.](./images/m06/deploy.png)
+   ![Erfolgreiche Ressourcenbereitstellung in Azure mithilfe von YAML-Pipelines](./images/m06/deploy.png)
 
-   > [!IMPORTANT]
-   > Denken Sie daran, die im Azure-Portal erstellten Ressourcen zu löschen, um unnötige Kosten zu vermeiden.
+#### Aufgabe 3: Entfernen der Azure-Lab-Ressourcen.
+
+In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
+
+1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
+1. Löschen Sie alle Ressourcengruppen, die Sie in den Übungen dieses Moduls erstellt haben, indem Sie den folgenden Befehl ausführen (ersetzen Sie den Namen der Ressourcengruppe durch den von Ihnen gewählten Namen):
+
+   ```bash
+   az group list --query "[?starts_with(name,'AZ400-EWebShop-NAME')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
+   ```
+
+   > **Hinweis**: Der Befehl wird (dem --nowait-Parameter entsprechend) asynchron ausgeführt. Dies bedeutet, dass Sie zwar einen weiteren Azure CLI-Befehl in derselben Bash-Sitzung direkt im Anschluss ausführen können, es jedoch einige Minuten dauert, bis die Ressourcengruppen tatsächlich entfernt werden.
 
 ## Überprüfung
 

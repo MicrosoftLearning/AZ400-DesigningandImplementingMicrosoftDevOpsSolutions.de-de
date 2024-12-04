@@ -6,151 +6,83 @@ lab:
 
 # Überprüfen der Laborumgebung
 
-Bei der Vorbereitung auf die Labs ist es wichtig, dass Ihre Umgebung richtig eingerichtet ist. Diese Seite führt Sie durch den Einrichtungsprozess und stellt sicher, dass alle Voraussetzungen erfüllt sind.
-
-- Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://learn.microsoft.com/azure/devops/server/compatibility?view=azure-devops#web-portal-supported-browsers) erforderlich.
-
-- **Einrichten eines Azure-Abonnements:** Wenn Sie noch kein Azure-Abonnement haben, erstellen Sie ein Abonnement, indem Sie die Anweisungen auf dieser Seite befolgen oder [https://azure.microsoft.com/free](https://azure.microsoft.com/free) besuchen, um sich kostenlos zu registrieren.
-
-- **Einrichten einer Azure DevOps-Organisation**: Wenn Sie nicht bereits eine Azure DevOps-Organisation haben, die Sie für dieses Lab verwenden können, müssen Sie diese erstellen, indem Sie die unter [Erstellen einer Organisation oder Projektsammlung](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization) beschriebenen Anweisungen befolgen.
-  
-- [Git for Windows](https://gitforwindows.org/): Downloadseite. Diese wird als Teil der Voraussetzungen für diese Übung installiert.
-
-- [Visual Studio Code](https://code.visualstudio.com/). Diese wird als eine Voraussetzung für dieses Lab installiert.
-
-- [Azure-Befehlszeilenschnittstelle](https://learn.microsoft.com/cli/azure/install-azure-cli). Installieren Sie die Azure CLI auf den selbst gehosteten Agent-Computern.
-
-- [.NET SDK – Neueste Version](https://dotnet.microsoft.com/download/visual-studio-sdks). Installieren Sie das .NET SDK auf den selbst gehosteten Agent-Computern.
+## Lab-Handbuch für Kursteilnehmer
 
 ## Anweisungen zum Erstellen einer Azure DevOps-Organisation (Sie müssen dies nur einmal tun)
 
-> **Hinweis**: Beginnen Sie mit Schritt 3, wenn Sie bereits über ein **persönliches Microsoft-Konto** und ein aktives Azure-Abonnement verfügen, das mit diesem Konto verknüpft ist.
+### Beginnen Sie hier, wenn Sie kein Azure-Abonnement haben
 
-1. Verwenden Sie eine private Browsersitzung, um ein neues **persönliches Microsoft-Konto (MSA)** zu erhalten unter `https://account.microsoft.com`.
+1. Holen Sie sich einen neuen **Azure Pass Promocode** von der*m Kursleiter*in oder einer anderen Quelle.
+1. Verwenden Sie eine private Browsersitzung, um ein neues **persönliches Microsoft-Konto (MSA)** unter [https://account.microsoft.com](https://account.microsoft.com) zu erhalten.
+1. Gehen Sie in derselben Browsersitzung zu [https://www.microsoftazurepass.com](https://www.microsoftazurepass.com), um Ihren Azure-Pass über Ihr Microsoft-Konto (MSA) einzulösen. Weitere Informationen finden Sie unter [Einlösen eines Microsoft Azure-Passes](https://www.microsoftazurepass.com/Home/HowTo?Length=5). Befolgen Sie die Anweisungen zur Einlösung.
 
-1. Registrieren Sie sich mit derselben Browsersitzung für ein kostenloses Azure-Abonnement unter `https://azure.microsoft.com/free`.
+### Beginnen Sie hier, wenn Sie ein Azure-Abonnement haben
 
-1. Öffnen Sie einen Browser, und navigieren Sie zum Azure-Portal unter `https://portal.azure.com`, suchen Sie dann oben auf dem Azure-Portal-Bildschirm nach **Azure DevOps**. Klicken Sie auf der angezeigten Seite auf **Azure DevOps-Organisationen**.
-
-1. Klicken Sie anschließend auf den Link **Meine Azure DevOps-Organisationen** oder navigieren Sie direkt zu `https://aex.dev.azure.com`.
-
-1. Wählen Sie auf der Seite **Wir benötigen noch einige weitere Details** die Option **Weiter** aus.
-
-1. Wählen Sie im Dropdownfeld auf der linken Seite die Option **Standardverzeichnis** anstelle von **Microsoft-Konto** aus.
-
-1. Wenn Sie zu aufgefordert werden (*Wir benötigen noch einige weitere Details*), geben Sie Ihren Namen, Ihre E-Mail-Adresse und Ihren Standort an, und klicken Sie auf **Weiter**.
-
-1. Zurück bei `https://aex.dev.azure.com` mit der Auswahl **Standardverzeichnis** klicken Sie auf die blaue Schaltfläche **Neue Organisation erstellen**.
-
+1. Öffnen Sie einen Browser und navigieren Sie zu [https://portal.azure.com](https://portal.azure.com), dann suchen Sie oben auf dem Azure-Portal nach **Azure DevOps**. Klicken Sie auf der resultierenden Seite auf **Azure DevOps-Organisationen**.
+1. Klicken Sie anschließend auf den Link **Meine Azure DevOps-Organisationen** oder navigieren Sie direkt zu [https://aex.dev.azure.com](https://aex.dev.azure.com).
+1. Wählen Sie auf der Seite **Wir brauchen noch ein paar Details** die Option **Fortfahren**.
+1. Wählen Sie in der Dropdown-Box links **Standardverzeichnis** anstelle von „Microsoft-Konto“.
+1. Wenn Sie dazu aufgefordert werden (*„Wir brauchen noch ein paar Angaben“*), geben Sie Ihren Namen, Ihre E-Mail-Adresse und Ihren Standort an und klicken Sie auf **Fortfahren**.
+1. Zurück bei [https://aex.dev.azure.com](https://aex.dev.azure.com) mit der Auswahl **Standardverzeichnis** klicken Sie auf die blaue Schaltfläche **Neue Organisation erstellen**.
 1. Akzeptieren Sie die *Nutzungsbedingungen*, indem Sie auf **Fortfahren** klicken.
-
-1. Wenn Sie dazu aufgefordert werden (*Fast fertig*), behalten Sie den Namen der Azure DevOps-Organisation standardmäßig bei (es muss sich um einen global eindeutigen Namen handeln), und wählen Sie einen Hostingstandort in Ihrer Nähe aus der Liste aus..
-
-1. Nachdem die neu erstellte Organisation in **Azure DevOps** geöffnet wurde, wählen Sie die Option **Organisationseinstellungen** in der unteren linken Ecke aus.
-
-1. Wählen Sie auf dem Bildschirm **Organisationseinstellungen** die Option **Abrechnung** aus (das Öffnen dieses Bildschirms dauert einige Sekunden).
-
-1. Wählen Sie die Option **Abrechnung einrichten** und auf der rechten Seite des Bildschirms Ihr **Azure-Abonnement** und dann **Speichern** aus, um das Abonnement mit der Organisation zu verknüpfen.
-
-1. Sobald der Bildschirm die verknüpfte Azure-Abonnement-ID oben anzeigt, ändern Sie die Anzahl der **Kostenpflichtigen Parallelaufträge** für **MS Hosted CI/CD** von 0 auf **1**. Klicken Sie anschließend unten auf die Schaltfläche **SPEICHERN**.
-
-   > **Hinweis**: Sie können **einige Minuten warten, bevor Sie die CI/CD-Funktionen** verwenden, damit die neuen Einstellungen im Backend übernommen werden. Andernfalls wird weiterhin die Meldung *„Es wurde keine gehostete Parallelität erworben oder gewährt“* angezeigt.
-
+1. Wenn Sie dazu aufgefordert werden (*„Fast fertig“*), lassen Sie den Namen für die Azure DevOps-Organisation auf dem Standardwert (es muss ein global eindeutiger Name sein) und wählen Sie einen Hosting-Standort in Ihrer Nähe aus der Liste aus.
+1. Sobald die neu erstellte Organisation in **Azure DevOps** geöffnet ist, klicken Sie auf **Organisationseinstellungen** in der linken unteren Ecke.
+1. Klicken Sie auf dem Bildschirm **Organisationseinstellungen** auf **Abrechnung** (das Öffnen dieses Bildschirms dauert ein paar Sekunden).
+1. Klicken Sie auf **Abrechnung einrichten** und wählen Sie auf der rechten Seite des Bildschirms das Abonnement **Azure Pass – Sponsoring** aus und klicken Sie auf **Speichern**, um das Abonnement mit der Organisation zu verknüpfen.
+1. Sobald der Bildschirm die verknüpfte Azure-Abonnement-ID oben anzeigt, ändern Sie die Anzahl der **bezahlten parallelen Jobs** für **MS Hosted CI/CD** von 0 auf **1**. Klicken Sie dann auf die Schaltfläche **SPEICHERN** am unteren Rand.
 1. Gehen Sie in **Organisationseinstellungen** zum Abschnitt **Pipelines** und klicken Sie auf **Einstellungen**.
-
 1. Schalten Sie den Schalter auf **Aus** für **Erstellung von klassischen Build-Pipelines deaktivieren** und **Erstellung von klassischen Release-Pipelines deaktivieren**.
 
-   > **Hinweis**: Der Schalter **Erstellung klassischer Release-Pipelines deaktivieren** setzt die Optionen für die Erstellung klassischer Release-Pipelines, wie das Menü **Release** im Abschnitt **Pipeline** von DevOps-Projekten, auf **Ein**.
+    > Hinweis: Der Schalter **Erstellung klassischer Release-Pipelines deaktivieren**, der auf **Ein** gesetzt ist, blendet die Optionen für die Erstellung klassischer Release-Pipelines wie das Menü **Release** im Abschnitt **Pipeline** von DevOps-Projekten aus.
 
 1. Gehen Sie in **Organisationseinstellungen** zum Abschnitt **Sicherheit** und klicken Sie auf **Richtlinien**.
-
 1. Schalten Sie den Schalter für **Öffentliche Projekte zulassen** auf **Ein**
 
-   > **Hinweis:** In einigen Labs verwendete Erweiterungen erfordern möglicherweise ein öffentliches Projekt, um die kostenlose Version nutzen zu können.
+    > Hinweis: Für die in einigen Labors verwendeten Erweiterungen ist möglicherweise ein öffentliches Projekt erforderlich, damit die kostenlose Version verwendet werden kann.
 
-## Anweisungen zum Erstellen und Konfigurieren des Azure DevOps-Projekts (Sie müssen dies nur einmal tun)
+1. **Warten Sie mindestens 3 Stunden, bevor Sie die CI/CD-Funktionen nutzen**, damit die neuen Einstellungen im Backend berücksichtigt werden. Andernfalls wird weiterhin die Meldung *„Es wurde keine gehostete Parallelität erworben oder gewährt“* angezeigt.
+
+## Anweisungen zum Erstellen des Azure DevOps-Beispielprojekts (Sie müssen dies nur einmal tun)
+
+### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
 > **Hinweis**: Stellen Sie sicher, dass Sie die Schritte zur Erstellung Ihrer Azure DevOps Organisation abgeschlossen haben, bevor Sie mit diesen Schritten fortfahren.
 
-Um alle Lab-Anweisungen zu befolgen, müssen Sie ein neues Azure DevOps-Projekt einrichten, ein Repository erstellen, das auf der [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb)-Anwendung basiert, und eine Dienstverbindung mit Ihrem Azure-Abonnement erstellen.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
-### Teamprojekt erstellen
+#### Aufgabe 1:  Erstellen und konfigurieren Sie das Teamprojekt
 
-Zunächst erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von mehreren Labs verwendet werden soll.
+In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von mehreren Labs verwendet werden soll.
 
-1. Öffnen Sie Ihren Browser, und navigieren Sie zu Ihrer Azure DevOps-Organisation.
-
-1. Wählen Sie die Option **Neues Projekt** aus und verwenden Sie die folgenden Einstellungen:
-   - Name: **eShopOnWeb**
-   - Sichtbarkeit: **Privat**
-   - Erweitert: Versionskontrolle: **Git**
-   - Erweitert: Arbeitsaufgabenprozess: **Scrum**
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Geben Sie Ihrem Projekt die folgenden Einstellungen:
+    - Name: **eShopOnWeb**
+    - Sichtbarkeit: **Privat**
+    - Erweitert: Versionskontrolle: **Git**
+    - Erweitert: Work Item Process: **Scrum**
 
 1. Klicken Sie auf **Erstellen**.
 
-   ![Screenshot des Panels „Neues Projekt erstellen“](images/create-project.png)
+    ![Erstellen eines Projekts](images/create-project.png)
 
-### Importieren des eShopOnWeb-Git-Repositorys
+#### Aufgabe 2: eShopOnWeb Git-Repository importieren
 
-Jetzt importieren Sie das eShopOnWeb in Ihr Git-Repository.
+Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie Ihren Browser, und navigieren Sie zu Ihrer Azure DevOps-Organisation.
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
-1. Öffnen Sie das zuvor erstellte, **eShopOnWeb**-Projekt.
-
-1. Wählen Sie **Repos > Dateien**, **Importieren eines Repositorys**, und dann **Importieren** aus.
-
-1. Fügen Sie im Fenster **Git-Repository importieren** die folgende URL `https://github.com/MicrosoftLearning/eShopOnWeb` ein, und wählen Sie **Importieren** aus:
-
-   ![Screenshot des Import-Repository-Panels.](images/import-repo.png)
+    ![Importieren eines Repositorys](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
+    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
+    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
-   - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
-   - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-   - Der Ordner **.azure** enthält eine Bicep- und ARM-Infrastruktur als Codevorlagen.
-   - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-   - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
+#### Aufgabe 3: Mainbranch als Standardbranch festlegen
 
-1. Lassen Sie das Webbrowserfenster geöffnet.  
-
-1. Gehen Sie zu **Repos > Filialen**.
-
+1. Wechseln Sie zu **Repos>Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
-
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
-### Erstellen Sie eine Dienstverbindung, um auf Azure-Ressourcen zuzugreifen
-
-Sie müssen eine Dienstverbindung in Azure DevOps erstellen, die es Ihnen ermöglicht, Ressourcen in Ihrem Azure-Abonnement bereitzustellen und darauf zuzugreifen.
-
-1. Starten Sie einen Webbrowser und navigieren Sie zum Azure DevOps-Portal `https://aex.dev.azure.com`.
-
-1. Melden Sie sich bei der Azure DevOps-Organisation an.
-
-   > **Hinweis**: Wenn Sie sich zum ersten Mal bei der Azure DevOps-Organisation anmelden, werden Sie aufgefordert, Ihr Profil zu erstellen und die Nutzungsbedingungen zu akzeptieren. Wählen Sie dann **Weiter** aus.
-
-1. Öffnen Sie das **eShopOnWeb**-Projekt und wählen Sie in der linken unteren Ecke des Portals die Option **Projekteinstellungen** aus.
-
-1. Wählen Sie zunächst unter Pipelines die Option **Dienstverbindungen** und dann die Schaltfläche **Dienstverbindung erstellen** aus.
-
-   ![Screenshot der Schaltfläche zum Erstellen der neuen Dienstverbindung.](images/new-service-connection.png)
-
-1. Wählen Sie im Bildschirm **Neue Dienstverbindung** die Option **Azure Resource Manager** und anschließend **Weiter** aus (Sie müssen möglicherweise scrollen).
-
-1. Wählen Sie **Arbeitslast-Identitätsverbund (automatisch)** und **Weiter**.
-
-   > **Hinweis**: Sie können auch **Workload Identity Federation (manuell)** verwenden, wenn Sie die Serviceverbindung lieber manuell konfigurieren möchten. Folgen Sie den Schritten in der [Azure DevOps-Dokumentation](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure), um die Dienstverbindung manuell zu erstellen.
-
-1. Füllen Sie die leeren Felder mit den folgenden Informationen aus:
-    - **Abonnement**: Wählen Sie Ihr Azure-Abonnement.
-    - **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, in der Sie Ressourcen bereitstellen möchten. Wenn Sie noch keine Ressourcengruppe haben, können Sie im Azure-Portal eine erstellen. Folgen Sie dazu den Anweisungen unter [Azure-Ressourcengruppen mithilfe des Azure-Portals verwalten](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
-    - **Name der Dienstverbindung**: Typ **`azure subs`**. Dieser Name wird in YAML-Pipelines verwendet, um auf Ihr Azure-Abonnement zuzugreifen.
-
-1. Stellen Sie sicher, dass die Option **Zugriffsberechtigung für alle Pipelines** erteilen deaktiviert ist, und wählen Sie **Speichern** aus.
-
-   > **Hinweis:** Die Option **Zugriffsberechtigung für alle Pipelines erteilen** wird für Produktionsumgebungen nicht empfohlen. Sie wird nur in diesem Lab verwendet, um die Konfiguration der Pipeline zu vereinfachen.
-
-   > **Hinweis**: Wenn Sie eine Fehlermeldung erhalten, die besagt, dass Sie nicht über die erforderlichen Berechtigungen zum Erstellen einer Dienstverbindung verfügen, versuchen Sie es erneut oder konfigurieren Sie die Dienstverbindung manuell.
-
-Sie haben nun die erforderlichen erforderlichen Schritte abgeschlossen, um mit den Labs fortzufahren.
+Sie haben nun die notwendigen Voraussetzungen erfüllt, um mit den verschiedenen Einzelübungen für diesen AZ-400-Kurs fortzufahren.

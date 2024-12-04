@@ -1,10 +1,12 @@
 ---
 lab:
-  title: Konfigurieren von Agentenpools und Erkennen von Pipelinearten
+  title: Konfigurieren von Agentpools und Informationen zu Pipelinearten
   module: 'Module 02: Implement CI with Azure Pipelines and GitHub Actions'
 ---
 
 # Konfigurieren von Agent-Pools und Informationen zu Pipelinearten
+
+## Lab-Handbuch für Kursteilnehmer
 
 ## Labanforderungen
 
@@ -31,11 +33,11 @@ In diesem Lab lernen Sie Folgendes:
 - Implementieren YAML-basierter Pipelines.
 - Implementieren selbstgehosteter Agents.
 
-## Geschätzte Zeit: 30 Minuten
+## Geschätzte Dauer: 45 Minuten
 
 ## Anweisungen
 
-### Übung 0: (Überspringen, wenn bereits abgeschlossen) Konfigurieren der Lab-Voraussetzungen
+### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
@@ -49,7 +51,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** , **Importiere ein Repository**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -60,212 +62,17 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 
 #### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
 
-1. Wechseln Sie zu **Repos > Branches**.
+1. Wechseln Sie zu **Repos>Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
-### Übung 1: Erstellen von Agents und Konfigurieren von Agentpools
-
-In dieser Übung erstellen Sie einen virtuellen Azure-Computer (Virtual Machine, VM) und verwenden ihn, um einen Agent zu erstellen und Agentpools zu konfigurieren.
-
-#### Aufgabe 1: Erstellen eines virtuellen Azure-Computers und Herstellen einer Verbindung mit diesem
-
-1. Öffnen Sie in Ihrem Browser das Azure-Portal unter `https://portal.azure.com`. Wenn Sie dazu aufgefordert werden, melden Sie sich mithilfe eines Kontos mit der Rolle „Besitzer*in“ in Ihrem Azure-Abonnement an.
-
-1. Geben Sie in das Feld **Ressourcen, Dienste und Dokumente suchen (G+/)** **`Virtual Machines`** ein und wählen Sie es aus der Dropdown-Liste aus.
-
-1. Wählen Sie die Schaltfläche **Erstellen**.
-
-1. Wählen Sie die Option **Virtueller Azure-Computer mit voreingestellter Konfiguration** aus.
-
-    ![Screenshot der Option „Virtuellen Computer mit voreingestellter Konfiguration erstellen“.](images/create-virtual-machine-preset.png)
-
-1. Wählen Sie die **Dev/Test**-Umgebung als Workloadumgebung und **Universell** als Workloadtyp aus.
-
-1. Wählen Sie die Schaltfläche **Mit Erstellen eines virtuellen Computers fortfahren** aus, führen Sie auf der Registerkarte **Grundlagen** die folgenden Aktionen aus, und wählen Sie dann die Option **Verwaltung** aus:
-
-   | Einstellung | Aktion |
-   | -- | -- |
-   | Dropdownliste **Abonnement** | Wählen Sie Ihr Azure-Abonnement. |
-   | Abschnitt **Ressourcengruppe** | Erstellen Sie eine neue Ressourcengruppe namens **rg-eshoponweb-agentpool**. |
-   | **Name des virtuellen Computers** -Textfeld | Geben Sie den Namen Ihrer bevorzugten Option ein, beispielsweise **`eshoponweb-vm`**. |
-   | Dropdownliste **Region** | Du kannst die nächstgelegene [Azure](https://azure.microsoft.com/explore/global-infrastructure/geographies)-Region wählen.. Zum Beispiel „Ost-USA", „Ostasien", „West-US", usw. |
-   | **Verfügbarkeitsoptionen**-Dropdownliste | Wählen Sie die Option **Keine Infrastrukturredundanz erforderlich** aus. |
-   | **Sicherheitstyp**-Dropdownliste | Wählen Sie mit der Option **Virtuelle Computer mit vertrauenswürdigem Start** aus. |
-   | Dropdownliste **Image** | Wählen Sie **Windows Server 2022 Datacenter aus: Azure-Edition – x64 Gen2**-Image. |
-   | **Größe**-Dropdownliste | Wählen Sie die günstigste **Standard**-Größe für Testzwecke aus. |
-   | **Benutzername**-Textfeld | Benutzernamen Ihrer Wahl eingeben |
-   | **Kennwort**-Textfeld | Kennwort Ihrer Wahl eingeben |
-   | **Öffentliche Eingangsports**-Abschnitt | Wählen Sie **Ausgewählte Ports zulassen** aus. |
-   | **Eingangsports auswählen**-Dropdownliste | Wählen Sie **RDP (3389)** aus. |
-
-1. Aktivieren Sie auf der Registerkarte **Verwaltung** im Abschnitt **Identität** das Kontrollkästchen **Systemseitig zugewiesene verwaltete Identität aktivieren**, und wählen Sie dann **Überprüfen und Erstellen** aus:
-
-1. Wählen Sie auf der Registerkarte **Überprüfen + erstellen** die Option **Erstellen** aus.
-
-   > **Hinweis:** Warten Sie auf den Abschluss des Bereitstellungsvorgangs. Dieser Vorgang dauert etwa zwei Minuten.
-
-1. Navigieren Sie im Azure-Portal zur Seite, auf der die Konfiguration des neu erstellten virtuellen Azure-Computers angezeigt wird.
-
-1. Klicken Sie auf der Seite „Azure VM“ auf **Verbinden**, wählen Sie im Dropdown-Menü **Verbinden** aus und wählen Sie dann **RDP-Datei herunterladen** aus.
-
-1. Verwenden Sie die heruntergeladene RDP-Datei, um eine Remotedesktopsitzung für das Betriebssystem einzurichten, das auf dem virtuellen Azure-Computer ausgeführt wird.
-
-#### Aufgabe 2: Agent-Pool erstellen
-
-1. Starten Sie in der Remotedesktopsitzung auf dem virtuellen Azure-Computer den Microsoft Edge-Webbrowser.
-
-1. Navigieren Sie im Webbrowser zum Azure DevOps-Portal unter `https://aex.dev.azure.com`, und melden Sie sich an, um auf Ihre Organisation zuzugreifen.
-
-   > **Hinweis**: Wenn Sie zum ersten Mal auf das Azure DevOps-Portal zugreifen, müssen Sie möglicherweise Ihr Profil erstellen.
-
-1. Öffnen Sie das Projekt **eShopOnWeb** , und wählen Sie die Option **Projekteinstellungen** im linken unteren Menü aus.
-
-1. Wählen Sie in **Pipelines > Agentpools** die Schaltfläche **Pool hinzufügen** aus.
-
-1. Wählen Sie den **selbst gehosteten** Pooltyp aus.
-
-1. Geben Sie einen Namen für den Agentpool an, z. B. **eShopOnWebSelfPool**, und fügen Sie eine optionale Beschreibung hinzu.
-
-1. Lassen Sie die Option **Zugriffsberechtigung für alle Pipelines gewähren** unmarkiert.
-
-   ![Screenshot zeigt das Hinzufügen von Agentpooloptionen vom Typ „selbstgehostet“.](images/create-new-agent-pool-self-hosted-agent.png)
-
-   > **Hinweis**: Die Option Allen Pipelines die Zugriffsberechtigung gewähren wird für Produktionsumgebungen nicht empfohlen. Sie wird nur in diesem Lab verwendet, um die Konfiguration der Pipeline zu vereinfachen.
-
-1. Klicken Sie auf die Schaltfläche **Erstellen**, um den Agentpool zu erstellen.
-
-#### Aufgabe 3: Agent-Installationsdateien herunterladen und extrahieren
-
-1. Wählen Sie im Azure DevOps-Portal den neu erstellten Agentpool und dann die Registerkarte **Agents** aus.
-
-1. Wählen Sie die Schaltfläche **Neuer Agent** und dann die Schaltfläche **Herunterladen** aus dem **Download-Agent** im neuen Popupfenster aus.
-
-   > **Hinweis**: Befolgen Sie die Installationsanweisungen, um den Agenten zu installieren.
-
-1. Starten Sie eine PowerShell-Sitzung, und führen Sie die folgenden Befehle aus, um einen Ordner namens **Agent** zu erstellen.
-
-   ```powershell
-   mkdir agent ; cd agent        
-   ```
-
-   > **Hinweis**: Stellen Sie sicher, dass Sie sich im Ordner befinden, in dem Sie den Agenten installieren möchten, z. B. C:\agent.
-
-1. Führen Sie den folgenden Befehl aus, um den Inhalt der heruntergeladenen Agent-Installationsdateien zu extrahieren:
-
-   ```powershell
-   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-3.245.0.zip", "$PWD")
-   ```
-
-   > **Hinweis**: Wenn Sie den Agenten an einen anderen Speicherort heruntergeladen haben (oder die heruntergeladene Version unterschiedlich ist), passen Sie den obigen Befehl entsprechend an.
-
-#### Aufgabe 4: PAT-Token erstellen
-
-> **Hinweis**: Bevor Sie den Agent konfigurieren, müssen Sie ein PAT-Token erstellen (es sei denn, Sie verfügen über ein vorhandenes Token). Gehen Sie zum Erstellen eines PAT-Tokens wie folgt vor:
-
-1. Öffnen Sie in der Remotedesktopsitzung auf dem virtuellen Azure-Computer ein anderes Browserfenster, navigieren Sie zum Azure DevOps-Portal unter `https://aex.dev.azure.com` und greifen Sie auf Ihre Organisation und Ihre Projekte zu.
-
-1. Wählen Sie **Benutzereinstellungen** aus dem rechten oberen Menü (direkt links neben dem Avatarsymbol des Benutzers bzw. der Benutzerin) aus.
-
-1. Wählen Sie das Menüelement **Persönliche Zugriffstoken** aus.
-
-   ![Screenshot: Menü „Persönliche Zugriffstoken“.](images/personal-access-token-menu.png)
-
-1. Wählen Sie die Schaltfläche **Neues Token** aus.
-
-1. Geben Sie einen Namen für das Token an, z. B. ** eShopOnWebToken**.
-
-1. Wählen Sie die Azure DevOps-Organisation aus, für die Sie das Token verwenden möchten.
-
-1. Legen Sie das Ablaufdatum für das Token fest (wird nur zum Konfigurieren des Agents verwendet).
-
-1. Wählen Sie den benutzerdefinierten Bereich aus.
-
-1. Wählen Sie diese Option aus, um alle Bereiche anzuzeigen.
-
-1. Wählen Sie den Bereich **Agentpools (Lesen und Verwalten)** aus.
-
-1. Wählen Sie die Schaltfläche **Erstellen** aus, um das Token zu erstellen.
-
-1. Kopieren Sie den Tokenwert, und speichern Sie ihn an einem sicheren Ort (Sie werden ihn nicht mehr sehen können. Sie können das Token nur erneut generieren).
-
-   ![Screenshot der Konfiguration des persönlichen Zugriffstokens.](images/personal-access-token-configuration.png)
-
-   > [!IMPORTANT]
-   > Verwenden Sie die Option mit den geringsten Rechten, **Agentpools (Lesen und Verwalten)**, nur für die Agentkonfiguration. Stellen Sie außerdem sicher, dass Sie das Mindestablaufdatum für das Token festlegen, wenn dies der einzige Zweck des Tokens ist. Sie können ein weiteres Token mit den gleichen Rechten erstellen, wenn Sie den Agent erneut konfigurieren müssen.
-
-#### Aufgabe 5: Konfigurieren des Agents
-
-1. Wechseln Sie in der Remotedesktopsitzung auf einem virtuellen Azure-Computer zurück zum PowerShell-Fenster. Ändern Sie bei Bedarf das aktuelle Verzeichnis in das Verzeichnis, in das Sie die Agent-Installationsdateien weiter oben in dieser Übung extrahiert haben.
-
-1. Rufen Sie den folgenden Befehl auf, um Ihren Agent so zu konfigurieren, dass er unbeaufsichtigt ausgeführt wird:
-
-   ```powershell
-   .\config.cmd
-   ```
-
-   > **Hinweis**: Wenn Sie den Agenten interaktiv ausführen möchten, verwenden Sie stattdessen `.\run.cmd`.
-
-1. Führen Sie zum Konfigurieren des Agents die folgenden Aktionen aus, wenn Sie dazu aufgefordert werden:
-
-   - Geben Sie die URL der Azure DevOps-Organisation (**Server-URL**) im Format `https://aex.dev.azure.com`{Name Ihrer Organisation} ein.
-   - Übernehmen Sie den Standardauthentifizierungstyp (PAT**`PAT`**).
-   - Geben Sie den Wert des PAT-Tokens ein, das Sie im vorherigen Schritt erstellt haben.
-   - Geben Sie den Namen des Agentenpools **`eShopOnWebSelfPool`** ein, den Sie zuvor in dieser Übung erstellt haben.
-   - Geben Sie den Agentennamen ein **`eShopOnWebSelfAgent`**.
-   - Übernehmen Sie den standardmäßigen Arbeitsordner des Agents (_work).
-   - Geben Sie **Y** ein, um den Agent so zu konfigurieren, dass er als Dienst ausgeführt wird.
-   - Geben Sie **Y** ein, um SERVICE_SID_TYPE_UNRESTRICTED für den Agentdienst zu aktivieren.
-   - Geben Sie **NT AUTHORITY\SYSTEM** ein, um den Sicherheitskontext für den Dienst festzulegen.
-
-   > [!IMPORTANT]
-   > Im Allgemeinen sollten Sie beim Konfigurieren des Dienstsicherheitskontexts dem Prinzip der geringsten Rechte folgen.
-
-   - Übernehmen Sie die Standardoption (**N**), damit der Dienst unmittelbar nach Abschluss der Konfiguration gestartet werden kann.
-
-   ![Screenshot der Agentkonfiguration.](images/agent-configuration.png)
-
-   > **Hinweis**: Dieser Prozess dauert ein paar Minuten. Sobald er abgeschlossen ist, wird eine Meldung angezeigt, die angibt, dass der Agent als Dienst ausgeführt wird.
-
-   > [!IMPORTANT] Wenn eine Fehlermeldung angezeigt wird, die angibt, dass der Agent nicht ausgeführt wird, müssen Sie den Dienst möglicherweise manuell starten. Öffnen Sie dazu das **Services**-Applet in der Windows Systemsteuerung, suchen Sie den Dienst namens **Azure DevOps Agent (eShopOnWebSelfAgent)**, und starten Sie ihn.
-
-   > [!IMPORTANT] Wenn Ihr Agent nicht gestartet werden kann, müssen Sie möglicherweise einen anderen Ordner für das Arbeitsverzeichnis des Agenten auswählen. Führen Sie dazu das Agenten-Konfigurationsskript erneut aus, und wählen Sie einen anderen Ordner aus.
-
-1. Überprüfen Sie den Agentstatus, indem Sie zum Webbrowser wechseln, in dem das Azure DevOps-Portal angezeigt wird, zum Agentpool navigieren und auf die Registerkarte **Agents** klicken. Ihnen sollte der neue Agent in der Liste angezeigt werden.
-
-   ![Screenshot des Agentstatus.](images/agent-status.png)
-
-   > **Hinweis**: Für weitere Details zu Windows-Agenten siehe: [Selbstgehostete Windows-Agenten](https://learn.microsoft.com/azure/devops/pipelines/agents/windows-agent)
-
-   > [!IMPORTANT]
-   > Damit der Agent Azure-Ressourcen aus den Azure DevOps-Pipelines erstellen und bereitstellen kann (dies durchlaufen Sie in den kommenden Labs), müssen Sie Azure CLI innerhalb des Betriebssystems des virtuellen Computers installieren, der den Agent hostet.
-
-1. Starten Sie einen Webbrowser, und navigieren Sie zu der Seite [Installieren der Azure CLI unter Windows](https://learn.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli#install-or-update).
-
-1. Laden Sie die Azure-Befehlszeilenschnittstelle herunterladen, und installieren Sie sie.
-
-1. (Optional) Wenn Sie möchten, führen Sie den folgenden PowerShell-Befehl aus, um Azure CLI zu installieren:
-
-   ```powershell
-   $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; Remove-Item .\AzureCLI.msi
-   ```
-
-   > **Hinweis**: Wenn Sie eine andere Version der Azure CLI verwenden, müssen Sie möglicherweise den obigen Befehl entsprechend anpassen.
-
-1. Navigieren Sie im Webbrowser zu der Seite Microsoft .NET 8.0 SDK Installationsseite unter `https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.403-windows-x64-installer`.
-
-   > [!IMPORTANT]
-   > Sie müssen das .NET 8.0 SDK (oder höher) auf der Azure-VM installieren, auf der der Agent gehostet wird. Dies ist erforderlich, um die eShopOnWeb-Anwendung in den kommenden Übungen zu erstellen. Alle anderen Tools oder SDKs, die für den Anwendungsbuild erforderlich sind, sollten auch auf dem virtuellen Azure-Computer installiert werden.
-
-1. Laden Sie Microsoft .NET 8.0 SDK herunter und installieren Sie es.
-
-### Übung 2: Erstellen von YAML-basierten Azure-Pipelines.
+### Übung 1: Erstellen von YAML-basierten Azure Pipelines.
 
 In dieser Übung erstellen Sie eine Application Lifecycle Build Pipeline unter Verwendung einer YAML-basierten Vorlage.
 
 #### Aufgabe 1: Erstellen einer Azure DevOps YAML-Pipeline
 
-In diesem Vorgang erstellen Sie eine YAML-basierte Pipeline für das **eShopOnWeb**-Projekt.
+In dieser Aufgabe werden Sie eine vorlagenbasierte Azure DevOps YAML-Pipeline erstellen.
 
 1. Klicken Sie im Webbrowser, in dem das Azure DevOps-Portal mit dem geöffneten Projekt **eShopOnWeb** angezeigt wird, im vertikalen Navigationsbereich auf der linken Seite auf **Pipelines**.
 1. Klicken Sie auf die Schaltfläche **Pipeline erstellen** – wenn Sie noch keine anderen Pipelines erstellt haben – oder auf **Neue Pipeline**, um eine weitere neue Pipeline zu erstellen.
@@ -279,41 +86,117 @@ In diesem Vorgang erstellen Sie eine YAML-basierte Pipeline für das **eShopOnWe
 
    - Eine einzelne Phase: Build
    - Ein einzelner Auftrag: Build
-   - 4 Aufgaben innerhalb des Build-Auftrags:
+   - 3 Aufgaben innerhalb des Buildauftrags:
    - Dotnet Restore
    - Dotnet Build
-   - Dotnet Test
    - Dotnet Publish
 
 1. Klicken Sie im Bereich **Überprüfen Sie Ihre Pipeline-YAML** auf das nach unten zeigende Caret-Symbol neben der Schaltfläche **Ausführen** und dann auf **Speichern**.
 
-    > **Hinweis**: Wir erstellen jetzt nur die Pipelinedefinition, ohne sie auszuführen. Sie richten zunächst einen Azure DevOps-Agentpool ein und führen die Pipeline in einer späteren Übung aus.
+    > Hinweis: Wir erstellen jetzt nur die Pipelinedefinition, ohne sie auszuführen. Sie richten zunächst einen Azure DevOps-Agentpool ein und führen die Pipeline in einer späteren Übung aus. 
 
-#### Aufgabe 2: Aktualisieren der YAML-Pipeline mit dem selbst gehosteten Agentenpool
+### Übung 2: Verwalten von Azure DevOps-Agentpools.
 
-1. Navigieren Sie im Azure DevOps-Portal zum **eShopOnWeb**-Projekt und wählen Sie **Pipelines** im linken Menü aus.
-1. Klicken Sie auf die Schaltfläche **Bearbeiten** für die Pipeline, die Sie in der vorherigen Aufgabe erstellt haben.
-1. Entfernen Sie im **eShopOnWeb**-Bearbeitungsfenster in der bestehenden YAML-basierten Pipeline die Zeile 13, in der **vmImage: ubuntu-latest** den Ziel-Agentenpool mit folgendem Inhalt bezeichnet, der den neu erstellten selbst gehosteten Agentenpool bezeichnet:
+In dieser Übung implementieren Sie einen selbst gehosteten Azure DevOps-Agent.
+
+#### Aufgabe 1: Konfigurieren Sie einen selbst gehosteten Azure DevOps-Agent.
+
+In dieser Aufgabe konfigurieren Sie Ihre virtuelle Maschine im Labor als Azure DevOps-Self-Hosting-Agent und verwenden sie zur Ausführung einer Build-Pipeline.
+
+1. Starten Sie in der Lab Virtual Machine (Lab VM) oder auf Ihrem eigenen Computer einen Webbrowser, navigieren Sie zum [Azure DevOps-Portal](https://dev.azure.com) und melden Sie sich mit dem Microsoft-Konto an, das mit Ihrer Azure DevOps-Organisation verbunden ist.
+
+  > **Hinweis**: Der virtuelle Lab-Computer sollte alle erforderlichen Softwarevoraussetzungen installiert haben. Wenn Sie die Installation auf Ihrem eigenen Computer durchführen, müssen Sie .NET 8. SDKs oder höher installieren, die zum Erstellen des Demoprojekts erforderlich sind. Siehe [Download .NET](https://dotnet.microsoft.com/download/dotnet).
+
+1. Klicken Sie im Azure DevOps-Portal in der oberen rechten Ecke der Azure DevOps-Seite auf das Symbol **Benutzereinstellungen**. Je nachdem, ob Sie die Vorschaufunktionen aktiviert haben oder nicht, sollten Sie entweder ein Element **Sicherheit** oder **Persönliche Zugriffstoken** im Menü sehen. Wenn Sie **Sicherheit** sehen, klicken Sie darauf und wählen Sie dann **Persönliche Zugriffstoken**. Klicken Sie im Bereich **Personal Access Tokens** auf **+ New Token**.
+1. Klicken Sie im Bereich **Neues persönlichen Zugriffstoken erstellen** auf den Link **Alle Bereiche anzeigen** und geben Sie die folgenden Einstellungen an. Klicken Sie dann auf **Erstellen** (bei alle anderen Standardwerte lassen):
+
+    | Einstellung | Wert |
+    | --- | --- |
+    | Name | **eShopOnWeb** |
+    | Anwendungsbereich (benutzerdefiniert) | **Agent Pools** (Option „Weitere Bereiche anzeigen“ unten, falls erforderlich)|
+    | Berechtigungen | **Lesen und Verwalten** |
+
+1. Kopieren Sie im Bereich **Erfolg** den Wert des persönlichen Zugriffstokens in die Zwischenablage.
+
+    > **Anmerkung**: Stellen Sie sicher, dass Sie das Token kopieren. Sie können ihn nicht mehr abrufen, nachdem Sie diesen Bereich geschlossen haben.
+
+1. Klicken Sie im Bereich **Erfolg** auf **Schließen**.
+1. Klicken Sie im Bereich **Personal Access Token** des Azure DevOps-Portals auf das Symbol **Azure DevOps** in der oberen linken Ecke und dann auf das Label **Organization settings** in der unteren linken Ecke.
+1. Klicken Sie auf der linken Seite des Bereichs **Übersicht** im vertikalen Menü im Abschnitt **Pipelines** auf **Agent-Pools**.
+1. Klicken Sie im Bereich **Agent-Pools** in der oberen rechten Ecke auf **Pool hinzufügen**.
+1. Wählen Sie im Bereich **Agentenpool hinzufügen** in der Dropdown-Liste **Pooltyp** die Option **Selbst gehostet**, geben Sie in das Textfeld **Name** den Wert **az400m03l03a-pool** ein und klicken Sie auf **Erstellen**.
+1. Klicken Sie im Bereich **Agentenpools** auf den Eintrag für den neu erstellten **az400m03l03a-pool**.
+1. Klicken Sie auf der Registerkarte **Jobs** des Fensters **az400m03l03a-pool** auf die Schaltfläche **Neuer Agent**.
+1. Vergewissern Sie sich im Bereich **Abrufen des Agenten**, dass die Registerkarten **Windows** und **x64** ausgewählt sind, und klicken Sie auf **Herunterladen**, um das Zip-Archiv mit den Agent-Binärdateien in den lokalen Ordner **Downloads** in Ihrem Benutzerprofil herunterzuladen.
+
+    > **Hinweis**: Wenn Sie an dieser Stelle eine Fehlermeldung erhalten, die Sie darauf hinweist, dass die aktuellen Systemeinstellungen das Herunterladen der Datei verhindern, klicken Sie im Browser-Fenster in der oberen rechten Ecke auf das Zahnradsymbol, das die Kopfzeile des Menüs **Einstellungen** bezeichnet. Im Dropdown-Menü, wählen Sie **Internetoptionen** aus, klicken Sie im Dialogfeld **Internetoptionen** auf **Erweitert**, auf der Registerkarte **Erweitert** auf **Zurücksetzen**, im Dialogfeld **Browser-Einstellungen zurücksetzen** erneut auf **Zurücksetzen**, klicken Sie auf **Schließen**, und versuchen Sie den Download erneut.
+
+1. Starten Sie Windows PowerShell als Administrator*in und führen Sie in der **Administrator: Windows PowerShell**-Konsole die folgenden Zeilen aus, um das Verzeichnis **C:\\agent** zu erstellen und den Inhalt des heruntergeladenen Archivs in dieses zu extrahieren.
+
+    ```powershell
+    cd \
+    mkdir agent ; cd agent
+    $TARGET = Get-ChildItem "$Home\Downloads\vsts-agent-win-x64-*.zip"
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($TARGET, "$PWD")
+    ```
+
+1. Führen Sie in der gleichen Konsole**Administrator: Windows PowerShell** Folgendes aus, um den Agenten zu konfigurieren:
+
+    ```powershell
+    .\config.cmd
+    ```
+
+1. Wenn Sie dazu aufgefordert werden, geben Sie die Werte der folgenden Einstellungen an:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Server-URL eingeben | die URL Ihrer Azure DevOps-Organisation im Format **<https://dev.azure.com/>`<organization_name>`**, wobei `<organization_name>` den Namen Ihrer Azure DevOps-Organisation darstellt |
+    | Authentifizierungsart eingeben (für PAT die Eingabetaste drücken) | **EINGABETASTE** |
+    | Persönliches Zugriffstoken eingeben | Das Zugriffstoken, das Sie zuvor in dieser Aufgabe aufgezeichnet haben |
+    | Geben Sie den Agent-Pool ein (drücken Sie die Eingabetaste für die Standardeinstellung) | **az400m03l03a-pool** |
+    | Name des Agent eingeben | **az400m03-vm0** |
+    | Arbeitsordner eingeben (für _work die Eingabetaste drücken) | **EINGABETASTE** |
+    | **(Nur wenn angezeigt)** Führen Sie für jede Aufgabe eines Schritts das Entpacken durch. (drücken Sie die Eingabetaste für N) | **WARNUNG**: nur **Eingabe** drücken, wenn die Meldung angezeigt wird|
+    | Agent als Dienst ausführen? (J/N) (drücken Sie die Eingabetaste für N) | **Y** |
+    | Eingeben der Aktivierung von SERVICE_SID_TYPE_UNRESTRICTED (J/N) (drücken Sie die Eingabetaste für N) | **Y** |
+    | Geben Sie das für den Dienst zu verwendende Benutzerkonto ein (drücken Sie die Eingabetaste für NT AUTHORITY\NETWORK SERVICE) | **EINGABETASTE** |
+    | Geben Sie an, ob der Dienst nicht sofort nach Abschluss der Konfiguration gestartet werden soll. (J/N) (drücken Sie die Eingabetaste für N) | **EINGABETASTE** |
+
+    > **Hinweis**: Sie können den selbstgehosteten Agent entweder als Dienst oder als interaktiven Prozess ausführen. Sie sollten mit dem interaktiven Modus beginnen, da dies die Überprüfung der Agent-Funktionalität vereinfacht. Für den produktiven Einsatz sollten Sie in Erwägung ziehen, den Agent entweder als Dienst oder als interaktiven Prozess mit aktivierter automatischer Anmeldung laufen zu lassen, da in beiden Fällen der Status des Agent erhalten bleibt und sichergestellt wird, dass der Agent bei einem Neustart des Betriebssystems automatisch startet.
+
+1. Wechseln Sie zu dem Browserfenster, in dem das Azure DevOps-Portal angezeigt wird, und schließen Sie das Fenster **Agent abrufen**.
+1. Zurück auf der Registerkarte **Agents** des Fensterbereichs **az400m03l03a-pool** stellen Sie fest, dass der neu konfigurierte Agent mit dem Status **Online** aufgeführt ist.
+1. Klicken Sie in dem Webbrowser-Fenster, in dem das Azure DevOps-Portal angezeigt wird, in der oberen linken Ecke auf die Bezeichnung **Azure DevOps**.
+1. Klicken Sie in der Liste der Projekte auf die Kachel, die Ihr Projekt **EShopOnWeb** darstellt.
+1. Klicken Sie im Bereich **eShopOnWeb** im vertikalen Navigationsbereich auf der linken Seite im Abschnitt **Pipelines** auf **Pipelines**.
+1. Wählen Sie auf der Registerkarte **Zuletzt verwendet** im Bereich **Pipelines** den Eintrag **eShopOnWeb** aus, und wählen Sie im Bereich **eShopOnWeb** die Option **Bearbeiten** aus.
+1. Ersetzen Sie im Bearbeitungsbereich **eShopOnWeb** in der vorhandenen YAML-basierten Pipeline Zeile 13, die Folgendes besagt: `vmImage: ubuntu-latest` Angabe des Ziel-Agentpools mit dem folgenden Inhalt, Angabe des neu erstellten selbst gehosteten Agentpools:
 
     ```yaml
-    pool: 
-      name: eShopOnWebSelfPool
-      demands: Agent.Name -equals eShopOnWebSelfAgent
+    name: az400m03l03a-pool
+    demands:
+    - Agent.Name -equals az400m03-vm0
     ```
 
     > **WARNUNG**: Achten Sie beim Kopieren/Einfügen darauf, dass Sie den gleichen Einzug wie oben gezeigt haben.
 
-    ![Screenshot der YAML-Poolsyntax.](images/eshoponweb-ci-pr-agent-pool.png)
+    ![Yaml-Poolsyntax](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
-1. Klicken Sie im Bearbeitungsbereich **eShopOnWeb** in der oberen rechten Ecke auf **Überprüfen und Speichern**. Klicken Sie anschließend auf **Speichern**.
-1. Klicken Sie im Bearbeitungsbereich **EShopOnWeb** in der oberen rechten Ecke auf **Pipeline ausführen**.
+1. Klicken Sie im Bearbeitungsbereich **eShopOnWeb** in der oberen rechten Ecke auf **Überprüfen und Speichern**. Dadurch wird der Build automatisch auf der Grundlage dieser Pipeline ausgelöst.
+1. Klicken Sie im Azure DevOps-Portal im vertikalen Navigationsbereich auf der linken Seite im Abschnitt **Pipelines** auf **Pipelines**. Je nach Ihrem Lab-Setup werden Sie möglicherweise von der Pipeline zur Eingabe von Berechtigungen aufgefordert. Klicken Sie auf **Zulassen**, um die Ausführung der Pipeline zuzulassen. 
+1. Klicken Sie auf der Registerkarte **Zuletzt verwendet** des Bereichs **Pipelines** auf den Eintrag **eShopOnWeb**. Wählen Sie auf der Registerkarte **Ausführungen** im Bereich **eShopOnWeb** die letzte Ausführung aus. Scrollen Sie im Bereich **Zusammenfassung** der Ausführung nach unten. Klicken Sie im Abschnitt **Aufträge** auf **Phase 1**, und überwachen Sie den Auftrag bis zum erfolgreichen Abschluss.
 
-    > **Hinweis**: Die Pipeline wird auf dem selbst gehosteten Agentenpool ausgeführt, den Sie in der vorherigen Übung erstellt haben.
-1. Öffnen Sie den Pipelinelauf und überwachen Sie den Auftrag bis zu seinem erfolgreichen Abschluss.
+### Übung 3: Entfernen der im Lab verwendeten Ressourcen
 
-    > **Hinweis**: Wenn Sie eine Berechtigungsaufforderung erhalten, klicken Sie auf **Zulassen**, damit die Pipeline ausgeführt werden kann.
+1. Stoppen und entfernen Sie den Agent-Dienst, indem Sie `.\config.cmd remove` über die Eingabeaufforderung ausführen.
+   - Sie werden aufgefordert, Ihr persönliches Zugriffstoken erneut einzugeben, um Ihren Agent aus Ihrer Organisation zu entfernen.
+   - Wenn Sie das persönliche Zugriffstoken nicht mehr haben, können Sie das Token, das Sie ursprünglich in Übung 2, Aufgabe 1, Schritt 2 erstellt haben, erneut generieren.
+1. Löschen Sie den Agent-Pool.
+1. Widerrufen Sie das PAT-Token.
+1. Machen Sie die Änderungen in der Datei **eshoponweb-ci-pr.yml** rückgängig, indem Sie von „Repos/.ado/eshoponweb-ci-pr.yml“ zu ihr navigieren, **Bearbeiten** auswählen und die Zeilen 13-15 (den Agentpoolausschnitt) entfernen und die `vmImage: ubuntu-latest` wieder in den ursprünglichen Zustand zurück ändern. (Dies liegt daran, dass Sie dieselbe Beispielpipelinedatei in einer zukünftigen Labübung verwenden werden.)
 
-1. Überprüfen Sie nach Abschluss der Pipelineausführung die Ausgabe, und stellen Sie sicher, dass die Pipeline erfolgreich ausgeführt wurde.
+![Wiederherstellen des Pipelinepools auf vmImage-Einstellungen](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
 ## Überprüfung
 
