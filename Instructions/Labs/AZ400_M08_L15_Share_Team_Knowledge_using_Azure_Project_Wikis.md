@@ -6,8 +6,6 @@ lab:
 
 # Wissensaustausch im Team mithilfe von Azure-Projekt-Wikis
 
-## Lab-Handbuch für Kursteilnehmer
-
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -32,10 +30,6 @@ In diesem Lab lernen Sie Folgendes:
 
 ## Anweisungen
 
-### Übung 0: Konfigurieren der Voraussetzungen für das Lab
-
-In dieser Übung sollen Sie die Labvoraussetzungen überprüfen. Es müssen sowohl eine Azure DevOps-Organisation als auch das eShopOnWeb-Projekt vorhanden sein. Weitere Einzelheiten finden Sie in den obigen Anweisungen.
-
 ### Übung 1: Code als Wiki veröffentlichen
 
 In dieser Übung werden Sie durch die Veröffentlichung eines Azure DevOps-Repositorys als Wiki und die Verwaltung des veröffentlichten Wikis geführt.
@@ -49,11 +43,11 @@ In dieser Aufgabe werden Sie eine Branch eines Azure DevOps-Repos als Wiki verö
 > **Hinweis**: Wenn Ihr veröffentlichtes Wiki einer Produktversion entspricht, können Sie neue Branches veröffentlichen, wenn Sie neue Versionen Ihres Produkts herausbringen.
 
 1. Klicken Sie im vertikalen Menü auf der linken Seite auf **Repos**, und vergewissern Sie sich im oberen Abschnitt des Bereichs **Dateien**, dass das Repository **eShopOnWeb** ausgewählt ist (wählen Sie es aus der Dropdownliste oben mit Git-Symbol aus). Wählen Sie in der Dropdown-Liste „Branches“ (oberhalb von „Dateien“ mit dem Branch-Symbol) **main**, und überprüfen Sie den Inhalt der Haupt-Branch.
-1. Auf der linken Seite des Fensters **Dateien**, in der Auflistung der Repo-Ordner und der Dateihierarchie, erweitern Sie den Ordner **src** und wechseln Sie zum Unterordner **Web-> wwwroot -> images**. Suchen Sie im Unterordner **Images** den Eintrag **brand.png**, fahren Sie mit dem Mauszeiger über dessen rechtes Ende, um die vertikalen Auslassungszeichen (drei Punkte) zu sehen, das das Menü **More** darstellt, klicken Sie auf **Download**, um die Datei **brand.png** in den lokalen Ordner **Downloads** auf Ihrem Lab-Computer herunterzuladen.
+1. Auf der linken Seite des Bereichs **Dateien**, in der Auflistung der Repository-Ordner und der Dateihierarchie, erweitern Sie den Ordner **src** und wechseln Sie zum Unterordner **Web -> wwwroot -> images**. Suchen Sie im Unterordner **Images** den Eintrag **brand.png**, fahren Sie mit dem Mauszeiger über dessen rechtes Ende, um die vertikalen Auslassungszeichen (drei Punkte) zu sehen, das das Menü **More** darstellt, klicken Sie auf **Download**, um die Datei **brand.png** in den lokalen Ordner **Downloads** auf Ihrem Lab-Computer herunterzuladen.
 
-    >**Hinweis**: Sie werden dieses Bild in der nächsten Übung dieses Labs verwenden.
+    > **Hinweis**: Sie werden dieses Bild in der nächsten Übung dieses Labs verwenden.
 
-1. Wir werden die Wiki-Quelldateien in einem separaten Ordner innerhalb der aktuellen Ordnerstruktur des Repos speichern. Wählen Sie innerhalb von **Repos** die Option **Dateien** aus. Beachten Sie den Repositorytitel **eShopOnWeb** oben in der Ordnerstruktur. **Markieren Sie die Auslassungspunkte (3 Punkte)**, wählen Sie **Neu/Ordner**, und geben Sie **Dokumente** als Titel für den neuen Ordnernamen ein. Da ein Repo es nicht erlaubt, einen leeren Ordner zu erstellen, geben Sie **READ.ME** als neuen Dateinamen an.
+1. Wir werden die Wiki-Quelldateien in einem separaten Ordner innerhalb der aktuellen Ordnerstruktur des Repos speichern. Wählen Sie innerhalb von **Repos** die Option **Dateien** aus. Beachten Sie den Repositorytitel **eShopOnWeb** oben in der Ordnerstruktur. **Markieren Sie die Auslassungspunkte (3 Punkte)**, wählen Sie **Neu / Ordner**, und geben Sie **`Documents`** als Titel für den Namen des neuen Ordners ein. Da ein Repo es nicht erlaubt, einen leeren Ordner zu erstellen, geben Sie **`READ.ME`** als neuen Dateinamen an.
 1. Bestätigen Sie die Erstellung des Ordners und der Datei durch **Drücken der Schaltfläche Erstellen**.
 1. Die Datei READ.ME wird im integrierten Ansichtsmodus geöffnet. Da dies als Code gespeichert wird, müssen Sie die Änderungen **Commit**, indem Sie auf die Schaltfläche **Commit** klicken. Bestätigen Sie im Fenster Commit noch einmal mit **Commit**.
 1. Klicken Sie im vertikalen Menü von Azure DevOps auf der linken Seite auf **Übersicht**, wählen Sie im Abschnitt **Übersicht** die Option **Wiki** und wählen Sie **Code als Wiki veröffentlichen*.
@@ -64,11 +58,11 @@ In dieser Aufgabe werden Sie eine Branch eines Azure DevOps-Repos als Wiki verö
     | Repository | **eShopOnWeb** |
     | Bankfiliale | **main** |
     | Ordner | **Dokumente** |
-    | Wiki-Name | **eShopOnWeb (Documents)** |
+    | Wiki-Name | **`eShopOnWeb (Documents)`** |
 
-    >**Hinweis**: Dies öffnet automatisch den Wiki-Bereich und veröffentlicht **den Editor**, wo Sie einen Wiki-Seitentitel eingeben und den eigentlichen Inhalt hinzufügen können. Beachten Sie, dass Sie das MarkDown-Format verwenden sollten, aber nutzen Sie das Menüband, um sich mit einigen der MarkDown-Layout-Syntaxen vertraut zu machen.
+    > **Hinweis**: Dies öffnet automatisch den Wiki-Bereich und veröffentlicht **den Editor**, wo Sie einen Wiki-Seitentitel eingeben und den eigentlichen Inhalt hinzufügen können. Beachten Sie, dass Sie das MarkDown-Format verwenden sollten, aber nutzen Sie das Menüband, um sich mit einigen der MarkDown-Layout-Syntaxen vertraut zu machen.
 
-1. In das Feld Wiki Page **Title** geben Sie „Willkommen in unserem Online Shop!“ ein.
+1. Geben Sie im Feld **Titel** der Wiki-Seite „`Welcome to our Online Retail Store!`“ ein.
 
 1. Fügen Sie im Text der Wiki-Seite den folgenden Text ein:
 
@@ -131,11 +125,11 @@ In dieser Übung durchlaufen Sie das Erstellen und Verwalten eines Projekt-Wikis
 In dieser Aufgabe erstellen Sie ein Projekt-Wiki und fügen diesem ein Mermaid-Diagramm und ein Bild hinzu.
 
 1. Klicken Sie auf Ihrem Labcomputer im Azure DevOps-Portal, in dem der **Wiki-Bereich** des **eShopOnWeb**-Projekts angezeigt wird, wobei der Inhalt des Wikis **eShopOnWeb (Documents)** ausgewählt ist, oben im Bereich auf den Header der Dropdownliste (Pfeil nach unten) für **eShopOnWeb (Documents)**, und wählen Sie in der Dropdownliste **Neues Projekt-Wiki erstellen** aus.
-1. Geben Sie in das Textfeld **Seitentitel** **Projektentwurf** ein.
+1. Geben Sie in das Textfeld **Seitentitel** **`Project Design`** ein.
 1. Platzieren Sie den Cursor im Hauptteil der Seite, klicken Sie auf das Symbol ganz links in der Symbolleiste, das die Kopfzeileneinstellung darstellt, und klicken Sie in der Dropdown-Liste auf **Kopfzeile 1**. Dadurch wird automatisch das Rautenzeichen (**#**) am Anfang der Zeile hinzugefügt.
-1. Geben Sie direkt nach dem neu hinzugefügten Zeichen **#** **Authentifizierung und Autorisierung** ein und drücken Sie die Taste **Eingabe**.
+1. Direkt nach dem neu hinzugefügten Zeichen **#** geben Sie **`Authentication and Authorization`** ein und drücken die Taste **Eingabe**.
 1. Klicken Sie auf das Symbol ganz links in der Symbolleiste, das die Kopfzeileneinstellung darstellt, und klicken Sie in der Dropdown-Liste auf **Kopfzeile 2**. Dadurch wird automatisch das Rautenzeichen (**##**) am Anfang der Zeile hinzugefügt.
-1. Geben Sie direkt nach dem neu hinzugefügten Zeichen **##** **Azure DevOps OAuth 2.0 Authorization Flow** ein und drücken Sie die Taste **Eingabe**.
+1. Direkt nach dem neu hinzugefügten Zeichen **##** geben Sie **`Azure DevOps OAuth 2.0 Authorization Flow`** ein und drücken die Taste **Eingabe**.
 1. **Kopieren Sie den folgenden Code, und fügen Sie ihn ein, um ein Mermaid-Diagramm in Ihr Wiki einzufügen**.
 
     ```text
@@ -157,37 +151,37 @@ In dieser Aufgabe erstellen Sie ein Projekt-Wiki und fügen diesem ein Mermaid-D
     :::
     ```
 
-    >**Hinweis**: Für Details zur Mermaid-Syntax siehe: [Über Mermaid](https://mermaid-js.github.io/mermaid/#/)
+    > **Hinweis**: Für Details zur Mermaid-Syntax siehe: [Über Mermaid](https://mermaid-js.github.io/mermaid/#/)
 
 1. Klicken Sie rechts neben dem Editorfenster im Vorschaufenster auf **Diagramm laden** und überprüfen Sie das Ergebnis.
 
-    >**Hinweis**: Die Ausgabe sollte dem Flussdiagramm ähneln, das veranschaulicht, wie man [Zugriff auf REST-APIs mit OAuth 2.0 autorisiert](https://docs.microsoft.com/azure/devops/integrate/get-started/authentication/oauth)
+    > **Hinweis**: Die Ausgabe sollte dem Flussdiagramm ähneln, das veranschaulicht, wie man [Zugriff auf REST-APIs mit OAuth 2.0 autorisiert](https://docs.microsoft.com/azure/devops/integrate/get-started/authentication/oauth)
 
 1. Klicken Sie in der oberen rechten Ecke des Editorbereichs auf das nach unten zeigende Caret neben der Schaltfläche **Speichern** und klicken Sie im Dropdown-Menü auf **Speichern mit Revisionsmeldung**.
-1. Geben Sie im Dialogfeld **Seite speichern** den Abschnitt **Authentifizierung und Autorisierung mit dem OAuth 2.0 Mermaid-Diagramm** ein und klicken Sie auf **Speichern**.
+1. Geben Sie im Dialogfeld **Seite speichern** **`Authentication and authorization section with the OAuth 2.0 Mermaid diagram`** ein, und klicken Sie auf **Speichern**.
 1. Setzen Sie den Cursor im Editorbereich **Projektdesign** an das Ende des Mermaid-Elements, das Sie zuvor in dieser Aufgabe hinzugefügt haben. Drücken Sie die Taste **Eingabe**, um eine zusätzliche Zeile hinzuzufügen, klicken Sie auf das Symbol ganz links in der Symbolleiste, das die Einstellung für die Überschrift darstellt, und klicken Sie in der Dropdown-Liste auf **Überschrift 2**. Dadurch wird automatisch das doppelte Rautenzeichen (**##**) am Anfang der Zeile hinzugefügt.
-1. Direkt nach dem neu hinzugefügten Zeichen **##** geben Sie **Benutzeroberfläche** ein und drücken die Taste **Eingabe**.
+1. Direkt nach dem neu hinzugefügten Zeichen **##** geben Sie **`User Interface`** ein und drücken die Taste **Eingabe**.
 1. Klicken Sie im Editorbereich **Projektdesign** in der Symbolleiste auf das Büroklammer-Symbol, das die Aktion **Datei einfügen** darstellt. Navigieren Sie im Dialogfeld **Öffnen** zum Ordner **Downloads**, wählen Sie die Datei **Brand.png** aus, die Sie in der vorherigen Übung heruntergeladen haben, und klicken Sie auf **Öffnen**.
 1. Gehen Sie zurück in den Editorbereich **Projektdesign** und überprüfen Sie, ob das Bild richtig angezeigt wird.
 1. Klicken Sie in der oberen rechten Ecke des Editorbereichs auf das nach unten zeigende Caret neben der Schaltfläche **Speichern** und klicken Sie im Dropdown-Menü auf **Speichern mit Revisionsmeldung**.
-1. Geben Sie im Dialogfeld **Seite speichern** den Text **Abschnitt „Benutzeroberfläche“ mit dem eShopOnWeb-Bild**, und klicken Sie auf **Speichern**.
+1. Geben Sie im Dialogfeld **Seite speichern** **`User Interface section with the eShopOnWeb image`** ein, und klicken Sie auf **Speichern**.
 1. Zurück im Editorbereich, klicken Sie in der oberen rechten Ecke auf **Schließen**.
 
 #### Aufgabe 2: Verwalten eines Projekt-Wikis
 
 In dieser Aufgabe werden Sie das neu erstellte Projekt-Wiki verwalten.
 
->**Hinweis**: Sie beginnen damit, die letzte Änderung an der Wikiseite rückgängig zu machen.
+> **Hinweis**: Sie beginnen damit, die letzte Änderung an der Wikiseite rückgängig zu machen.
 
-1. Klicken Sie auf Ihrem Labcomputer im Azure DevOps-Portal, in dem der **Wiki-Bereich** des **eShopOnWeb**-Projekts angezeigt wird, wobei der Inhalt des Wikis **Project Design** ausgewählt ist, oben rechts auf die vertikalen Auslassungspunkte und dann im Dropdownmenü auf **Revisionen anzeigen**.
+1. Klicken Sie auf Ihrem Lab-Computer im Azure DevOps-Portal, in dem der **Wiki-Bereich** des **eShopOnWeb**-Projekts angezeigt wird, wobei der Inhalt des Wikis **Project Design** ausgewählt ist, oben rechts auf die vertikalen Auslassungspunkte und dann im Dropdownmenü auf **Revisionen anzeigen**.
 1. Klicken Sie im Bereich **Überarbeitungen** auf den Eintrag, der die letzte Änderung darstellt.
 1. Überprüfen Sie im daraufhin angezeigten Fenster den Vergleich zwischen der vorherigen und der aktuellen Version des Dokuments, klicken Sie auf **Zurücksetzen**, klicken Sie bei der Aufforderung zur Bestätigung erneut auf **Zurücksetzen** und dann auf **Seite durchsuchen**.
 1. Überprüfen Sie im Bereich **Projektentwurf**, ob die Änderung erfolgreich rückgängig gemacht wurde.
 
-    >**Hinweis**: Jetzt fügen Sie dem Projektwiki eine weitere Seite hinzu und legen sie als Wiki-Startseite fest.
+    > **Hinweis**: Jetzt fügen Sie dem Projektwiki eine weitere Seite hinzu und legen sie als Wiki-Startseite fest.
 
 1. Klicken Sie im Bereich **Projektentwurf** in der unteren linken Ecke auf **+Neue Seite**.
-1. Geben Sie im Seiten-Editor-Bereich im Textfeld **Seitentitel** den Namen **Projektentwurfsübersicht** ein, klicken Sie auf **Speichern**, und klicken Sie dann auf **Schließen**.
+1. Geben Sie im Seiten-Editor-Bereich im Textfeld **Seitentitel** **`Project Design Overview`** ein, klicken Sie auf **Speichern** und klicken Sie dann auf **Schließen**.
 1. Suchen Sie im Bereichmit der Auflistung der Seiten im Projektwiki vom **Projektentwurf** den Eintrag **Projektentwurfsübersicht**, wählen Sie ihn mit dem Mauszeiger aus und ziehen Sie ihn per Drag&Drop über den Eintrag **Projektentwurf**.
 1. Bestätigen Sie die Änderungen, indem Sie im angezeigten Fenster die Schaltfläche **Verschieben** drücken.
 1. Stellen Sie sicher, dass der Eintrag **Projektentwurfsübersicht** als Seite auf oberster Ebene steht und das Startseitensymbol der Wiki-Homepage hat.
