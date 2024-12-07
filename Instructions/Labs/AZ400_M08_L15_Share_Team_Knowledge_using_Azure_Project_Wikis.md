@@ -43,11 +43,11 @@ In dieser Aufgabe werden Sie eine Branch eines Azure DevOps-Repos als Wiki verö
 > **Hinweis**: Wenn Ihr veröffentlichtes Wiki einer Produktversion entspricht, können Sie neue Branches veröffentlichen, wenn Sie neue Versionen Ihres Produkts herausbringen.
 
 1. Klicken Sie im vertikalen Menü auf der linken Seite auf **Repos**, und vergewissern Sie sich im oberen Abschnitt des Bereichs **Dateien**, dass das Repository **eShopOnWeb** ausgewählt ist (wählen Sie es aus der Dropdownliste oben mit Git-Symbol aus). Wählen Sie in der Dropdown-Liste „Branches“ (oberhalb von „Dateien“ mit dem Branch-Symbol) **main**, und überprüfen Sie den Inhalt der Haupt-Branch.
-1. Auf der linken Seite des Bereichs **Dateien**, in der Auflistung der Repo-Ordner und der Dateihierarchie, erweitern Sie den Ordner **src** und wechseln Sie zum Unterordner **Web -> wwwroot -> images**. Suchen Sie im Unterordner **Images** den Eintrag **brand.png**, fahren Sie mit dem Mauszeiger über dessen rechtes Ende, um die vertikalen Auslassungszeichen (drei Punkte) zu sehen, das das Menü **More** darstellt, klicken Sie auf **Download**, um die Datei **brand.png** in den lokalen Ordner **Downloads** auf Ihrem Lab-Computer herunterzuladen.
+1. Auf der linken Seite des Bereichs **Dateien**, in der Auflistung der Repository-Ordner und der Dateihierarchie, erweitern Sie den Ordner **src** und wechseln Sie zum Unterordner **Web -> wwwroot -> images**. Suchen Sie im Unterordner **Images** den Eintrag **brand.png**, fahren Sie mit dem Mauszeiger über dessen rechtes Ende, um die vertikalen Auslassungszeichen (drei Punkte) zu sehen, das das Menü **More** darstellt, klicken Sie auf **Download**, um die Datei **brand.png** in den lokalen Ordner **Downloads** auf Ihrem Lab-Computer herunterzuladen.
 
     > **Hinweis**: Sie werden dieses Bild in der nächsten Übung dieses Labs verwenden.
 
-1. Wir werden die Wiki-Quelldateien in einem separaten Ordner innerhalb der aktuellen Ordnerstruktur des Repos speichern. Wählen Sie innerhalb von **Repos** die Option **Dateien** aus. Beachten Sie den Repositorytitel **eShopOnWeb** oben in der Ordnerstruktur. **Markieren Sie die Auslassungspunkte (3 Punkte)**, wählen Sie **Neu/Ordner**, und geben Sie **Dokumente** als Titel für den neuen Ordnernamen ein. Da ein Repo es nicht erlaubt, einen leeren Ordner zu erstellen, geben Sie **READ.ME** als neuen Dateinamen an.
+1. Wir werden die Wiki-Quelldateien in einem separaten Ordner innerhalb der aktuellen Ordnerstruktur des Repos speichern. Wählen Sie innerhalb von **Repos** die Option **Dateien** aus. Beachten Sie den Repositorytitel **eShopOnWeb** oben in der Ordnerstruktur. **Markieren Sie die Auslassungspunkte (3 Punkte)**, wählen Sie **Neu / Ordner**, und geben Sie **`Documents`** als Titel für den Namen des neuen Ordners ein. Da ein Repo es nicht erlaubt, einen leeren Ordner zu erstellen, geben Sie **`READ.ME`** als neuen Dateinamen an.
 1. Bestätigen Sie die Erstellung des Ordners und der Datei durch **Drücken der Schaltfläche Erstellen**.
 1. Die Datei READ.ME wird im integrierten Ansichtsmodus geöffnet. Da dies als Code gespeichert wird, müssen Sie die Änderungen **Commit**, indem Sie auf die Schaltfläche **Commit** klicken. Bestätigen Sie im Fenster Commit noch einmal mit **Commit**.
 1. Klicken Sie im vertikalen Menü von Azure DevOps auf der linken Seite auf **Übersicht**, wählen Sie im Abschnitt **Übersicht** die Option **Wiki** und wählen Sie **Code als Wiki veröffentlichen*.
@@ -58,7 +58,7 @@ In dieser Aufgabe werden Sie eine Branch eines Azure DevOps-Repos als Wiki verö
     | Repository | **eShopOnWeb** |
     | Bankfiliale | **main** |
     | Ordner | **Dokumente** |
-    | Wiki-Name | **eShopOnWeb (Documents)** |
+    | Wiki-Name | **`eShopOnWeb (Documents)`** |
 
     > **Hinweis**: Dies öffnet automatisch den Wiki-Bereich und veröffentlicht **den Editor**, wo Sie einen Wiki-Seitentitel eingeben und den eigentlichen Inhalt hinzufügen können. Beachten Sie, dass Sie das MarkDown-Format verwenden sollten, aber nutzen Sie das Menüband, um sich mit einigen der MarkDown-Layout-Syntaxen vertraut zu machen.
 
@@ -173,7 +173,7 @@ In dieser Aufgabe werden Sie das neu erstellte Projekt-Wiki verwalten.
 
 > **Hinweis**: Sie beginnen damit, die letzte Änderung an der Wikiseite rückgängig zu machen.
 
-1. Klicken Sie auf Ihrem Labcomputer im Azure DevOps-Portal, in dem der **Wiki-Bereich** des **eShopOnWeb**-Projekts angezeigt wird, wobei der Inhalt des Wikis **Project Design** ausgewählt ist, oben rechts auf die vertikalen Auslassungspunkte und dann im Dropdownmenü auf **Revisionen anzeigen**.
+1. Klicken Sie auf Ihrem Lab-Computer im Azure DevOps-Portal, in dem der **Wiki-Bereich** des **eShopOnWeb**-Projekts angezeigt wird, wobei der Inhalt des Wikis **Project Design** ausgewählt ist, oben rechts auf die vertikalen Auslassungspunkte und dann im Dropdownmenü auf **Revisionen anzeigen**.
 1. Klicken Sie im Bereich **Überarbeitungen** auf den Eintrag, der die letzte Änderung darstellt.
 1. Überprüfen Sie im daraufhin angezeigten Fenster den Vergleich zwischen der vorherigen und der aktuellen Version des Dokuments, klicken Sie auf **Zurücksetzen**, klicken Sie bei der Aufforderung zur Bestätigung erneut auf **Zurücksetzen** und dann auf **Seite durchsuchen**.
 1. Überprüfen Sie im Bereich **Projektentwurf**, ob die Änderung erfolgreich rückgängig gemacht wurde.

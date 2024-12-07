@@ -6,6 +6,8 @@ lab:
 
 # Einrichten und Ausführen von Funktionstests
 
+## Lab-Handbuch für Kursteilnehmer
+
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -28,11 +30,11 @@ Nachdem Sie diese Übung abgeschlossen haben, können Sie eine CI-Pipeline für 
 - Integrationstests
 - Funktionstests
 
-## Geschätzte Zeit: 20 Minuten
+## Geschätzte Zeit: 60 Minuten
 
 ## Anweisungen
 
-### Übung 0: (Überspringen, wenn bereits abgeschlossen) Konfigurieren der Lab-Voraussetzungen
+### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
@@ -46,7 +48,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** , **Importiere ein Repository**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -57,7 +59,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 
 #### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
 
-1. Wechseln Sie zu **Repos > Branches**.
+1. Wechseln Sie zu **Repos>Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
@@ -71,7 +73,7 @@ In dieser Aufgabe fügen Sie die YAML-Builddefinition hinzu, die zum Implementie
 
 Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Navigieren Sie zu **Pipelines > Pipelines**.
+1. Navigieren Sie zu **Pipelines>Pipelines**.
 1. Klicken Sie auf die Schaltfläche **Neue Pipeline**.
 1. Wählen Sie **Azure Repos Git** (YAML) aus.
 1. Wählen Sie das Repository **eShopOnWeb** aus.
@@ -121,7 +123,7 @@ Sie können feststellen, dass der Vorgang „Komponententests“ bereits Teil de
 
 1. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderungen direkt in die Hauptverzweigung zu übertragen.
 
-#### Aufgabe 3: Überprüfen der Testzusammenfassung
+#### Aufgabe 4: Überprüfen der Testzusammenfassung
 
 1. Klicken Sie auf **Ausführen** und dann auf der Registerkarte **Pipeline ausführen**erneut auf **Ausführen**.
 
@@ -129,14 +131,14 @@ Sie können feststellen, dass der Vorgang „Komponententests“ bereits Teil de
 
 1. Nach der Fertigstellung wird die Registerkarte **Test** als Teil der Pipelineausführung angezeigt. Klicken Sie darauf, um die Zusammenfassung zu überprüfen. Es sieht wie unten dargestellt aus:
 
-    ![Screenshot der Testzusammenfassung.](images/AZ400_M05_L09_Tests_Summary.png)
+    ![Testzusammenfassung](images/AZ400_M05_L09_Tests_Summary.png)
 
 1. Weitere Details finden Sie unten auf der Seite in der Tabelle mit einer Liste der verschiedenen Ausführungstests.
 
-    > **Hinweis**: Wenn die Tabelle leer ist, müssen Sie die Filter zurücksetzen, um alle Details über die durchgeführten Tests zu erhalten.
+    >**Hinweis**: Wenn die Tabelle leer ist, müssen Sie die Filter zurücksetzen, um alle Details über die durchgeführten Tests zu erhalten.
 
-    ![Screenshot der Testtabelle.](images/AZ400_M05_L09_Tests_Table.png)
+    ![Tabelle „Tests“](images/AZ400_M05_L09_Tests_Table.png)
 
 ## Überprüfung
 
-In diesem Lab haben Sie erfahren, wie Sie verschiedene Testtypen mit Azure Pipelines und .NET einrichten und ausführen.
+In dieser Übung haben Sie erfahren, wie Sie verschiedene Testtypen mit Azure Pipelines und .Net einrichten und ausführen.

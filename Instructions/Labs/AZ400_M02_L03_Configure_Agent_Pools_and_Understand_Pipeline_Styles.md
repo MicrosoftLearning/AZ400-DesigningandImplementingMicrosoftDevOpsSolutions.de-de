@@ -216,7 +216,7 @@ In dieser Übung erstellen Sie einen virtuellen Azure-Computer (Virtual Machine,
    - Übernehmen Sie den standardmäßigen Arbeitsordner des Agents (_work).
    - Geben Sie **Y** ein, um den Agent so zu konfigurieren, dass er als Dienst ausgeführt wird.
    - Geben Sie **Y** ein, um SERVICE_SID_TYPE_UNRESTRICTED für den Agentdienst zu aktivieren.
-   - Geben Sie **NT AUTHORITY\SYSTEM** ein, um den Sicherheitskontext für den Dienst festzulegen.
+   - Geben Sie **`NT AUTHORITY\SYSTEM`** ein, um den Sicherheitskontext für den Dienst festzulegen.
 
    > [!IMPORTANT]
    > Im Allgemeinen sollten Sie beim Konfigurieren des Dienstsicherheitskontexts dem Prinzip der geringsten Rechte folgen.

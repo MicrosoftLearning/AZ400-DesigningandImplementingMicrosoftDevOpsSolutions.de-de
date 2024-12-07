@@ -113,7 +113,7 @@ In dieser Aufgabe erstellen Sie den Azure-Dienstprinzipal, der von GitHub verwen
 
 1. Gehen Sie in einem Browserfenster zurück zu Ihrem **eShopOnWeb** GitHub-Repository.
 1. Gehen Sie auf der Repository-Seite zu **Einstellungen**, klicken Sie auf **Geheimnisse und Variablen > Aktionen**. Klicken Sie auf **Neues Repository-Geheimnis**
-    - Name : **AZURE_CREDENTIALS**
+    - Name: **`AZURE_CREDENTIALS`**
     - Geheimnis: **Fügen Sie das zuvor kopierte JSON-Objekt ein** (GitHub kann mehrere Geheimnisse unter demselben Namen speichern, die von der [azure/login](https://github.com/Azure/login) Aktion verwendet werden)
 
 1. Klicken Sie auf **Geheimnis hinzufügen**. Jetzt können GitHub-Aktionen den Dienstprinzipal unter Verwendung des Repository-Geheimnisses referenzieren.
@@ -159,7 +159,7 @@ In dieser Aufgabe verwenden Sie GitHub-Umgebungen, um eine manuelle Genehmigung 
 1. Im Auftragsabschnitt **Bereitstellen** finden Sie einen Verweis auf eine **Umgebung**, die als **Development** bezeichnet wird. Von GitHub verwendete [Umgebungen](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) fügen Schutzregeln (und Secrets) für Ihre Ziele hinzu.
 
 1. Wechseln Sie auf der Repositoryseite zu **Einstellungen**, öffnen Sie **Umgebungen**, und klicken Sie auf **Neue Umgebung**.
-1. Geben Sie ihr den Namen **Entwicklung** und klicken Sie auf **Umgebung konfigurieren**.
+1. Geben Sie ihr einen Namen **`Development`** und klicken Sie auf **Umgebung konfigurieren**.
 
     > **Hinweis**: Wenn eine Umgebung namens **Entwicklung** bereits in der Liste **Umgebungen** vorhanden ist, öffnen Sie die Konfiguration, indem Sie auf den Umgebungsnamen klicken.  
 

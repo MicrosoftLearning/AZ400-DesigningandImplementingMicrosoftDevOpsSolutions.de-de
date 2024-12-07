@@ -283,7 +283,7 @@ Nach Fertigstellung des Sprintplans sollten Ihre Sprint-Backlogs alle Informatio
 
 1. Wählen Sie im Abschnitt **Regelkriterien** in der Dropdown-Liste **Feld** den Eintrag **Aktivität**, in der Dropdown-Liste **Operator** den Eintrag **=** und in der Dropdown-Liste **Wert** den Eintrag **Entwicklung**.
 
-    ![Screenshot der Einstellungen für den Stil des Boards.](images/m1/EShop-WEB-styles_v2.jpg)
+    ![Screenshot der Einstellungen für den Stil des Boards.](images/m1/EShop-WEB-styles_v2.JPG)
 
 1. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern und zu schließen.
 

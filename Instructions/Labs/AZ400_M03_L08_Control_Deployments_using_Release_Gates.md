@@ -147,7 +147,7 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
 
 #### Aufgabe 2: Eine Application Insights-Ressource erstellen
 
-1. Verwenden Sie im Azure-Portal das Textfeld **Ressourcen, Dienste und Dokumente suchen** oben auf der Seite, um nach **Application Insights** zu suchen, und wählen Sie in der Ergebnisliste **Application Insights** aus.
+1. Verwenden Sie im Azure-Portal das Textfeld **Nach Ressourcen, Diensten und Dokumenten suchen** oben auf der Seite, um nach **`Application Insights`** zu suchen, und wählen Sie in der Ergebnisliste **Application Insights**.
 1. Klicken Sie im Blatt **Application Insights** auf **+ Erstellen**.
 1. Geben Sie auf dem Blatt **Application Insights** auf der Registerkarte **Grundlagen** die folgenden Einstellungen an (belassen Sie die anderen mit ihren Standardwerten):
 
@@ -203,9 +203,9 @@ In dieser Aufgabe richten Sie die Releaseaufgaben als Teil der Releasepipeline e
 1. Klicken Sie auf **Neue Pipeline**.
 1. **Wählen** Sie im Fenster **Vorlage auswählen** den Eintrag **Azure-Appdienstbereitstellung** (Bereitstellen Ihrer Anwendung in Azure App Service. Wählen Sie Web App unter Windows, Linux, Container, Function Apps oder WebJobs) aus der Liste der **Empfohlenen** Vorlagen.
 1. Klicken Sie auf **Anwenden**.
-1. Aktualisieren Sie im Fenster **Phase** den Standard-Phasenname „Phase 1“ auf **DevTest**. Schließen Sie das Popupfenster mithilfe der Schaltfläche **X**. Sie befinden sich jetzt im grafischen Editor der Releasepipeline, und die DevTest-Phase wird angezeigt.
-1. Benennen Sie oben auf der Seite die aktuelle Pipeline von **Neue Releasepipeline** in **eshoponweb-cd** um.
-1. Bewegen Sie den Mauszeiger über die DevTest-Phase, und klicken Sie auf die Schaltfläche **Klonen**, um die DevTest-Phase in eine zusätzliche Phase zu kopieren. Nennen Sie diese Phase **Produktion**.
+1. Aktualisieren Sie im angezeigten Fenster **Phase** den Standardphasennamen „Phase 1“ auf **`DevTest`**. Schließen Sie das Popupfenster mithilfe der Schaltfläche **X**. Sie befinden sich jetzt im grafischen Editor der Releasepipeline, und die DevTest-Phase wird angezeigt.
+1. Benennen Sie oben auf der Seite die aktuelle Pipeline von **Neue Releasepipeline** in **`eshoponweb-cd`** um.
+1. Bewegen Sie den Mauszeiger über die DevTest-Phase, und klicken Sie auf die Schaltfläche **Klonen**, um die DevTest-Phase in eine zusätzliche Phase zu kopieren. Nennen Sie diese Phase **`Production`**.
 
    > **Hinweis**: Die Pipeline umfasst jetzt zwei Phasen mit den Namen **DevTest** und **Produktion**.
 
