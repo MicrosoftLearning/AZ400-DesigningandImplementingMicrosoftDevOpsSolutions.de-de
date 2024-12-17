@@ -6,8 +6,6 @@ lab:
 
 # Paketverwaltung mit Azure Artifacts
 
-## Lab-Handbuch für Kursteilnehmer
-
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -35,21 +33,50 @@ In diesem Lab lernen Sie Folgendes:
 - Importieren eines NuGet-Pakets.
 - Aktualisieren eines NuGet-Pakets.
 
-## Geschätzte Zeit: 40 Minuten
+## Geschätzte Dauer: 35 Minuten
 
 ## Anweisungen
 
 ### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
-In dieser Übung sollen Sie die Labvoraussetzungen überprüfen. Es müssen sowohl eine Azure DevOps-Organisation als auch das eShopOnWeb-Projekt vorhanden sein. Weitere Einzelheiten finden Sie in den obigen Anweisungen.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein.
 
-#### Aufgabe 1: Konfigurieren der eShopOnWeb-Projektmappe in Visual Studio
+#### Aufgabe 1: (überspringen, wenn fertig) Erstellen und Konfigurieren des Teamprojekts
+
+In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von mehreren Labs verwendet werden soll.
+
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Weisen Sie Ihrem Projekt den Namen **eShopOnWeb** zu, und lassen Sie die anderen Felder auf den Standardwerten. Klicken Sie auf **Erstellen**.
+
+   ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
+
+#### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
+
+Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
+
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** , **Importiere ein Repository**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+
+   ![Screenshot: Fenster „Repository importieren“](images/import-repo.png)
+
+1. Das Repository ist wie folgt organisiert:
+   - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
+   - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+   - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+   - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+   - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
+
+#### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
+
+1. Wechseln Sie zu **Repos > Branches**.
+1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
+1. Klicken Sie auf **Als Mainbranch festlegen**.
+
+#### Aufgabe 4: Konfigurieren der eShopOnWeb-Lösung in Visual Studio
 
 In dieser Aufgabe werden Sie Visual Studio konfigurieren, um sich auf das Lab vorzubereiten.
 
 1. Stellen Sie sicher, dass Sie das **eShopOnWeb**-Teamprojekt im Azure DevOps-Portal sehen.
 
-    > **Hinweis:** Sie können direkt auf die Projektseite zugreifen, indem Sie zur URL [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/eShopOnWeb](https://dev.azure.com/`<your-Azure-DevOps-account-name>`/eShopOnWeb) navigieren, wobei der `<your-Azure-DevOps-account-name>`-Platzhalter Ihren Azure DevOps-Organisationsnamen darstellt.
+   > **Hinweis:** Sie können direkt auf die Projektseite zugreifen, indem Sie zur URL [https://dev.azure.com/`<your-Azure-DevOps-account-name>`/eShopOnWeb](https://dev.azure.com/`<your-Azure-DevOps-account-name>`/eShopOnWeb) navigieren, wobei der `<your-Azure-DevOps-account-name>`-Platzhalter Ihren Azure DevOps-Organisationsnamen darstellt.
 
 1. Klicken Sie im vertikalen Menü auf der linken Seite des Bereichs **eShopOnWeb** auf **Repos**.
 1. Klicken Sie im Bereich **Dateien** auf **Klonen**, wählen Sie den Dropdownpfeil neben **In VS Code klonen** aus, und wählen Sie im Dropdownmenü **Visual Studio** aus.
@@ -74,11 +101,11 @@ In dieser Aufgabe erstellen Sie einen Feed und stellen eine Verbindung dazu her.
 1. Wählen Sie im Webbrowserfenster, das Ihre Projekteinstellungen im Azure DevOps-Portal anzeigt, im vertikalen Navigationsbereich **Artefakte** aus.
 1. Wenn der Hub **Artefakte** angezeigt wird, klicken Sie oben im Bereich auf **+ Feed erstellen**.
 
-    > **Hinweis**: Bei diesem Feed handelt es sich um eine Sammlung von NuGet-Paketen, die den Benutzer*innen innerhalb der Organisation zur Verfügung stehen und neben dem öffentlichen NuGet-Feed als Peer fungieren. Das Szenario in dieser Übung konzentriert sich auf den Arbeitsablauf für die Verwendung von Azure Artifacts, sodass die tatsächlichen Architektur- und Entwicklungsentscheidungen rein illustrativ sind.  Dieser Feed wird gemeinsame Funktionen enthalten, die von allen Projekten in dieser Organisation gemeinsam genutzt werden können.
+   > **Hinweis**: Bei diesem Feed handelt es sich um eine Sammlung von NuGet-Paketen, die den Benutzer*innen innerhalb der Organisation zur Verfügung stehen und neben dem öffentlichen NuGet-Feed als Peer fungieren. Das Szenario in dieser Übung konzentriert sich auf den Arbeitsablauf für die Verwendung von Azure Artifacts, sodass die tatsächlichen Architektur- und Entwicklungsentscheidungen rein illustrativ sind. Dieser Feed wird gemeinsame Funktionen enthalten, die von allen Projekten in dieser Organisation gemeinsam genutzt werden können.
 
-1. Geben Sie im Bereich **Neuen Feed erstellen** im Textfeld **Name** den Text **eShopOnWebShared** ein, wählen Sie im Abschnitt **Umfang** die Option **Organisation** aus, behalten Sie für andere Einstellungen die Standardwerte bei, und klicken Sie auf **Erstellen**.
+1. Geben Sie im Bereich **Neuen Feed erstellen** in das Textfeld **Name** **`eShopOnWebShared`** ein. Wählen Sie im Abschnitt **Sichtbarkeit** die Option „Bestimmte Personen“ und im Abschnitt **Geltungsbereich** die Option **Projekt:eShopOnWeb**, belassen Sie die anderen Einstellungen auf den Standardwerten und klicken Sie auf **Erstellen**.
 
-    > **Hinweis**: Alle Benutzer*innen, die eine Verbindung zu diesem NuGet-Feed herstellen möchten, müssen ihre Umgebung konfigurieren.
+   > **Hinweis**: Alle Benutzer*innen, die eine Verbindung zu diesem NuGet-Feed herstellen möchten, müssen ihre Umgebung konfigurieren.
 
 1. Wenn Sie zurück auf dem Hub **Artefakte** sind, klicken Sie auf **Mit Feed verbinden**.
 1. Wählen Sie im Bereich **Mit Feed verbinden** im Abschnitt **NuGet** die Option **Visual Studio** aus und kopieren Sie im Bereich **Visual Studio** die URL **Quelle**. `https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json`
@@ -88,7 +115,7 @@ In dieser Aufgabe erstellen Sie einen Feed und stellen eine Verbindung dazu her.
 1. Ersetzen Sie unten im Dialogfeld im Textfeld **Name** die **Paketquelle** durch **eShopOnWebShared**, und fügen Sie im Textfeld **Quelle** die URL ein, die Sie im Azure DevOps-Portal kopiert haben.
 1. Klicken Sie auf **Aktualisieren** und dann auf **OK**, um das Hinzufügen abzuschließen.
 
-    > **Hinweis**: Visual Studio ist jetzt mit dem neuen Feed verbunden.
+   > **Hinweis**: Visual Studio ist jetzt mit dem neuen Feed verbunden.
 
 #### Aufgabe 2: Erstellen und Veröffentlichen eines selbst entwickelten NuGet-Pakets
 
@@ -96,19 +123,19 @@ In dieser Aufgabe erstellen und veröffentlichen Sie ein selbst entwickeltes ben
 
 1. In dem Visual Studio-Fenster, das Sie zum Konfigurieren der neuen Paketquelle verwendet haben, klicken Sie im Hauptmenü auf **Datei**, im Dropdownmenü auf **Neu** und dann im Kaskadenmenü auf **Projekt**.
 
-    > **Hinweis**: Wir werden nun eine gemeinsame Assembly erstellen, die als NuGet-Paket veröffentlicht wird, damit andere Teams sie integrieren und auf dem neuesten Stand bleiben können, ohne direkt mit dem Projektquelltext arbeiten zu müssen.
+   > **Hinweis**: Wir werden nun eine gemeinsame Assembly erstellen, die als NuGet-Paket veröffentlicht wird, damit andere Teams sie integrieren und auf dem neuesten Stand bleiben können, ohne direkt mit dem Projektquelltext arbeiten zu müssen.
 
 1. Verwenden Sie auf der Seite **Zuletzt verwendete Projektvorlagen** des Bereichs **Neues Projekt erstellen** das Suchtextfeld, um die Vorlage **Klassenbibliothek** zu finden, wählen Sie die Vorlage für C# aus und klicken Sie auf **Weiter**.
 1. Geben Sie auf der Seite **Klassenbibliothek** des Bereichs **Neues Projekt erstellen** die folgenden Einstellungen an und klicken Sie auf **Erstellen**:
 
-    | Einstellung | Wert |
-    | --- | --- |
-    | Projektname | **eShopOnWeb.Shared** |
-    | Standort | Akzeptieren Sie den Standardwert. |
-    | Lösung | **Neue Lösung erstellen** |
-    | Lösungsname | **eShopOnWeb.Shared** |
+   | Einstellung       | Wert                    |
+   | ------------- | ------------------------ |
+   | Projektname  | **eShopOnWeb.Shared**    |
+   | Standort      | Akzeptieren Sie den Standardwert. |
+   | Lösung      | **Neue Lösung erstellen**  |
+   | Lösungsname | **eShopOnWeb.Shared**    |
 
-    Aktivieren Sie das Kontrollkästchen **Platzieren Sie die Projektmappe und das Projekt im selben Verzeichnis**.
+   Aktivieren Sie das Kontrollkästchen **Platzieren Sie die Projektmappe und das Projekt im selben Verzeichnis**.
 
 1. Klicken Sie auf Weiter. Akzeptieren Sie **.NET 8** als Frameworkoption.
 1. Bestätigen Sie die Projekterstellung durch Drücken der Schaltfläche **Erstellen**.
@@ -117,47 +144,47 @@ In dieser Aufgabe erstellen und veröffentlichen Sie ein selbst entwickeltes ben
 1. Öffnen Sie in Ihrer Lab-Workstation das Startmenü und suchen Sie nach **Windows PowerShell**. Klicken Sie anschließend im kaskadierenden Menü auf **Windows PowerShell als Administrator öffnen**.
 1. Klicken Sie im Fenster **Administrator: Windows PowerShell**, navigieren Sie zum Ordner „eShopOnWeb.Shared“, indem Sie den folgenden Befehl ausführen:
 
-    ```text
-    cd c:\eShopOnWeb\eShopOnWeb.Shared
-    ```
+   ```text
+   cd c:\eShopOnWeb\eShopOnWeb.Shared
+   ```
 
-    > **Hinweis:** Der Ordner **eShopOnWeb.Shared** ist der Speicherort der Datei **eShopOnWeb.Shared.csproj**. Wenn Sie einen anderen Speicherort ausgewählt haben, navigieren Sie stattdessen zu diesem.
+   > **Hinweis:** Der Ordner **eShopOnWeb.Shared** ist der Speicherort der Datei **eShopOnWeb.Shared.csproj**. Wenn Sie einen anderen Ort oder Projektnamen gewählt haben, navigieren Sie stattdessen zu diesem Ort.
 
 1. Führen Sie den folgenden Befehl aus, um eine **.nupkg**-Datei aus dem Projekt zu erstellen.
 
-    ```powershell
-    dotnet pack .\eShopOnWeb.Shared.csproj
-    ```
+   ```powershell
+   dotnet pack .\eShopOnWeb.Shared.csproj
+   ```
 
-    > **Hinweis:** Der Befehl **dotnet pack** kompiliert das Projekt und erstellt ein NuGet-Paket im Ordner **bin\Release**.
+   > **Hinweis:** Der Befehl **dotnet pack** kompiliert das Projekt und erstellt ein NuGet-Paket im Ordner **bin\Release**. Wenn Sie keinen **Freigabe**-Ordner haben, können Sie stattdessen den **Debug**-Ordner verwenden.
 
-    > **Hinweis**: Ignorieren Sie alle Warnungen, die im Fenster **Administrator: Windows PowerShell** angezeigt werden.
+   > **Hinweis**: Ignorieren Sie alle Warnungen, die im Fenster **Administrator: Windows PowerShell** angezeigt werden.
 
-    > **Hinweis**: Der Befehl „dotnet pack“ kompiliert ein minimales Paket basierend auf den Informationen, die er aus dem Projekt ermitteln kann. Beachten Sie beispielsweise, dass der Name **eShopOnWeb.Shared.1.0.0.nupkg** lautet. Diese Versionsnummer wurde aus der Assembly abgerufen.
+   > **Hinweis**: Der Befehl „dotnet pack“ kompiliert ein minimales Paket basierend auf den Informationen, die er aus dem Projekt ermitteln kann. Beachten Sie beispielsweise, dass der Name **eShopOnWeb.Shared.1.0.0.nupkg** lautet. Diese Versionsnummer wurde aus der Assembly abgerufen.
 
 1. Führen Sie im PowerShell-Fenster den folgenden Befehl aus, um den Ordner **bin\Release** zu öffnen:
 
-    ```powershell
-    cd .\bin\Release
-    ```
+   ```powershell
+   cd .\bin\Release
+   ```
 
-1. Führen Sie Folgendes aus, um das Paket im **eShopOnWebShared**-Feed zu veröffentlichen:
+1. Führen Sie Folgendes aus, um das Paket im **eShopOnWebShared**-Feed zu veröffentlichen. Ersetzen Sie die Quelle durch die URL, die Sie zuvor aus der Visual Studio **Quellen**-URL `https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json` kopiert haben.
 
-    > **Wichtig:** Sie müssen den Anmeldeinformationsanbieter für Ihr Betriebssystem installieren, um sich bei Azure DevOps authentifizieren zu können. Die Installationsanweisungen finden Sie unter [Azure Artifacts-Anmeldeinformationsanbieter](https://go.microsoft.com/fwlink/?linkid=2099625). Sie können ihn installieren, indem Sie den folgenden Befehl im PowerShell-Fenster ausführen: `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"`.
+   ```powershell
+   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb.Shared.1.0.0.nupkg"
+   ```
 
-    > **Hinweis**: Sie müssen einen **API-Schlüssel** angeben, der eine beliebige nicht-leere Zeichenkette sein kann. Wir verwenden hier **az**. Wenn Sie dazu aufgefordert werden, melden Sie sich bei Ihrer Azure DevOps-Organisation an.
+   > **Wichtig:** Sie müssen den Anmeldeinformationsanbieter für Ihr Betriebssystem installieren, um sich bei Azure DevOps authentifizieren zu können. Die Installationsanweisungen finden Sie unter [Azure Artifacts-Anmeldeinformationsanbieter](https://go.microsoft.com/fwlink/?linkid=2099625). Sie können ihn installieren, indem Sie den folgenden Befehl im PowerShell-Fenster ausführen: `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"`.
 
-    ```powershell
-    dotnet nuget push --source "eShopOnWebShared" --api-key az eShopOnWeb.Shared.1.0.0.nupkg
-    ```
+   > **Hinweis**: Sie müssen einen **API-Schlüssel** angeben, der eine beliebige nicht-leere Zeichenkette sein kann. Wir verwenden hier **az**. Wenn Sie dazu aufgefordert werden, melden Sie sich bei Ihrer Azure DevOps-Organisation an.
 
-    > **Hinweis:** Wenn die Eingabeaufforderung nicht angezeigt wird, können Sie dem Befehl den Parameter **--interactive** hinzufügen.
+   > **Hinweis**: Wenn die Eingabeaufforderung nicht angezeigt wird oder Sie die folgende Warnung erhalten: **Warnung: Der Plugin-Anmeldeinformationsanbieter konnte keine Anmeldeinformationen abrufen. Die Authentifizierung erfordert möglicherweise eine manuelle Aktion. Führen Sie den Befehl erneut mit --interactive für `dotnet`, /p:NuGetInteractive=true für MSBuild aus oder entfernen Sie den Schalter „-NonInteractive“ für NuGet"**, können Sie den Parameter **--interactive** zum Befehl hinzufügen.
 
 1. Warten Sie auf die Bestätigung des erfolgreichen Paket-Push-Vorgangs.
 1. Wechseln Sie zum Webbrowserfenster, das das Azure DevOps-Portal anzeigt, und wählen Sie im vertikalen Navigationsbereich **Artefakte** aus.
 1. Klicken Sie im Hubbereich **Artefakte** auf die Dropdownliste in der oberen linken Ecke, und wählen Sie in der Liste der Feeds den Eintrag **eShopOnWebShared** aus.
 
-    > **Hinweis:** Der **eShopOnWebShared**-Feed sollte das neu veröffentlichte NuGet-Paket enthalten.
+   > **Hinweis:** Der **eShopOnWebShared**-Feed sollte das neu veröffentlichte NuGet-Paket enthalten.
 
 1. Klicken Sie auf das NuGet-Paket, um seine Details anzuzeigen.
 
@@ -167,88 +194,46 @@ Sie können Pakete nicht nur selbst entwickeln, sondern auch die Open-Source-Pak
 
 In dieser Aufgabe verwenden wir ein generisches „Newtonsoft.Json“-Beispielpaket, Sie können jedoch denselben Ansatz für andere Pakete in der Bibliothek verwenden.
 
-1. Navigieren Sie im selben PowerShell-Fenster zum Ordner **eShopOnWeb.Shared**, und führen Sie den folgenden **dotnet**-Befehl aus, um das Beispielpaket zu installieren:
+1. Navigieren Sie im selben PowerShell-Fenster, das Sie in der vorherigen Aufgabe zum Pushen des neuen Pakets verwendet haben, zurück zum Ordner **eShopOnWeb.Shared** (`cd..`), und führen Sie den folgenden **dotnet**-Befehl aus, um das Beispielpaket zu installieren:
 
-    ```powershell
-    dotnet add package Newtonsoft.Json
-    ```
+   ```powershell
+   dotnet add package Newtonsoft.Json
+   ```
 
 1. Überprüfen Sie die Ausgabe des Installationsvorgangs. Es zeigt die verschiedenen Feeds an, für die es versucht, das Paket herunterzuladen:
 
-    ```powershell
-    Feeds used:
-      https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
-      https://pkgs.dev.azure.com/<AZURE_DEVOPS_ORGANIZATION>/eShopOnWeb/_packaging/eShopOnWebShared/nuget/v3/index.json
-    ```
+   ```powershell
+   Feeds used:
+     https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+     https://pkgs.dev.azure.com/<AZURE_DEVOPS_ORGANIZATION>/eShopOnWeb/_packaging/eShopOnWebShared/nuget/v3/index.json
+   ```
 
 1. Als Nächstes wird eine zusätzliche Ausgabe zum eigentlichen Installationsvorgang angezeigt.
 
-    ```powershell
-    Determining projects to restore...
-    Writing C:\Users\AppData\Local\Temp\tmpxnq5ql.tmp
-    info : X.509 certificate chain validation will use the default trust store selected by .NET for code signing.
-    info : X.509 certificate chain validation will use the default trust store selected by .NET for timestamping.
-    info : Adding PackageReference for package 'Newtonsoft.Json' into project 'c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj'.
-    info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
-    info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 124ms
-    info : Restoring packages for c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj...
-    info :   GET https://api.nuget.org/v3/vulnerabilities/index.json
-    info :   OK https://api.nuget.org/v3/vulnerabilities/index.json 84ms
-    info :   GET https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/vulnerability.base.json
-    info :   GET https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/2024.02.17.11.23.35/vulnerability.update.json
-    info :   OK https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/vulnerability.base.json 14ms
-    info :   OK https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/2024.02.17.11.23.35/vulnerability.update.json 30ms
-    info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project 'c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj'.
-    info : PackageReference for package 'Newtonsoft.Json' version '13.0.3' added to file 'c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj'.
-    info : Writing assets file to disk. Path: c:\eShopOnWeb\eShopOnWeb.Shared\obj\project.assets.json
-    log  : Restored c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj (in 294 ms).
-    ```
+   ```powershell
+   Determining projects to restore...
+   Writing C:\Users\AppData\Local\Temp\tmpxnq5ql.tmp
+   info : X.509 certificate chain validation will use the default trust store selected by .NET for code signing.
+   info : X.509 certificate chain validation will use the default trust store selected by .NET for timestamping.
+   info : Adding PackageReference for package 'Newtonsoft.Json' into project 'c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj'.
+   info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+   info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 124ms
+   info : Restoring packages for c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj...
+   info :   GET https://api.nuget.org/v3/vulnerabilities/index.json
+   info :   OK https://api.nuget.org/v3/vulnerabilities/index.json 84ms
+   info :   GET https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/vulnerability.base.json
+   info :   GET https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/2024.02.17.11.23.35/vulnerability.update.json
+   info :   OK https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/vulnerability.base.json 14ms
+   info :   OK https://api.nuget.org/v3-vulnerabilities/2024.02.15.23.23.24/2024.02.17.11.23.35/vulnerability.update.json 30ms
+   info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project 'c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj'.
+   info : PackageReference for package 'Newtonsoft.Json' version '13.0.3' added to file 'c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj'.
+   info : Writing assets file to disk. Path: c:\eShopOnWeb\eShopOnWeb.Shared\obj\project.assets.json
+   log  : Restored c:\eShopOnWeb\eShopOnWeb.Shared\eShopOnWeb.Shared.csproj (in 294 ms).
+   ```
 
 1. Das Newtonsoft.Json-Paket wurde unter „Pakete“ als **Newtonsoft.Json** installiert. Navigieren Sie im **Projektmappen-Explorer** von Visual Studio zum **eShopOnWeb.Shared**-Projekt, erweitern Sie die Abhängigkeiten, und Sie sehen **Newtonsoft.Json** unter den Paketen. Klicken Sie auf den kleinen Pfeil links neben den Paketen, um den Ordner- und Dateiliste zu öffnen.
 
-#### Aufgabe 4: Hochladen des Open-Source-NuGet-Pakets in Azure Artifacts
-
-Betrachten wir dieses Paket als ein „genehmigtes“ Paket, das unser DevOps-Team wiederverwenden kann, indem es in den zuvor erstellten Paketfeed von Azure Artifacts hochgeladen wird.
-
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das neue **Newtonsoft.Json**-Paket, und wählen Sie im Kontextmenü **Ordner in Datei-Explorer öffnen** aus. Sie sehen das neue **Newtonsoft.Json**-Paket mit der Erweiterung **.nupkg**.
-2. Kopieren Sie den vollständigen Pfad aus der Adressleiste des Datei-Explorer-Fensters.
-3. Führen Sie im PowerShell-Fenster den folgenden Befehl aus, indem Sie den Pfad durch den kopierten Pfad ersetzen:
-
-    ```powershell
-    dotnet nuget push --source "eShopOnWebShared" --api-key az C:\eShopOnWeb\eShopOnWeb.Shared\Newtonsoft.Json\newtonsoft.json.13.0.3.nupkg
-    ```
-
-    > **Hinweis**: Dies führt zu einer Fehlermeldung:
-
-    ```text
-    Response status code does not indicate success: 409 (Conflict - 'Newtonsoft.Json 1.3.0.17' cannot be published to the feed because it exists in at least one of the feed's upstream sources. Publishing this copy would prevent you from using 'Newtonsoft.Json 1.3.0.17' from 'NuGet Gallery'. For more information, see https://go.microsoft.com/fwlink/?linkid=864880 (DevOps Activity ID: AE08BE89-C2FA-4FF7-89B7-90805C88972C)).
-    ```
-
-Bei der Erstellung des Azure DevOps Artifacts Package Feeds wurden **Upstream-Quellen**, wie z.B. nuget.org im dotnet-Beispiel, berücksichtigt. Nichts hindert Ihr DevOps-Team jedoch daran, einen **„rein internen“** Paketfeed zu erstellen.
-
-1. Wechseln Sie zum Azure DevOps-Portal, navigieren Sie zu **Artefakte**, und wählen Sie den **eShopOnWebShared**-Feed aus.
-1. Klicken Sie auf **Upstreamquellen durchsuchen**
-1. Wählen Sie im Fenster **Gehen Sie zu einem Upstream-Paket** die Option **NuGet** als Pakettyp aus, und geben Sie **Newtonsoft.Json** in das Suchfeld ein.
-1. Bestätigen Sie durch Drücken der Schaltfläche **Suchen**.
-1. Das Ergebnis ist eine Liste aller Newtonsoft.Json-Pakete mit den verschiedenen verfügbaren Versionen.
-1. Drücken Sie die **NACH-LINKS-TASTE**, um zum **eShopOnWebShared**-Feed zurückzukehren.
-1. Klicken Sie auf das Zahnrad, um die **Feedeinstellungen** zu öffnen. Wählen Sie auf der Seite „Feedeinstellungen“ die Option **Upstreamquellen** aus.
-1. Beachten Sie die unterschiedlichen Upstream-Paketmanager für die verschiedenen Entwicklungssprachen. Wählen Sie **NuGet Gallery** aus der Liste aus. Drücken Sie die Schaltfläche **Löschen**, und anschließend die Schaltfläche **Speichern**.
-
-1. Mit diesen gespeicherten Änderungen ist es möglich, das **Newtonsoft.Json**-Paket mithilfe von „NuGet.exe“ aus dem PowerShell-Fenster hochzuladen, indem sie den folgenden Befehl erneut ausführen:
-
-    ```text
-     dotnet nuget push --source "eShopOnWebShared" --api-key az C:\eShopOnWeb\eShopOnWeb.Shared\Newtonsoft.Json\newtonsoft.json.13.0.3.nupkg
-    ```
-
-    > **Hinweis:** Das sollte nun zu einem erfolgreichen Upload führen.
-
-    ```text
-    Pushing newtonsoft.json.13.0.3.nupkg to 'https://pkgs.dev.azure.com/<AZURE_DEVOPS_ORGANIZATION>/_packaging/5faffb6c-018b-4452-a4d6-72c6bffe79db/nuget/v2/'...
-    PUT https://pkgs.dev.azure.com/<AZURE_DEVOPS_ORGANIZATION>/_packaging/5faffb6c-018b-4452-a4d6-72c6bffe79db/nuget/v2/
-    Accepted https://pkgs.dev.azure.com/<AZURE_DEVOPS_ORGANIZATION>/_packaging/5faffb6c-018b-4452-a4d6-72c6bffe79db/nuget/v2/ 3160ms
-    Your package was pushed.
-    ```
+Als Sie den Azure DevOps Artifacts Package Feed erstellt haben, war es beabsichtigt, **Upstreamquellen** wie nuget.org im dotnet-Beispiel zuzulassen, das das Newtonsoft.Json-Paket von dem Ort einbringt, an dem das Paket gehostet wird. Dies ist eine gängige Praxis, um doppelte Pakete zu vermeiden und sicherzustellen, dass immer die neueste Version verwendet wird.
 
 1. **Aktualisieren** Sie im Azure DevOps-Portal die Seite „Artifacts Package Feed“. Die Liste der Pakete enthält sowohl das benutzerdefinierte **eShopOnWeb.Shared**-Paket als auch das öffentliche **Newtonsoft.Json**-Paket.
 1. Klicken Sie in der Visual Studio-Projektmappe **eShopOnWeb.Shared** mit der rechten Maustaste auf das **eShopOnWeb.Shared**-Projekt, und wählen Sie **NuGet-Pakete verwalten** aus dem Kontextmenü aus.
@@ -263,4 +248,3 @@ In dieser Übung haben Sie anhand der folgenden Schritte gelernt, wie Sie mit Az
 - Erstellen und Verbinden mit einem Feed.
 - Erstellen und Veröffentlichen eines NuGet-Pakets.
 - Importieren eines benutzerdefiniertes NuGet-Pakets.
-- Importieren eines NuGet-Pakets aus einer öffentlicher Quelle.
