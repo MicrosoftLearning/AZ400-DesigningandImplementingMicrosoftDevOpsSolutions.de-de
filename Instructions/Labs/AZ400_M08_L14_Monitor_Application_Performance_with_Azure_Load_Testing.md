@@ -48,7 +48,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Geben Sie Ihrem Projekt den Namen **eShopOnWeb**, und wählen Sie **Scrum** in der Dropdownliste **Arbeitselementprozess** aus. Klicken Sie auf **Erstellen**.
 
-    ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
+   ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
 
 #### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
 
@@ -56,14 +56,14 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Files**, **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein und klicken Sie auf **Importieren**:
 
-    ![Screenshot der Schaltfläche „Repository importieren“](images/import-repo.png)
+   ![Screenshot der Schaltfläche „Repository importieren“](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
-    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines
-    - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
-    - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
-    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
-    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
+   - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines
+   - Der Ordner **.devcontainer** enthält ein Containersetup für die Entwicklung mithilfe von Containern (entweder lokal in VS Code oder über GitHub Codespaces).
+   - Der Ordner **infra** enthält eine Bicep&ARM-Infrastruktur als Codevorlagen, die in einigen Labszenarien verwendet werden.
+   - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
+   - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
 #### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
 
@@ -78,32 +78,33 @@ In dieser Aufgabe erstellen Sie eine Azure-Webanwendung mithilfe der Cloud Shel
 1. Starten Sie auf dem Labcomputer einen Webbrowser, navigieren Sie zum [**Azure-Portal**](https://portal.azure.com) und melden Sie sich an.
 1. Klicken Sie im Azure-Portal in der Symbolleiste auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Suchtextfeld befindet.
 1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
-    > **Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
+
+   > **Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
 
 1. Führen Sie in der **Bash**-Eingabeaufforderung im **Cloud Shell**-Bereich den folgenden Befehl aus, um eine Ressourcengruppe zu erstellen (ersetzen Sie den `<region>`-Platzhalter durch den Namen der Azure-Region, die Ihnen am nächsten kommt, z. B. "eastus").
 
-    ```bash
-    RESOURCEGROUPNAME='az400m08l14-RG'
-    LOCATION='<region>'
-    az group create --name $RESOURCEGROUPNAME --location $LOCATION
-    ```
+   ```bash
+   RESOURCEGROUPNAME='az400m08l14-RG'
+   LOCATION='<region>'
+   az group create --name $RESOURCEGROUPNAME --location $LOCATION
+   ```
 
 1. Um einen Windows-App-Service-Plan zu erstellen, führen Sie den folgenden Befehl aus:
 
-    ```bash
-    SERVICEPLANNAME='az400l14-sp'
-    az appservice plan create --resource-group $RESOURCEGROUPNAME \
-        --name $SERVICEPLANNAME --sku B3
-    ```
+   ```bash
+   SERVICEPLANNAME='az400l14-sp'
+   az appservice plan create --resource-group $RESOURCEGROUPNAME \
+       --name $SERVICEPLANNAME --sku B3
+   ```
 
 1. Erstellen Sie eine Web-App mit einem eindeutigen Namen.
 
-    ```bash
-    WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
-    az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
-    ```
+   ```bash
+   WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
+   az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME
+   ```
 
-    > **Anmerkung**: Tragen Sie den Namen der Web-App ein. Sie benötigen diese später in diesem Lab.
+   > **Anmerkung**: Tragen Sie den Namen der Web-App ein. Sie benötigen diese später in diesem Lab.
 
 ### Übung 1: Konfigurieren Sie CI/CD-Pipelines-as-Code mit YAML in Azure DevOps.
 
@@ -116,7 +117,7 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 1. Navigieren Sie zurück zum Bereich **Pipelines** im **Pipelinehub**.
 1. Klicken Sie auf **Neue Pipeline** (oder „Pipeline erstellen“, wenn dies die erste ist, die Sie erstellen).
 
-    > **Hinweis**: Wir verwenden den Assistenten, um eine neue YAML-Pipelinedefinition basierend auf unserem Projekt zu erstellen.
+   > **Hinweis**: Wir verwenden den Assistenten, um eine neue YAML-Pipelinedefinition basierend auf unserem Projekt zu erstellen.
 
 1. Klicken Sie im Bereich **Wo befindet sich Ihr Code?** auf die Option **Azure Repos Git (YAML)**.
 1. Klicken Sie im Bereich **Ein Repository auswählen** auf **eShopOnWeb**.
@@ -124,109 +125,108 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 1. **Wählen** Sie alle Zeilen aus der Starterpipeline aus, und löschen Sie sie.
 1. **Kopieren** Sie die vollständige Vorlagenpipeline von unten. Beachten Sie, dass Sie **vor dem Speichern** der Änderungen Parameteränderungen vornehmen müssen:
 
-    ```yml
-    
-    #Template Pipeline for CI/CD
-    # trigger:
-    # - main
+   ```yml
+   #Template Pipeline for CI/CD
+   # trigger:
+   # - main
 
-    resources:
-      repositories:
-        - repository: self
-          trigger: none
+   resources:
+     repositories:
+       - repository: self
+         trigger: none
 
-    stages:
-    - stage: Build
-      displayName: Build .Net Core Solution
-      jobs:
-      - job: Build
-        pool:
-          vmImage: ubuntu-latest
-        steps:
-        - task: DotNetCoreCLI@2
-          displayName: Restore
-          inputs:
-            command: 'restore'
-            projects: '**/*.sln'
-            feedsToUse: 'select'
+   stages:
+     - stage: Build
+       displayName: Build .Net Core Solution
+       jobs:
+         - job: Build
+           pool:
+             vmImage: ubuntu-latest
+           steps:
+             - task: DotNetCoreCLI@2
+               displayName: Restore
+               inputs:
+                 command: "restore"
+                 projects: "**/*.sln"
+                 feedsToUse: "select"
 
-        - task: DotNetCoreCLI@2
-          displayName: Build
-          inputs:
-            command: 'build'
-            projects: '**/*.sln'
+             - task: DotNetCoreCLI@2
+               displayName: Build
+               inputs:
+                 command: "build"
+                 projects: "**/*.sln"
 
-        - task: DotNetCoreCLI@2
-          displayName: Publish
-          inputs:
-            command: 'publish'
-            publishWebProjects: true
-            arguments: '-o $(Build.ArtifactStagingDirectory)'
+             - task: DotNetCoreCLI@2
+               displayName: Publish
+               inputs:
+                 command: "publish"
+                 publishWebProjects: true
+                 arguments: "-o $(Build.ArtifactStagingDirectory)"
 
-        - task: PublishBuildArtifacts@1
-          displayName: Publish Artifacts ADO - Website
-          inputs:
-            pathToPublish: '$(Build.ArtifactStagingDirectory)'
-            artifactName: Website
+             - task: PublishBuildArtifacts@1
+               displayName: Publish Artifacts ADO - Website
+               inputs:
+                 pathToPublish: "$(Build.ArtifactStagingDirectory)"
+                 artifactName: Website
 
-    - stage: Deploy
-      displayName: Deploy to an Azure Web App
-      jobs:
-      - job: Deploy
-        pool:
-          vmImage: 'windows-2019'
-        steps:
-        - task: DownloadBuildArtifacts@1
-          inputs:
-            buildType: 'current'
-            downloadType: 'single'
-            artifactName: 'Website'
-            downloadPath: '$(Build.ArtifactStagingDirectory)'
-
-    ```
+     - stage: Deploy
+       displayName: Deploy to an Azure Web App
+       jobs:
+         - job: Deploy
+           pool:
+             vmImage: "windows-2019"
+           steps:
+             - task: DownloadBuildArtifacts@1
+               inputs:
+                 buildType: "current"
+                 downloadType: "single"
+                 artifactName: "Website"
+                 downloadPath: "$(Build.ArtifactStagingDirectory)"
+   ```
 
 1. Setzen Sie den Cursor in eine neue Zeile am Ende der YAML-Definition. **Stellen Sie sicher, dass Sie den Cursor am Einzug der vorherigen Aufgabenebene positionieren**.
 
-    > **Hinweis**: Dies ist der Ort, an dem neue Aufgaben hinzugefügt werden.
+   > **Hinweis**: Dies ist der Ort, an dem neue Aufgaben hinzugefügt werden.
 
 1. Klicken Sie auf der rechten Seite des Portals auf **Assistent anzeigen**. Suchen Sie in der Liste der Aufgaben nach der Aufgabe **Azure App Service-Bereitstellung**, und wählen Sie diese aus.
 1. Geben Sie im Bereich **Azure-App Sevice-Bereitstellung** die folgenden Einstellungen an, und klicken Sie auf **Hinzufügen**:
 
-    - wählen Sie in der Dropdown-Liste **Azure-Abonnement** die soeben erstellte Dienstverbindung.
-    - Überprüfen Sie, dass **App Service-Typ** auf „Web-App unter Windows“ zeigt.
-    - wählen Sie in der Dropdownliste **App Service-Name** den Namen der Web-App aus, die Sie zuvor im Lab bereitgestellt haben (**az400eshoponweb...).
-    - **Aktualisieren** Sie im Textfeld **Paket oder Ordner** den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-    - Erweitern Sie **Anwendungs- und Konfigurationseinstellungen**, und fügen Sie im Textfeld „App-Einstellungen“ die folgenden Schlüssel-Wert-Paare hinzu: `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
+   - wählen Sie in der Dropdown-Liste **Azure-Abonnement** die soeben erstellte Dienstverbindung.
+   - Überprüfen Sie, dass **App Service-Typ** auf „Web-App unter Windows“ zeigt.
+   - Wählen Sie in der Dropdownliste **App Service-Name** den Namen der Web-App aus, die Sie zuvor im Lab bereitgestellt haben (\*\*az400eshoponweb ...).
+   - **Aktualisieren** Sie im Textfeld **Paket oder Ordner** den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
+   - Erweitern Sie **Anwendungs- und Konfigurationseinstellungen**, und fügen Sie im Textfeld „App-Einstellungen“ die folgenden Schlüssel-Wert-Paare hinzu: `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
+
 1. Bestätigen Sie die Einstellungen im Bereich Assistent, indem Sie auf die Schaltfläche **Hinzufügen** klicken.
 
-    > **Hinweis**: Dadurch wird der YAML-Pipelinedefinition automatisch die Bereitstellungsaufgabe hinzugefügt.
+   > **Hinweis**: Dadurch wird der YAML-Pipelinedefinition automatisch die Bereitstellungsaufgabe hinzugefügt.
 
 1. Der Codeausschnitt, der dem Editor hinzugefügt wurde, sollte ähnlich wie unten aussehen und für die Parameter azureSubscription und WebappName Ihren Namen aufweisen:
 
-    ```yml
-        - task: AzureRmWebAppDeployment@4
-          inputs:
-            ConnectionType: 'AzureRM'
-            azureSubscription: 'SERVICE CONNECTION NAME'
-            appType: 'webApp'
-            WebAppName: 'az400eshoponWeb369825031'
-            packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
-            AppSettings: '-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development'
-    ```
+   ```yml
+   - task: AzureRmWebAppDeployment@4
+     inputs:
+       ConnectionType: "AzureRM"
+       azureSubscription: "SERVICE CONNECTION NAME"
+       appType: "webApp"
+       WebAppName: "az400eshoponWeb369825031"
+       packageForLinux: "$(Build.ArtifactStagingDirectory)/**/Web.zip"
+       AppSettings: "-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development"
+   ```
 
-    > **Hinweis**: Der **parameter packageForLinux** ist im Kontext dieses Labs irreführend, ist aber für Windows oder Linux gültig.
+   > **Hinweis**: Der **parameter packageForLinux** ist im Kontext dieses Labs irreführend, ist aber für Windows oder Linux gültig.
 
 1. Bevor Sie die Aktualisierungen in der YML-Datei speichern, geben Sie ihnen einen eindeutigeren Namen. Oben im Fenster des YAML-Editors wird **EShopOnweb/azure-pipelines-#.yml** angezeigt. (wobei # eine Zahl ist, in der Regel 1, sie könnte aber in Ihrem Setup unterschiedlich sein.) Wählen Sie **diesen Dateinamen** aus, und benennen Sie ihn in **m08l14-pipeline.yml** um
 
 1. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderung direkt in die Hauptverzweigung zu übernehmen.
 
-    > **Hinweis**: Da unser ursprüngliches CI-YAML nicht so konfiguriert wurde, dass automatisch ein neuer Build ausgelöst wird, müssen wir diesen manuell initiieren.
+   > **Hinweis**: Da unser ursprüngliches CI-YAML nicht so konfiguriert wurde, dass automatisch ein neuer Build ausgelöst wird, müssen wir diesen manuell initiieren.
 
 1. Navigieren Sie im linken Menü von Azure DevOps zu **Pipelines** und wählen Sie erneut **Pipelines**. Wählen Sie als Nächstes **Alle** aus, um alle Pipelinedefinitionen zu öffnen, nicht nur die zuletzt verwendeten.
 
-    > **Hinweis**: Wenn Sie alle vorherigen Pipelines aus früheren Labübungen beibehalten haben, hat diese neue Pipeline möglicherweise den Standardsequenznamen **eShopOnWeb (#)** für die Pipeline wiederverwendet, wie im folgenden Screenshot gezeigt. Wählen Sie eine Pipeline aus (höchstwahrscheinlich die mit der höchsten Sequenznummer, wählen Sie „Bearbeiten“ aus, und überprüfen Sie, ob sie auf die Codedatei m08l14-pipeline.yml zeigt).
+   > **Hinweis**: Wenn Sie alle vorherigen Pipelines aus früheren Labübungen beibehalten haben, hat diese neue Pipeline möglicherweise den Standardsequenznamen **eShopOnWeb (#)** für die Pipeline wiederverwendet, wie im folgenden Screenshot gezeigt. Wählen Sie eine Pipeline aus (höchstwahrscheinlich die mit der höchsten Sequenznummer, wählen Sie „Bearbeiten“ aus, und überprüfen Sie, ob sie auf die Codedatei m08l14-pipeline.yml zeigt).
 
-    ![Screenshot von Azure Pipelines mit eShopOnWeb-Ausführungen.](images/m3/eshoponweb-m9l16-pipeline.png)
+   ![Screenshot von Azure Pipelines mit eShopOnWeb-Ausführungen.](images/m3/eshoponweb-m9l16-pipeline.png)
 
 1. Bestätigen Sie die Ausführung dieser Pipeline, indem Sie im angezeigten Bereich auf **Ausführen** klicken, und bestätigen Sie dies, indem Sie erneut auf **Ausführen** klicken.
 1. Beachten Sie die zwei dargestellten Phasen **Build .Net Core Solution** und **Deploy to Azure Web App**.
@@ -236,9 +236,9 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 
 1. Sobald die Bereitstellungsphase gestartet werden soll, werden die **erforderlichen Berechtigungen** sowie eine orangefarbene Statusleiste angezeigt:
 
-    ```text
-    This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
-    ```
+   ```text
+   This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
+   ```
 
 1. Klicken Sie auf **Ansicht**
 1. Klicken Sie im Bereich **Warten auf Überprüfung** auf **Zulassen**.
@@ -255,6 +255,8 @@ In dieser Aufgabe fügen Sie dem vorhandenen Projekt eine YAML-Builddefinition h
 
 In dieser Übung stellen Sie eine Azure Load Testing-Ressource in Azure bereit und konfigurieren unterschiedliche Auslastungstestszenarien für Ihren live ausgeführten Azure-App Service.
 
+> **Wichtig**: Azure Load Testing ist ein kostenpflichtiger **Dienst**. Für die Ausführung von Auslastungstests entstehen Kosten. Stellen Sie sicher, dass Sie Ressourcen bereinigen, nachdem Sie das Lab abgeschlossen haben, um zusätzliche Kosten zu vermeiden. Für jede „Auslastungstest-Ressource“, die während eines beliebigen Teils eines Monats aktiv ist, wird Ihnen die monatliche Gebühr in Rechnung gestellt und Sie haben Zugriff auf die enthaltenen 50 VUH. Weitere Informationen finden Sie auf der Seite [Azure Load Testing-Preisübersicht](https://azure.microsoft.com/pricing/details/load-testing).
+
 #### Aufgabe 1: Bereitstellen von Azure Load Testing
 
 In dieser Aufgabe werden Sie eine Azure Load Test-Ressource in Ihrem Azure-Abonnement bereitstellen.
@@ -264,19 +266,20 @@ In dieser Aufgabe werden Sie eine Azure Load Test-Ressource in Ihrem Azure-Abonn
 1. Wählen Sie **Azure Load Testing** (veröffentlicht von Microsoft) aus den Suchergebnissen.
 1. Klicken Sie auf der Seite Azure Load Testing auf **Erstellen**, um den Bereitstellungsprozess zu starten.
 1. Geben Sie auf der Seite „Auslastungstestressource erstellen“ die erforderlichen Details für die Ressourcenbereitstellung an:
+
    - **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus.
    - **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, die Sie für die Bereitstellung des Web App Service in der vorherigen Übung verwendet haben.
    - **Name**: `eShopOnWebLoadTesting`
    - **Region**: Wählen Sie unter Region eine Region in Ihrer Nähe aus.
 
-    > **Hinweis**: Der Azure Load Testing-Dienst ist nicht in allen Azure-Regionen verfügbar.
+   > **Hinweis**: Der Azure Load Testing-Dienst ist nicht in allen Azure-Regionen verfügbar.
 
 1. Klicken Sie auf **Überprüfen und Erstellen**, um Ihre Einstellungen validieren zu lassen.
 1. Klicken Sie auf **Erstellen**, um diese zu bestätigen, und stellen Sie die Azure Load Testing-Ressource bereit.
 1. Die Seite „Bereitstellung ist in Bearbeitung“ wird angezeigt. Warten Sie ein paar Minuten, bis die Bereitstellung erfolgreich abgeschlossen ist.
 1. Klicken Sie auf der Seite „Bereitstellungsfortschritt“ auf **Zur Ressource wechseln**, um zur Azure Load Testing-Ressource **eShopOnWebLoadTesting** zu navigieren.
 
-    > **Hinweis**: Wenn Sie die Seite oder das Azure-Portal während der Bereitstellung der Azure Load Testing-Ressource geschlossen haben, können Sie sie erneut mit dem Azure-Portal-Suchfeld oder in der Liste Ressourcen/Zuletzt verwendete Ressourcen finden.
+   > **Hinweis**: Wenn Sie die Seite oder das Azure-Portal während der Bereitstellung der Azure Load Testing-Ressource geschlossen haben, können Sie sie erneut mit dem Azure-Portal-Suchfeld oder in der Liste Ressourcen/Zuletzt verwendete Ressourcen finden.
 
 #### Aufgabe 2: Erstellen von Azure Load Testing-Tests
 
@@ -285,6 +288,7 @@ In dieser Aufgabe erstellen Sie verschiedene Azure Load Testing-Tests mit unters
 1. Navigieren Sie im Blatt der Azure Load Testing-Ressource **eShopOnWebLoadTesting** unter **Tests** zu **Tests**. Klicken Sie auf die Menüoption **+ Erstellen**, und wählen Sie **URL-basierten Test erstellen** aus.
 1. Deaktivieren Sie das Kontrollkästchen **Erweiterte Einstellungen aktivieren**, um die erweiterten Einstellungen anzuzeigen.
 1. Füllen Sie die folgenden Parameter und Einstellungen aus, um einen Auslastungstest zu erstellen:
+
    - **Testen der URL**: Geben Sie die URL aus dem Azure App Service ein, den Sie in der vorherigen Übung bereitgestellt haben (az400eshoponweb... azurewebsites.net), **einschließlich https://**
    - **Auslastung angeben**: Virtuelle Benutzer
    - **Anzahl der virtuellen Benutzer**: 50
@@ -296,6 +300,7 @@ In dieser Aufgabe erstellen Sie verschiedene Azure Load Testing-Tests mit unters
 1. Navigieren Sie während der Ausführung des Tests zurück zur der Azure Load Testing-Ressource **eShopOnWebLoadTesting**, und navigieren Sie zu **Tests**, wählen Sie **Tests** aus, und Sie sehen einen Test **Get_eshoponweb...**
 1. Klicken Sie im obersten Menü auf **Erstellen**, **URL-basierten Test erstellen**, um einen zweiten Auslastungstest zu erstellen.
 1. Füllen Sie die folgenden Parameter und Einstellungen aus, um einen weiteren Auslastungstest zu erstellen:
+
    - **Testen der URL**: Geben Sie die URL aus dem Azure App Service ein, den Sie in der vorherigen Übung bereitgestellt haben (eShopOnWeb...azurewebsites.net), **einschließlich https://**
    - **Auslastung angeben**: Anfragen pro Sekunde (RPS)
    - **Anfragen pro Sekunde (RPS)**: 100
@@ -314,6 +319,7 @@ Wenn beide Schnelltests abgeschlossen sind, nehmen wir einige Änderungen daran 
 
 1. Navigieren Sie von **Azure Load Testing** zu **Tests**. Wählen Sie eine der Testdefinitionen aus, um eine detailliertere Ansicht zu öffnen, indem Sie auf einen der Tests **klicken**. Sie werden dann auf die detailliertere Testseite weitergeleitet. Von hier aus können Sie die Details der tatsächlichen Läufe überprüfen, indem Sie die **TestRun_mm/dd/yyy-hh:hh** aus der resultierenden Liste auswählen.
 1. Ermitteln Sie auf der detaillierten **TestRun**-Seite das tatsächliche Ergebnis der Azure Load Testing-Simulation. Einige der Werte sind:
+
    - Load / Anzahl von Anforderungen
    - Dauer
    - Antwortzeit (zeigt das Ergebnis in Sekunden an, das die Antwortzeit des 90. Perzentils widerspiegelt, d. h. die Antwortzeit für 90 % der Anfragen liegt innerhalb der angegebenen Ergebnisse)
@@ -362,8 +368,8 @@ Führen Sie die folgenden Schritte aus, um die Eingabedateien für einen vorhand
 1. Der Browser lädt einen gezippten Ordner herunter, der die Eingabedateien für den Auslastungstest enthält.
 1. Verwenden Sie ein beliebiges ZIP-Tool, um die Eingabedateien zu extrahieren. Der Ordner enthält die folgenden Dateien:
 
-   - *config.yaml*: die YAML-Konfigurationsdatei für den Auslastungstest. Sie verweisen auf diese Datei in der CI/CD-Workflowdefinition.
-   - *quick_test.jmx*: das JMeter-Testskript
+   - _config.yaml_: die YAML-Konfigurationsdatei für den Auslastungstest. Sie verweisen auf diese Datei in der CI/CD-Workflowdefinition.
+   - _quick_test.jmx_: das JMeter-Testskript
 
 1. Committen Sie alle extrahierten Eingabedateien in Ihr Quellcodeverwaltungsrepository. Navigieren Sie hierzu zum **Azure DevOps-Portal**(<https://aex.dev.azure.com/>), und navigieren Sie dann zum DevOps-Projekt **eShopOnWeb**.
 1. Wählen Sie **Repositorys** aus. Beachten Sie in der Struktur des Quellcodeordners den Unterordner **Tests**. Beachten Sie die Auslassungspunkte (...), und wählen Sie **Neu > Ordner** aus.
@@ -381,6 +387,7 @@ Führen Sie die folgenden Schritte aus, um die Eingabedateien für einen vorhand
 1. Navigieren Sie im YAML-Skript zu **Zeile 56** und drücken Sie ENTER/RETURN, um eine neue leere Zeile hinzuzufügen. (Dies ist direkt vor der Bereitstellungsphase der YAML-Datei).
 1. Wählen Sie in Zeile 57 den Aufgaben-Assistenten rechts aus, und suchen Sie nach **Azure Load Testing**.
 1. Füllen Sie den grafischen Bereich mit den richtigen Einstellungen für Ihr Szenario aus:
+
    - Azure-Abonnement: Wählen Sie das Abonnement, auf dem Ihre Azure-Ressourcen laufen.
    - Auslastungstestdatei: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
    - Auslastungstest-Ressourcengruppe: Die Ressourcengruppe, die Ihre Azure Load Testing-Ressourcen enthält
@@ -389,29 +396,29 @@ Führen Sie die folgenden Schritte aus, um die Eingabedateien für einen vorhand
    - Beschreibung des Auslastungstestlaufs: Auslastungstest aus ADO
 
 1. Bestätigen Sie die Einfügung der Parameter als YAML-Codeausschnitt, indem Sie auf **Hinzufügen** klicken.
-1. Wenn beim Einzug des YAML-Codeschnipsels Fehler auftreten (rote Wellenlinien), beheben Sie diese, indem Sie zwei Leerzeichen oder Tabstopps hinzufügen, um den Codeschnipsel richtig zu positionieren.  
+1. Wenn beim Einzug des YAML-Codeschnipsels Fehler auftreten (rote Wellenlinien), beheben Sie diese, indem Sie zwei Leerzeichen oder Tabstopps hinzufügen, um den Codeschnipsel richtig zu positionieren.
 1. Der folgende Beispielausschnitt zeigt, wie der YAML-Code aussehen soll.
 
-    ```yml
-         - task: AzureLoadTest@1
-          inputs:
-            azureSubscription: 'AZURE DEMO SUBSCRIPTION'
-            loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
-            resourceGroup: 'az400m08l14-RG'
-            loadTestResource: 'eShopOnWebLoadTesting'
-            loadTestRunName: 'ado_run'
-            loadTestRunDescription: 'load testing from ADO'
-    ```
+   ```yml
+        - task: AzureLoadTest@1
+         inputs:
+           azureSubscription: 'AZURE DEMO SUBSCRIPTION'
+           loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
+           resourceGroup: 'az400m08l14-RG'
+           loadTestResource: 'eShopOnWebLoadTesting'
+           loadTestRunName: 'ado_run'
+           loadTestRunDescription: 'load testing from ADO'
+   ```
 
 1. Fügen Sie unter dem eingefügten YAML-Codeausschnitt eine neue leere Zeile hinzu, indem Sie die Enter-Taste drücken.
 1. Fügen Sie unter dieser leeren Zeile einen Codeausschnitt für die Aufgabe „Veröffentlichen“ hinzu, die die Ergebnisse der Azure Load Test-Aufgabe während der Pipelineausführung anzeigt:
 
-    ```yml
-        - publish: $(System.DefaultWorkingDirectory)/loadTest
-          artifact: loadTestResults
-    ```
+   ```yml
+   - publish: $(System.DefaultWorkingDirectory)/loadTest
+     artifact: loadTestResults
+   ```
 
-1. Wenn beim Einzug des YAML-Codeschnipsels Fehler auftreten (rote Wellenlinien), beheben Sie diese, indem Sie zwei Leerzeichen oder Tabstopps hinzufügen, um den Codeschnipsel richtig zu positionieren.  
+1. Wenn beim Einzug des YAML-Codeschnipsels Fehler auftreten (rote Wellenlinien), beheben Sie diese, indem Sie zwei Leerzeichen oder Tabstopps hinzufügen, um den Codeschnipsel richtig zu positionieren.
 1. Wenn beide Codeausschnitte zur CI/CD-Pipeline hinzugefügt wurden, **speichern** Sie die Änderungen.
 1. Klicken Sie nach dem Speichern auf **Ausführen**, um die Pipeline auszulösen.
 1. Bestätigen Sie den Branch (Main) und klicken Sie auf die Schaltfläche **Ausführen**, um die Pipelineausführung zu starten.
@@ -420,36 +427,36 @@ Führen Sie die folgenden Schritte aus, um die Eingabedateien für einen vorhand
 1. Navigieren Sie während der Ausführung der Aufgabe zum **Azure Load Testing** im Azure-Portal, und sehen Sie, wie die Pipeline einen neuen RunTest namens **adoloadtest1** erstellt. Sie können ihn auswählen, um die Ergebniswerte des TestRun-Auftrags anzuzeigen.
 1. Navigieren Sie zurück zur Ansicht Azure DevOps CI/CD Pipeline-Ausführung, in der die **AzureLoadTest-Aufgabe** erfolgreich abgeschlossen wurde. In der ausführlichen Protokollierungsausgabe werden auch die resultierenden Werte des Auslastungstests angezeigt:
 
-    ```text
-    Task         : Azure Load Testing
-    Description  : Automate performance regression testing with Azure Load Testing
-    Version      : 1.2.30
-    Author       : Microsoft Corporation
-    Help         : https://docs.microsoft.com/azure/load-testing/tutorial-cicd-azure-pipelines#azure-load-testing-task
-    ==============================================================================
-    Test '0d295119-12d0-482d-94be-a7b84787c004' already exists
-    Uploaded test plan for the test
-    Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
-    TestRun completed
-    
-    -------------------Summary ---------------
-    TestRun start time: Mon Jul 24 2023 21:46:26 GMT+0000 (Coordinated Universal Time)
-    TestRun end time: Mon Jul 24 2023 21:51:50 GMT+0000 (Coordinated Universal Time)
-    Virtual Users: 50
-    TestStatus: DONE
-    
-    ------------------Client-side metrics------------
-    
-    Homepage
-    response time        : avg=1359ms min=59ms med=539ms max=16629ms p(90)=3127ms p(95)=5478ms p(99)=13878ms
-    requests per sec     : avg=37
-    total requests       : 4500
-    total errors         : 0
-    total error rate     : 0
-    Finishing: AzureLoadTest
-    
-    ```
+   ```text
+   Task         : Azure Load Testing
+   Description  : Automate performance regression testing with Azure Load Testing
+   Version      : 1.2.30
+   Author       : Microsoft Corporation
+   Help         : https://docs.microsoft.com/azure/load-testing/tutorial-cicd-azure-pipelines#azure-load-testing-task
+   ==============================================================================
+   Test '0d295119-12d0-482d-94be-a7b84787c004' already exists
+   Uploaded test plan for the test
+   Creating and running a testRun for the test
+   View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%4b75-a1e0-27fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-787c004/testRunId/161046f1-d2d3-46f7-9d2b-c8a09478ce4c
+   TestRun completed
+
+   -------------------Summary ---------------
+   TestRun start time: Mon Jul 24 2023 21:46:26 GMT+0000 (Coordinated Universal Time)
+   TestRun end time: Mon Jul 24 2023 21:51:50 GMT+0000 (Coordinated Universal Time)
+   Virtual Users: 50
+   TestStatus: DONE
+
+   ------------------Client-side metrics------------
+
+   Homepage
+   response time         : avg=1359ms min=59ms med=539ms max=16629ms p(90)=3127ms p(95)=5478ms p(99)=13878ms
+   requests per sec      : avg=37
+   total requests        : 4500
+   total errors          : 0
+   total error rate      : 0
+   Finishing: AzureLoadTest
+
+   ```
 
 1. Sie haben nun einen automatisierten Auslastungstest als Teil einer Pipelineausführung ausgeführt. In der letzten Aufgabe geben Sie Bedingungen für Fehler an, was bedeutet, dass unsere Bereitstellungsphase nicht gestartet werden kann, wenn die Leistung der Webanwendung unter einem bestimmten Schwellenwert liegt.
 
@@ -459,54 +466,54 @@ In dieser Aufgabe werden Sie die Kriterien für das Scheitern von Lasttests verw
 
 1. Navigieren Sie in Azure DevOps zum Projekt „eShopOnWeb“, und öffnen Sie **Repositorys**.
 1. Navigieren Sie innerhalb von Repos zum Unterordner **/tests/jmeter**, der zuvor erstellt und verwendet wurde.
-1. Öffnen Sie die Datei Load Testing *config.yaml**. Klicken Sie auf **Bearbeiten**, um die Bearbeitung der Datei zu ermöglichen.
+1. Öffnen Sie die Auslastungstest-Datei \*config.yaml**. Klicken Sie auf **Bearbeiten\*\*, um die Bearbeitung der Datei zu ermöglichen.
 1. Ersetzen Sie `failureCriteria: []` durch den folgenden Codeschnipsel:
 
-    ```text
-    failureCriteria:
-      - avg(response_time_ms) > 300
-      - percentage(error) > 50
-    ```
+   ```text
+   failureCriteria:
+     - avg(response_time_ms) > 300
+     - percentage(error) > 50
+   ```
 
 1. Speichern Sie die Änderungen an der config.yaml, indem Sie auf **Commit** und ein weiteres Mal auf „Commit“ klicken.
 1. Navigieren Sie zurück zu **Pipelines**, und führen Sie die Pipeline **eShopOnWeb** erneut aus. Nach ein paar Minuten wird der Lauf mit dem Status **Fehlgeschlagen** für die Aufgabe **AzureLoadTest** abgeschlossen.
 1. Öffnen Sie die ausführliche Protokollierungsansicht für die Pipeline, und überprüfen Sie die Details des **AzureLoadtest**. Nachfolgend sehen Sie eine Beispielausgabe:
 
-    ```text
-    Creating and running a testRun for the test
-    View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
-    TestRun completed
-    
-    -------------------Summary ---------------
-    TestRun start time: Mon Jul 24 2023 23:00:31 GMT+0000 (Coordinated Universal Time)
-    TestRun end time: Mon Jul 24 2023 23:06:02 GMT+0000 (Coordinated Universal Time)
-    Virtual Users: 50
-    TestStatus: DONE
-    
-    -------------------Test Criteria ---------------
-    Results          :1 Pass 1 Fail
-    
-    Criteria                     :Actual Value        Result
-    avg(response_time_ms) > 300                       1355.29               FAILED
-    percentage(error) > 50                                                  PASSED
-    
-    
-    ------------------Client-side metrics------------
-    
-    Homepage
-    response time        : avg=1355ms min=58ms med=666ms max=16524ms p(90)=2472ms p(95)=5819ms p(99)=13657ms
-    requests per sec     : avg=37
-    total requests       : 4531
-    total errors         : 0
-    total error rate     : 0
-    ##[error]TestResult: FAILED
-    Finishing: AzureLoadTest
+   ```text
+   Creating and running a testRun for the test
+   View the load test run in progress at: https://portal.azure.com/#blade/Microsoft_Azure_CloudNativeTesting/NewReport//resourceId/%2fsubscriptions%2fb86d9ae1-7552-47fb2ea7f9f4%2fresourcegroups%2faz400m08l14-RG%2fproviders%2fmicrosoft.loadtestservice%2floadtests%2feshoponwebloadtesting/testId/0d295119-12d0-a7b84787c004/testRunId/f4bec76a-8b49-44ee-a388-12af34f0d4ec
+   TestRun completed
 
-    ```
+   -------------------Summary ---------------
+   TestRun start time: Mon Jul 24 2023 23:00:31 GMT+0000 (Coordinated Universal Time)
+   TestRun end time: Mon Jul 24 2023 23:06:02 GMT+0000 (Coordinated Universal Time)
+   Virtual Users: 50
+   TestStatus: DONE
+
+   -------------------Test Criteria ---------------
+   Results           :1 Pass 1 Fail
+
+   Criteria                  :Actual Value        Result
+   avg(response_time_ms) > 300                       1355.29               FAILED
+   percentage(error) > 50                                                  PASSED
+
+
+   ------------------Client-side metrics------------
+
+   Homepage
+   response time         : avg=1355ms min=58ms med=666ms max=16524ms p(90)=2472ms p(95)=5819ms p(99)=13657ms
+   requests per sec      : avg=37
+   total requests        : 4531
+   total errors          : 0
+   total error rate      : 0
+   ##[error]TestResult: FAILED
+   Finishing: AzureLoadTest
+
+   ```
 
 1. Beachten Sie, dass die letzte Zeile der Lasttest-Ausgabe **##[error]TestResult: FAILED** ist; da wir ein **FailCriteria** mit einer durchschnittlichen Antwortzeit von > 300 oder einem Fehlerprozentsatz von > 20 definiert haben und nun eine durchschnittliche Antwortzeit von mehr als 300 sehen, wird die Aufgabe als fehlgeschlagen gekennzeichnet.
 
-    > **Hinweis**: Stellen Sie sich vor, Sie würden in einem realen Szenario die Leistung Ihres App Service überprüfen, und wenn die Leistung unter einem bestimmten Schwellenwert liegt (was in der Regel bedeutet, dass die Web-App stärker auslastet ist), könnten Sie eine neue Bereitstellung für einen zusätzlichen Azure App Service auslösen. Da wir die Reaktionszeit für Azure-Laborumgebungen nicht kontrollieren können, haben wir beschlossen, die Logik umzukehren, um den Ausfall zu garantieren.
+   > **Hinweis**: Stellen Sie sich vor, Sie würden in einem realen Szenario die Leistung Ihres App Service überprüfen, und wenn die Leistung unter einem bestimmten Schwellenwert liegt (was in der Regel bedeutet, dass die Web-App stärker auslastet ist), könnten Sie eine neue Bereitstellung für einen zusätzlichen Azure App Service auslösen. Da wir die Reaktionszeit für Azure-Laborumgebungen nicht kontrollieren können, haben wir beschlossen, die Logik umzukehren, um den Ausfall zu garantieren.
 
 1. Der FAILED-Status des Pipelinevorgangs spiegelt tatsächlich einen ERFOLG der Überprüfung der Anforderungskriterien für Azure Load Testing wider.
 
