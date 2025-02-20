@@ -375,7 +375,7 @@ Um die Fähigkeit eines Teams zu verbessern, dauerhaft hochwertige Software bere
 
     > **Hinweis**: Wenn Ihr Team den Status der Arbeit aktualisiert, während sie von einer Phase zur nächsten fortschreitet, hilft es ihnen, sich darüber zu einigen, was **Fertig** bedeutet. Indem Sie die Kriterien für die **Definition von Fertig** für jede Kanban-Spalte angeben, können Sie die wesentlichen Aufgaben teilen, die abgeschlossen werden müssen, bevor Sie ein Element in eine nachgelagerte Phase verschieben.
 
-1. Geben Sie auf der Registerkarte **QA Approved** unten im Feld **Definition of done** den Text **`Passes \*\*all\*\* tests`** ein.
+1. Geben Sie auf der Registerkarte **QA Approved** unten im Feld **Definition of done** den Text **`Passes **all** tests`** ein.
 1. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern und zu schließen.
 
     ![Screenshot der geteilten Spalte für Einstellungen und Definition der fertigen Konfiguration.](images/m1/dd_v1.png)
