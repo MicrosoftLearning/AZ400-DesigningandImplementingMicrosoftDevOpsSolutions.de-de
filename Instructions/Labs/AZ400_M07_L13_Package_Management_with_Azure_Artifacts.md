@@ -144,23 +144,23 @@ In dieser Aufgabe erstellen und veröffentlichen Sie ein selbst entwickeltes ben
 1. Öffnen Sie in Ihrer Lab-Workstation das Startmenü und suchen Sie nach **Windows PowerShell**. Klicken Sie anschließend im kaskadierenden Menü auf **Windows PowerShell als Administrator öffnen**.
 1. Klicken Sie im Fenster **Administrator: Windows PowerShell**, navigieren Sie zum Ordner „eShopOnWeb.Shared“, indem Sie den folgenden Befehl ausführen:
 
-   ```text
+   ```powershell
    cd c:\eShopOnWeb\eShopOnWeb.Shared
    ```
 
    > **Hinweis:** Der Ordner **eShopOnWeb.Shared** ist der Speicherort der Datei **eShopOnWeb.Shared.csproj**. Wenn Sie einen anderen Ort oder Projektnamen gewählt haben, navigieren Sie stattdessen zu diesem Ort.
 
-1. Führen Sie den folgenden Befehl aus, um eine **.nupkg**-Datei aus dem Projekt zu erstellen.
+1. Führen Sie Folgendes aus, um eine **.nupkg**-Datei aus dem Projekt zu erstellen (ändern Sie den Wert des Platzhalters `XXXXXX` mit einer eindeutigen Zeichenfolge).
 
    ```powershell
-   dotnet pack .\eShopOnWeb.Shared.csproj
+   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXX.Shared
    ```
 
    > **Hinweis:** Der Befehl **dotnet pack** kompiliert das Projekt und erstellt ein NuGet-Paket im Ordner **bin\Release**. Wenn Sie keinen **Freigabe**-Ordner haben, können Sie stattdessen den **Debug**-Ordner verwenden.
 
    > **Hinweis**: Ignorieren Sie alle Warnungen, die im Fenster **Administrator: Windows PowerShell** angezeigt werden.
 
-   > **Hinweis**: Der Befehl „dotnet pack“ kompiliert ein minimales Paket basierend auf den Informationen, die er aus dem Projekt ermitteln kann. Beachten Sie beispielsweise, dass der Name **eShopOnWeb.Shared.1.0.0.nupkg** lautet. Diese Versionsnummer wurde aus der Assembly abgerufen.
+   > **Hinweis**: Der Befehl „dotnet pack“ kompiliert ein minimales Paket basierend auf den Informationen, die er aus dem Projekt ermitteln kann. Mit dem Argument `-p:PackageId=eShopOnWeb-XXXXXX.Shared` können Sie stattdessen ein Paket mit einem bestimmten Namen erstellen, indem Sie den im Projekt enthaltenen Namen verwenden. Wenn Sie beispielsweise die Zeichenfolge `12345` durch den Platzhalter `XXXXXX` ersetzen, lautet der Name des Pakets **eShopOnWeb-12345.Shared.1.0.0.nupkg**. Die Versionsnummer wurde aus der Assembly abgerufen.
 
 1. Führen Sie im PowerShell-Fenster den folgenden Befehl aus, um den Ordner **bin\Release** zu öffnen:
 
