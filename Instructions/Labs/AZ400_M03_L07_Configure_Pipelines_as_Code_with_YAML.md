@@ -6,8 +6,6 @@ lab:
 
 # Konfigurieren von Pipelines-as-Code mit YAML
 
-## Lab-Handbuch für Kursteilnehmer
-
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -28,13 +26,13 @@ In diesem Lab lernen Sie Folgendes:
 
 - Konfigurieren Sie CI/CD-Pipelines als Code mit YAML in Azure DevOps.
 
-## Geschätzte Zeit: 60 Minuten
+## Geschätzte Dauer: 45 Minuten
 
 ## Anweisungen
 
 ### Übung 0: Konfigurieren der Voraussetzungen für das Lab
 
-In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
+In dieser Übung richten Sie die Voraussetzungen für das Lab ein.
 
 #### Aufgabe 1: (überspringen, wenn fertig) Erstellen und Konfigurieren des Teamprojekts
 
@@ -42,15 +40,15 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb_MultiStageYAML** Azure DevOps-P
 
 1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation. Klicken Sie auf **Neues Projekt**. Geben Sie Ihrem Projekt den Namen **eShopOnWeb_MultiStageYAML** und lassen Sie die anderen Felder auf Standardwerten. Klicken Sie auf **Erstellen**.
 
-   ![Erstellen eines Projekts](images/create-project.png)
+   ![Screenshot des Bereichs „Neues Projekt erstellen“.](images/create-project.png)
 
 #### Aufgabe 2: (überspringen, wenn erledigt) Importieren von eShopOnWeb Git Repository
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb_MultiStageYAML**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb_MultiStageYAML**-Projekt. Klicken Sie auf **Repos > Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL https://github.com/MicrosoftLearning/eShopOnWeb.git ein, und klicken Sie auf **Importieren**:
 
-   ![Importieren eines Repositorys](images/import-repo.png)
+   ![Screenshot: Fenster „Repository importieren“](images/import-repo.png)
 
 1. Das Repository ist wie folgt organisiert:
    - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -59,11 +57,11 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
    - Der Ordner **.github** enthält YAML GitHub-Workflow-Definitionen.
    - Der Ordner **src** enthält die .NET 8-Website, die in den Labszenarios verwendet wird.
 
-1. Wechseln Sie zu **Repos>Branches**.
+1. Wechseln Sie zu **Repos > Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
-#### Schritt 2: Erstellen von Azure-Ressourcen
+#### Aufgabe 3: Erstellen von Azure-Ressourcen
 
 In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erstellen.
 
@@ -73,7 +71,7 @@ In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erste
 
    > **Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
 
-   > **Hinweis:** Um eine Liste der Regionen und deren Alias zu erhalten, führen Sie den folgenden Befehl in der Azure Cloud Shell - Bash aus:
+   > **Hinweis:** Um eine Liste der Regionen und deren Alias zu erhalten, führen Sie den folgenden Befehl in Azure Cloud Shell - Bash aus:
 
    ```bash
    az account list-locations -o table
@@ -86,14 +84,14 @@ In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erste
    ```
 
    ```bash
-   RESOURCEGROUPNAME='az400m05l11-RG'
+   RESOURCEGROUPNAME='az400m03l07-RG'
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
 1. Um einen Windows-App-Service-Plan zu erstellen, führen Sie den folgenden Befehl aus:
 
    ```bash
-   SERVICEPLANNAME='az400m05l11-sp1'
+   SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
 
@@ -151,7 +149,7 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
      jobs:
        - job: Deploy
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          steps:
    ```
 
@@ -195,7 +193,7 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
 1. Geben Sie die folgenden Parameter für diese Aufgabe an:
    - Herunterladen von Artefakten erstellt von: **aktueller Build**
    - Download-Typ: **Spezifisches Artefakt**
-   - Artefaktname: **Wählen Sie „Website“ aus der Liste** (oder **tippen Sie „Website“** direkt ein, wenn sie nicht automatisch in der Liste erscheint)
+   - Artefaktname: **Wählen Sie „Website“ aus der Liste aus** (oder **tippen Sie `Website`** direkt ein, wenn dies nicht automatisch in der Liste erscheint).
    - Zielverzeichnis: **$(Build.ArtifactStagingDirectory)**
 1. Klicken Sie auf **Hinzufügen**.
 1. Der hinzugefügte Codeschnipsel sollte etwa so aussehen wie unten:
@@ -245,8 +243,8 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
       - repository: self
         trigger: none
 
-   stages:
-   - stage: Build
+  stages:
+  - stage: Build
     displayName: Build .Net Core Solution
     jobs:
     - job: Build
@@ -297,7 +295,7 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
     jobs:
     - job: Deploy
       pool:
-        vmImage: 'windows-2019'
+        vmImage: 'windows-latest'
       steps:
       - task: DownloadBuildArtifacts@0
         inputs:
@@ -316,7 +314,7 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
 
    ```
 
-#### Aufgabe 4: Die bereitgestellte Site überprüfen
+#### Aufgabe 3: Überprüfen der bereitgestellten Website
 
 1. Wechseln Sie zurück zum Webbrowser-Fenster, in dem das Azure-Portal angezeigt wird, und navigieren Sie zu dem Blatt, auf dem die Eigenschaften der Azure-Webanwendung angezeigt werden.
 1. Klicken Sie auf dem Azure-Web-App-Blatt auf **Übersicht** und im Übersichts-Blatt auf **Durchsuchen**, um Ihre Site in einer neuen Webbrowser-Registerkarte zu öffnen.
@@ -333,11 +331,10 @@ YAML-Pipelines-as-Code haben keine Release/Quality Gates, wie es bei Azure DevOp
 1. Navigieren Sie im Azure DevOps-Projekt **eShopOnWeb_MultiStageYAML** zu **Pipelines**.
 1. Wählen Sie im Menü "Pipelines" auf der linken Seite **Umgebungen**.
 1. Klicken Sie auf **Umgebung erstellen**.
-1. Fügen Sie im Bereich **Neue Umgebung** einen Namen für die Umgebung hinzu, der **Genehmigungen** lautet.
+1. Fügen Sie im Bereich **Neue Umgebung** einen Namen für die Umgebung hinzu, der **`approvals`** lautet.
 1. Wählen Sie unter **Ressourcen** die Option **Keine**.
 1. Bestätigen Sie die Einstellungen durch Drücken der Schaltfläche **Erstellen**.
-1. Sobald die Umgebung erstellt wurde, klicken Sie auf die Auslassungspunkte (...) neben der Schaltfläche "Ressource hinzufügen".
-1. Wählen Sie **Genehmigungen und Überprüfungen** aus.
+1. Wenn die Umgebung erstellt ist, wählen Sie in der neuen Umgebung **Genehmigungen** die Registerkarte **Genehmigungen und Überprüfungen** aus.
 1. Wählen Sie auf der Seite **Erste Prüfung hinzufügen** die Option **Genehmigungen**.
 1. Fügen Sie den Namen Ihres Azure DevOps-Benutzerkontos in das Feld **Genehmigende Person** ein.
 
@@ -360,12 +357,12 @@ YAML-Pipelines-as-Code haben keine Release/Quality Gates, wie es bei Azure DevOp
      - job: Deploy
        environment: approvals
        pool:
-         vmImage: "windows-2019"
+         vmImage: "windows-latest"
    ```
 
 1. Da die Umgebung eine bestimmte Einstellung einer Bereitstellungsphase ist, kann sie nicht von "Aufträgen" verwendet werden. Daher müssen wir einige zusätzliche Änderungen an der aktuellen Auftragsdefinition vornehmen.
 1. Benennen Sie in Zeile **60** „- job: Deploy“ um in **- deployment: Deploy**
-1. Fügen Sie als Nächstes unter Zeile **63** (vmImage: Windows-2019) eine neue leere Zeile hinzu.
+1. Fügen Sie als Nächstes unter Zeile **63** (vmImage: Windows-latest) eine neue leere Zeile hinzu.
 1. Fügen Sie den folgende Yaml-Codeausschnitt ein:
 
    ```yaml
@@ -385,7 +382,7 @@ YAML-Pipelines-as-Code haben keine Release/Quality Gates, wie es bei Azure DevOp
        - deployment: Deploy
          environment: approvals
          pool:
-           vmImage: "windows-2019"
+           vmImage: "windows-latest"
          strategy:
            runOnce:
              deploy:
@@ -420,30 +417,8 @@ YAML-Pipelines-as-Code haben keine Release/Quality Gates, wie es bei Azure DevOp
 
    > **Hinweis:** Obwohl in diesem Beispiel nur die Genehmigungen verwendet wurden, werden die anderen Prüfungen wie Azure Monitor, REST-API usw. auf ähnliche Weise verwendet.
 
-### Übung 3: Entfernen der Azure-Laborressourcen
-
-In dieser Übung entfernen Sie die in diesem Lab bereitgestellten Azure-Ressourcen, um unerwartete Gebühren zu vermeiden.
-
-> **Hinweis**: Denken Sie daran, alle neu erstellten Azure-Ressourcen zu entfernen, die Sie nicht mehr verwenden. Durch das Entfernen nicht verwendeter Ressourcen wird sichergestellt, dass keine unerwarteten Gebühren anfallen.
-
-#### Aufgabe 1: Entfernen der Azure Lab-Ressourcen
-
-In dieser Aufgabe verwenden Sie Azure Cloud Shell, um die in diesem Lab bereitgestellten Azure-Ressourcen zu entfernen, um unnötige Gebühren zu vermeiden.
-
-1. Öffnen Sie im Azure-Portal die **Bash**-Shell-Sitzung im Bereich **Cloud Shell**.
-1. Listen Sie alle Ressourcengruppen auf, die während der Labs in diesem Modul erstellt wurden, indem Sie den folgenden Befehl ausführen:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].name" --output tsv
-   ```
-
-1. Löschen Sie alle Ressourcengruppen, die Sie während der praktischen Übungen in diesem Modul erstellt haben, indem Sie den folgenden Befehl ausführen:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m05l11-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Hinweis**: Der Befehl wird (dem --nowait-Parameter entsprechend) asynchron ausgeführt. Dies bedeutet, dass Sie zwar einen weiteren Azure CLI-Befehl in derselben Bash-Sitzung direkt im Anschluss ausführen können, es jedoch einige Minuten dauert, bis die Ressourcengruppen tatsächlich entfernt werden.
+   > [!IMPORTANT]
+   > Denken Sie daran, die im Azure-Portal erstellten Ressourcen zu löschen, um unnötige Gebühren zu vermeiden.
 
 ## Überprüfung
 
