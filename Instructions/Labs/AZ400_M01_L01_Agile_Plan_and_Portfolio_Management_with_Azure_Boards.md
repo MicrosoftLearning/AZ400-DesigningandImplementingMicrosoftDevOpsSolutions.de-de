@@ -65,7 +65,7 @@ Jedes neue Projekt ist mit einem Standardteam konfiguriert, das dem Projektnamen
 
 1. Klicken Sie auf das Zahnradsymbol mit der Bezeichnung **Projekteinstellungen** in der unteren linken Ecke der Seite, um die Seite **Projekteinstellungen** zu öffnen.
 
-    ![Screenshot der Einstellungsseite von Azure DevOps.](images/m1/project_settings_v1.png)
+    ![Screenshot der Einstellungsseite von Azure DevOps.](images/m1/project_settings_v1.png) 
 
 1. Wählen Sie im Abschnitt **Allgemein** die Registerkarte **Teams** aus. Es gibt bereits ein Standardteam in diesem Projekt, das **eShopOnWeb**-Team, aber Sie erstellen für dieses Lab ein neues Team. Klicken Sie auf **Neues Team**.
 
@@ -149,7 +149,7 @@ Arbeitsaufgaben spielen in Azure DevOps eine herausragende Rolle. Ob es sich nun
 
     > **Hinweis:** Beachten Sie im Bereich **Schulungsdashboard**, dass die Zuordnung, der **Bereich** und die **Iteration** bereits auf die gleichen Werte wie das Epic festgelegt sind, auf dem das Feature basiert. Darüber hinaus wird das Feature automatisch mit dem übergeordneten Element verknüpft, aus dem es erstellt wurde.
 
-1. Klicken Sie im Bereich **Trainingsdashboard** (Neues Feature) auf **Speichern und Schließen**.
+1. Klicken Sie im Bereich **Schulungs-Dashboard** (Neues Feature) auf **Speichern und Schließen**.
 
 1. Wählen Sie im vertikalen Navigationsbereich des Azure DevOps-Portals in der Liste der **Boards**-Elemente die Option **Boards** aus.
 1. Wählen Sie im Bereich **Boards** den Eintrag **EShop-WEB Boards** aus. Dadurch wird das Board für dieses bestimmte Team geöffnet.
@@ -279,9 +279,9 @@ Nach Fertigstellung des Sprintplans sollten Ihre Sprint-Backlogs alle Informatio
 1. Klicken Sie auf das Zahnradsymbol **Teameinstellungen konfigurieren** (direkt rechts neben dem Trichtersymbol).
 1. Wählen Sie im Bereich **Einstellungen** die Registerkarte **Stile** aus, klicken Sie auf **+ Stilregel hinzufügen**, geben Sie unter der Bezeichnung **Regelname** in das Textfeld **Name** den Text **`Development`** ein und wählen Sie in der Dropdown-Liste **Farbe** das grüne Rechteck aus.
 
-    > **Hinweis**: Dadurch werden alle Karten grün gefärbt, wenn sie die im Abschnitt **Regelkriterien** direkt darunter festgelegten Regelkriterien erfüllen.
+    > **Hinweis**: Damit werden alle Karten grün gefärbt, wenn sie die direkt unter dem Regelnamen festgelegten Kriterien erfüllen.
 
-1. Wählen Sie im Abschnitt **Regelkriterien** in der Dropdown-Liste **Feld** den Eintrag **Aktivität**, in der Dropdown-Liste **Operator** den Eintrag **=** und in der Dropdown-Liste **Wert** den Eintrag **Entwicklung**.
+1. Im Abschnitt unter dem Regelnamen wählen Sie in der Dropdownliste **Feld** die Option **Aktivität**, in der Dropdownliste **Operator** die Option **=** und in der Dropdownliste **Wert** die Option **Entwicklung**.
 
     ![Screenshot der Einstellungen für den Stil des Boards.](images/m1/EShop-WEB-styles_v2.JPG)
 
@@ -337,7 +337,7 @@ Um die Fähigkeit eines Teams zu verbessern, dauerhaft hochwertige Software bere
 1. Klicken Sie in der detaillierten Elementansicht oben im Bereich rechts neben dem Eintrag **0 Kommentare** auf **Tag hinzufügen**.
 1. Geben Sie in das daraufhin angezeigte Textfeld **`data`** ein und drücken Sie die Taste **Enter**.
 1. Wiederholen Sie den vorherigen Schritt, um das **`ux`** Tag hinzuzufügen.
-1. Speichern Sie diese Bearbeitungen, indem Sie auf **Speichern und Schließen** klicken.
+1. Speichern Sie diese Änderungen, indem Sie auf **Speichern und schließen** klicken.
 
     ![Screenshot der beiden neuen Tags, die auf der Karte sichtbar sind.](images/m1/EShop-WEB-tags_v1.png)
 
@@ -375,7 +375,7 @@ Um die Fähigkeit eines Teams zu verbessern, dauerhaft hochwertige Software bere
 
     > **Hinweis**: Wenn Ihr Team den Status der Arbeit aktualisiert, während sie von einer Phase zur nächsten fortschreitet, hilft es ihnen, sich darüber zu einigen, was **Fertig** bedeutet. Indem Sie die Kriterien für die **Definition von Fertig** für jede Kanban-Spalte angeben, können Sie die wesentlichen Aufgaben teilen, die abgeschlossen werden müssen, bevor Sie ein Element in eine nachgelagerte Phase verschieben.
 
-1. Geben Sie auf der Registerkarte **QA Approved** unten im Feld **Definition of done** den Text **`Passes \*\*all\*\* tests`** ein.
+1. Geben Sie auf der Registerkarte **QA Approved** unten im Feld **Definition of done** den Text **`Passes **all** tests`** ein.
 1. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern und zu schließen.
 
     ![Screenshot der geteilten Spalte für Einstellungen und Definition der fertigen Konfiguration.](images/m1/dd_v1.png)
@@ -428,7 +428,9 @@ Dashboards ermöglichen es den Teams, den Status zu visualisieren und den Fortsc
 
 1. Klicken Sie im Bereich **Konfiguration** auf **Schließen**, ohne irgendwelche Änderungen vorzunehmen.
 1. Zurück im Bereich **Widget hinzufügen** geben Sie im Textfeld **Suchen** erneut **`sprint`** ein, um vorhandene Widgets zu finden, die sich auf Sprints konzentrieren. Wählen Sie in der Ergebnisliste **Sprintkapazität** und klicken Sie auf **Hinzufügen**.
+
     > **Hinweis**: Wenn im Widget „Kapazität für die Verwendung des Sprint-Kapazitäts-Widgets festlegen“ angezeigt wird, können Sie den Link **Kapazität festlegen** auswählen, um die Kapazität festzulegen. Setzen Sie die Aktivität auf Entwicklung und die Kapazität auf 1. Klicken Sie auf **Speichern** und kehren Sie zum Dashboard zurück.
+    
 1. Klicken Sie in der Ansicht **Dashboard** am oberen Rand des Bereichs auf **Bearbeitung abgeschlossen**.
 
     ![Screenshot des Dashboards mit zwei neuen Widgets.](images/m1/EShop-WEB-finished_dashboard_v1.png)
