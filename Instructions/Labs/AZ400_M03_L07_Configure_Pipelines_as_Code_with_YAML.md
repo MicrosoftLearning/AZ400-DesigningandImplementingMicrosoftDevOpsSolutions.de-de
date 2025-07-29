@@ -61,6 +61,8 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
+    > **Hinweis:** Wenn der Mainbranch bereits der Stadardbranch ist, ist die Option **Als Standardbranch festlegen** abgeblendet. Fahren Sie in diesem Fall mit den Anweisungen fort.
+
 #### Aufgabe 3: Erstellen von Azure-Ressourcen
 
 In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erstellen.
@@ -69,13 +71,7 @@ In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erste
 1. Klicken Sie im Azure-Portal in der Symbolleiste auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Suchtextfeld befindet.
 1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
 
-   > **Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
-
-   > **Hinweis:** Um eine Liste der Regionen und deren Alias zu erhalten, führen Sie den folgenden Befehl in Azure Cloud Shell - Bash aus:
-
-   ```bash
-   az account list-locations -o table
-   ```
+   > **Hinweis:** Wenn Sie **Cloud Shell** zum ersten Mal starten und das Popup **Erste Schritte** angezeigt wird, wählen Sie **Kein Speicherkonto erforderlich** und das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Anwenden**.
 
 1. Führen Sie in der **Bash-Eingabeaufforderung** im **Cloud Shell**-Bereich den folgenden Befehl aus, um eine Ressourcengruppe zu erstellen (ersetzen Sie den `<region>`-Platzhalter durch den Namen der Azure-Region, die Ihnen am nächsten ist, z. B. „centralus“, „westeurope“ oder eine andere Region Ihrer Wahl).
 
@@ -94,6 +90,8 @@ In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erste
    SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
+
+    > **Hinweis:** Wenn beim Ausführen des vorherigen Befehls eine Fehlermeldung wie „Das Abonnement ist nicht zur Verwendung von Namespace 'Microsoft.Web' registriert“, führen Sie `az provider register --namespace Microsoft.Web` und dann erneut den Befehl aus, der den Fehler generiert hat.
 
 1. Erstellen Sie eine Web-App mit einem eindeutigen Namen.
 
@@ -163,7 +161,7 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
    - Wählen Sie in der Dropdownliste für **Azure-Abonnements** das Azure-Abonnement aus, in dem Sie die Azure-Ressourcen zuvor im Lab bereitgestellt haben, klicken Sie auf **Autorisieren** und authentifizieren Sie sich bei Aufforderung mit demselben Benutzerkonto, das Sie während der Azure-Ressourcenbereitstellung verwendet haben.
    - Wählen Sie in der Dropdownliste **App Service-Name** den Namen der Web-App aus, die Sie zuvor im Lab bereitgestellt haben.
    - **Aktualisieren** Sie im Textfeld **Paket oder Ordner** den Standardwert auf `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-   - Fügen Sie in den **Anwendungs- und Konfigurationseinstellungen** `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` hinzu.
+   - Öffnen Sie den Abschnitt **Anwendungs- und Konfigurationseinstellungen**, und geben Sie `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` in das Textfeld **App-Einstellungen** ein.
 
 1. Bestätigen Sie die Einstellungen im Bereich Assistent, indem Sie auf die Schaltfläche **Hinzufügen** klicken.
 
@@ -207,11 +205,11 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
        downloadPath: "$(Build.ArtifactStagingDirectory)"
    ```
 
-1. Wenn die YAML-Einrückung ausgeschaltet ist, drücken Sie zweimal die **Tab**-Taste, während die hinzugefügte Aufgabe noch im Editor ausgewählt ist, um sie um vier Leerzeichen einzurücken.
+1. Wenn der YAML-Einzug ausgeschaltet ist, drücken Sie zweimal die **TAB-TASTE**, während die hinzugefügte Aufgabe noch im Editor ausgewählt ist, um sie um vier Leerzeichen einzurücken.
 
    > **Hinweis**: Auch hier können Sie zur besseren Lesbarkeit eine Leerzeile davor und danach einfügen.
 
-1. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderung direkt in die Hauptverzweigung zu übernehmen.
+1. Klicken Sie auf **Überprüfen und speichern**. Klicken Sie dann im Bereich **Überprüfen und speichern** erneut auf **Speichern**, um die Änderung direkt in den Mainbranch zu übernehmen.
 
    > **Hinweis**: Da unser ursprüngliches CI-YAML nicht so konfiguriert wurde, dass automatisch ein neuer Build ausgelöst wird, müssen wir diesen manuell initiieren.
 
@@ -228,7 +226,7 @@ In dieser Aufgabe fügen Sie der YAML-basierten Definition der Pipeline, die Sie
 
 1. Klicken Sie auf **Ansicht**
 1. Klicken Sie im Bereich **Warten auf Überprüfung** auf **Zulassen**.
-1. Überprüfen Sie die Meldung im Fenster **Popup zulassen** und bestätigen Sie mit **Zulassen**.
+1. Überprüfen Sie die Meldung im Fenster **Zugriff zulassen?**, und bestätigen Sie mit **Zulassen**.
 1. Damit wird die Bereitstellungsphase eingeleitet. Warten Sie, bis die Bereitstellung erfolgreich abgeschlossen wurden.
 
    > **Hinweis**: Sollte die Bereitstellung aufgrund eines Problems mit der YAML-Pipeline-Syntax fehlschlagen, verwenden Sie dies als Referenz:
@@ -408,10 +406,9 @@ YAML-Pipelines-as-Code haben keine Release/Quality Gates, wie es bei Azure DevOp
 1. Klicken Sie auf **Pipeline ausführen**, um eine neue Pipelineausführung auszulösen. Bestätigen Sie, indem Sie auf **Ausführen** klicken.
 1. Genau wie zuvor beginnt die Buildphase wie erwartet. Warten Sie, bis der Vorgang erfolgreich abgeschlossen ist.
 1. Da die _environment:approvals_ für die Bereitstellungsphase konfiguriert sind, wird als Nächstes eine Genehmigungsbestätigung angefordert, bevor sie gestartet wird.
-1. Dies ist in der Pipelineansicht sichtbar, in der **Warten (0/1 Prüfungen bestanden)** angezeigt wird. Außerdem wird folgende Benachrichtigung angezeigt: **Genehmigung muss überprüft werden, bevor diese Ausführung weiterhin in einer Azure-Web-App bereitstellen kann**.
-1. Klicken Sie auf die Schaltfläche **Anzeigen** neben der Nachricht.
-1. Klicken Sie im angezeigten Bereich **Überprüfungen und manuelle Validierung für die Bereitstellung in Azure-Web-App** auf die Meldung **Genehmigung ausstehend**.
-1. Klicken Sie auf **Approve**.
+1. Dies ist in der Pipelineansicht sichtbar, in der **Warten (1 Überprüfung wird ausgeführt)** angezeigt wird. Außerdem wird folgende Benachrichtigung angezeigt: **1 Genehmigung muss überprüft werden, bevor diese Ausführung weiterhin in einer Azure-Web-App bereitstellen kann.**
+1. Klicken Sie auf die Schaltfläche **Prüfen** neben der Meldung.
+1. Klicken Sie im angezeigten Bereich **Warten auf Überprüfung** auf die Schaltfläche **Genehmigen**.
 1. Auf diese Weise kann die Bereitstellungsphase gestartet und der Azure Web App-Quellcode erfolgreich bereitgestellt werden.
 
    > **Hinweis:** Obwohl in diesem Beispiel nur die Genehmigungen verwendet wurden, werden die anderen Prüfungen wie Azure Monitor, REST-API usw. auf ähnliche Weise verwendet.

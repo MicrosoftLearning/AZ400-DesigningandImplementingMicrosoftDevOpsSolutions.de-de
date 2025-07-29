@@ -6,8 +6,6 @@ lab:
 
 # Einrichten und Ausführen von Funktionstests
 
-## Lab-Handbuch für Kursteilnehmer
-
 ## Labanforderungen
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://docs.microsoft.com/azure/devops/server/compatibility) erforderlich.
@@ -30,11 +28,11 @@ Nachdem Sie diese Übung abgeschlossen haben, können Sie eine CI-Pipeline für 
 - Integrationstests
 - Funktionstests
 
-## Geschätzte Zeit: 60 Minuten
+## Geschätzte Zeit: 20 Minuten
 
 ## Anweisungen
 
-### Übung 0: Konfigurieren der Voraussetzungen für das Lab
+### Übung 0: (Überspringen, wenn bereits abgeschlossen) Konfigurieren der Lab-Voraussetzungen
 
 In dieser Übung richten Sie die Voraussetzungen für das Lab ein, das aus einem neuen Azure DevOps-Projekt mit einem Repository basierend auf dem [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) besteht.
 
@@ -48,7 +46,7 @@ In dieser Aufgabe erstellen Sie ein **eShopOnWeb** Azure DevOps-Projekt, das von
 
 Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehreren Labs verwendet wird.
 
-1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos>Dateien**, **Repository importieren**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
+1. Öffnen Sie auf Ihrem Lab-Computer in einem Browserfenster Ihre Azure DevOps-Organisation und das zuvor erstellte **eShopOnWeb**-Projekt. Klicken Sie auf **Repos > Dateien** , **Importiere ein Repository**. Klicken Sie auf **Importieren**. Fügen Sie im Fenster **Git Repository importieren** die folgende URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> ein, und klicken Sie auf **Importieren**:
 
 1. Das Repository ist wie folgt organisiert:
     - Der Ordner **.ado** enthält Azure DevOps-YAML-Pipelines.
@@ -59,7 +57,7 @@ Bei dieser Aufgabe importieren Sie das eShopOnWeb Git-Repository, das von mehrer
 
 #### Aufgabe 3: (überspringen, wenn erledigt) Legen Sie den Mainbranch als Standardbranch fest
 
-1. Wechseln Sie zu **Repos>Branches**.
+1. Wechseln Sie zu **Repos > Branches**.
 1. Bewegen Sie den Mauszeiger auf den **Main**-Branch und klicken Sie dann rechts neben der Spalte auf die Auslassungspunkte.
 1. Klicken Sie auf **Als Mainbranch festlegen**.
 
@@ -73,8 +71,8 @@ In dieser Aufgabe fügen Sie die YAML-Builddefinition hinzu, die zum Implementie
 
 Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Navigieren Sie zu **Pipelines>Pipelines**.
-1. Klicken Sie auf die Schaltfläche **Neue Pipeline**.
+1. Navigieren Sie zu **Pipelines > Pipelines**.
+1. Klicken Sie auf die Schaltfläche **Neue Pipeline** (oder **Pipeline erstellen**, falls Sie noch keine Pipeline haben).
 1. Wählen Sie **Azure Repos Git** (YAML) aus.
 1. Wählen Sie das Repository **eShopOnWeb** aus.
 1. Wählen Sie die Option **Vorhandene Azure Pipelines-YAML-Datei** aus.
@@ -87,7 +85,7 @@ Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.ym
     - **DotNet Publish**: Veröffentlicht die Anwendung und ihre Abhängigkeiten in einem Ordner für die Bereitstellung auf einem Hostsystem. In diesem Fall ist das **Build.ArtifactStagingDirectory**.
     - **Artefakt veröffentlichen – Website**: Veröffentlichen Sie das App-Artefakt (erstellt im vorherigen Schritt), und stellen Sie es als Pipelineartefakt zur Verfügung.
     - **Artefakt veröffentlichen – Bicep**: Veröffentlichen Sie das Infrastrukturartefakt (Bicep-Datei), und stellen Sie es als Pipelineartefakt zur Verfügung.
-1. Klicken Sie auf die Schaltfläche **Speichern** (nicht **Speichern und ausführen**), um die Pipelinedefinition zu speichern.
+1. Klicken Sie oben rechts auf der Seite auf die Schaltfläche **Speichern** (nicht **Speichern und ausführen**), um die Pipelinedefinition zu speichern. Sie finden die Schaltfläche **Speichern**, indem Sie auf den Pfeil rechts neben der Schaltfläche **Speichern und ausführen** (oder **Ausführen**) klicken.
 
 #### Aufgabe 2: Hinzufügen von Tests zur CI-Pipeline
 
@@ -97,6 +95,7 @@ Sie können feststellen, dass der Vorgang „Komponententests“ bereits Teil de
 
 - **Komponententests** testen einen einzelnen Teil der Logik Ihrer Anwendung. Man kann diesen Test genauer beschreiben, indem man aufführt, was er nicht umfasst. Ein Komponententest überprüft nicht, wie Ihr Code mit Abhängigkeiten oder Infrastruktur interagiert. Dafür gibt es Integrationstests.
 
+1. Bearbeiten Sie die Pipeline, die Sie in der vorherigen Aufgabe erstellt haben, indem Sie auf die Schaltfläche **Bearbeiten** klicken.
 1. Nun müssen Sie die Aufgabe „Integrationstests“ nach der Aufgabe „Komponententests“ hinzufügen:
 
     ```YAML
@@ -121,9 +120,9 @@ Sie können feststellen, dass der Vorgang „Komponententests“ bereits Teil de
 
     > **Funktionstests** werden aus der Perspektive des Benutzenden geschrieben, um die Richtigkeit des Systems basierend auf den Anforderungen sicherzustellen. Im Gegensatz zu Integrationstests, die aus der Perspektive der Entwickler*innen geschrieben werden, um zu überprüfen, ob einige Systemkomponenten korrekt zusammenarbeiten.
 
-1. Klicken Sie auf **Speichern**, im Bereich **Speichern**, klicken Sie erneut auf **Speichern**, um die Änderungen direkt in die Hauptverzweigung zu übertragen.
+1. Klicken Sie auf die Schaltfläche **Überprüfen und speichern**. Wenn die Überprüfung erfolgreich ist, klicken Sie erneut auf **Speichern**, um die Änderung direkt in den Mainbranch zu übernehmen.
 
-#### Aufgabe 4: Überprüfen der Testzusammenfassung
+#### Aufgabe 3: Überprüfen der Testzusammenfassung
 
 1. Klicken Sie auf **Ausführen** und dann auf der Registerkarte **Pipeline ausführen**erneut auf **Ausführen**.
 
@@ -131,14 +130,14 @@ Sie können feststellen, dass der Vorgang „Komponententests“ bereits Teil de
 
 1. Nach der Fertigstellung wird die Registerkarte **Test** als Teil der Pipelineausführung angezeigt. Klicken Sie darauf, um die Zusammenfassung zu überprüfen. Es sieht wie unten dargestellt aus:
 
-    ![Testzusammenfassung](images/AZ400_M05_L09_Tests_Summary.png)
+    ![Screenshot der Testzusammenfassung.](images/AZ400_M05_L09_Tests_Summary.png)
 
 1. Weitere Details finden Sie unten auf der Seite in der Tabelle mit einer Liste der verschiedenen Ausführungstests.
 
-    >**Hinweis**: Wenn die Tabelle leer ist, müssen Sie die Filter zurücksetzen, um alle Details über die durchgeführten Tests zu erhalten.
+    > **Hinweis**: Wenn die Tabelle leer ist, müssen Sie die Filter zurücksetzen, um alle Details über die durchgeführten Tests zu erhalten.
 
-    ![Tabelle „Tests“](images/AZ400_M05_L09_Tests_Table.png)
+    ![Screenshot der Testtabelle.](images/AZ400_M05_L09_Tests_Table.png)
 
 ## Überprüfung
 
-In dieser Übung haben Sie erfahren, wie Sie verschiedene Testtypen mit Azure Pipelines und .Net einrichten und ausführen.
+In diesem Lab haben Sie erfahren, wie Sie verschiedene Testtypen mit Azure Pipelines und .NET einrichten und ausführen.

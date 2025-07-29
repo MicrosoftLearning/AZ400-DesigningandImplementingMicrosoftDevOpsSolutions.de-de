@@ -76,7 +76,7 @@ In dieser Übung erstellen Sie einen virtuellen Azure-Computer (Virtual Machine,
 
 1. Wählen Sie die Schaltfläche **Erstellen**.
 
-1. Wählen Sie die Option **Virtueller Azure-Computer mit voreingestellter Konfiguration** aus.
+1. Wählen Sie **Voreinstellungen** aus.
 
     ![Screenshot der Option „Virtuellen Computer mit voreingestellter Konfiguration erstellen“.](images/create-virtual-machine-preset.png)
 
@@ -143,6 +143,8 @@ In dieser Übung erstellen Sie einen virtuellen Azure-Computer (Virtual Machine,
 
    > **Hinweis**: Befolgen Sie die Installationsanweisungen, um den Agenten zu installieren.
 
+   > **Hinweis:** Der Name der ZIP-Datei, die Sie mit der Schaltfläche **Herunterladen** heruntergeladen haben, sollte Folgendem ähneln (zum Zeitpunkt der Laberstellung lautet der Dateiname `vsts-agent-win-x64-4.255.0.zip`): `vsts-agent-win-x64-X.YYY.Z.zip`. Der Dateiname wird später in einem der Agent-Installationsbefehle verwendet.
+
 1. Starten Sie eine PowerShell-Sitzung, und führen Sie die folgenden Befehle aus, um einen Ordner namens **Agent** zu erstellen.
 
    ```powershell
@@ -154,10 +156,12 @@ In dieser Übung erstellen Sie einen virtuellen Azure-Computer (Virtual Machine,
 1. Führen Sie den folgenden Befehl aus, um den Inhalt der heruntergeladenen Agent-Installationsdateien zu extrahieren:
 
    ```powershell
-   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-3.245.0.zip", "$PWD")
+   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-4.255.0.zip", "$PWD")
    ```
 
    > **Hinweis**: Wenn Sie den Agenten an einen anderen Speicherort heruntergeladen haben (oder die heruntergeladene Version unterschiedlich ist), passen Sie den obigen Befehl entsprechend an.
+
+   > **Hinweis:** Stellen Sie sicher, dass der im `ExtractToDirectory`-Befehl angegebene ZIP-Dateiname mit dem Namen der ZIP-Datei übereinstimmt, die Sie zuvor heruntergeladen haben.
 
 #### Aufgabe 4: PAT-Token erstellen
 
@@ -208,7 +212,7 @@ In dieser Übung erstellen Sie einen virtuellen Azure-Computer (Virtual Machine,
 
 1. Führen Sie zum Konfigurieren des Agents die folgenden Aktionen aus, wenn Sie dazu aufgefordert werden:
 
-   - Geben Sie die URL der Azure DevOps-Organisation (**Server-URL**) im Format `https://aex.dev.azure.com`{Name Ihrer Organisation} ein.
+   - Geben Sie die URL der Azure DevOps-Organisation (**Server-URL**) im Format `https://dev.azure.com/{your organization name}` ein.
    - Übernehmen Sie den Standardauthentifizierungstyp (PAT**`PAT`**).
    - Geben Sie den Wert des PAT-Tokens ein, das Sie im vorherigen Schritt erstellt haben.
    - Geben Sie den Namen des Agentenpools **`eShopOnWebSelfPool`** ein, den Sie zuvor in dieser Übung erstellt haben.
@@ -240,7 +244,7 @@ In dieser Übung erstellen Sie einen virtuellen Azure-Computer (Virtual Machine,
    > [!IMPORTANT]
    > Damit der Agent Azure-Ressourcen aus den Azure DevOps-Pipelines erstellen und bereitstellen kann (dies durchlaufen Sie in den kommenden Labs), müssen Sie Azure CLI innerhalb des Betriebssystems des virtuellen Computers installieren, der den Agent hostet.
 
-1. Starten Sie einen Webbrowser, und navigieren Sie zu der Seite [Installieren der Azure CLI unter Windows](https://learn.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli#install-or-update).
+1. Starten Sie einen Webbrowser, und navigieren Sie zur Seite `https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update`.
 
 1. Laden Sie die Azure-Befehlszeilenschnittstelle herunterladen, und installieren Sie sie.
 
@@ -306,7 +310,7 @@ In diesem Vorgang erstellen Sie eine YAML-basierte Pipeline für das **eShopOnWe
     ![Screenshot der YAML-Poolsyntax.](images/eshoponweb-ci-pr-agent-pool.png)
 
 1. Klicken Sie im Bearbeitungsbereich **eShopOnWeb** in der oberen rechten Ecke auf **Überprüfen und Speichern**. Klicken Sie anschließend auf **Speichern**.
-1. Klicken Sie im Bearbeitungsbereich **EShopOnWeb** in der oberen rechten Ecke auf **Pipeline ausführen**.
+1. Klicken Sie im Bearbeitungsbereich **eShopOnWeb** in der oberen rechten Ecke auf **Ausführen**.
 
     > **Hinweis**: Die Pipeline wird auf dem selbst gehosteten Agentenpool ausgeführt, den Sie in der vorherigen Übung erstellt haben.
 1. Öffnen Sie den Pipelinelauf und überwachen Sie den Auftrag bis zu seinem erfolgreichen Abschluss.

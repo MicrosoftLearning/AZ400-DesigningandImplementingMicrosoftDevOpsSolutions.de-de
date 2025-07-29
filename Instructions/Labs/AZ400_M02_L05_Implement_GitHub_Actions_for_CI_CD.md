@@ -58,7 +58,7 @@ In dieser Aufgabe erstellen Sie ein leeres öffentliches GitHub-Repository und i
 
     | Feld | Wert |
     | --- | --- |
-    | Die Klon-URL Ihres alten Repositorys| <https://github.com/MicrosoftLearning/eShopOnWeb> |
+    | Die URL für Ihr Quellrepository| <https://github.com/MicrosoftLearning/eShopOnWeb> |
     | Besitzer | Ihr Konto-Alias |
     | Repositoryname | eShopOnWeb |
     | Datenschutz | **Public** |
@@ -83,7 +83,7 @@ In dieser Aufgabe erstellen Sie den Azure-Dienstprinzipal, der von GitHub verwen
 1. Geben Sie auf der Registerkarte **Erstellen einer Ressourcengruppe** der Ressourcengruppe **rg-eshoponweb-NAME** (Name für einen eindeutigen Alias ersetzen) den folgenden Namen. Klicken Sie auf **Überprüfen + Erstellen > Erstellen**.
 1. Öffnen Sie im Azure-Portal die **Cloud Shell** (neben der Suchleiste).
 
-    > **Hinweis**: Wenn Sie die Cloud Shell zum ersten Mal öffnen, müssen Sie den [beständigen Speicher](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage) konfigurieren
+    > **Hinweis:** Wenn Sie im Azure-Portal aufgefordert werden, einen Speicher zu erstellen, können Sie die Option **Kein Speicherkonto erforderlich** auswählen. Wählen Sie anschließend Ihr Abonnement aus, und klicken Sie auf die Schaltfläche **Anwenden**.
 
 1. Stellen Sie sicher, dass das Terminal im **Bash**-Modus läuft und führen Sie den folgenden Befehl aus, wobei Sie **SUBSCRIPTION-ID** und **RESOURCE-GROUP** durch Ihre eigenen Bezeichnungen ersetzen (beide finden Sie auf der **Übersicht**-Seite der Ressourcengruppe):
 
@@ -132,7 +132,7 @@ In dieser Aufgabe werden Sie den gegebenen GitHub-Workflow ändern und ihn ausf�
     - Ersetzen Sie **NAME** in **WEBAPP-NAME** durch einen eindeutigen Alias. Es wird verwendet, um eine weltweit einzigartige Website mit Azure App Service zu erstellen.
 1. Lesen Sie den Workflow sorgfältig durch, die Kommentare dienen dem besseren Verständnis.
 
-1. Klicken Sie auf **Start Commit** und **Commit Changes** und belassen Sie die Standardeinstellungen (Änderung der Hauptverzweigung). Der Workflow wird automatisch ausgeführt.
+1. Klicken Sie oben rechts auf **Änderungen committen...** und **Änderungen committen**, wobei Sie die Standardwerte übernehmen (Ändern des Mainbranch). Der Workflow wird automatisch ausgeführt.
 
 #### Aufgabe 3: Überprüfen der Ausführung von GitHub-Workflows
 
