@@ -10,6 +10,8 @@ lab:
 
 - Für dieses Lab ist **Microsoft Edge** oder ein von [Azure DevOps unterstützter Browser](https://learn.microsoft.com/azure/devops/server/compatibility) erforderlich.
 
+- **Führen Sie die Überprüfung der Labumgebung aus:** Stellen Sie vor dem Starten dieses Labs sicher, dass Sie [Überprüfen der Labumgebung](AZ400_M00_Validate_lab_environment.md) abgeschlossen haben. In diesem Schritt wurden die Azure DevOps-Organisation, das Projekt und die Dienstverbindung eingerichtet, die für dieses Lab erforderlich sind.
+
 - **Einrichten einer Azure DevOps-Organisation**: Wenn Sie nicht bereits eine Azure DevOps-Organisation haben, die Sie für dieses Lab verwenden können, müssen Sie diese erstellen, indem Sie die unter [Erstellen einer Organisation oder Projektsammlung](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization) beschriebenen Anweisungen befolgen.
 - Identifizieren Sie ein vorhandenes Azure-Abonnement, oder erstellen Sie ein neues Abonnement.
 
@@ -88,9 +90,9 @@ In dieser Aufgabe importieren Sie eine bestehende CI YAML-Pipeline-Definition, �
 
 1. Passen Sie in der YAML-Pipelinedefinition Ihren Ressourcengruppennamen an, indem Sie **NAME** in **AZ400-EWebShop-NAME** durch einen eindeutigen Wert ersetzen und **YOUR-SUBSCRIPTION-ID** durch Ihre eigene Azure subscriptionId ersetzen.
 
-1. Klicken Sie auf **Speichern und Ausführen**, und warten Sie, bis die Pipeline erfolgreich ausgeführt wird.
+1. Klicken Sie auf **Speichern und Ausführen**, und warten Sie, bis die Pipeline erfolgreich ausgeführt wird. Möglicherweise müssen Sie ein zweites Mal auf **Speichern und ausführen** klicken, um den Prozess zur Pipelineerstellung und -ausführung abzuschließen.
 
-    > **Wichtig**: Wenn Sie die Meldung „Diese Pipeline benötigt eine Berechtigung für den Zugriff auf Ressourcen, bevor dieser Lauf mit Docker Compose to ACI fortgesetzt werden kann“ sehen, klicken Sie auf „Anzeigen“, „Genehmigen“ und „Zulassen“. Dies ist erforderlich, damit die Pipeline die Ressource erstellen kann.
+    > **Wichtig**: Wenn Sie die Meldung „Diese Pipeline benötigt eine Berechtigung für den Zugriff auf Ressourcen, bevor dieser Lauf mit Docker Compose to ACI fortgesetzt werden kann“ sehen, klicken Sie auf „Anzeigen“, „Genehmigen“ und „Zulassen“. Dies ist erforderlich, damit die Pipeline die Ressource erstellen kann. Sie müssen auf den Buildauftrag klicken, um die Berechtigungsmeldung anzuzeigen.
 
     > **Hinweis**: Es kann einige Minuten dauern, bis der Build abgeschlossen ist. Die Buildpipeline besteht aus den folgenden Aufgaben:
     - **AzureResourceManagerTemplateDeployment** verwendet **bicep** zur Bereitstellung einer Azure Container Registry.
@@ -129,10 +131,10 @@ In diesem Übungsszenario wird eine Azure Container Instance (ACI) verwendet, di
 
 1. Wählen Sie auf der Registerkarte **Zugangskonfiguration** des Blades **Key Vault erstellen** die Option **Tresorzugriffsrichtlinie** und klicken Sie dann im Abschnitt **Zugangsrichtlinien** auf **+ Erstellen**, um eine neue Richtlinie einzurichten.
 
-    > **Hinweis**: Sie müssen den Zugriff auf Ihre Key Vaults sichern, indem Sie nur autorisierte Anwendungen und Benutzer*innen zulassen. Um auf die Daten aus dem Vault zuzugreifen, müssen Sie dem zuvor erstellten Dienstprinzipal, den Sie für die Authentifizierung in der Pipeline verwenden werden, Leseberechtigungen (Get/List) erteilen.
+    > **Hinweis**: Sie müssen den Zugriff auf Ihre Key Vaults sichern, indem Sie nur autorisierte Anwendungen und Benutzer*innen zulassen. Um auf die Daten aus dem Tresor zuzugreifen, müssen Sie der Dienstverbindung, die Sie bei der Labumgebungsüberprüfung für die Authentifizierung in der Pipeline erstellt haben, Leseberechtigungen (Get/List) erteilen.
 
     1. Überprüfen Sie auf dem Blatt **Berechtigung** unter **Geheime Berechtigungen** die Berechtigungen **Abrufen** und **Auflisten**. Klicken Sie auf **Weiter**.
-    2. Suchen Sie auf dem Blatt **Principal** nach dem **zuvor erstellten Dienstprinzipal**, entweder über die angegebene Id oder den Namen, und wählen Sie es aus der Liste aus. Klicken Sie auf **Weiter**, **Weiter**, **Erstellen** (Zugangsrichtlinie).
+    2. Suchen Sie auf dem Blatt **Prinzipal** nach der **Dienstverbindung des Azure-Abonnements** (die während der Überprüfung der Labumgebung erstellt wurde, in der Regel „azure subs“), und wählen Sie sie in der Liste aus. Sie finden den Dienstprinzipalnamen in Azure DevOps unter „Projekteinstellungen“ > „Dienstverbindungen“ > Azure-Abonnements > „Dienstprinzipal verwalten“. Wenn beim Auswählen des Azure-Abonnements ein Berechtigungsfehler auftritt, klicken Sie auf die Schaltfläche **Autorisieren**, die automatisch die Zugriffsrichtlinie für Sie im Schlüsseltresor erstellt. Klicken Sie auf **Weiter**, **Weiter**, **Erstellen** (Zugangsrichtlinie).
     3. Klicken Sie auf dem Blatt **Überprüfen + Erstellen** auf **Erstellen**
 
 1. Zurück auf dem Blatt **Key Vault erstellen** klicken Sie auf **Überprüfen + Erstellen > Erstellen**
@@ -148,7 +150,7 @@ In diesem Übungsszenario wird eine Azure Container Instance (ACI) verwendet, di
     | --- | --- |
     | Uploadoptionen | **Manuell** |
     | Name | **acr-secret** |
-    | Wert | ACR-Zugriffskennwort, das in der vorherigen Aufgabe kopiert wurde |
+    | Geheimniswert | ACR-Zugriffskennwort, das in der vorherigen Aufgabe kopiert wurde |
 
 #### Aufgabe 3: Erstellen einer mit Azure Key Vault verbundenen Variablengruppe
 
@@ -189,8 +191,8 @@ In dieser Aufgabe importieren Sie eine CD-Pipeline, passen sie an und führen si
     - **YOUR-ACR.azurecr.io** und **ACR-USERNAME** mit Ihrem ACR-Login-Server (beide benötigen den ACR-Namen, kann unter ACR > Zugriffstasten eingesehen werden).
     - **AZ400-EWebShop-NAME** mit dem zuvor im Labor definierten Namen der Ressourcengruppe.
 
-1. Klicken Sie auf **Speichern und Ausführen**.
-1. Öffnen Sie die Pipeline und warten Sie, bis sie erfolgreich ausgeführt wird.
+1. Klicken Sie auf **Speichern und Ausführen**. Möglicherweise müssen Sie ein zweites Mal auf **Speichern und ausführen** klicken, um den Prozess zur Pipelineerstellung und -ausführung abzuschließen. Sie müssen auf den Buildauftrag klicken, um Berechtigungsmeldungen anzuzeigen.
+1. Öffnen Sie die Pipeline, und warten Sie, bis sie erfolgreich ausgeführt wird.
 
     > **Wichtig**: Wenn Sie die Meldung „Diese Pipeline benötigt eine Berechtigung für den Zugriff auf Ressourcen, bevor dieser Lauf mit Docker Compose to ACI fortgesetzt werden kann“ sehen, klicken Sie auf „Anzeigen“, „Genehmigen“ und „Zulassen“. Dies ist erforderlich, damit die Pipeline die Ressource erstellen kann.
 
@@ -198,6 +200,8 @@ In dieser Aufgabe importieren Sie eine CD-Pipeline, passen sie an und führen si
     - **Ressourcen**: es ist darauf vorbereitet, automatisch nach Abschluss der CI-Pipeline ausgelöst zu werden. Außerdem wird das Repository für die Bicep-Datei heruntergeladen.
     - **Variablen (für die Bereitstellungsphase)** stellt eine Verbindung zur Variablengruppe her, um das Azure Key Vault-Geheimnis zu verwenden **acr-secret**.
     - **AzureResourceManagerTemplateDeployment** stellt die Azure Container Instance (ACI) unter Verwendung der Bicep-Vorlage bereit und stellt die ACR-Anmeldeparameter bereit, damit ACI das zuvor erstellte Container-Image von Azure Container Registry (ACR) herunterladen kann.
+
+1. Um die Ergebnisse der Pipelinebereitstellung zu überprüfen, suchen Sie im Azure-Portal die Ressourcengruppe **AZ400-EWebShop-NAME**, und wählen Sie sie aus. Überprüfen Sie in der Liste der Ressourcen, ob die Containerinstanz **az400eshop** von der Pipeline erstellt wurde.
 
 1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Lassen Sie sie uns **umbenennen**, um die Pipeline besser zu identifizieren. Gehen Sie zu **Pipelines > Pipelines** und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Entfernen**. Nennen Sie es **eshoponweb-cd-aci** und klicken Sie auf **Speichern**.
 

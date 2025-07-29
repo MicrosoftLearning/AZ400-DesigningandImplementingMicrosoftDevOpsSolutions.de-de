@@ -114,7 +114,7 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
 1. Klicken Sie im Azure-Portal auf das Symbol **Cloud Shell**, das sich direkt rechts neben dem Textfeld für die Suche im oberen Bereich der Seite befindet.
 1. Wählen Sie bei Aufforderung zur Auswahl von **Bash** oder **PowerShell** die Option **Bash** aus.
 
-   > **Hinweis**: Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Speicher erstellen**.
+   > **Hinweis:** Wenn Sie **Cloud Shell** zum ersten Mal starten und die Meldung **Für Sie wurde kein Speicher bereitgestellt** angezeigt wird, wählen Sie das in diesem Lab verwendete Abonnement aus, und klicken Sie dann auf **Anwenden**.
 
 1. Führen Sie an der **Bash**-Eingabeaufforderung im Bereich **Cloud Shell** den folgenden Befehl aus, um eine Ressourcengruppe zu erstellen (ersetzen Sie den `<region>`-Variablenplatzhalter durch den Namen der Azure-Region, in der die beiden Azure-Webanwendungen gehostet werden, z. B. "westeurope" oder "centralus", oder eine andere verfügbare Region Ihrer Wahl):
 
@@ -142,6 +142,8 @@ In dieser Aufgabe erstellen Sie zwei Azure-Webanwendungen, die die Umgebungen **
    ```
 
    > **Hinweis**: Notieren Sie den Namen der DevTest-Webanwendung. Sie benötigen diese später in diesem Lab.
+
+   > **Hinweis:** Wenn der Fehler „Das Abonnement ist nicht zur Verwendung von Namespace 'Microsoft.Web' registriert.“ angezeigt wird, führen Sie den folgenden Befehl aus, um den Microsoft.Web-Ressourcenanbieter zu registrieren: `az provider register --namespace Microsoft.Web`. Warten Sie, bis die Registrierung abgeschlossen ist, bevor Sie die Web-Apps erstellen.
 
 1. Warten Sie, bis der Prozess der Bereitstellung von Webanwendungs-Service-Ressourcen abgeschlossen ist, und schließen Sie das Fenster **Cloud Shell**.
 

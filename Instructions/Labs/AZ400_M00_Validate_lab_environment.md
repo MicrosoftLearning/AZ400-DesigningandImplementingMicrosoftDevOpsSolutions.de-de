@@ -152,7 +152,9 @@ Sie müssen eine Dienstverbindung in Azure DevOps erstellen, die es Ihnen ermög
 
 1. Stellen Sie sicher, dass die Option **Zugriffsberechtigung für alle Pipelines** erteilen deaktiviert ist, und wählen Sie **Speichern** aus.
 
-   > **Wichtig:** Die Option **Zugriffsberechtigung für alle Pipelines gewähren** wird für Produktionsumgebungen nicht empfohlen. Sie wird nur in diesem Lab verwendet, um die Konfiguration der Pipeline zu vereinfachen.
+   > **Wichtig:** Die Option **Allen Pipelines die Zugriffsberechtigung gewähren** wird für Produktionsumgebungen nicht empfohlen: Wenn Sie die Option auswählen, bedeutet dies, dass Sie allen Pipelines im Projekt Zugriff auf die Dienstverbindung gewähren. Wenn Sie die Option nicht auswählen, können Sie den Zugriff auf die Dienstverbindung bei der ersten Ausführung jeder Pipeline genehmigen.
+
+   > **Hinweis:** Wenn die Option **Allen Pipelines die Zugriffsberechtigung gewähren** deaktiviert ist (grau dargestellt) und nicht geändert werden kann, setzen Sie das Lab fort.
 
    > **Hinweis**: Wenn Sie eine Fehlermeldung erhalten, die besagt, dass Sie nicht über die erforderlichen Berechtigungen zum Erstellen einer Dienstverbindung verfügen, versuchen Sie es erneut oder konfigurieren Sie die Dienstverbindung manuell.
 

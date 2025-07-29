@@ -83,7 +83,7 @@ Beginnen wir mit dem Importieren der Buildpipeline mit dem Namen [eshoponweb-ci-
     - **DotNet Test**: .NET-Testtreiber, der verwendet wird, um Komponententests auszuführen.
     - **DotNet Publish**: Veröffentlicht die Anwendung und ihre Abhängigkeiten in einem Ordner für die Bereitstellung auf einem Hostsystem. In diesem Fall ist das **Build.ArtifactStagingDirectory**.
 
-1. Klicken Sie auf die Schaltfläche **Speichern**, um Ihre Pipelinedefinition zu speichern.
+1. Klicken Sie im Bereich **Überprüfen Sie Ihre Pipeline-YAML** auf das nach unten zeigende Caret-Symbol neben der Schaltfläche **Ausführen** und dann auf **Speichern**.
 1. Ihre Pipeline bekommt einen Namen basierend auf dem Projektnamen. Wir **benennen sie um**, damit wir die Pipeline besser identifizieren können. Wechseln Sie zu **Pipelines > Pipelines**, und klicken Sie auf die kürzlich erstellte Pipeline. Klicken Sie auf die Auslassungspunkte und die Option **Umbenennen/Verschieben**. Nennen Sie es **eshoponweb-ci-pr** und klicken Sie auf **Speichern**.
 
 #### Aufgabe 2: Branchrichtlinien
@@ -151,7 +151,7 @@ Beginnen wir mit dem Importieren der CI-Pipeline mit dem Namen [eshoponweb-ci.ym
 
 Die Standardmäßige Buildpipelinedefinition aktiviert keine Continuous Integration.
 
-1. Klicken Sie rechts oben auf die Schaltfläche **Bearbeiten**.
+1. Klicken Sie unterhalb des Menüs mit den Auslassungspunkten oben rechts neben der Schaltfläche **Neu ausführen** auf die Option **Pipeline bearbeiten**.
 1. Jetzt müssen Sie die Zeilen **#-trigger:** und **# - main** ersetzen durch den folgenden Code:
 
     ```YAML
