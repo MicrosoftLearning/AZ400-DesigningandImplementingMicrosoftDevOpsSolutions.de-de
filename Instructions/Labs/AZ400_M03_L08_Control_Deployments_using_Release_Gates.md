@@ -202,6 +202,7 @@ In dieser Übung konfigurieren Sie eine Releasepipeline.
 In dieser Aufgabe richten Sie die Releaseaufgaben als Teil der Releasepipeline ein.
 
 1. Wählen Sie im Azure DevOps-Portal im **eShopOnWeb**-Projekt im vertikalen Navigationsbereich **Pipelines** aus, und klicken Sie dann im Abschnitt **Pipelines** auf **Releases**.
+   > **Hinweis:** Wenn der Abschnitt **Releases** nicht angezeigt wird, liegt das wahrscheinlich daran, dass die Umschaltfläche **Erstellung klassischer Releasepipelines deaktivieren** im Abschnitt **Projekteinstellungen** > **Pipelines** > **Einstellungen** > **Allgemein**auf **Ein** festgelegt ist.
 1. Klicken Sie auf **Neue Pipeline**.
 1. **Wählen** Sie im Fenster **Vorlage auswählen** den Eintrag **Azure-Appdienstbereitstellung** (Bereitstellen Ihrer Anwendung in Azure App Service. Wählen Sie Web App unter Windows, Linux, Container, Function Apps oder WebJobs) aus der Liste der **Empfohlenen** Vorlagen.
 1. Klicken Sie auf **Anwenden**.
