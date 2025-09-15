@@ -84,7 +84,7 @@ In dieser Aufgabe verwenden Sie das Azure-Portal, um eine Azure-Web-App zu erste
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
-1. Um einen Windows-App-Service-Plan zu erstellen, führen Sie den folgenden Befehl aus:
+1. Um einen Windows App Service-Plan zu erstellen, führen Sie den folgenden Befehl aus:
 
    ```bash
    SERVICEPLANNAME='az400m03l07-sp1'
